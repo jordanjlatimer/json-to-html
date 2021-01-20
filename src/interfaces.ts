@@ -1,4 +1,4 @@
-interface SlamCSSStyleDeclaration {
+interface SlamCSS {
   "align-content"?: string;
   "align-items"?: string;
   "align-self"?: string;
@@ -332,28 +332,79 @@ interface SlamHTMLElement {
   nonce?: string;
   slot?: string;
   spellcheck?: boolean;
-  style?: SlamCSSStyleDeclaration;
+  style?: SlamCSS;
+  tabindex?: number;
   title?: string;
   translate?: boolean;
-  tabindex?: number;
 }
 
-interface SlamHTMLA extends SlamHTMLElement{
-  host: string;
-  hostname: string;
+interface SlamA extends SlamHTMLElement{
   href?: string;
-  password: string;
-  pathname: string;
-  port: string;
-  protocol: string;
-  search: string;
-  username: string;
   download?: string;
   hreflang?: string;
   ping?: string;
   referrerpolicy?: string;
   rel?: string;
   target?: string;
-  text: string;
   type?: string;
+}
+
+interface SlamAbbr extends SlamHTMLElement{}
+
+interface SlamAddress extends SlamHTMLElement{}
+
+interface SlamArea extends SlamHTMLElement{
+  href?: string;
+  alt?: string;
+  coords?: string;
+  download?: string;
+  ping?: string;
+  referrerPolicy?: string;
+  rel?: string;
+  shape?: string;
+}
+
+interface SlamArticle extends SlamHTMLElement{}
+
+interface SlamAside extends SlamHTMLElement{}
+
+interface SlamAudio extends SlamHTMLElement {
+  autoplay?: boolean;
+  controls?: boolean;
+  crossOrigin?: string | null;
+  loop?: boolean;
+  muted?: boolean;
+  preload?: string;
+  src?: string;
+}
+
+interface SlamB extends SlamHTMLElement{}
+
+interface SlamBase extends SlamHTMLElement {
+  href?: string;
+  target?: string;
+}
+
+interface SlamBdi extends SlamHTMLElement{}
+
+interface SlamBdo extends SlamHTMLElement{}
+
+interface SlamBlockquote extends SlamHTMLElement {
+  cite?: string;
+}
+
+interface SlamBody extends SlamHTMLElement{}
+
+interface SlamBr extends SlamHTMLElement{}
+
+interface SlamButton extends SlamHTMLElement{
+  disabled?: boolean;
+  formaction?: string;
+  formenctype?: string;
+  formmethod?: string;
+  formnovalidate?: boolean;
+  formtarget?: string;
+  name?: string;
+  type?: string;
+  value?: string;
 }
