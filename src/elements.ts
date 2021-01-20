@@ -16,28 +16,12 @@ function abbr(arg1?: { [key: string]: string } | string[] | string, arg2?: strin
   return genElemString("abbr", arg1, arg2);
 }
 
-function acronym(atts?: { [key: string]: string }, children?: string[] | string): string;
-function acronym(children?: string[] | string): string;
-function acronym(atts?: { [key: string]: string }): string;
-function acronym(): string;
-function acronym(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("acronym", arg1, arg2);
-}
-
 function address(atts?: { [key: string]: string }, children?: string[] | string): string;
 function address(children?: string[] | string): string;
 function address(atts?: { [key: string]: string }): string;
 function address(): string;
 function address(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("address", arg1, arg2);
-}
-
-function applet(atts?: { [key: string]: string }, children?: string[] | string): string;
-function applet(children?: string[] | string): string;
-function applet(atts?: { [key: string]: string }): string;
-function applet(): string;
-function applet(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("applet", arg1, arg2);
 }
 
 function area(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -88,14 +72,6 @@ function base(arg1?: { [key: string]: string } | string[] | string, arg2?: strin
   return genElemString("base", arg1, arg2);
 }
 
-function basefont(atts?: { [key: string]: string }, children?: string[] | string): string;
-function basefont(children?: string[] | string): string;
-function basefont(atts?: { [key: string]: string }): string;
-function basefont(): string;
-function basefont(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("basefont", arg1, arg2);
-}
-
 function bdi(atts?: { [key: string]: string }, children?: string[] | string): string;
 function bdi(children?: string[] | string): string;
 function bdi(atts?: { [key: string]: string }): string;
@@ -110,30 +86,6 @@ function bdo(atts?: { [key: string]: string }): string;
 function bdo(): string;
 function bdo(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("bdo", arg1, arg2);
-}
-
-function bgsound(atts?: { [key: string]: string }, children?: string[] | string): string;
-function bgsound(children?: string[] | string): string;
-function bgsound(atts?: { [key: string]: string }): string;
-function bgsound(): string;
-function bgsound(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("bgsound", arg1, arg2);
-}
-
-function big(atts?: { [key: string]: string }, children?: string[] | string): string;
-function big(children?: string[] | string): string;
-function big(atts?: { [key: string]: string }): string;
-function big(): string;
-function big(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("big", arg1, arg2);
-}
-
-function blink(atts?: { [key: string]: string }, children?: string[] | string): string;
-function blink(children?: string[] | string): string;
-function blink(atts?: { [key: string]: string }): string;
-function blink(): string;
-function blink(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("blink", arg1, arg2);
 }
 
 function blockquote(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -184,14 +136,6 @@ function caption(arg1?: { [key: string]: string } | string[] | string, arg2?: st
   return genElemString("caption", arg1, arg2);
 }
 
-function center(atts?: { [key: string]: string }, children?: string[] | string): string;
-function center(children?: string[] | string): string;
-function center(atts?: { [key: string]: string }): string;
-function center(): string;
-function center(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("center", arg1, arg2);
-}
-
 function cite(atts?: { [key: string]: string }, children?: string[] | string): string;
 function cite(children?: string[] | string): string;
 function cite(atts?: { [key: string]: string }): string;
@@ -222,22 +166,6 @@ function colgroup(atts?: { [key: string]: string }): string;
 function colgroup(): string;
 function colgroup(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("colgroup", arg1, arg2);
-}
-
-function command(atts?: { [key: string]: string }, children?: string[] | string): string;
-function command(children?: string[] | string): string;
-function command(atts?: { [key: string]: string }): string;
-function command(): string;
-function command(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("command", arg1, arg2);
-}
-
-function content(atts?: { [key: string]: string }, children?: string[] | string): string;
-function content(children?: string[] | string): string;
-function content(atts?: { [key: string]: string }): string;
-function content(): string;
-function content(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("content", arg1, arg2);
 }
 
 function data(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -296,14 +224,6 @@ function dialog(arg1?: { [key: string]: string } | string[] | string, arg2?: str
   return genElemString("dialog", arg1, arg2);
 }
 
-function dir(atts?: { [key: string]: string }, children?: string[] | string): string;
-function dir(children?: string[] | string): string;
-function dir(atts?: { [key: string]: string }): string;
-function dir(): string;
-function dir(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("dir", arg1, arg2);
-}
-
 function div(atts?: { [key: string]: string }, children?: string[] | string): string;
 function div(children?: string[] | string): string;
 function div(atts?: { [key: string]: string }): string;
@@ -326,14 +246,6 @@ function dt(atts?: { [key: string]: string }): string;
 function dt(): string;
 function dt(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("dt", arg1, arg2);
-}
-
-function element(atts?: { [key: string]: string }, children?: string[] | string): string;
-function element(children?: string[] | string): string;
-function element(atts?: { [key: string]: string }): string;
-function element(): string;
-function element(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("element", arg1, arg2);
 }
 
 function em(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -376,14 +288,6 @@ function figure(arg1?: { [key: string]: string } | string[] | string, arg2?: str
   return genElemString("figure", arg1, arg2);
 }
 
-function font(atts?: { [key: string]: string }, children?: string[] | string): string;
-function font(children?: string[] | string): string;
-function font(atts?: { [key: string]: string }): string;
-function font(): string;
-function font(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("font", arg1, arg2);
-}
-
 function footer(atts?: { [key: string]: string }, children?: string[] | string): string;
 function footer(children?: string[] | string): string;
 function footer(atts?: { [key: string]: string }): string;
@@ -398,22 +302,6 @@ function form(atts?: { [key: string]: string }): string;
 function form(): string;
 function form(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("form", arg1, arg2);
-}
-
-function frame(atts?: { [key: string]: string }, children?: string[] | string): string;
-function frame(children?: string[] | string): string;
-function frame(atts?: { [key: string]: string }): string;
-function frame(): string;
-function frame(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("frame", arg1, arg2);
-}
-
-function frameset(atts?: { [key: string]: string }, children?: string[] | string): string;
-function frameset(children?: string[] | string): string;
-function frameset(atts?: { [key: string]: string }): string;
-function frameset(): string;
-function frameset(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("frameset", arg1, arg2);
 }
 
 function h1(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -520,14 +408,6 @@ function iframe(arg1?: { [key: string]: string } | string[] | string, arg2?: str
   return genElemString("iframe", arg1, arg2);
 }
 
-function image(atts?: { [key: string]: string }, children?: string[] | string): string;
-function image(children?: string[] | string): string;
-function image(atts?: { [key: string]: string }): string;
-function image(): string;
-function image(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("image", arg1, arg2);
-}
-
 function img(atts?: { [key: string]: string }, children?: string[] | string): string;
 function img(children?: string[] | string): string;
 function img(atts?: { [key: string]: string }): string;
@@ -552,28 +432,12 @@ function ins(arg1?: { [key: string]: string } | string[] | string, arg2?: string
   return genElemString("ins", arg1, arg2);
 }
 
-function isindex(atts?: { [key: string]: string }, children?: string[] | string): string;
-function isindex(children?: string[] | string): string;
-function isindex(atts?: { [key: string]: string }): string;
-function isindex(): string;
-function isindex(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("isindex", arg1, arg2);
-}
-
 function kbd(atts?: { [key: string]: string }, children?: string[] | string): string;
 function kbd(children?: string[] | string): string;
 function kbd(atts?: { [key: string]: string }): string;
 function kbd(): string;
 function kbd(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("kbd", arg1, arg2);
-}
-
-function keygen(atts?: { [key: string]: string }, children?: string[] | string): string;
-function keygen(children?: string[] | string): string;
-function keygen(atts?: { [key: string]: string }): string;
-function keygen(): string;
-function keygen(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("keygen", arg1, arg2);
 }
 
 function label(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -608,14 +472,6 @@ function link(arg1?: { [key: string]: string } | string[] | string, arg2?: strin
   return genElemString("link", arg1, arg2);
 }
 
-function listing(atts?: { [key: string]: string }, children?: string[] | string): string;
-function listing(children?: string[] | string): string;
-function listing(atts?: { [key: string]: string }): string;
-function listing(): string;
-function listing(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("listing", arg1, arg2);
-}
-
 function main(atts?: { [key: string]: string }, children?: string[] | string): string;
 function main(children?: string[] | string): string;
 function main(atts?: { [key: string]: string }): string;
@@ -640,14 +496,6 @@ function mark(arg1?: { [key: string]: string } | string[] | string, arg2?: strin
   return genElemString("mark", arg1, arg2);
 }
 
-function marquee(atts?: { [key: string]: string }, children?: string[] | string): string;
-function marquee(children?: string[] | string): string;
-function marquee(atts?: { [key: string]: string }): string;
-function marquee(): string;
-function marquee(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("marquee", arg1, arg2);
-}
-
 function math(atts?: { [key: string]: string }, children?: string[] | string): string;
 function math(children?: string[] | string): string;
 function math(atts?: { [key: string]: string }): string;
@@ -662,14 +510,6 @@ function menu(atts?: { [key: string]: string }): string;
 function menu(): string;
 function menu(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("menu", arg1, arg2);
-}
-
-function menuitem(atts?: { [key: string]: string }, children?: string[] | string): string;
-function menuitem(children?: string[] | string): string;
-function menuitem(atts?: { [key: string]: string }): string;
-function menuitem(): string;
-function menuitem(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("menuitem", arg1, arg2);
 }
 
 function meta(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -688,52 +528,12 @@ function meter(arg1?: { [key: string]: string } | string[] | string, arg2?: stri
   return genElemString("meter", arg1, arg2);
 }
 
-function multicol(atts?: { [key: string]: string }, children?: string[] | string): string;
-function multicol(children?: string[] | string): string;
-function multicol(atts?: { [key: string]: string }): string;
-function multicol(): string;
-function multicol(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("multicol", arg1, arg2);
-}
-
 function nav(atts?: { [key: string]: string }, children?: string[] | string): string;
 function nav(children?: string[] | string): string;
 function nav(atts?: { [key: string]: string }): string;
 function nav(): string;
 function nav(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("nav", arg1, arg2);
-}
-
-function nextid(atts?: { [key: string]: string }, children?: string[] | string): string;
-function nextid(children?: string[] | string): string;
-function nextid(atts?: { [key: string]: string }): string;
-function nextid(): string;
-function nextid(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("nextid", arg1, arg2);
-}
-
-function nobr(atts?: { [key: string]: string }, children?: string[] | string): string;
-function nobr(children?: string[] | string): string;
-function nobr(atts?: { [key: string]: string }): string;
-function nobr(): string;
-function nobr(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("nobr", arg1, arg2);
-}
-
-function noembed(atts?: { [key: string]: string }, children?: string[] | string): string;
-function noembed(children?: string[] | string): string;
-function noembed(atts?: { [key: string]: string }): string;
-function noembed(): string;
-function noembed(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("noembed", arg1, arg2);
-}
-
-function noframes(atts?: { [key: string]: string }, children?: string[] | string): string;
-function noframes(children?: string[] | string): string;
-function noframes(atts?: { [key: string]: string }): string;
-function noframes(): string;
-function noframes(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("noframes", arg1, arg2);
 }
 
 function noscript(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -806,14 +606,6 @@ function picture(atts?: { [key: string]: string }): string;
 function picture(): string;
 function picture(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("picture", arg1, arg2);
-}
-
-function plaintext(atts?: { [key: string]: string }, children?: string[] | string): string;
-function plaintext(children?: string[] | string): string;
-function plaintext(atts?: { [key: string]: string }): string;
-function plaintext(): string;
-function plaintext(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("plaintext", arg1, arg2);
 }
 
 function pre(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -928,14 +720,6 @@ function select(arg1?: { [key: string]: string } | string[] | string, arg2?: str
   return genElemString("select", arg1, arg2);
 }
 
-function shadow(atts?: { [key: string]: string }, children?: string[] | string): string;
-function shadow(children?: string[] | string): string;
-function shadow(atts?: { [key: string]: string }): string;
-function shadow(): string;
-function shadow(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("shadow", arg1, arg2);
-}
-
 function slot(atts?: { [key: string]: string }, children?: string[] | string): string;
 function slot(children?: string[] | string): string;
 function slot(atts?: { [key: string]: string }): string;
@@ -960,28 +744,12 @@ function source(arg1?: { [key: string]: string } | string[] | string, arg2?: str
   return genElemString("source", arg1, arg2);
 }
 
-function spacer(atts?: { [key: string]: string }, children?: string[] | string): string;
-function spacer(children?: string[] | string): string;
-function spacer(atts?: { [key: string]: string }): string;
-function spacer(): string;
-function spacer(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("spacer", arg1, arg2);
-}
-
 function span(atts?: { [key: string]: string }, children?: string[] | string): string;
 function span(children?: string[] | string): string;
 function span(atts?: { [key: string]: string }): string;
 function span(): string;
 function span(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("span", arg1, arg2);
-}
-
-function strike(atts?: { [key: string]: string }, children?: string[] | string): string;
-function strike(children?: string[] | string): string;
-function strike(atts?: { [key: string]: string }): string;
-function strike(): string;
-function strike(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("strike", arg1, arg2);
 }
 
 function strong(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -1128,14 +896,6 @@ function track(arg1?: { [key: string]: string } | string[] | string, arg2?: stri
   return genElemString("track", arg1, arg2);
 }
 
-function tt(atts?: { [key: string]: string }, children?: string[] | string): string;
-function tt(children?: string[] | string): string;
-function tt(atts?: { [key: string]: string }): string;
-function tt(): string;
-function tt(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("tt", arg1, arg2);
-}
-
 function u(atts?: { [key: string]: string }, children?: string[] | string): string;
 function u(children?: string[] | string): string;
 function u(atts?: { [key: string]: string }): string;
@@ -1176,52 +936,12 @@ function wbr(arg1?: { [key: string]: string } | string[] | string, arg2?: string
   return genElemString("wbr", arg1, arg2);
 }
 
-function xmp(atts?: { [key: string]: string }, children?: string[] | string): string;
-function xmp(children?: string[] | string): string;
-function xmp(atts?: { [key: string]: string }): string;
-function xmp(): string;
-function xmp(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("xmp", arg1, arg2);
-}
-
-function altGlyph(atts?: { [key: string]: string }, children?: string[] | string): string;
-function altGlyph(children?: string[] | string): string;
-function altGlyph(atts?: { [key: string]: string }): string;
-function altGlyph(): string;
-function altGlyph(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("altGlyph", arg1, arg2);
-}
-
-function altGlyphDef(atts?: { [key: string]: string }, children?: string[] | string): string;
-function altGlyphDef(children?: string[] | string): string;
-function altGlyphDef(atts?: { [key: string]: string }): string;
-function altGlyphDef(): string;
-function altGlyphDef(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("altGlyphDef", arg1, arg2);
-}
-
-function altGlyphItem(atts?: { [key: string]: string }, children?: string[] | string): string;
-function altGlyphItem(children?: string[] | string): string;
-function altGlyphItem(atts?: { [key: string]: string }): string;
-function altGlyphItem(): string;
-function altGlyphItem(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("altGlyphItem", arg1, arg2);
-}
-
 function animate(atts?: { [key: string]: string }, children?: string[] | string): string;
 function animate(children?: string[] | string): string;
 function animate(atts?: { [key: string]: string }): string;
 function animate(): string;
 function animate(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("animate", arg1, arg2);
-}
-
-function animateColor(atts?: { [key: string]: string }, children?: string[] | string): string;
-function animateColor(children?: string[] | string): string;
-function animateColor(atts?: { [key: string]: string }): string;
-function animateColor(): string;
-function animateColor(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("animateColor", arg1, arg2);
 }
 
 function animateMotion(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -1270,14 +990,6 @@ function color_profile(atts?: { [key: string]: string }): string;
 function color_profile(): string;
 function color_profile(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("color_profile", arg1, arg2);
-}
-
-function cursor(atts?: { [key: string]: string }, children?: string[] | string): string;
-function cursor(children?: string[] | string): string;
-function cursor(atts?: { [key: string]: string }): string;
-function cursor(): string;
-function cursor(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("cursor", arg1, arg2);
 }
 
 function defs(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -1520,46 +1232,6 @@ function filter(arg1?: { [key: string]: string } | string[] | string, arg2?: str
   return genElemString("filter", arg1, arg2);
 }
 
-function font_face(atts?: { [key: string]: string }, children?: string[] | string): string;
-function font_face(children?: string[] | string): string;
-function font_face(atts?: { [key: string]: string }): string;
-function font_face(): string;
-function font_face(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("font_face", arg1, arg2);
-}
-
-function font_face_format(atts?: { [key: string]: string }, children?: string[] | string): string;
-function font_face_format(children?: string[] | string): string;
-function font_face_format(atts?: { [key: string]: string }): string;
-function font_face_format(): string;
-function font_face_format(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("font_face_format", arg1, arg2);
-}
-
-function font_face_name(atts?: { [key: string]: string }, children?: string[] | string): string;
-function font_face_name(children?: string[] | string): string;
-function font_face_name(atts?: { [key: string]: string }): string;
-function font_face_name(): string;
-function font_face_name(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("font_face_name", arg1, arg2);
-}
-
-function font_face_src(atts?: { [key: string]: string }, children?: string[] | string): string;
-function font_face_src(children?: string[] | string): string;
-function font_face_src(atts?: { [key: string]: string }): string;
-function font_face_src(): string;
-function font_face_src(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("font_face_src", arg1, arg2);
-}
-
-function font_face_uri(atts?: { [key: string]: string }, children?: string[] | string): string;
-function font_face_uri(children?: string[] | string): string;
-function font_face_uri(atts?: { [key: string]: string }): string;
-function font_face_uri(): string;
-function font_face_uri(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("font_face_uri", arg1, arg2);
-}
-
 function foreignObject(atts?: { [key: string]: string }, children?: string[] | string): string;
 function foreignObject(children?: string[] | string): string;
 function foreignObject(atts?: { [key: string]: string }): string;
@@ -1576,36 +1248,12 @@ function g(arg1?: { [key: string]: string } | string[] | string, arg2?: string[]
   return genElemString("g", arg1, arg2);
 }
 
-function glyph(atts?: { [key: string]: string }, children?: string[] | string): string;
-function glyph(children?: string[] | string): string;
-function glyph(atts?: { [key: string]: string }): string;
-function glyph(): string;
-function glyph(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("glyph", arg1, arg2);
-}
-
-function glyphRef(atts?: { [key: string]: string }, children?: string[] | string): string;
-function glyphRef(children?: string[] | string): string;
-function glyphRef(atts?: { [key: string]: string }): string;
-function glyphRef(): string;
-function glyphRef(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("glyphRef", arg1, arg2);
-}
-
 function handler(atts?: { [key: string]: string }, children?: string[] | string): string;
 function handler(children?: string[] | string): string;
 function handler(atts?: { [key: string]: string }): string;
 function handler(): string;
 function handler(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("handler", arg1, arg2);
-}
-
-function hkern(atts?: { [key: string]: string }, children?: string[] | string): string;
-function hkern(children?: string[] | string): string;
-function hkern(atts?: { [key: string]: string }): string;
-function hkern(): string;
-function hkern(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("hkern", arg1, arg2);
 }
 
 function line(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -1654,14 +1302,6 @@ function metadata(atts?: { [key: string]: string }): string;
 function metadata(): string;
 function metadata(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
   return genElemString("metadata", arg1, arg2);
-}
-
-function missing_glyph(atts?: { [key: string]: string }, children?: string[] | string): string;
-function missing_glyph(children?: string[] | string): string;
-function missing_glyph(atts?: { [key: string]: string }): string;
-function missing_glyph(): string;
-function missing_glyph(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("missing_glyph", arg1, arg2);
 }
 
 function mpath(atts?: { [key: string]: string }, children?: string[] | string): string;
@@ -1800,14 +1440,6 @@ function textPath(arg1?: { [key: string]: string } | string[] | string, arg2?: s
   return genElemString("textPath", arg1, arg2);
 }
 
-function tref(atts?: { [key: string]: string }, children?: string[] | string): string;
-function tref(children?: string[] | string): string;
-function tref(atts?: { [key: string]: string }): string;
-function tref(): string;
-function tref(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("tref", arg1, arg2);
-}
-
 function tspan(atts?: { [key: string]: string }, children?: string[] | string): string;
 function tspan(children?: string[] | string): string;
 function tspan(atts?: { [key: string]: string }): string;
@@ -1840,45 +1472,28 @@ function view(arg1?: { [key: string]: string } | string[] | string, arg2?: strin
   return genElemString("view", arg1, arg2);
 }
 
-function vkern(atts?: { [key: string]: string }, children?: string[] | string): string;
-function vkern(children?: string[] | string): string;
-function vkern(atts?: { [key: string]: string }): string;
-function vkern(): string;
-function vkern(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {
-  return genElemString("vkern", arg1, arg2);
-}
-
 export {
   a,
   abbr,
-  acronym,
   address,
-  applet,
   area,
   article,
   aside,
   audio,
   b,
   base,
-  basefont,
   bdi,
   bdo,
-  bgsound,
-  big,
-  blink,
   blockquote,
   body,
   br,
   button,
   canvas,
   caption,
-  center,
   cite,
   code,
   col,
   colgroup,
-  command,
-  content,
   data,
   datalist,
   dd,
@@ -1886,21 +1501,16 @@ export {
   details,
   dfn,
   dialog,
-  dir,
   div,
   dl,
   dt,
-  element,
   em,
   embed,
   fieldset,
   figcaption,
   figure,
-  font,
   footer,
   form,
-  frame,
-  frameset,
   h1,
   h2,
   h3,
@@ -1914,33 +1524,22 @@ export {
   html,
   i,
   iframe,
-  image,
   img,
   input,
   ins,
-  isindex,
   kbd,
-  keygen,
   label,
   legend,
   li,
   link,
-  listing,
   main,
   map,
   mark,
-  marquee,
   math,
   menu,
-  menuitem,
   meta,
   meter,
-  multicol,
   nav,
-  nextid,
-  nobr,
-  noembed,
-  noframes,
   noscript,
   object,
   ol,
@@ -1950,7 +1549,6 @@ export {
   p,
   param,
   picture,
-  plaintext,
   pre,
   progress,
   q,
@@ -1965,13 +1563,10 @@ export {
   script,
   section,
   select,
-  shadow,
   slot,
   small,
   source,
-  spacer,
   span,
-  strike,
   strong,
   style,
   sub,
@@ -1990,25 +1585,18 @@ export {
   title,
   tr,
   track,
-  tt,
   u,
   ul,
   var_,
   video,
   wbr,
-  xmp,
-  altGlyph,
-  altGlyphDef,
-  altGlyphItem,
   animate,
-  animateColor,
   animateMotion,
   animateTransform,
   animation,
   circle,
   clipPath,
   color_profile,
-  cursor,
   defs,
   desc,
   discard,
@@ -2039,24 +1627,15 @@ export {
   feTile,
   feTurbulence,
   filter,
-  font_face,
-  font_face_format,
-  font_face_name,
-  font_face_src,
-  font_face_uri,
   foreignObject,
   g,
-  glyph,
-  glyphRef,
   handler,
-  hkern,
   line,
   linearGradient,
   listener,
   marker,
   mask,
   metadata,
-  missing_glyph,
   mpath,
   path,
   pattern,
@@ -2074,10 +1653,8 @@ export {
   text,
   textArea,
   textPath,
-  tref,
   tspan,
   unknown,
   use,
   view,
-  vkern,
 };
