@@ -48,7 +48,9 @@ function genElemString<T>(arg1: string, arg2?: T, arg3?: string[]) {
     });
   }
   if (noChildren(arg1)) {
-    htmlString += ">";
+    if (!arg2) {
+      htmlString += ">";
+    }
   } else {
     htmlString += "</" + arg1 + ">";
   }

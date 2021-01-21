@@ -52,7 +52,9 @@ function genElemString(arg1, arg2, arg3) {
         });
     }
     if (noChildren(arg1)) {
-        htmlString += ">";
+        if (!arg2) {
+            htmlString += ">";
+        }
     }
     else {
         htmlString += "</" + arg1 + ">";
