@@ -96,10 +96,10 @@ export interface SlamSVGAnimationValueAttributes {
     by?: string;
 }
 export interface SlamSVGFilterPrimitiveAttributes {
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
     result?: string;
 }
 export interface SlamSVGTransferFunctionElementAttributes {
@@ -286,18 +286,18 @@ export interface SlamSVGFeTurbulenceAttributes extends SlamSVGElementAttributes,
 }
 export interface SlamSVGFilterAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
     externalResourcesRequired?: boolean;
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
     filterUnits?: "userSpaceOnUse" | "objectBoundingBox";
     primitiveUnits?: "userSpaceOnUse" | "objectBoundingBox";
 }
 export interface SlamSVGForeignObjectAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
 }
 export interface SlamSVGGAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
 }
@@ -305,10 +305,10 @@ export interface SlamSVGImageAttributes extends SlamSVGElementAttributes, SlamSV
     preserveAspectRatio?: string;
     href?: string;
     crossOrigin?: "anonymous" | "use-credentials";
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
 }
 export interface SlamSVGLineAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
     pathLength?: number;
@@ -338,10 +338,10 @@ export interface SlamSVGMarkerAttributes extends SlamSVGElementAttributes, SlamS
     orient?: "auto" | "auto-start-reverse" | string | number;
 }
 export interface SlamSVGMaskAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
     maskUnits?: "userSpaceOnUse" | "objectBoundingBox";
     maskContentUnits?: "userSpaceOnUse" | "objectBoundingBox";
 }
@@ -357,10 +357,10 @@ export interface SlamSVGPathAttributes extends SlamSVGElementAttributes, SlamSVG
 export interface SlamSVGPatternAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
     viewBox?: string;
     preserveAspectRatio?: string;
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
     patternUnits?: "userSpaceOnUse" | "objectBoundingBox";
     patternContentUnits?: "userSpaceOnUse" | "objectBoundingBox";
     patternTransform?: string;
@@ -373,12 +373,12 @@ export interface SlamSVGPolygonAttributes extends SlamSVGElementAttributes, Slam
 export interface SlamSVGPolylineAttributes extends SlamSVGPolygonAttributes {
 }
 export interface SlamSVGRadialGradientAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
-    cx?: string;
-    cy?: string;
-    r?: string;
-    fx?: string;
-    fy?: string;
-    fr?: string;
+    cx?: number | string;
+    cy?: number | string;
+    r?: number | string;
+    fx?: number | string;
+    fy?: number | string;
+    fr?: number | string;
     gradientUnits?: "userSpaceOnUse" | "objectBoundingBox";
     gradientTransform?: string;
     spreadMethod?: "pad" | "reflect" | "repeat";
@@ -386,12 +386,12 @@ export interface SlamSVGRadialGradientAttributes extends SlamSVGElementAttribute
 }
 export interface SlamSVGRectAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
     pathLength?: number;
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
-    rx?: string;
-    ry?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
+    rx?: number | string;
+    ry?: number | string;
 }
 export interface SlamSVGSetAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGAnimationTargetElementAttributes, SlamSVGAnimationAttributeTargetAttributes, SlamSVGAnimationTimingAttributes {
     to?: string;
@@ -409,10 +409,10 @@ export interface SlamSVGSvgAttributes extends SlamSVGElementAttributes, SlamSVGC
     preserveAspectRatio?: string;
     zoomAndPan?: "disable" | "magnify";
     transform?: string;
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
 }
 export interface SlamSVGSwitch_Attributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
 }
@@ -421,15 +421,15 @@ export interface SlamSVGSymbolAttributes extends SlamSVGElementAttributes, SlamS
     preserveAspectRatio?: string;
     refX?: "left" | "center" | "right" | string | number;
     refY?: "top" | "center" | "bottom" | string | number;
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
 }
 export interface SlamSVGTextAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
     lengthAdjust?: "spacing" | "spacingAndGlyphs";
-    x?: string;
-    y?: string;
+    x?: number | string;
+    y?: number | string;
     dx?: string;
     dy?: string;
     rotate?: string;
@@ -453,10 +453,10 @@ export interface SlamSVGUnknownAttributes extends SlamSVGElementAttributes, Slam
 }
 export interface SlamSVGUseAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
     href?: string;
-    x?: string;
-    y?: string;
-    width?: string;
-    height?: string;
+    x?: number | string;
+    y?: number | string;
+    width?: number | string;
+    height?: number | string;
 }
 export interface SlamSVGViewAttributes extends SlamSVGElementAttributes {
     viewBox?: string;
