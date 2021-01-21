@@ -51,12 +51,7 @@ function genElemString(arg1, arg2, arg3) {
             htmlString += child;
         });
     }
-    if (noChildren(arg1)) {
-        if (!arg2) {
-            htmlString += ">";
-        }
-    }
-    else {
+    if (!noChildren(arg1)) {
         htmlString += "</" + arg1 + ">";
     }
     //replace _ with -, or remove altogether in certain cases.
