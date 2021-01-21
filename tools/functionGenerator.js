@@ -1,30 +1,49 @@
 const fs = require("fs");
-const final = require("./final.json");
+const { elements } = require("./elements.js");
 
-let finalString = 'import { genElemString } from "./src/functions";';
+let htmlImports = "import {"
+let svgImports = "import {"
+let functionsString = 'import { genElemString } from "./baseFunctions";';
 
-final.forEach(element => {
-  finalString += "\n";
-  finalString += "\nfunction " + element + "(atts?: { [key: string]: string }, children?: string[] | string): string;";
-  finalString += "\nfunction " + element + "(children?: string[] | string): string;";
-  finalString += "\nfunction " + element + "(atts?: { [key: string]: string }): string;";
-  finalString += "\nfunction " + element + "(): string;";
-  finalString +=
-    "\nfunction " + element + "(arg1?: { [key: string]: string } | string[] | string, arg2?: string[] | string) {";
-  finalString += '\n  return genElemString("' + element + '", arg1, arg2);';
-  finalString += "\n}";
+Object.keys(elements).forEach((key, i) => {
+  const elementInterface = "Slam" + elements[key] + key.charAt(0).toUpperCase() + key.slice(1) + "Attributes"
+  if (elements[key] === "HTML"){
+    if (i === 0){
+      htmlImports += " " + elementInterface
+    } else {
+      htmlImports += ", " + elementInterface
+    }
+  } else {
+    if (i === 0){
+      svgImports += " " + elementInterface
+    } else {
+      svgImports += ", " + elementInterface
+    }
+  }
+  functionsString += "\n";
+  functionsString += "\nfunction " + key + "(atts?: " + elementInterface + ", children?: string[] | string): string;";
+  functionsString += "\nfunction " + key + "(children?: string[] | string): string;";
+  functionsString += "\nfunction " + key + "(atts?: " + elementInterface + "): string;";
+  functionsString += "\nfunction " + key + "(): string;";
+  functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + " | string[] | string, arg2?: string[] | string) {";
+  functionsString += '\n  return genElemString("' + key + '", arg1, arg2);';
+  functionsString += "\n}";
 });
 
-finalString += "\n\nexport {";
+htmlImports += '} from "./htmlInterfaces"\n'
+svgImports += '} from "./svgInterfaces"\n'
+functionsString += "\n\nexport {";
 
-final.forEach((element, i) => {
+Object.keys(elements).forEach((key, i) => {
   if (i === 0) {
-    finalString += " " + element;
+    functionsString += " " + key;
   } else {
-    finalString += ", " + element;
+    functionsString += ", " + key;
   }
 });
 
-finalString += " };";
+functionsString += " };";
 
-fs.writeFileSync("./test2.ts", finalString);
+const finalString = htmlImports + svgImports + functionsString
+
+fs.writeFileSync("./src/elementFunctions.ts", finalString);

@@ -1,4 +1,4 @@
-interface SlamCSSProperties {
+export interface SlamCSSProperties {
   "align-content"?: string;
   "align-items"?: string;
   "align-self"?: string;
@@ -315,7 +315,7 @@ interface SlamCSSProperties {
   "z-index"?: string;
 }
 
-interface SlamElementAttributes{
+export interface SlamElementAttributes{
   class?: string;
   id?: string;
   slot?: string;

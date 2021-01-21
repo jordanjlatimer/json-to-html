@@ -28,21 +28,15 @@ function noChildren(tag: string) {
   return noChildren.includes(tag);
 }
 
-function parseAtts(atts: { [key: string]: string }) {
+function parseAtts<T>(atts: T) {
   let attsText = "";
-  Object.keys(atts).forEach(att => {
+  (Object.keys(atts) as Array<keyof T>).forEach(att => {
     attsText += " " + att + '="' + atts[att] + '"';
   });
   return attsText;
 }
 
-type tag = string;
-type atts = {
-  [key: string]: string;
-};
-type children = string[] | string;
-
-function genElemString(arg1: string, arg2?: { [key: string]: string } | string[] | string, arg3?: string[] | string) {
+function genElemString<T>(arg1: string, arg2?: T | string[] | string, arg3?: string[] | string) {
   let htmlString = "<" + arg1;
   if (arg2) {
     if (typeof arg2 === "string") {
