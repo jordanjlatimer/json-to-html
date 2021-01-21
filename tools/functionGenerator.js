@@ -14,16 +14,12 @@ Object.keys(elements).forEach((key, i) => {
       htmlImports += ", " + elementInterface;
     }
   } else {
-    if (i === 0) {
-      svgImports += " " + elementInterface;
-    } else {
-      svgImports += ", " + elementInterface;
-    }
+    svgImports += ", " + elementInterface;
   }
   functionsString += "\n";
   functionsString += "\nfunction " + key + "(atts?: " + elementInterface + ", children?: string[] | string): string;";
-  functionsString += "\nfunction " + key + "(children?: string[] | string): string;";
   functionsString += "\nfunction " + key + "(atts?: " + elementInterface + "): string;";
+  functionsString += "\nfunction " + key + "(children?: string[] | string): string;";
   functionsString += "\nfunction " + key + "(): string;";
   functionsString +=
     "\nfunction " + key + "(arg1?: " + elementInterface + " | string[] | string, arg2?: string[] | string) {";
