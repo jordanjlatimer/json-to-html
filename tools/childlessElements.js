@@ -21,7 +21,7 @@ const childless = [
   "polyline",
   "rect",
   "stop",
-  "use"
+  "use",
 ];
 
 exports.childless = childless;

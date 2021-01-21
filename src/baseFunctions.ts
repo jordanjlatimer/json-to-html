@@ -42,15 +42,15 @@ function genElemString<T>(arg1: string, arg2?: T, arg3?: string[]) {
   } else {
     htmlString += ">";
   }
-  if (arg3){
+  if (arg3) {
     arg3.forEach(child => {
       htmlString += child;
     });
   }
-  if (noChildren(arg1)){
-    htmlString += ">"
+  if (noChildren(arg1)) {
+    htmlString += ">";
   } else {
-    htmlString += "</" + arg1 + ">"
+    htmlString += "</" + arg1 + ">";
   }
   //replace _ with -, or remove altogether in certain cases.
   htmlString = htmlString.replace("var_", "var");
