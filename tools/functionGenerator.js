@@ -1,23 +1,23 @@
 const fs = require("fs");
 const { elements } = require("./elements.js");
 
-let htmlImports = "import {"
-let svgImports = "import {"
+let htmlImports = "import {";
+let svgImports = "import {";
 let functionsString = 'import { genElemString } from "./baseFunctions";';
 
 Object.keys(elements).forEach((key, i) => {
-  const elementInterface = "Slam" + elements[key] + key.charAt(0).toUpperCase() + key.slice(1) + "Attributes"
-  if (elements[key] === "HTML"){
-    if (i === 0){
-      htmlImports += " " + elementInterface
+  const elementInterface = "Slam" + elements[key] + key.charAt(0).toUpperCase() + key.slice(1) + "Attributes";
+  if (elements[key] === "HTML") {
+    if (i === 0) {
+      htmlImports += " " + elementInterface;
     } else {
-      htmlImports += ", " + elementInterface
+      htmlImports += ", " + elementInterface;
     }
   } else {
-    if (i === 0){
-      svgImports += " " + elementInterface
+    if (i === 0) {
+      svgImports += " " + elementInterface;
     } else {
-      svgImports += ", " + elementInterface
+      svgImports += ", " + elementInterface;
     }
   }
   functionsString += "\n";
@@ -25,13 +25,14 @@ Object.keys(elements).forEach((key, i) => {
   functionsString += "\nfunction " + key + "(children?: string[] | string): string;";
   functionsString += "\nfunction " + key + "(atts?: " + elementInterface + "): string;";
   functionsString += "\nfunction " + key + "(): string;";
-  functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + " | string[] | string, arg2?: string[] | string) {";
+  functionsString +=
+    "\nfunction " + key + "(arg1?: " + elementInterface + " | string[] | string, arg2?: string[] | string) {";
   functionsString += '\n  return genElemString("' + key + '", arg1, arg2);';
   functionsString += "\n}";
 });
 
-htmlImports += '} from "./htmlInterfaces"\n'
-svgImports += '} from "./svgInterfaces"\n'
+htmlImports += '} from "./htmlInterfaces"\n';
+svgImports += '} from "./svgInterfaces"\n';
 functionsString += "\n\nexport {";
 
 Object.keys(elements).forEach((key, i) => {
@@ -44,6 +45,6 @@ Object.keys(elements).forEach((key, i) => {
 
 functionsString += " };";
 
-const finalString = htmlImports + svgImports + functionsString
+const finalString = htmlImports + svgImports + functionsString;
 
 fs.writeFileSync("./src/elementFunctions.ts", finalString);

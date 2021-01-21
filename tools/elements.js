@@ -171,6 +171,6 @@ const elements = {
   unknown: "SVG",
   use: "SVG",
   view: "SVG",
-}
+};
 
-exports.elements = elements
+exports.elements = elements;

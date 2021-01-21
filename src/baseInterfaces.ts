@@ -315,7 +315,7 @@ export interface SlamCSSProperties {
   "z-index"?: string;
 }
 
-export interface SlamElementAttributes{
+export interface SlamElementAttributes {
   class?: string;
   id?: string;
   slot?: string;
