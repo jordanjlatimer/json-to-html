@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { elements } = require("./elements.js");
+const { childless } = require("./childlessElements.js")
 
 let htmlImports = "import {";
 let svgImports = "import {";
@@ -17,14 +18,27 @@ Object.keys(elements).forEach((key, i) => {
     svgImports += ", " + elementInterface;
   }
   functionsString += "\n";
-  functionsString += "\nfunction " + key + "(atts?: " + elementInterface + ", children?: string[] | string): string;";
+  if (!childless.includes(key)){
+    functionsString += "\nfunction " + key + "(atts?: " + elementInterface + ", ...children: string[]): string;";
+  }
   functionsString += "\nfunction " + key + "(atts?: " + elementInterface + "): string;";
-  functionsString += "\nfunction " + key + "(children?: string[] | string): string;";
+  if (!childless.includes(key)){
+    functionsString += "\nfunction " + key + "(...children: string[]): string;";
+  }
   functionsString += "\nfunction " + key + "(): string;";
-  functionsString +=
-    "\nfunction " + key + "(arg1?: " + elementInterface + " | string[] | string, arg2?: string[] | string) {";
-  functionsString += '\n  return genElemString("' + key + '", arg1, arg2);';
-  functionsString += "\n}";
+  if (childless.includes(key)){
+    functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + ") {";
+    functionsString += '\n  return genElemString("' + key + '", arg1, []);';
+    functionsString += "\n}";
+  } else {
+    functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + " | string, ...arg2: string[]) {";
+    functionsString += '\n  if (typeof arg1 === "string"){';
+    functionsString += '\n    return genElemString("' + key + '", undefined, [arg1].concat(arg2));';
+    functionsString += '\n  } else {';
+    functionsString += '\n    return genElemString("' + key + '", arg1, arg2);';
+    functionsString += '\n  }'
+    functionsString += "\n}";
+  }
 });
 
 htmlImports += '} from "./htmlInterfaces"\n';
