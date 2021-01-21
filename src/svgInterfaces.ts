@@ -310,6 +310,212 @@ interface SlamSVGFeTileAttributes extends SlamSVGElementAttributes, SlamSVGPrese
   in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
 }
 
-interface SlamSVGFeSpecularLightingAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes{
-
+interface SlamSVGFeTurbulenceAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes{
+  baseFrequency?: string;
+  numOctaves?: number;
+  seed?: number;
+  stitchTiles?: "stitch" | "noStitch";
+  type?: "fractalNoise" | "turbulence"; 
 }
+
+interface SlamSVGFilterAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  externalResourcesRequired?: boolean
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+  filterUnits?: "userSpaceOnUse" | "objectBoundingBox";
+  primitiveUnits?: "userSpaceOnUse" | "objectBoundingBox";
+}
+
+interface SlamSVGForeignObjectAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+}
+
+interface SlamSVGGAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{}
+
+interface SlamSVGImageAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  preserveAspectRatio?: string;
+  href?: string;
+  crossOrigin?: "anonymous" | "use-credentials";
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+}
+
+interface SlamSVGLineAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  pathLength?: number;
+  x1?: string;
+  x2?: string;
+  y1?: string;
+  y2?: string;
+}
+
+interface SlamSVGLinearGradientAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  x1?: string;
+  x2?: string;
+  y1?: string;
+  y2?: string;
+  gradientUnits?: "userSpaceOnUse" | "objectBoundingBox";
+  gradientTransform?: string;
+  spreadMethod?: "pad" | "reflect" | "repeat";
+  href?: string;
+}
+
+interface SlamSVGMarkerAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  viewBox?: string;
+  preserveAspectRatio?: string;
+  refX?: "left" | "center" | "right" | string | number
+  refY?: "top" | "center" | "bottom" | string | number
+  markerUnits?: "strokeWidth" | "userSpaceOnUse"
+  markerWidth?: string | number;
+  markerHeight?: string | number;
+  orient?: "auto" | "auto-start-reverse" | string | number
+}
+
+interface SlamSVGMaskAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+  maskUnits?: "userSpaceOnUse" | "objectBoundingBox";
+  maskContentUnits?: "userSpaceOnUse" | "objectBoundingBox";
+}
+
+interface SlamSVGMetadataAttributes extends SlamSVGElementAttributes{}
+
+interface SlamSVGMpathAttributes extends SlamSVGElementAttributes{
+  href?: string;
+}
+
+interface SlamSVGPathAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  pathLength?: number;
+  d?: string;
+}
+
+interface SlamSVGPatternAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  viewBox?: string;
+  preserveAspectRatio?: string;
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+  patternUnits?: "userSpaceOnUse" | "objectBoundingBox";
+  patternContentUnits?: "userSpaceOnUse" | "objectBoundingBox";
+  patternTransform?: string;
+  href?: string;
+}
+
+interface SlamSVGPolygonAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  pathLength?: number;
+  points?: string;
+}
+
+interface SlamSVGPolylineAttributes extends SlamSVGPolygonAttributes{}
+
+interface SlamSVGRadialGradientAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  cx?: string
+  cy?: string
+  r?: string
+  fx?: string
+  fy?: string;
+  fr?: string
+  gradientUnits?: "userSpaceOnUse" | "objectBoundingBox";
+  gradientTransform?: string;
+  spreadMethod?: "pad" | "reflect" | "repeat"
+  href?: string;
+}
+
+interface SlamSVGPolygonAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  pathLength?: number;
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+  rx?: string;
+  ry?: string;
+}
+
+interface SlamSVGSetAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGAnimationTargetElementAttributes, SlamSVGAnimationAttributeTargetAttributes, SlamSVGAnimationTimingAttributes{
+  to?: string
+}
+
+interface SlamSVGStopAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  offset?: number | string;
+}
+
+interface SlamSVGStyleAttributes extends SlamSVGElementAttributes{
+  type?: string;
+  media?: string;
+  title?: string;
+}
+
+interface SlamSVGSvgAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  viewBox?: string;
+  preserveAspectRatio?: string;
+  zoomAndPan?: "disable" | "magnify"
+  transform?: string;
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+}
+
+interface SlamSVGSwitchAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{}
+
+interface SlamSVGSymbolAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes{
+  viewBox?: string;
+  preserveAspectRatio?: string;
+  refX?: "left" | "center" | "right" | string | number
+  refY?: "top" | "center" | "bottom" | string | number
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+}
+
+interface SlamSVGTextAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  lengthAdjust?: "spacing" | "spacingAndGlyphs"
+  x?: string;
+  y?: string;
+  dx?: string;
+  dy?: string;
+  rotate?: string;
+  textLength?: string;
+}
+
+interface SlamSVGTextPathAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  lengthAdjust?: "spacing" | "spacingAndGlyphs"
+  textLength?: string;
+  path?: string;
+  href?: string;
+  startOffset?: string;
+  method?: "align" | "stretch";
+  spacing?: "auto" | "exact";
+  side?: "left" | "right";
+}
+
+interface SlamSVGTitleAttributes extends SlamSVGElementAttributes{}
+
+interface SlamSVGTspanAttributes extends SlamSVGTextAttributes{}
+
+interface SlamSVGUnknownAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{}
+
+interface SlamSVGUseAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes{
+  href?: string;
+  x?: string;
+  y?: string;
+  width?: string;
+  height?: string;
+}
+
+interface SlamSVGViewAttributes extends SlamSVGElementAttributes{
+  viewBox?: string;
+  preserveAspectRatio?: string;
+  zoomAndPan?: "disable" | "magnify"
+}
+
