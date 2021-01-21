@@ -38,7 +38,10 @@ function parseAtts<T>(atts: T) {
 function genElemString<T>(arg1: string, arg2?: T, arg3?: string[]) {
   let htmlString = "<" + arg1;
   if (arg2) {
-    htmlString += parseAtts(arg2) + ">";
+    htmlString += parseAtts(arg2);
+  }
+  if (noChildren(arg1)) {
+    htmlString += "/>";
   } else {
     htmlString += ">";
   }

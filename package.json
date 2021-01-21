@@ -1,6 +1,6 @@
 {
   "name": "slam-js",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "A javascript library for generating static HTML on the server side.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

@@ -41,7 +41,10 @@ exports.parseAtts = parseAtts;
 function genElemString(arg1, arg2, arg3) {
     var htmlString = "<" + arg1;
     if (arg2) {
-        htmlString += parseAtts(arg2) + ">";
+        htmlString += parseAtts(arg2);
+    }
+    if (noChildren(arg1)) {
+        htmlString += "/>";
     }
     else {
         htmlString += ">";
