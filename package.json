@@ -1,12 +1,13 @@
 {
   "name": "slam-js",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A javascript library for generating static HTML on the server side.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "format": "prettier --write .",
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "npm run format && npm run build && git add . && git commit -m 'save' && git push origin master && npm publish"
   },
   "author": "jordanjlatimer",
   "license": "MIT",
