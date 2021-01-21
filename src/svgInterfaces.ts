@@ -8,8 +8,8 @@ export interface SlamSVGConditionalProcessingAttributes {
 }
 
 export interface SlamSVGPresentationAttributes {
-  "alignment-baseline": string;
-  "baseline-shift": string;
+  "alignment-baseline"?: string;
+  "baseline-shift"?: string;
   "clip-path"?: string;
   "clip-rule"?: string;
   "color"?: string;
@@ -65,7 +65,7 @@ export interface SlamSVGPresentationAttributes {
   "visibility"?: string;
   "white-space"?: string;
   "word-spacing"?: string;
-  "writing-mode": string;
+  "writing-mode"?: string;
 }
 
 export interface SlamSVGAnimationAdditionAttributes {
