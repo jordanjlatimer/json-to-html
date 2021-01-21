@@ -1,4 +1,4 @@
-interface SlamCSS {
+interface SlamCSSProperties {
   "align-content"?: string;
   "align-items"?: string;
   "align-self"?: string;
@@ -315,96 +315,12 @@ interface SlamCSS {
   "z-index"?: string;
 }
 
-interface SlamHTMLElement {
-  accesskey?: string;
-  autocapitalize?: string;
-  autofocus?: boolean;
+interface SlamElementAttributes{
   class?: string;
-  contenteditable?: string;
-  dir?: string;
-  draggable?: boolean;
-  enterkeyhint?: string;
-  hidden?: boolean;
   id?: string;
-  inputmode?: string;
-  is?: string
-  lang?: string;
-  nonce?: string;
   slot?: string;
-  spellcheck?: boolean;
-  style?: SlamCSS;
+  style?: SlamCSSProperties;
+  autofocus?: boolean;
+  nonce?: string;
   tabindex?: number;
-  title?: string;
-  translate?: boolean;
-}
-
-interface SlamA extends SlamHTMLElement{
-  href?: string;
-  download?: string;
-  hreflang?: string;
-  ping?: string;
-  referrerpolicy?: string;
-  rel?: string;
-  target?: string;
-  type?: string;
-}
-
-interface SlamAbbr extends SlamHTMLElement{}
-
-interface SlamAddress extends SlamHTMLElement{}
-
-interface SlamArea extends SlamHTMLElement{
-  href?: string;
-  alt?: string;
-  coords?: string;
-  download?: string;
-  ping?: string;
-  referrerPolicy?: string;
-  rel?: string;
-  shape?: string;
-}
-
-interface SlamArticle extends SlamHTMLElement{}
-
-interface SlamAside extends SlamHTMLElement{}
-
-interface SlamAudio extends SlamHTMLElement {
-  autoplay?: boolean;
-  controls?: boolean;
-  crossOrigin?: string | null;
-  loop?: boolean;
-  muted?: boolean;
-  preload?: string;
-  src?: string;
-}
-
-interface SlamB extends SlamHTMLElement{}
-
-interface SlamBase extends SlamHTMLElement {
-  href?: string;
-  target?: string;
-}
-
-interface SlamBdi extends SlamHTMLElement{}
-
-interface SlamBdo extends SlamHTMLElement{}
-
-interface SlamBlockquote extends SlamHTMLElement {
-  cite?: string;
-}
-
-interface SlamBody extends SlamHTMLElement{}
-
-interface SlamBr extends SlamHTMLElement{}
-
-interface SlamButton extends SlamHTMLElement{
-  disabled?: boolean;
-  formaction?: string;
-  formenctype?: string;
-  formmethod?: string;
-  formnovalidate?: boolean;
-  formtarget?: string;
-  name?: string;
-  type?: string;
-  value?: string;
 }
