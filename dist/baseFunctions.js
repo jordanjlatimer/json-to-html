@@ -30,10 +30,50 @@ function noChildren(tag) {
     return noChildren.includes(tag);
 }
 exports.noChildren = noChildren;
+function presentAtt(attName) {
+    var presentAtts = [
+        "allowfullscreen",
+        "allowpaymentrequest",
+        "async",
+        "autofocus",
+        "autoplay",
+        "checked",
+        "controls",
+        "default",
+        "defer",
+        "disabled",
+        "formnovalidate",
+        "hidden",
+        "ismap",
+        "loop",
+        "multiple",
+        "muted",
+        "novalidate",
+        "open",
+        "readonly",
+        "required",
+        "reversed",
+        "selected",
+        "typemustmatch",
+    ];
+    return presentAtts.includes(attName);
+}
 function parseAtts(atts) {
     var attsText = "";
     Object.keys(atts).forEach(function (att) {
-        attsText += " " + att + '="' + atts[att] + '"';
+        if (presentAtt(att.toString())) {
+            attsText += " " + att;
+        }
+        else if (att === "style") {
+            attsText += 'style="';
+            Object.keys(atts[att]).forEach(function (styleProp) {
+                attsText += styleProp + ": " + atts[att][styleProp] + ";";
+            });
+            attsText += '"';
+        }
+        else {
+            attsText += " " + att + '="' + atts[att] + '"';
+        }
     });
     return attsText;
 }
