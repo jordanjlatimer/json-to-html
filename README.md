@@ -232,7 +232,7 @@ export function WideRed(){
   );
 };
 ```
-### How do integrate with Webpack?
+### How do I integrate with Webpack?
 Export the template, and use it with [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin).
 ```
 //index.js
