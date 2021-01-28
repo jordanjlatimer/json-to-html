@@ -10,7 +10,7 @@ A Javascript library for generating static HTML on the server side. Slam-js is m
  - SVG tag support.
 
 ## Code Example
-The function `Document` in this example returns a string counstructed based on the tag functions used.
+The function `Document` in this example returns a string constructed based on the tag functions used.
 ```
 import { html, head, title, meta, link, body, h1, p } from "slam-js";
 
