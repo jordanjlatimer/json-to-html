@@ -568,10 +568,10 @@ function html(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     if (typeof arg1 === "string") {
-        return baseFunctions_1.genElemString("html", undefined, [arg1].concat(arg2));
+        return "<!DOCTYPE html>" + baseFunctions_1.genElemString("html", undefined, [arg1].concat(arg2));
     }
     else {
-        return baseFunctions_1.genElemString("html", arg1, arg2);
+        return "<!DOCTYPE html>" + baseFunctions_1.genElemString("html", arg1, arg2);
     }
 }
 exports.html = html;

@@ -33,9 +33,17 @@ Object.keys(elements).forEach((key, i) => {
   } else {
     functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + " | string, ...arg2: string[]) {";
     functionsString += '\n  if (typeof arg1 === "string"){';
-    functionsString += '\n    return genElemString("' + key + '", undefined, [arg1].concat(arg2));';
+    if (key === "html"){
+      functionsString += '\n    return "<!DOCTYPE html>" + genElemString("' + key + '", undefined, [arg1].concat(arg2));';
+    } else {
+      functionsString += '\n    return genElemString("' + key + '", undefined, [arg1].concat(arg2));';
+    }
     functionsString += "\n  } else {";
-    functionsString += '\n    return genElemString("' + key + '", arg1, arg2);';
+    if (key === "html"){
+      functionsString += '\n    return "<!DOCTYPE html>" + genElemString("' + key + '", arg1, arg2);';
+    } else {
+      functionsString += '\n    return genElemString("' + key + '", arg1, arg2);';
+    }
     functionsString += "\n  }";
     functionsString += "\n}";
   }
