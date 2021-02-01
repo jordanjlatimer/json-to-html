@@ -1,12 +1,12 @@
 {
   "name": "slam-js",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "A Javascript library for generating static HTML on the server side.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "format": "prettier --write .",
-    "build": "tsc"
+    "build": "node ./tools/functionGenerator.js && tsc"
   },
   "author": "jordanjlatimer",
   "license": "MIT",

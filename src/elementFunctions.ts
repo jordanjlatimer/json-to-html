@@ -3,7 +3,6 @@ import { SlamSVGAAttributes, SlamSVGAnimateAttributes, SlamSVGAnimateMotionAttri
 import { genElemString } from "./baseFunctions";
 
 function abbr(atts?: SlamHTMLAbbrAttributes, ...children: string[]): string;
-function abbr(atts?: SlamHTMLAbbrAttributes): string;
 function abbr(...children: string[]): string;
 function abbr(): string;
 function abbr(arg1?: SlamHTMLAbbrAttributes | string, ...arg2: string[]) {
@@ -15,7 +14,6 @@ function abbr(arg1?: SlamHTMLAbbrAttributes | string, ...arg2: string[]) {
 }
 
 function address(atts?: SlamHTMLAddressAttributes, ...children: string[]): string;
-function address(atts?: SlamHTMLAddressAttributes): string;
 function address(...children: string[]): string;
 function address(): string;
 function address(arg1?: SlamHTMLAddressAttributes | string, ...arg2: string[]) {
@@ -33,7 +31,6 @@ function area(arg1?: SlamHTMLAreaAttributes) {
 }
 
 function article(atts?: SlamHTMLArticleAttributes, ...children: string[]): string;
-function article(atts?: SlamHTMLArticleAttributes): string;
 function article(...children: string[]): string;
 function article(): string;
 function article(arg1?: SlamHTMLArticleAttributes | string, ...arg2: string[]) {
@@ -45,7 +42,6 @@ function article(arg1?: SlamHTMLArticleAttributes | string, ...arg2: string[]) {
 }
 
 function aside(atts?: SlamHTMLAsideAttributes, ...children: string[]): string;
-function aside(atts?: SlamHTMLAsideAttributes): string;
 function aside(...children: string[]): string;
 function aside(): string;
 function aside(arg1?: SlamHTMLAsideAttributes | string, ...arg2: string[]) {
@@ -57,7 +53,6 @@ function aside(arg1?: SlamHTMLAsideAttributes | string, ...arg2: string[]) {
 }
 
 function audio(atts?: SlamHTMLAudioAttributes, ...children: string[]): string;
-function audio(atts?: SlamHTMLAudioAttributes): string;
 function audio(...children: string[]): string;
 function audio(): string;
 function audio(arg1?: SlamHTMLAudioAttributes | string, ...arg2: string[]) {
@@ -69,7 +64,6 @@ function audio(arg1?: SlamHTMLAudioAttributes | string, ...arg2: string[]) {
 }
 
 function b(atts?: SlamHTMLBAttributes, ...children: string[]): string;
-function b(atts?: SlamHTMLBAttributes): string;
 function b(...children: string[]): string;
 function b(): string;
 function b(arg1?: SlamHTMLBAttributes | string, ...arg2: string[]) {
@@ -87,7 +81,6 @@ function base(arg1?: SlamHTMLBaseAttributes) {
 }
 
 function bdi(atts?: SlamHTMLBdiAttributes, ...children: string[]): string;
-function bdi(atts?: SlamHTMLBdiAttributes): string;
 function bdi(...children: string[]): string;
 function bdi(): string;
 function bdi(arg1?: SlamHTMLBdiAttributes | string, ...arg2: string[]) {
@@ -99,7 +92,6 @@ function bdi(arg1?: SlamHTMLBdiAttributes | string, ...arg2: string[]) {
 }
 
 function bdo(atts?: SlamHTMLBdoAttributes, ...children: string[]): string;
-function bdo(atts?: SlamHTMLBdoAttributes): string;
 function bdo(...children: string[]): string;
 function bdo(): string;
 function bdo(arg1?: SlamHTMLBdoAttributes | string, ...arg2: string[]) {
@@ -111,7 +103,6 @@ function bdo(arg1?: SlamHTMLBdoAttributes | string, ...arg2: string[]) {
 }
 
 function blockquote(atts?: SlamHTMLBlockquoteAttributes, ...children: string[]): string;
-function blockquote(atts?: SlamHTMLBlockquoteAttributes): string;
 function blockquote(...children: string[]): string;
 function blockquote(): string;
 function blockquote(arg1?: SlamHTMLBlockquoteAttributes | string, ...arg2: string[]) {
@@ -123,7 +114,6 @@ function blockquote(arg1?: SlamHTMLBlockquoteAttributes | string, ...arg2: strin
 }
 
 function body(atts?: SlamHTMLBodyAttributes, ...children: string[]): string;
-function body(atts?: SlamHTMLBodyAttributes): string;
 function body(...children: string[]): string;
 function body(): string;
 function body(arg1?: SlamHTMLBodyAttributes | string, ...arg2: string[]) {
@@ -141,7 +131,6 @@ function br(arg1?: SlamHTMLBrAttributes) {
 }
 
 function button(atts?: SlamHTMLButtonAttributes, ...children: string[]): string;
-function button(atts?: SlamHTMLButtonAttributes): string;
 function button(...children: string[]): string;
 function button(): string;
 function button(arg1?: SlamHTMLButtonAttributes | string, ...arg2: string[]) {
@@ -153,7 +142,6 @@ function button(arg1?: SlamHTMLButtonAttributes | string, ...arg2: string[]) {
 }
 
 function canvas(atts?: SlamHTMLCanvasAttributes, ...children: string[]): string;
-function canvas(atts?: SlamHTMLCanvasAttributes): string;
 function canvas(...children: string[]): string;
 function canvas(): string;
 function canvas(arg1?: SlamHTMLCanvasAttributes | string, ...arg2: string[]) {
@@ -165,7 +153,6 @@ function canvas(arg1?: SlamHTMLCanvasAttributes | string, ...arg2: string[]) {
 }
 
 function caption(atts?: SlamHTMLCaptionAttributes, ...children: string[]): string;
-function caption(atts?: SlamHTMLCaptionAttributes): string;
 function caption(...children: string[]): string;
 function caption(): string;
 function caption(arg1?: SlamHTMLCaptionAttributes | string, ...arg2: string[]) {
@@ -177,7 +164,6 @@ function caption(arg1?: SlamHTMLCaptionAttributes | string, ...arg2: string[]) {
 }
 
 function cite(atts?: SlamHTMLCiteAttributes, ...children: string[]): string;
-function cite(atts?: SlamHTMLCiteAttributes): string;
 function cite(...children: string[]): string;
 function cite(): string;
 function cite(arg1?: SlamHTMLCiteAttributes | string, ...arg2: string[]) {
@@ -189,7 +175,6 @@ function cite(arg1?: SlamHTMLCiteAttributes | string, ...arg2: string[]) {
 }
 
 function code(atts?: SlamHTMLCodeAttributes, ...children: string[]): string;
-function code(atts?: SlamHTMLCodeAttributes): string;
 function code(...children: string[]): string;
 function code(): string;
 function code(arg1?: SlamHTMLCodeAttributes | string, ...arg2: string[]) {
@@ -207,7 +192,6 @@ function col(arg1?: SlamHTMLColAttributes) {
 }
 
 function colgroup(atts?: SlamHTMLColgroupAttributes, ...children: string[]): string;
-function colgroup(atts?: SlamHTMLColgroupAttributes): string;
 function colgroup(...children: string[]): string;
 function colgroup(): string;
 function colgroup(arg1?: SlamHTMLColgroupAttributes | string, ...arg2: string[]) {
@@ -219,7 +203,6 @@ function colgroup(arg1?: SlamHTMLColgroupAttributes | string, ...arg2: string[])
 }
 
 function data(atts?: SlamHTMLDataAttributes, ...children: string[]): string;
-function data(atts?: SlamHTMLDataAttributes): string;
 function data(...children: string[]): string;
 function data(): string;
 function data(arg1?: SlamHTMLDataAttributes | string, ...arg2: string[]) {
@@ -231,7 +214,6 @@ function data(arg1?: SlamHTMLDataAttributes | string, ...arg2: string[]) {
 }
 
 function datalist(atts?: SlamHTMLDatalistAttributes, ...children: string[]): string;
-function datalist(atts?: SlamHTMLDatalistAttributes): string;
 function datalist(...children: string[]): string;
 function datalist(): string;
 function datalist(arg1?: SlamHTMLDatalistAttributes | string, ...arg2: string[]) {
@@ -243,7 +225,6 @@ function datalist(arg1?: SlamHTMLDatalistAttributes | string, ...arg2: string[])
 }
 
 function dd(atts?: SlamHTMLDdAttributes, ...children: string[]): string;
-function dd(atts?: SlamHTMLDdAttributes): string;
 function dd(...children: string[]): string;
 function dd(): string;
 function dd(arg1?: SlamHTMLDdAttributes | string, ...arg2: string[]) {
@@ -255,7 +236,6 @@ function dd(arg1?: SlamHTMLDdAttributes | string, ...arg2: string[]) {
 }
 
 function del(atts?: SlamHTMLDelAttributes, ...children: string[]): string;
-function del(atts?: SlamHTMLDelAttributes): string;
 function del(...children: string[]): string;
 function del(): string;
 function del(arg1?: SlamHTMLDelAttributes | string, ...arg2: string[]) {
@@ -267,7 +247,6 @@ function del(arg1?: SlamHTMLDelAttributes | string, ...arg2: string[]) {
 }
 
 function details(atts?: SlamHTMLDetailsAttributes, ...children: string[]): string;
-function details(atts?: SlamHTMLDetailsAttributes): string;
 function details(...children: string[]): string;
 function details(): string;
 function details(arg1?: SlamHTMLDetailsAttributes | string, ...arg2: string[]) {
@@ -279,7 +258,6 @@ function details(arg1?: SlamHTMLDetailsAttributes | string, ...arg2: string[]) {
 }
 
 function dfn(atts?: SlamHTMLDfnAttributes, ...children: string[]): string;
-function dfn(atts?: SlamHTMLDfnAttributes): string;
 function dfn(...children: string[]): string;
 function dfn(): string;
 function dfn(arg1?: SlamHTMLDfnAttributes | string, ...arg2: string[]) {
@@ -291,7 +269,6 @@ function dfn(arg1?: SlamHTMLDfnAttributes | string, ...arg2: string[]) {
 }
 
 function dialog(atts?: SlamHTMLDialogAttributes, ...children: string[]): string;
-function dialog(atts?: SlamHTMLDialogAttributes): string;
 function dialog(...children: string[]): string;
 function dialog(): string;
 function dialog(arg1?: SlamHTMLDialogAttributes | string, ...arg2: string[]) {
@@ -303,7 +280,6 @@ function dialog(arg1?: SlamHTMLDialogAttributes | string, ...arg2: string[]) {
 }
 
 function div(atts?: SlamHTMLDivAttributes, ...children: string[]): string;
-function div(atts?: SlamHTMLDivAttributes): string;
 function div(...children: string[]): string;
 function div(): string;
 function div(arg1?: SlamHTMLDivAttributes | string, ...arg2: string[]) {
@@ -315,7 +291,6 @@ function div(arg1?: SlamHTMLDivAttributes | string, ...arg2: string[]) {
 }
 
 function dl(atts?: SlamHTMLDlAttributes, ...children: string[]): string;
-function dl(atts?: SlamHTMLDlAttributes): string;
 function dl(...children: string[]): string;
 function dl(): string;
 function dl(arg1?: SlamHTMLDlAttributes | string, ...arg2: string[]) {
@@ -327,7 +302,6 @@ function dl(arg1?: SlamHTMLDlAttributes | string, ...arg2: string[]) {
 }
 
 function dt(atts?: SlamHTMLDtAttributes, ...children: string[]): string;
-function dt(atts?: SlamHTMLDtAttributes): string;
 function dt(...children: string[]): string;
 function dt(): string;
 function dt(arg1?: SlamHTMLDtAttributes | string, ...arg2: string[]) {
@@ -339,7 +313,6 @@ function dt(arg1?: SlamHTMLDtAttributes | string, ...arg2: string[]) {
 }
 
 function em(atts?: SlamHTMLEmAttributes, ...children: string[]): string;
-function em(atts?: SlamHTMLEmAttributes): string;
 function em(...children: string[]): string;
 function em(): string;
 function em(arg1?: SlamHTMLEmAttributes | string, ...arg2: string[]) {
@@ -357,7 +330,6 @@ function embed(arg1?: SlamHTMLEmbedAttributes) {
 }
 
 function fieldset(atts?: SlamHTMLFieldsetAttributes, ...children: string[]): string;
-function fieldset(atts?: SlamHTMLFieldsetAttributes): string;
 function fieldset(...children: string[]): string;
 function fieldset(): string;
 function fieldset(arg1?: SlamHTMLFieldsetAttributes | string, ...arg2: string[]) {
@@ -369,7 +341,6 @@ function fieldset(arg1?: SlamHTMLFieldsetAttributes | string, ...arg2: string[])
 }
 
 function figcaption(atts?: SlamHTMLFigcaptionAttributes, ...children: string[]): string;
-function figcaption(atts?: SlamHTMLFigcaptionAttributes): string;
 function figcaption(...children: string[]): string;
 function figcaption(): string;
 function figcaption(arg1?: SlamHTMLFigcaptionAttributes | string, ...arg2: string[]) {
@@ -381,7 +352,6 @@ function figcaption(arg1?: SlamHTMLFigcaptionAttributes | string, ...arg2: strin
 }
 
 function figure(atts?: SlamHTMLFigureAttributes, ...children: string[]): string;
-function figure(atts?: SlamHTMLFigureAttributes): string;
 function figure(...children: string[]): string;
 function figure(): string;
 function figure(arg1?: SlamHTMLFigureAttributes | string, ...arg2: string[]) {
@@ -393,7 +363,6 @@ function figure(arg1?: SlamHTMLFigureAttributes | string, ...arg2: string[]) {
 }
 
 function footer(atts?: SlamHTMLFooterAttributes, ...children: string[]): string;
-function footer(atts?: SlamHTMLFooterAttributes): string;
 function footer(...children: string[]): string;
 function footer(): string;
 function footer(arg1?: SlamHTMLFooterAttributes | string, ...arg2: string[]) {
@@ -405,7 +374,6 @@ function footer(arg1?: SlamHTMLFooterAttributes | string, ...arg2: string[]) {
 }
 
 function form(atts?: SlamHTMLFormAttributes, ...children: string[]): string;
-function form(atts?: SlamHTMLFormAttributes): string;
 function form(...children: string[]): string;
 function form(): string;
 function form(arg1?: SlamHTMLFormAttributes | string, ...arg2: string[]) {
@@ -417,7 +385,6 @@ function form(arg1?: SlamHTMLFormAttributes | string, ...arg2: string[]) {
 }
 
 function h1(atts?: SlamHTMLH1Attributes, ...children: string[]): string;
-function h1(atts?: SlamHTMLH1Attributes): string;
 function h1(...children: string[]): string;
 function h1(): string;
 function h1(arg1?: SlamHTMLH1Attributes | string, ...arg2: string[]) {
@@ -429,7 +396,6 @@ function h1(arg1?: SlamHTMLH1Attributes | string, ...arg2: string[]) {
 }
 
 function h2(atts?: SlamHTMLH2Attributes, ...children: string[]): string;
-function h2(atts?: SlamHTMLH2Attributes): string;
 function h2(...children: string[]): string;
 function h2(): string;
 function h2(arg1?: SlamHTMLH2Attributes | string, ...arg2: string[]) {
@@ -441,7 +407,6 @@ function h2(arg1?: SlamHTMLH2Attributes | string, ...arg2: string[]) {
 }
 
 function h3(atts?: SlamHTMLH3Attributes, ...children: string[]): string;
-function h3(atts?: SlamHTMLH3Attributes): string;
 function h3(...children: string[]): string;
 function h3(): string;
 function h3(arg1?: SlamHTMLH3Attributes | string, ...arg2: string[]) {
@@ -453,7 +418,6 @@ function h3(arg1?: SlamHTMLH3Attributes | string, ...arg2: string[]) {
 }
 
 function h4(atts?: SlamHTMLH4Attributes, ...children: string[]): string;
-function h4(atts?: SlamHTMLH4Attributes): string;
 function h4(...children: string[]): string;
 function h4(): string;
 function h4(arg1?: SlamHTMLH4Attributes | string, ...arg2: string[]) {
@@ -465,7 +429,6 @@ function h4(arg1?: SlamHTMLH4Attributes | string, ...arg2: string[]) {
 }
 
 function h5(atts?: SlamHTMLH5Attributes, ...children: string[]): string;
-function h5(atts?: SlamHTMLH5Attributes): string;
 function h5(...children: string[]): string;
 function h5(): string;
 function h5(arg1?: SlamHTMLH5Attributes | string, ...arg2: string[]) {
@@ -477,7 +440,6 @@ function h5(arg1?: SlamHTMLH5Attributes | string, ...arg2: string[]) {
 }
 
 function h6(atts?: SlamHTMLH6Attributes, ...children: string[]): string;
-function h6(atts?: SlamHTMLH6Attributes): string;
 function h6(...children: string[]): string;
 function h6(): string;
 function h6(arg1?: SlamHTMLH6Attributes | string, ...arg2: string[]) {
@@ -489,7 +451,6 @@ function h6(arg1?: SlamHTMLH6Attributes | string, ...arg2: string[]) {
 }
 
 function head(atts?: SlamHTMLHeadAttributes, ...children: string[]): string;
-function head(atts?: SlamHTMLHeadAttributes): string;
 function head(...children: string[]): string;
 function head(): string;
 function head(arg1?: SlamHTMLHeadAttributes | string, ...arg2: string[]) {
@@ -501,7 +462,6 @@ function head(arg1?: SlamHTMLHeadAttributes | string, ...arg2: string[]) {
 }
 
 function header(atts?: SlamHTMLHeaderAttributes, ...children: string[]): string;
-function header(atts?: SlamHTMLHeaderAttributes): string;
 function header(...children: string[]): string;
 function header(): string;
 function header(arg1?: SlamHTMLHeaderAttributes | string, ...arg2: string[]) {
@@ -513,7 +473,6 @@ function header(arg1?: SlamHTMLHeaderAttributes | string, ...arg2: string[]) {
 }
 
 function hgroup(atts?: SlamHTMLHgroupAttributes, ...children: string[]): string;
-function hgroup(atts?: SlamHTMLHgroupAttributes): string;
 function hgroup(...children: string[]): string;
 function hgroup(): string;
 function hgroup(arg1?: SlamHTMLHgroupAttributes | string, ...arg2: string[]) {
@@ -531,7 +490,6 @@ function hr(arg1?: SlamHTMLHrAttributes) {
 }
 
 function html(atts?: SlamHTMLHtmlAttributes, ...children: string[]): string;
-function html(atts?: SlamHTMLHtmlAttributes): string;
 function html(...children: string[]): string;
 function html(): string;
 function html(arg1?: SlamHTMLHtmlAttributes | string, ...arg2: string[]) {
@@ -543,7 +501,6 @@ function html(arg1?: SlamHTMLHtmlAttributes | string, ...arg2: string[]) {
 }
 
 function i(atts?: SlamHTMLIAttributes, ...children: string[]): string;
-function i(atts?: SlamHTMLIAttributes): string;
 function i(...children: string[]): string;
 function i(): string;
 function i(arg1?: SlamHTMLIAttributes | string, ...arg2: string[]) {
@@ -555,7 +512,6 @@ function i(arg1?: SlamHTMLIAttributes | string, ...arg2: string[]) {
 }
 
 function iframe(atts?: SlamHTMLIframeAttributes, ...children: string[]): string;
-function iframe(atts?: SlamHTMLIframeAttributes): string;
 function iframe(...children: string[]): string;
 function iframe(): string;
 function iframe(arg1?: SlamHTMLIframeAttributes | string, ...arg2: string[]) {
@@ -579,7 +535,6 @@ function input(arg1?: SlamHTMLInputAttributes) {
 }
 
 function ins(atts?: SlamHTMLInsAttributes, ...children: string[]): string;
-function ins(atts?: SlamHTMLInsAttributes): string;
 function ins(...children: string[]): string;
 function ins(): string;
 function ins(arg1?: SlamHTMLInsAttributes | string, ...arg2: string[]) {
@@ -591,7 +546,6 @@ function ins(arg1?: SlamHTMLInsAttributes | string, ...arg2: string[]) {
 }
 
 function kbd(atts?: SlamHTMLKbdAttributes, ...children: string[]): string;
-function kbd(atts?: SlamHTMLKbdAttributes): string;
 function kbd(...children: string[]): string;
 function kbd(): string;
 function kbd(arg1?: SlamHTMLKbdAttributes | string, ...arg2: string[]) {
@@ -603,7 +557,6 @@ function kbd(arg1?: SlamHTMLKbdAttributes | string, ...arg2: string[]) {
 }
 
 function label(atts?: SlamHTMLLabelAttributes, ...children: string[]): string;
-function label(atts?: SlamHTMLLabelAttributes): string;
 function label(...children: string[]): string;
 function label(): string;
 function label(arg1?: SlamHTMLLabelAttributes | string, ...arg2: string[]) {
@@ -615,7 +568,6 @@ function label(arg1?: SlamHTMLLabelAttributes | string, ...arg2: string[]) {
 }
 
 function legend(atts?: SlamHTMLLegendAttributes, ...children: string[]): string;
-function legend(atts?: SlamHTMLLegendAttributes): string;
 function legend(...children: string[]): string;
 function legend(): string;
 function legend(arg1?: SlamHTMLLegendAttributes | string, ...arg2: string[]) {
@@ -627,7 +579,6 @@ function legend(arg1?: SlamHTMLLegendAttributes | string, ...arg2: string[]) {
 }
 
 function li(atts?: SlamHTMLLiAttributes, ...children: string[]): string;
-function li(atts?: SlamHTMLLiAttributes): string;
 function li(...children: string[]): string;
 function li(): string;
 function li(arg1?: SlamHTMLLiAttributes | string, ...arg2: string[]) {
@@ -645,7 +596,6 @@ function link(arg1?: SlamHTMLLinkAttributes) {
 }
 
 function main(atts?: SlamHTMLMainAttributes, ...children: string[]): string;
-function main(atts?: SlamHTMLMainAttributes): string;
 function main(...children: string[]): string;
 function main(): string;
 function main(arg1?: SlamHTMLMainAttributes | string, ...arg2: string[]) {
@@ -657,7 +607,6 @@ function main(arg1?: SlamHTMLMainAttributes | string, ...arg2: string[]) {
 }
 
 function map(atts?: SlamHTMLMapAttributes, ...children: string[]): string;
-function map(atts?: SlamHTMLMapAttributes): string;
 function map(...children: string[]): string;
 function map(): string;
 function map(arg1?: SlamHTMLMapAttributes | string, ...arg2: string[]) {
@@ -669,7 +618,6 @@ function map(arg1?: SlamHTMLMapAttributes | string, ...arg2: string[]) {
 }
 
 function mark(atts?: SlamHTMLMarkAttributes, ...children: string[]): string;
-function mark(atts?: SlamHTMLMarkAttributes): string;
 function mark(...children: string[]): string;
 function mark(): string;
 function mark(arg1?: SlamHTMLMarkAttributes | string, ...arg2: string[]) {
@@ -681,7 +629,6 @@ function mark(arg1?: SlamHTMLMarkAttributes | string, ...arg2: string[]) {
 }
 
 function menu(atts?: SlamHTMLMenuAttributes, ...children: string[]): string;
-function menu(atts?: SlamHTMLMenuAttributes): string;
 function menu(...children: string[]): string;
 function menu(): string;
 function menu(arg1?: SlamHTMLMenuAttributes | string, ...arg2: string[]) {
@@ -699,7 +646,6 @@ function meta(arg1?: SlamHTMLMetaAttributes) {
 }
 
 function meter(atts?: SlamHTMLMeterAttributes, ...children: string[]): string;
-function meter(atts?: SlamHTMLMeterAttributes): string;
 function meter(...children: string[]): string;
 function meter(): string;
 function meter(arg1?: SlamHTMLMeterAttributes | string, ...arg2: string[]) {
@@ -711,7 +657,6 @@ function meter(arg1?: SlamHTMLMeterAttributes | string, ...arg2: string[]) {
 }
 
 function nav(atts?: SlamHTMLNavAttributes, ...children: string[]): string;
-function nav(atts?: SlamHTMLNavAttributes): string;
 function nav(...children: string[]): string;
 function nav(): string;
 function nav(arg1?: SlamHTMLNavAttributes | string, ...arg2: string[]) {
@@ -723,7 +668,6 @@ function nav(arg1?: SlamHTMLNavAttributes | string, ...arg2: string[]) {
 }
 
 function noscript(atts?: SlamHTMLNoscriptAttributes, ...children: string[]): string;
-function noscript(atts?: SlamHTMLNoscriptAttributes): string;
 function noscript(...children: string[]): string;
 function noscript(): string;
 function noscript(arg1?: SlamHTMLNoscriptAttributes | string, ...arg2: string[]) {
@@ -735,7 +679,6 @@ function noscript(arg1?: SlamHTMLNoscriptAttributes | string, ...arg2: string[])
 }
 
 function object(atts?: SlamHTMLObjectAttributes, ...children: string[]): string;
-function object(atts?: SlamHTMLObjectAttributes): string;
 function object(...children: string[]): string;
 function object(): string;
 function object(arg1?: SlamHTMLObjectAttributes | string, ...arg2: string[]) {
@@ -747,7 +690,6 @@ function object(arg1?: SlamHTMLObjectAttributes | string, ...arg2: string[]) {
 }
 
 function ol(atts?: SlamHTMLOlAttributes, ...children: string[]): string;
-function ol(atts?: SlamHTMLOlAttributes): string;
 function ol(...children: string[]): string;
 function ol(): string;
 function ol(arg1?: SlamHTMLOlAttributes | string, ...arg2: string[]) {
@@ -759,7 +701,6 @@ function ol(arg1?: SlamHTMLOlAttributes | string, ...arg2: string[]) {
 }
 
 function optgroup(atts?: SlamHTMLOptgroupAttributes, ...children: string[]): string;
-function optgroup(atts?: SlamHTMLOptgroupAttributes): string;
 function optgroup(...children: string[]): string;
 function optgroup(): string;
 function optgroup(arg1?: SlamHTMLOptgroupAttributes | string, ...arg2: string[]) {
@@ -771,7 +712,6 @@ function optgroup(arg1?: SlamHTMLOptgroupAttributes | string, ...arg2: string[])
 }
 
 function option(atts?: SlamHTMLOptionAttributes, ...children: string[]): string;
-function option(atts?: SlamHTMLOptionAttributes): string;
 function option(...children: string[]): string;
 function option(): string;
 function option(arg1?: SlamHTMLOptionAttributes | string, ...arg2: string[]) {
@@ -783,7 +723,6 @@ function option(arg1?: SlamHTMLOptionAttributes | string, ...arg2: string[]) {
 }
 
 function output(atts?: SlamHTMLOutputAttributes, ...children: string[]): string;
-function output(atts?: SlamHTMLOutputAttributes): string;
 function output(...children: string[]): string;
 function output(): string;
 function output(arg1?: SlamHTMLOutputAttributes | string, ...arg2: string[]) {
@@ -795,7 +734,6 @@ function output(arg1?: SlamHTMLOutputAttributes | string, ...arg2: string[]) {
 }
 
 function p(atts?: SlamHTMLPAttributes, ...children: string[]): string;
-function p(atts?: SlamHTMLPAttributes): string;
 function p(...children: string[]): string;
 function p(): string;
 function p(arg1?: SlamHTMLPAttributes | string, ...arg2: string[]) {
@@ -813,7 +751,6 @@ function param(arg1?: SlamHTMLParamAttributes) {
 }
 
 function picture(atts?: SlamHTMLPictureAttributes, ...children: string[]): string;
-function picture(atts?: SlamHTMLPictureAttributes): string;
 function picture(...children: string[]): string;
 function picture(): string;
 function picture(arg1?: SlamHTMLPictureAttributes | string, ...arg2: string[]) {
@@ -825,7 +762,6 @@ function picture(arg1?: SlamHTMLPictureAttributes | string, ...arg2: string[]) {
 }
 
 function pre(atts?: SlamHTMLPreAttributes, ...children: string[]): string;
-function pre(atts?: SlamHTMLPreAttributes): string;
 function pre(...children: string[]): string;
 function pre(): string;
 function pre(arg1?: SlamHTMLPreAttributes | string, ...arg2: string[]) {
@@ -837,7 +773,6 @@ function pre(arg1?: SlamHTMLPreAttributes | string, ...arg2: string[]) {
 }
 
 function progress(atts?: SlamHTMLProgressAttributes, ...children: string[]): string;
-function progress(atts?: SlamHTMLProgressAttributes): string;
 function progress(...children: string[]): string;
 function progress(): string;
 function progress(arg1?: SlamHTMLProgressAttributes | string, ...arg2: string[]) {
@@ -849,7 +784,6 @@ function progress(arg1?: SlamHTMLProgressAttributes | string, ...arg2: string[])
 }
 
 function q(atts?: SlamHTMLQAttributes, ...children: string[]): string;
-function q(atts?: SlamHTMLQAttributes): string;
 function q(...children: string[]): string;
 function q(): string;
 function q(arg1?: SlamHTMLQAttributes | string, ...arg2: string[]) {
@@ -861,7 +795,6 @@ function q(arg1?: SlamHTMLQAttributes | string, ...arg2: string[]) {
 }
 
 function rp(atts?: SlamHTMLRpAttributes, ...children: string[]): string;
-function rp(atts?: SlamHTMLRpAttributes): string;
 function rp(...children: string[]): string;
 function rp(): string;
 function rp(arg1?: SlamHTMLRpAttributes | string, ...arg2: string[]) {
@@ -873,7 +806,6 @@ function rp(arg1?: SlamHTMLRpAttributes | string, ...arg2: string[]) {
 }
 
 function rt(atts?: SlamHTMLRtAttributes, ...children: string[]): string;
-function rt(atts?: SlamHTMLRtAttributes): string;
 function rt(...children: string[]): string;
 function rt(): string;
 function rt(arg1?: SlamHTMLRtAttributes | string, ...arg2: string[]) {
@@ -885,7 +817,6 @@ function rt(arg1?: SlamHTMLRtAttributes | string, ...arg2: string[]) {
 }
 
 function ruby(atts?: SlamHTMLRubyAttributes, ...children: string[]): string;
-function ruby(atts?: SlamHTMLRubyAttributes): string;
 function ruby(...children: string[]): string;
 function ruby(): string;
 function ruby(arg1?: SlamHTMLRubyAttributes | string, ...arg2: string[]) {
@@ -897,7 +828,6 @@ function ruby(arg1?: SlamHTMLRubyAttributes | string, ...arg2: string[]) {
 }
 
 function s(atts?: SlamHTMLSAttributes, ...children: string[]): string;
-function s(atts?: SlamHTMLSAttributes): string;
 function s(...children: string[]): string;
 function s(): string;
 function s(arg1?: SlamHTMLSAttributes | string, ...arg2: string[]) {
@@ -909,7 +839,6 @@ function s(arg1?: SlamHTMLSAttributes | string, ...arg2: string[]) {
 }
 
 function samp(atts?: SlamHTMLSampAttributes, ...children: string[]): string;
-function samp(atts?: SlamHTMLSampAttributes): string;
 function samp(...children: string[]): string;
 function samp(): string;
 function samp(arg1?: SlamHTMLSampAttributes | string, ...arg2: string[]) {
@@ -921,7 +850,6 @@ function samp(arg1?: SlamHTMLSampAttributes | string, ...arg2: string[]) {
 }
 
 function script(atts?: SlamHTMLScriptAttributes, ...children: string[]): string;
-function script(atts?: SlamHTMLScriptAttributes): string;
 function script(...children: string[]): string;
 function script(): string;
 function script(arg1?: SlamHTMLScriptAttributes | string, ...arg2: string[]) {
@@ -933,7 +861,6 @@ function script(arg1?: SlamHTMLScriptAttributes | string, ...arg2: string[]) {
 }
 
 function section(atts?: SlamHTMLSectionAttributes, ...children: string[]): string;
-function section(atts?: SlamHTMLSectionAttributes): string;
 function section(...children: string[]): string;
 function section(): string;
 function section(arg1?: SlamHTMLSectionAttributes | string, ...arg2: string[]) {
@@ -945,7 +872,6 @@ function section(arg1?: SlamHTMLSectionAttributes | string, ...arg2: string[]) {
 }
 
 function select(atts?: SlamHTMLSelectAttributes, ...children: string[]): string;
-function select(atts?: SlamHTMLSelectAttributes): string;
 function select(...children: string[]): string;
 function select(): string;
 function select(arg1?: SlamHTMLSelectAttributes | string, ...arg2: string[]) {
@@ -957,7 +883,6 @@ function select(arg1?: SlamHTMLSelectAttributes | string, ...arg2: string[]) {
 }
 
 function slot(atts?: SlamHTMLSlotAttributes, ...children: string[]): string;
-function slot(atts?: SlamHTMLSlotAttributes): string;
 function slot(...children: string[]): string;
 function slot(): string;
 function slot(arg1?: SlamHTMLSlotAttributes | string, ...arg2: string[]) {
@@ -969,7 +894,6 @@ function slot(arg1?: SlamHTMLSlotAttributes | string, ...arg2: string[]) {
 }
 
 function small(atts?: SlamHTMLSmallAttributes, ...children: string[]): string;
-function small(atts?: SlamHTMLSmallAttributes): string;
 function small(...children: string[]): string;
 function small(): string;
 function small(arg1?: SlamHTMLSmallAttributes | string, ...arg2: string[]) {
@@ -987,7 +911,6 @@ function source(arg1?: SlamHTMLSourceAttributes) {
 }
 
 function span(atts?: SlamHTMLSpanAttributes, ...children: string[]): string;
-function span(atts?: SlamHTMLSpanAttributes): string;
 function span(...children: string[]): string;
 function span(): string;
 function span(arg1?: SlamHTMLSpanAttributes | string, ...arg2: string[]) {
@@ -999,7 +922,6 @@ function span(arg1?: SlamHTMLSpanAttributes | string, ...arg2: string[]) {
 }
 
 function strong(atts?: SlamHTMLStrongAttributes, ...children: string[]): string;
-function strong(atts?: SlamHTMLStrongAttributes): string;
 function strong(...children: string[]): string;
 function strong(): string;
 function strong(arg1?: SlamHTMLStrongAttributes | string, ...arg2: string[]) {
@@ -1011,7 +933,6 @@ function strong(arg1?: SlamHTMLStrongAttributes | string, ...arg2: string[]) {
 }
 
 function sub(atts?: SlamHTMLSubAttributes, ...children: string[]): string;
-function sub(atts?: SlamHTMLSubAttributes): string;
 function sub(...children: string[]): string;
 function sub(): string;
 function sub(arg1?: SlamHTMLSubAttributes | string, ...arg2: string[]) {
@@ -1023,7 +944,6 @@ function sub(arg1?: SlamHTMLSubAttributes | string, ...arg2: string[]) {
 }
 
 function summary(atts?: SlamHTMLSummaryAttributes, ...children: string[]): string;
-function summary(atts?: SlamHTMLSummaryAttributes): string;
 function summary(...children: string[]): string;
 function summary(): string;
 function summary(arg1?: SlamHTMLSummaryAttributes | string, ...arg2: string[]) {
@@ -1035,7 +955,6 @@ function summary(arg1?: SlamHTMLSummaryAttributes | string, ...arg2: string[]) {
 }
 
 function sup(atts?: SlamHTMLSupAttributes, ...children: string[]): string;
-function sup(atts?: SlamHTMLSupAttributes): string;
 function sup(...children: string[]): string;
 function sup(): string;
 function sup(arg1?: SlamHTMLSupAttributes | string, ...arg2: string[]) {
@@ -1047,7 +966,6 @@ function sup(arg1?: SlamHTMLSupAttributes | string, ...arg2: string[]) {
 }
 
 function table(atts?: SlamHTMLTableAttributes, ...children: string[]): string;
-function table(atts?: SlamHTMLTableAttributes): string;
 function table(...children: string[]): string;
 function table(): string;
 function table(arg1?: SlamHTMLTableAttributes | string, ...arg2: string[]) {
@@ -1059,7 +977,6 @@ function table(arg1?: SlamHTMLTableAttributes | string, ...arg2: string[]) {
 }
 
 function tbody(atts?: SlamHTMLTbodyAttributes, ...children: string[]): string;
-function tbody(atts?: SlamHTMLTbodyAttributes): string;
 function tbody(...children: string[]): string;
 function tbody(): string;
 function tbody(arg1?: SlamHTMLTbodyAttributes | string, ...arg2: string[]) {
@@ -1071,7 +988,6 @@ function tbody(arg1?: SlamHTMLTbodyAttributes | string, ...arg2: string[]) {
 }
 
 function td(atts?: SlamHTMLTdAttributes, ...children: string[]): string;
-function td(atts?: SlamHTMLTdAttributes): string;
 function td(...children: string[]): string;
 function td(): string;
 function td(arg1?: SlamHTMLTdAttributes | string, ...arg2: string[]) {
@@ -1083,7 +999,6 @@ function td(arg1?: SlamHTMLTdAttributes | string, ...arg2: string[]) {
 }
 
 function template(atts?: SlamHTMLTemplateAttributes, ...children: string[]): string;
-function template(atts?: SlamHTMLTemplateAttributes): string;
 function template(...children: string[]): string;
 function template(): string;
 function template(arg1?: SlamHTMLTemplateAttributes | string, ...arg2: string[]) {
@@ -1095,7 +1010,6 @@ function template(arg1?: SlamHTMLTemplateAttributes | string, ...arg2: string[])
 }
 
 function textarea(atts?: SlamHTMLTextareaAttributes, ...children: string[]): string;
-function textarea(atts?: SlamHTMLTextareaAttributes): string;
 function textarea(...children: string[]): string;
 function textarea(): string;
 function textarea(arg1?: SlamHTMLTextareaAttributes | string, ...arg2: string[]) {
@@ -1107,7 +1021,6 @@ function textarea(arg1?: SlamHTMLTextareaAttributes | string, ...arg2: string[])
 }
 
 function tfoot(atts?: SlamHTMLTfootAttributes, ...children: string[]): string;
-function tfoot(atts?: SlamHTMLTfootAttributes): string;
 function tfoot(...children: string[]): string;
 function tfoot(): string;
 function tfoot(arg1?: SlamHTMLTfootAttributes | string, ...arg2: string[]) {
@@ -1119,7 +1032,6 @@ function tfoot(arg1?: SlamHTMLTfootAttributes | string, ...arg2: string[]) {
 }
 
 function th(atts?: SlamHTMLThAttributes, ...children: string[]): string;
-function th(atts?: SlamHTMLThAttributes): string;
 function th(...children: string[]): string;
 function th(): string;
 function th(arg1?: SlamHTMLThAttributes | string, ...arg2: string[]) {
@@ -1131,7 +1043,6 @@ function th(arg1?: SlamHTMLThAttributes | string, ...arg2: string[]) {
 }
 
 function thead(atts?: SlamHTMLTheadAttributes, ...children: string[]): string;
-function thead(atts?: SlamHTMLTheadAttributes): string;
 function thead(...children: string[]): string;
 function thead(): string;
 function thead(arg1?: SlamHTMLTheadAttributes | string, ...arg2: string[]) {
@@ -1143,7 +1054,6 @@ function thead(arg1?: SlamHTMLTheadAttributes | string, ...arg2: string[]) {
 }
 
 function time(atts?: SlamHTMLTimeAttributes, ...children: string[]): string;
-function time(atts?: SlamHTMLTimeAttributes): string;
 function time(...children: string[]): string;
 function time(): string;
 function time(arg1?: SlamHTMLTimeAttributes | string, ...arg2: string[]) {
@@ -1155,7 +1065,6 @@ function time(arg1?: SlamHTMLTimeAttributes | string, ...arg2: string[]) {
 }
 
 function title(atts?: SlamHTMLTitleAttributes, ...children: string[]): string;
-function title(atts?: SlamHTMLTitleAttributes): string;
 function title(...children: string[]): string;
 function title(): string;
 function title(arg1?: SlamHTMLTitleAttributes | string, ...arg2: string[]) {
@@ -1167,7 +1076,6 @@ function title(arg1?: SlamHTMLTitleAttributes | string, ...arg2: string[]) {
 }
 
 function tr(atts?: SlamHTMLTrAttributes, ...children: string[]): string;
-function tr(atts?: SlamHTMLTrAttributes): string;
 function tr(...children: string[]): string;
 function tr(): string;
 function tr(arg1?: SlamHTMLTrAttributes | string, ...arg2: string[]) {
@@ -1185,7 +1093,6 @@ function track(arg1?: SlamHTMLTrackAttributes) {
 }
 
 function u(atts?: SlamHTMLUAttributes, ...children: string[]): string;
-function u(atts?: SlamHTMLUAttributes): string;
 function u(...children: string[]): string;
 function u(): string;
 function u(arg1?: SlamHTMLUAttributes | string, ...arg2: string[]) {
@@ -1197,7 +1104,6 @@ function u(arg1?: SlamHTMLUAttributes | string, ...arg2: string[]) {
 }
 
 function ul(atts?: SlamHTMLUlAttributes, ...children: string[]): string;
-function ul(atts?: SlamHTMLUlAttributes): string;
 function ul(...children: string[]): string;
 function ul(): string;
 function ul(arg1?: SlamHTMLUlAttributes | string, ...arg2: string[]) {
@@ -1209,7 +1115,6 @@ function ul(arg1?: SlamHTMLUlAttributes | string, ...arg2: string[]) {
 }
 
 function var_(atts?: SlamHTMLVar_Attributes, ...children: string[]): string;
-function var_(atts?: SlamHTMLVar_Attributes): string;
 function var_(...children: string[]): string;
 function var_(): string;
 function var_(arg1?: SlamHTMLVar_Attributes | string, ...arg2: string[]) {
@@ -1221,7 +1126,6 @@ function var_(arg1?: SlamHTMLVar_Attributes | string, ...arg2: string[]) {
 }
 
 function video(atts?: SlamHTMLVideoAttributes, ...children: string[]): string;
-function video(atts?: SlamHTMLVideoAttributes): string;
 function video(...children: string[]): string;
 function video(): string;
 function video(arg1?: SlamHTMLVideoAttributes | string, ...arg2: string[]) {
@@ -1239,7 +1143,6 @@ function wbr(arg1?: SlamHTMLWbrAttributes) {
 }
 
 function a(atts?: SlamSVGAAttributes, ...children: string[]): string;
-function a(atts?: SlamSVGAAttributes): string;
 function a(...children: string[]): string;
 function a(): string;
 function a(arg1?: SlamSVGAAttributes | string, ...arg2: string[]) {
@@ -1251,7 +1154,6 @@ function a(arg1?: SlamSVGAAttributes | string, ...arg2: string[]) {
 }
 
 function animate(atts?: SlamSVGAnimateAttributes, ...children: string[]): string;
-function animate(atts?: SlamSVGAnimateAttributes): string;
 function animate(...children: string[]): string;
 function animate(): string;
 function animate(arg1?: SlamSVGAnimateAttributes | string, ...arg2: string[]) {
@@ -1263,7 +1165,6 @@ function animate(arg1?: SlamSVGAnimateAttributes | string, ...arg2: string[]) {
 }
 
 function animateMotion(atts?: SlamSVGAnimateMotionAttributes, ...children: string[]): string;
-function animateMotion(atts?: SlamSVGAnimateMotionAttributes): string;
 function animateMotion(...children: string[]): string;
 function animateMotion(): string;
 function animateMotion(arg1?: SlamSVGAnimateMotionAttributes | string, ...arg2: string[]) {
@@ -1275,7 +1176,6 @@ function animateMotion(arg1?: SlamSVGAnimateMotionAttributes | string, ...arg2: 
 }
 
 function animateTransform(atts?: SlamSVGAnimateTransformAttributes, ...children: string[]): string;
-function animateTransform(atts?: SlamSVGAnimateTransformAttributes): string;
 function animateTransform(...children: string[]): string;
 function animateTransform(): string;
 function animateTransform(arg1?: SlamSVGAnimateTransformAttributes | string, ...arg2: string[]) {
@@ -1293,7 +1193,6 @@ function circle(arg1?: SlamSVGCircleAttributes) {
 }
 
 function clipPath(atts?: SlamSVGClipPathAttributes, ...children: string[]): string;
-function clipPath(atts?: SlamSVGClipPathAttributes): string;
 function clipPath(...children: string[]): string;
 function clipPath(): string;
 function clipPath(arg1?: SlamSVGClipPathAttributes | string, ...arg2: string[]) {
@@ -1305,7 +1204,6 @@ function clipPath(arg1?: SlamSVGClipPathAttributes | string, ...arg2: string[]) 
 }
 
 function defs(atts?: SlamSVGDefsAttributes, ...children: string[]): string;
-function defs(atts?: SlamSVGDefsAttributes): string;
 function defs(...children: string[]): string;
 function defs(): string;
 function defs(arg1?: SlamSVGDefsAttributes | string, ...arg2: string[]) {
@@ -1317,7 +1215,6 @@ function defs(arg1?: SlamSVGDefsAttributes | string, ...arg2: string[]) {
 }
 
 function desc(atts?: SlamSVGDescAttributes, ...children: string[]): string;
-function desc(atts?: SlamSVGDescAttributes): string;
 function desc(...children: string[]): string;
 function desc(): string;
 function desc(arg1?: SlamSVGDescAttributes | string, ...arg2: string[]) {
@@ -1329,7 +1226,6 @@ function desc(arg1?: SlamSVGDescAttributes | string, ...arg2: string[]) {
 }
 
 function discard(atts?: SlamSVGDiscardAttributes, ...children: string[]): string;
-function discard(atts?: SlamSVGDiscardAttributes): string;
 function discard(...children: string[]): string;
 function discard(): string;
 function discard(arg1?: SlamSVGDiscardAttributes | string, ...arg2: string[]) {
@@ -1347,7 +1243,6 @@ function ellipse(arg1?: SlamSVGEllipseAttributes) {
 }
 
 function feBlend(atts?: SlamSVGFeBlendAttributes, ...children: string[]): string;
-function feBlend(atts?: SlamSVGFeBlendAttributes): string;
 function feBlend(...children: string[]): string;
 function feBlend(): string;
 function feBlend(arg1?: SlamSVGFeBlendAttributes | string, ...arg2: string[]) {
@@ -1359,7 +1254,6 @@ function feBlend(arg1?: SlamSVGFeBlendAttributes | string, ...arg2: string[]) {
 }
 
 function feColorMatrix(atts?: SlamSVGFeColorMatrixAttributes, ...children: string[]): string;
-function feColorMatrix(atts?: SlamSVGFeColorMatrixAttributes): string;
 function feColorMatrix(...children: string[]): string;
 function feColorMatrix(): string;
 function feColorMatrix(arg1?: SlamSVGFeColorMatrixAttributes | string, ...arg2: string[]) {
@@ -1371,7 +1265,6 @@ function feColorMatrix(arg1?: SlamSVGFeColorMatrixAttributes | string, ...arg2: 
 }
 
 function feComponentTransfer(atts?: SlamSVGFeComponentTransferAttributes, ...children: string[]): string;
-function feComponentTransfer(atts?: SlamSVGFeComponentTransferAttributes): string;
 function feComponentTransfer(...children: string[]): string;
 function feComponentTransfer(): string;
 function feComponentTransfer(arg1?: SlamSVGFeComponentTransferAttributes | string, ...arg2: string[]) {
@@ -1383,7 +1276,6 @@ function feComponentTransfer(arg1?: SlamSVGFeComponentTransferAttributes | strin
 }
 
 function feComposite(atts?: SlamSVGFeCompositeAttributes, ...children: string[]): string;
-function feComposite(atts?: SlamSVGFeCompositeAttributes): string;
 function feComposite(...children: string[]): string;
 function feComposite(): string;
 function feComposite(arg1?: SlamSVGFeCompositeAttributes | string, ...arg2: string[]) {
@@ -1395,7 +1287,6 @@ function feComposite(arg1?: SlamSVGFeCompositeAttributes | string, ...arg2: stri
 }
 
 function feConvolveMatrix(atts?: SlamSVGFeConvolveMatrixAttributes, ...children: string[]): string;
-function feConvolveMatrix(atts?: SlamSVGFeConvolveMatrixAttributes): string;
 function feConvolveMatrix(...children: string[]): string;
 function feConvolveMatrix(): string;
 function feConvolveMatrix(arg1?: SlamSVGFeConvolveMatrixAttributes | string, ...arg2: string[]) {
@@ -1407,7 +1298,6 @@ function feConvolveMatrix(arg1?: SlamSVGFeConvolveMatrixAttributes | string, ...
 }
 
 function feDiffuseLighting(atts?: SlamSVGFeDiffuseLightingAttributes, ...children: string[]): string;
-function feDiffuseLighting(atts?: SlamSVGFeDiffuseLightingAttributes): string;
 function feDiffuseLighting(...children: string[]): string;
 function feDiffuseLighting(): string;
 function feDiffuseLighting(arg1?: SlamSVGFeDiffuseLightingAttributes | string, ...arg2: string[]) {
@@ -1419,7 +1309,6 @@ function feDiffuseLighting(arg1?: SlamSVGFeDiffuseLightingAttributes | string, .
 }
 
 function feDisplacementMap(atts?: SlamSVGFeDisplacementMapAttributes, ...children: string[]): string;
-function feDisplacementMap(atts?: SlamSVGFeDisplacementMapAttributes): string;
 function feDisplacementMap(...children: string[]): string;
 function feDisplacementMap(): string;
 function feDisplacementMap(arg1?: SlamSVGFeDisplacementMapAttributes | string, ...arg2: string[]) {
@@ -1431,7 +1320,6 @@ function feDisplacementMap(arg1?: SlamSVGFeDisplacementMapAttributes | string, .
 }
 
 function feDistantLight(atts?: SlamSVGFeDistantLightAttributes, ...children: string[]): string;
-function feDistantLight(atts?: SlamSVGFeDistantLightAttributes): string;
 function feDistantLight(...children: string[]): string;
 function feDistantLight(): string;
 function feDistantLight(arg1?: SlamSVGFeDistantLightAttributes | string, ...arg2: string[]) {
@@ -1443,7 +1331,6 @@ function feDistantLight(arg1?: SlamSVGFeDistantLightAttributes | string, ...arg2
 }
 
 function feDropShadow(atts?: SlamSVGFeDropShadowAttributes, ...children: string[]): string;
-function feDropShadow(atts?: SlamSVGFeDropShadowAttributes): string;
 function feDropShadow(...children: string[]): string;
 function feDropShadow(): string;
 function feDropShadow(arg1?: SlamSVGFeDropShadowAttributes | string, ...arg2: string[]) {
@@ -1455,7 +1342,6 @@ function feDropShadow(arg1?: SlamSVGFeDropShadowAttributes | string, ...arg2: st
 }
 
 function feFlood(atts?: SlamSVGFeFloodAttributes, ...children: string[]): string;
-function feFlood(atts?: SlamSVGFeFloodAttributes): string;
 function feFlood(...children: string[]): string;
 function feFlood(): string;
 function feFlood(arg1?: SlamSVGFeFloodAttributes | string, ...arg2: string[]) {
@@ -1467,7 +1353,6 @@ function feFlood(arg1?: SlamSVGFeFloodAttributes | string, ...arg2: string[]) {
 }
 
 function feFuncA(atts?: SlamSVGFeFuncAAttributes, ...children: string[]): string;
-function feFuncA(atts?: SlamSVGFeFuncAAttributes): string;
 function feFuncA(...children: string[]): string;
 function feFuncA(): string;
 function feFuncA(arg1?: SlamSVGFeFuncAAttributes | string, ...arg2: string[]) {
@@ -1479,7 +1364,6 @@ function feFuncA(arg1?: SlamSVGFeFuncAAttributes | string, ...arg2: string[]) {
 }
 
 function feFuncB(atts?: SlamSVGFeFuncBAttributes, ...children: string[]): string;
-function feFuncB(atts?: SlamSVGFeFuncBAttributes): string;
 function feFuncB(...children: string[]): string;
 function feFuncB(): string;
 function feFuncB(arg1?: SlamSVGFeFuncBAttributes | string, ...arg2: string[]) {
@@ -1491,7 +1375,6 @@ function feFuncB(arg1?: SlamSVGFeFuncBAttributes | string, ...arg2: string[]) {
 }
 
 function feFuncG(atts?: SlamSVGFeFuncGAttributes, ...children: string[]): string;
-function feFuncG(atts?: SlamSVGFeFuncGAttributes): string;
 function feFuncG(...children: string[]): string;
 function feFuncG(): string;
 function feFuncG(arg1?: SlamSVGFeFuncGAttributes | string, ...arg2: string[]) {
@@ -1503,7 +1386,6 @@ function feFuncG(arg1?: SlamSVGFeFuncGAttributes | string, ...arg2: string[]) {
 }
 
 function feFuncR(atts?: SlamSVGFeFuncRAttributes, ...children: string[]): string;
-function feFuncR(atts?: SlamSVGFeFuncRAttributes): string;
 function feFuncR(...children: string[]): string;
 function feFuncR(): string;
 function feFuncR(arg1?: SlamSVGFeFuncRAttributes | string, ...arg2: string[]) {
@@ -1515,7 +1397,6 @@ function feFuncR(arg1?: SlamSVGFeFuncRAttributes | string, ...arg2: string[]) {
 }
 
 function feGaussianBlur(atts?: SlamSVGFeGaussianBlurAttributes, ...children: string[]): string;
-function feGaussianBlur(atts?: SlamSVGFeGaussianBlurAttributes): string;
 function feGaussianBlur(...children: string[]): string;
 function feGaussianBlur(): string;
 function feGaussianBlur(arg1?: SlamSVGFeGaussianBlurAttributes | string, ...arg2: string[]) {
@@ -1527,7 +1408,6 @@ function feGaussianBlur(arg1?: SlamSVGFeGaussianBlurAttributes | string, ...arg2
 }
 
 function feImage(atts?: SlamSVGFeImageAttributes, ...children: string[]): string;
-function feImage(atts?: SlamSVGFeImageAttributes): string;
 function feImage(...children: string[]): string;
 function feImage(): string;
 function feImage(arg1?: SlamSVGFeImageAttributes | string, ...arg2: string[]) {
@@ -1539,7 +1419,6 @@ function feImage(arg1?: SlamSVGFeImageAttributes | string, ...arg2: string[]) {
 }
 
 function feMerge(atts?: SlamSVGFeMergeAttributes, ...children: string[]): string;
-function feMerge(atts?: SlamSVGFeMergeAttributes): string;
 function feMerge(...children: string[]): string;
 function feMerge(): string;
 function feMerge(arg1?: SlamSVGFeMergeAttributes | string, ...arg2: string[]) {
@@ -1551,7 +1430,6 @@ function feMerge(arg1?: SlamSVGFeMergeAttributes | string, ...arg2: string[]) {
 }
 
 function feMergeNode(atts?: SlamSVGFeMergeNodeAttributes, ...children: string[]): string;
-function feMergeNode(atts?: SlamSVGFeMergeNodeAttributes): string;
 function feMergeNode(...children: string[]): string;
 function feMergeNode(): string;
 function feMergeNode(arg1?: SlamSVGFeMergeNodeAttributes | string, ...arg2: string[]) {
@@ -1563,7 +1441,6 @@ function feMergeNode(arg1?: SlamSVGFeMergeNodeAttributes | string, ...arg2: stri
 }
 
 function feMorphology(atts?: SlamSVGFeMorphologyAttributes, ...children: string[]): string;
-function feMorphology(atts?: SlamSVGFeMorphologyAttributes): string;
 function feMorphology(...children: string[]): string;
 function feMorphology(): string;
 function feMorphology(arg1?: SlamSVGFeMorphologyAttributes | string, ...arg2: string[]) {
@@ -1575,7 +1452,6 @@ function feMorphology(arg1?: SlamSVGFeMorphologyAttributes | string, ...arg2: st
 }
 
 function feOffset(atts?: SlamSVGFeOffsetAttributes, ...children: string[]): string;
-function feOffset(atts?: SlamSVGFeOffsetAttributes): string;
 function feOffset(...children: string[]): string;
 function feOffset(): string;
 function feOffset(arg1?: SlamSVGFeOffsetAttributes | string, ...arg2: string[]) {
@@ -1587,7 +1463,6 @@ function feOffset(arg1?: SlamSVGFeOffsetAttributes | string, ...arg2: string[]) 
 }
 
 function fePointLight(atts?: SlamSVGFePointLightAttributes, ...children: string[]): string;
-function fePointLight(atts?: SlamSVGFePointLightAttributes): string;
 function fePointLight(...children: string[]): string;
 function fePointLight(): string;
 function fePointLight(arg1?: SlamSVGFePointLightAttributes | string, ...arg2: string[]) {
@@ -1599,7 +1474,6 @@ function fePointLight(arg1?: SlamSVGFePointLightAttributes | string, ...arg2: st
 }
 
 function feSpecularLighting(atts?: SlamSVGFeSpecularLightingAttributes, ...children: string[]): string;
-function feSpecularLighting(atts?: SlamSVGFeSpecularLightingAttributes): string;
 function feSpecularLighting(...children: string[]): string;
 function feSpecularLighting(): string;
 function feSpecularLighting(arg1?: SlamSVGFeSpecularLightingAttributes | string, ...arg2: string[]) {
@@ -1611,7 +1485,6 @@ function feSpecularLighting(arg1?: SlamSVGFeSpecularLightingAttributes | string,
 }
 
 function feSpotLight(atts?: SlamSVGFeSpotLightAttributes, ...children: string[]): string;
-function feSpotLight(atts?: SlamSVGFeSpotLightAttributes): string;
 function feSpotLight(...children: string[]): string;
 function feSpotLight(): string;
 function feSpotLight(arg1?: SlamSVGFeSpotLightAttributes | string, ...arg2: string[]) {
@@ -1623,7 +1496,6 @@ function feSpotLight(arg1?: SlamSVGFeSpotLightAttributes | string, ...arg2: stri
 }
 
 function feTile(atts?: SlamSVGFeTileAttributes, ...children: string[]): string;
-function feTile(atts?: SlamSVGFeTileAttributes): string;
 function feTile(...children: string[]): string;
 function feTile(): string;
 function feTile(arg1?: SlamSVGFeTileAttributes | string, ...arg2: string[]) {
@@ -1635,7 +1507,6 @@ function feTile(arg1?: SlamSVGFeTileAttributes | string, ...arg2: string[]) {
 }
 
 function feTurbulence(atts?: SlamSVGFeTurbulenceAttributes, ...children: string[]): string;
-function feTurbulence(atts?: SlamSVGFeTurbulenceAttributes): string;
 function feTurbulence(...children: string[]): string;
 function feTurbulence(): string;
 function feTurbulence(arg1?: SlamSVGFeTurbulenceAttributes | string, ...arg2: string[]) {
@@ -1647,7 +1518,6 @@ function feTurbulence(arg1?: SlamSVGFeTurbulenceAttributes | string, ...arg2: st
 }
 
 function filter(atts?: SlamSVGFilterAttributes, ...children: string[]): string;
-function filter(atts?: SlamSVGFilterAttributes): string;
 function filter(...children: string[]): string;
 function filter(): string;
 function filter(arg1?: SlamSVGFilterAttributes | string, ...arg2: string[]) {
@@ -1659,7 +1529,6 @@ function filter(arg1?: SlamSVGFilterAttributes | string, ...arg2: string[]) {
 }
 
 function foreignObject(atts?: SlamSVGForeignObjectAttributes, ...children: string[]): string;
-function foreignObject(atts?: SlamSVGForeignObjectAttributes): string;
 function foreignObject(...children: string[]): string;
 function foreignObject(): string;
 function foreignObject(arg1?: SlamSVGForeignObjectAttributes | string, ...arg2: string[]) {
@@ -1671,7 +1540,6 @@ function foreignObject(arg1?: SlamSVGForeignObjectAttributes | string, ...arg2: 
 }
 
 function g(atts?: SlamSVGGAttributes, ...children: string[]): string;
-function g(atts?: SlamSVGGAttributes): string;
 function g(...children: string[]): string;
 function g(): string;
 function g(arg1?: SlamSVGGAttributes | string, ...arg2: string[]) {
@@ -1683,7 +1551,6 @@ function g(arg1?: SlamSVGGAttributes | string, ...arg2: string[]) {
 }
 
 function image(atts?: SlamSVGImageAttributes, ...children: string[]): string;
-function image(atts?: SlamSVGImageAttributes): string;
 function image(...children: string[]): string;
 function image(): string;
 function image(arg1?: SlamSVGImageAttributes | string, ...arg2: string[]) {
@@ -1701,7 +1568,6 @@ function line(arg1?: SlamSVGLineAttributes) {
 }
 
 function linearGradient(atts?: SlamSVGLinearGradientAttributes, ...children: string[]): string;
-function linearGradient(atts?: SlamSVGLinearGradientAttributes): string;
 function linearGradient(...children: string[]): string;
 function linearGradient(): string;
 function linearGradient(arg1?: SlamSVGLinearGradientAttributes | string, ...arg2: string[]) {
@@ -1713,7 +1579,6 @@ function linearGradient(arg1?: SlamSVGLinearGradientAttributes | string, ...arg2
 }
 
 function marker(atts?: SlamSVGMarkerAttributes, ...children: string[]): string;
-function marker(atts?: SlamSVGMarkerAttributes): string;
 function marker(...children: string[]): string;
 function marker(): string;
 function marker(arg1?: SlamSVGMarkerAttributes | string, ...arg2: string[]) {
@@ -1725,7 +1590,6 @@ function marker(arg1?: SlamSVGMarkerAttributes | string, ...arg2: string[]) {
 }
 
 function mask(atts?: SlamSVGMaskAttributes, ...children: string[]): string;
-function mask(atts?: SlamSVGMaskAttributes): string;
 function mask(...children: string[]): string;
 function mask(): string;
 function mask(arg1?: SlamSVGMaskAttributes | string, ...arg2: string[]) {
@@ -1737,7 +1601,6 @@ function mask(arg1?: SlamSVGMaskAttributes | string, ...arg2: string[]) {
 }
 
 function metadata(atts?: SlamSVGMetadataAttributes, ...children: string[]): string;
-function metadata(atts?: SlamSVGMetadataAttributes): string;
 function metadata(...children: string[]): string;
 function metadata(): string;
 function metadata(arg1?: SlamSVGMetadataAttributes | string, ...arg2: string[]) {
@@ -1749,7 +1612,6 @@ function metadata(arg1?: SlamSVGMetadataAttributes | string, ...arg2: string[]) 
 }
 
 function mpath(atts?: SlamSVGMpathAttributes, ...children: string[]): string;
-function mpath(atts?: SlamSVGMpathAttributes): string;
 function mpath(...children: string[]): string;
 function mpath(): string;
 function mpath(arg1?: SlamSVGMpathAttributes | string, ...arg2: string[]) {
@@ -1767,7 +1629,6 @@ function path(arg1?: SlamSVGPathAttributes) {
 }
 
 function pattern(atts?: SlamSVGPatternAttributes, ...children: string[]): string;
-function pattern(atts?: SlamSVGPatternAttributes): string;
 function pattern(...children: string[]): string;
 function pattern(): string;
 function pattern(arg1?: SlamSVGPatternAttributes | string, ...arg2: string[]) {
@@ -1791,7 +1652,6 @@ function polyline(arg1?: SlamSVGPolylineAttributes) {
 }
 
 function radialGradient(atts?: SlamSVGRadialGradientAttributes, ...children: string[]): string;
-function radialGradient(atts?: SlamSVGRadialGradientAttributes): string;
 function radialGradient(...children: string[]): string;
 function radialGradient(): string;
 function radialGradient(arg1?: SlamSVGRadialGradientAttributes | string, ...arg2: string[]) {
@@ -1809,7 +1669,6 @@ function rect(arg1?: SlamSVGRectAttributes) {
 }
 
 function set(atts?: SlamSVGSetAttributes, ...children: string[]): string;
-function set(atts?: SlamSVGSetAttributes): string;
 function set(...children: string[]): string;
 function set(): string;
 function set(arg1?: SlamSVGSetAttributes | string, ...arg2: string[]) {
@@ -1827,7 +1686,6 @@ function stop(arg1?: SlamSVGStopAttributes) {
 }
 
 function svg(atts?: SlamSVGSvgAttributes, ...children: string[]): string;
-function svg(atts?: SlamSVGSvgAttributes): string;
 function svg(...children: string[]): string;
 function svg(): string;
 function svg(arg1?: SlamSVGSvgAttributes | string, ...arg2: string[]) {
@@ -1839,7 +1697,6 @@ function svg(arg1?: SlamSVGSvgAttributes | string, ...arg2: string[]) {
 }
 
 function switch_(atts?: SlamSVGSwitch_Attributes, ...children: string[]): string;
-function switch_(atts?: SlamSVGSwitch_Attributes): string;
 function switch_(...children: string[]): string;
 function switch_(): string;
 function switch_(arg1?: SlamSVGSwitch_Attributes | string, ...arg2: string[]) {
@@ -1851,7 +1708,6 @@ function switch_(arg1?: SlamSVGSwitch_Attributes | string, ...arg2: string[]) {
 }
 
 function symbol(atts?: SlamSVGSymbolAttributes, ...children: string[]): string;
-function symbol(atts?: SlamSVGSymbolAttributes): string;
 function symbol(...children: string[]): string;
 function symbol(): string;
 function symbol(arg1?: SlamSVGSymbolAttributes | string, ...arg2: string[]) {
@@ -1863,7 +1719,6 @@ function symbol(arg1?: SlamSVGSymbolAttributes | string, ...arg2: string[]) {
 }
 
 function text(atts?: SlamSVGTextAttributes, ...children: string[]): string;
-function text(atts?: SlamSVGTextAttributes): string;
 function text(...children: string[]): string;
 function text(): string;
 function text(arg1?: SlamSVGTextAttributes | string, ...arg2: string[]) {
@@ -1875,7 +1730,6 @@ function text(arg1?: SlamSVGTextAttributes | string, ...arg2: string[]) {
 }
 
 function textPath(atts?: SlamSVGTextPathAttributes, ...children: string[]): string;
-function textPath(atts?: SlamSVGTextPathAttributes): string;
 function textPath(...children: string[]): string;
 function textPath(): string;
 function textPath(arg1?: SlamSVGTextPathAttributes | string, ...arg2: string[]) {
@@ -1887,7 +1741,6 @@ function textPath(arg1?: SlamSVGTextPathAttributes | string, ...arg2: string[]) 
 }
 
 function tspan(atts?: SlamSVGTspanAttributes, ...children: string[]): string;
-function tspan(atts?: SlamSVGTspanAttributes): string;
 function tspan(...children: string[]): string;
 function tspan(): string;
 function tspan(arg1?: SlamSVGTspanAttributes | string, ...arg2: string[]) {
@@ -1899,7 +1752,6 @@ function tspan(arg1?: SlamSVGTspanAttributes | string, ...arg2: string[]) {
 }
 
 function unknown(atts?: SlamSVGUnknownAttributes, ...children: string[]): string;
-function unknown(atts?: SlamSVGUnknownAttributes): string;
 function unknown(...children: string[]): string;
 function unknown(): string;
 function unknown(arg1?: SlamSVGUnknownAttributes | string, ...arg2: string[]) {
@@ -1917,7 +1769,6 @@ function use(arg1?: SlamSVGUseAttributes) {
 }
 
 function view(atts?: SlamSVGViewAttributes, ...children: string[]): string;
-function view(atts?: SlamSVGViewAttributes): string;
 function view(...children: string[]): string;
 function view(): string;
 function view(arg1?: SlamSVGViewAttributes | string, ...arg2: string[]) {
