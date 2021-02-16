@@ -65,7 +65,7 @@ function parseAtts(atts) {
             attsText += " " + att;
         }
         else if (att === "style") {
-            attsText += 'style="';
+            attsText += ' style="';
             Object.keys(atts[att]).forEach(function (styleProp) {
                 attsText += styleProp + ": " + atts[att][styleProp] + ";";
             });

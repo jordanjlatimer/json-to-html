@@ -1,21 +1,26 @@
 # Slam-js
-A Javascript library for generating static HTML on the server side. Slam-js is meant to be a complete replacement to HTML templating engines such as [Pug](https://pugjs.org/api/getting-started.html), [Handlebars](https://handlebarsjs.com/), or [EJS](https://ejs.co/).  
-  
+
+A Javascript library for generating static HTML on the server side. Slam-js is meant to be a complete replacement to HTML templating engines such as [Pug](https://pugjs.org/api/getting-started.html), [Handlebars](https://handlebarsjs.com/), or [EJS](https://ejs.co/).
+
 ## Features
- - Easy templating
- - Component based
- - No need to learn a new language/syntax
- - Accurate type declarations
- - Impressive performance and speed
- - SVG tag support.
+
+- Easy templating
+- Component based
+- No need to learn a new language/syntax
+- Accurate type declarations
+- Impressive performance and speed
+- SVG tag support.
 
 ## Installation
+
 ```
 npm install -D slam-js
 ```
 
 ## Code Example
+
 The function `Document` in this example returns a string constructed based on the tag functions used.
+
 ```
 import { html, head, title, meta, link, body, h1, p } from "slam-js";
 
@@ -35,7 +40,9 @@ const Document = () => {
   );
 };
 ```
+
 ## API
+
 Each element function has the same parameters, with the exception of void elements which won't accept children (e.g. `br`, `meta`, `link`, etc.):
 
 <table>
@@ -106,6 +113,7 @@ Each element function has the same parameters, with the exception of void elemen
 </table>
 
 All Slam-js functions return a string with the tag, its attributes, and children:
+
 ```
 import { div, p } from "slam-js";
 
@@ -121,9 +129,13 @@ console.log(Card());
 
 //Console logs '<div class="card"><p>Slam-js</p></div>'
 ```
+
 ## Examples & Usage
+
 ### Components
+
 Reusable components can easily be created and then imported into an index file:
+
 ```
 //Head.js
 import { head, title, meta, link } from "slam-js";
@@ -138,6 +150,7 @@ export function Head(){
   );
 };
 ```
+
 ```
 //A template for an "index" page:
 import { html, body } from "slam-js";
@@ -152,6 +165,7 @@ const indexPage = () => {
   );
 };
 ```
+
 ```
 //A template for an "about" page:
 import { html, body } from "slam-js";
@@ -166,8 +180,11 @@ const aboutPage = () => {
   );
 };
 ```
+
 ### Components with Variables
+
 Just make sure to return a string.
+
 ```
 //Card.js
 
@@ -183,6 +200,7 @@ export function Card(imgSrc, imgAlt, header, description){
   );
 };
 ```
+
 ```
 //index.js
 
@@ -201,8 +219,11 @@ const document = () => {
   );
 };
 ```
+
 ### Inlining SVGs
+
 SVGs can be constructed manually, or they can be easily inlined:
+
 ```
 //hamburgerIcon.js
 
@@ -216,14 +237,21 @@ export function HamburgerIcon(){
   `;
 };
 ```
+
 ## FAQs
+
 ### What about the reserved words `var` and `switch`?
+
 These functions have an underscore after them:
+
 ```
 import { var_, switch_ } from "slam-js";
 ```
+
 ### What about inline styles?
+
 The `style` attribute takes an object of attribute/value pairs:
+
 ```
 import { div } from "slam-js";
 export function WideRed(){
@@ -232,8 +260,11 @@ export function WideRed(){
   );
 };
 ```
+
 ### How do I integrate with Webpack?
+
 Export the template, and use it with [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin).
+
 ```
 //index.js
 
@@ -249,6 +280,7 @@ export function Document(){
   );
 };
 ```
+
 ```
 //webpack.js
 {

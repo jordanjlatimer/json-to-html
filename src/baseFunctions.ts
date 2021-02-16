@@ -66,7 +66,7 @@ function parseAtts<T>(atts: T) {
     if (presentAtt(att.toString())) {
       attsText += " " + att;
     } else if (att === "style") {
-      attsText += 'style="';
+      attsText += ' style="';
       Object.keys(atts[att]).forEach(styleProp => {
         attsText += styleProp + ": " + ((atts[att] as unknown) as styleProps)[styleProp] + ";";
       });
