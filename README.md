@@ -21,7 +21,7 @@ npm install -D slam-js
 
 The function `Document` in this example returns a string constructed based on the tag functions used.
 
-```
+```js
 import { html, head, title, meta, link, body, h1, p } from "slam-js";
 
 const Document = () => {
@@ -114,7 +114,7 @@ Each element function has the same parameters, with the exception of void elemen
 
 All Slam-js functions return a string with the tag, its attributes, and children:
 
-```
+```js
 import { div, p } from "slam-js";
 
 const Card = () => {
@@ -136,7 +136,7 @@ console.log(Card());
 
 Reusable components can easily be created and then imported into an index file:
 
-```
+```js
 //Head.js
 import { head, title, meta, link } from "slam-js";
 
@@ -151,7 +151,7 @@ export function Head(){
 };
 ```
 
-```
+```js
 //A template for an "index" page:
 import { html, body } from "slam-js";
 import { Head } from "./Head.js";
@@ -166,7 +166,7 @@ const indexPage = () => {
 };
 ```
 
-```
+```js
 //A template for an "about" page:
 import { html, body } from "slam-js";
 import { Head } from "./Head.js";
@@ -185,7 +185,7 @@ const aboutPage = () => {
 
 Just make sure to return a string.
 
-```
+```js
 //Card.js
 
 import { div, img, h4, p } from "slam-js";
@@ -201,7 +201,7 @@ export function Card(imgSrc, imgAlt, header, description){
 };
 ```
 
-```
+```js
 //index.js
 
 import { html, body } from "slam-js";
@@ -224,7 +224,7 @@ const document = () => {
 
 SVGs can be constructed manually, or they can be easily inlined:
 
-```
+```js
 //hamburgerIcon.js
 
 export function HamburgerIcon(){
@@ -244,7 +244,7 @@ export function HamburgerIcon(){
 
 These functions have an underscore after them:
 
-```
+```js
 import { var_, switch_ } from "slam-js";
 ```
 
@@ -252,7 +252,7 @@ import { var_, switch_ } from "slam-js";
 
 The `style` attribute takes an object of attribute/value pairs:
 
-```
+```js
 import { div } from "slam-js";
 export function WideRed(){
   return(
@@ -265,7 +265,7 @@ export function WideRed(){
 
 Export the template, and use it with [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin).
 
-```
+```js
 //index.js
 
 import { html, body } from "slam-js";
@@ -281,7 +281,7 @@ export function Document(){
 };
 ```
 
-```
+```js
 //webpack.js
 {
   plugins: [
