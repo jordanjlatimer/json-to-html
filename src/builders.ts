@@ -1,8 +1,8 @@
-import { TypedSlamElement, Child, TypedSlamComponent } from "./baseInterfaces";
+import { SlamElement, Child, SlamComponent } from "./baseInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 
-const findComponents = (tree: Child, counter: number): TypedSlamComponent[] => {
-  let finalArray: TypedSlamComponent[] = [];
+const findComponents = (tree: Child, counter: number): SlamComponent[] => {
+  let finalArray: SlamComponent[] = [];
   if (typeof tree === "string") {
     undefined;
   } else if (tree["type"] === "element") {
@@ -17,10 +17,10 @@ const findComponents = (tree: Child, counter: number): TypedSlamComponent[] => {
 };
 
 interface Indentification {
-  [key: number]: TypedSlamComponent[];
+  [key: number]: SlamComponent[];
 }
 
-const findUniqueCss = (array: TypedSlamComponent[]) => {
+const findUniqueCss = (array: SlamComponent[]) => {
   let identities: Indentification = {};
   let identitiesIndex = 0;
   array.forEach(component => {
@@ -48,12 +48,12 @@ const findUniqueCss = (array: TypedSlamComponent[]) => {
   return identities;
 };
 
-export const identifyComponents = (tree: TypedSlamElement) => {
+export const identifyComponents = (tree: SlamElement) => {
   return findUniqueCss(findComponents(tree, 0));
 };
 
 const constructElement = (
-  tree: TypedSlamElement | string,
+  tree: SlamElement | string,
   currentString: string,
   components: Indentification,
   className?: string

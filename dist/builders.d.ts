@@ -1,7 +1,7 @@
-import { TypedSlamElement, Child, TypedSlamComponent } from "./baseInterfaces";
+import { SlamElement, Child, SlamComponent } from "./baseInterfaces";
 interface Indentification {
-    [key: number]: TypedSlamComponent[];
+    [key: number]: SlamComponent[];
 }
-export declare const identifyComponents: (tree: TypedSlamElement) => Indentification;
+export declare const identifyComponents: (tree: SlamElement) => Indentification;
 export declare const buildHtmlFromObject: (tree: Child, components: Indentification) => string;
 export {};
