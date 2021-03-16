@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { elements, childless } = require("./elements.js");
 
-let baseImports = 'import { Child, TypedSlamElement } from "./baseInterfaces";\n';
+let baseImports = 'import { Child, SlamElement } from "./baseInterfaces";\n';
 let htmlImports = "import {";
 let svgImports = "import {";
 let functionsString = "";
@@ -19,14 +19,14 @@ Object.keys(elements).forEach((key, i) => {
     : (svgImports += ", " + elementInterface);
   functionsString += "\n";
   if (isChildless) {
-    functionsString += `export const ${functionName} = (arg1?: ${elementInterface}): TypedSlamElement => ({\n`;
+    functionsString += `export const ${functionName} = (arg1?: ${elementInterface}): SlamElement => ({\n`;
     functionsString += `  tag: "${key}",\n`;
     functionsString += `  type: "element" as "element",\n`;
     functionsString += `  atts: arg1,\n`;
     functionsString += `  children: undefined\n`;
     functionsString += `})\n`;
   } else {
-    functionsString += `export const ${functionName} = (arg1?: ${elementInterface} | Child, ...arg2: Child[]): TypedSlamElement => {\n`;
+    functionsString += `export const ${functionName} = (arg1?: ${elementInterface} | Child, ...arg2: Child[]): SlamElement => {\n`;
     functionsString += `  let arg1IsChild = (arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string")\n`;
     functionsString += `  return {\n`;
     functionsString += `    tag: "${key}",\n`;

@@ -8,19 +8,19 @@ export interface ElementAttributes {
     nonce?: string;
     tabindex?: number;
 }
-export interface TypedSlamElement {
+export interface SlamElement {
     type: "element";
     tag: string;
     atts?: any;
     children?: Child[];
 }
-export interface TypedSlamComponent {
+export interface SlamComponent {
     type: "component";
-    html: TypedSlamElement;
+    html: SlamElement;
     css?: CSSObject;
     js?: () => void;
 }
-export declare type Child = TypedSlamElement | TypedSlamComponent | string;
+export declare type Child = SlamElement | SlamComponent | string;
 interface Selector {
     [key: string]: CSSProperties;
 }

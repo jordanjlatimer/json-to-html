@@ -1,4 +1,4 @@
-import { Child, TypedSlamElement } from "./baseInterfaces";
+import { Child, SlamElement } from "./baseInterfaces";
 import {
   HTMLAbbrAttributes,
   HTMLAddressAttributes,
@@ -176,7 +176,7 @@ import {
   SVGViewAttributes,
 } from "./svgInterfaces";
 
-export const abbr = (arg1?: HTMLAbbrAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const abbr = (arg1?: HTMLAbbrAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "abbr",
@@ -186,7 +186,7 @@ export const abbr = (arg1?: HTMLAbbrAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const address = (arg1?: HTMLAddressAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const address = (arg1?: HTMLAddressAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "address",
@@ -196,14 +196,14 @@ export const address = (arg1?: HTMLAddressAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const area = (arg1?: HTMLAreaAttributes): TypedSlamElement => ({
+export const area = (arg1?: HTMLAreaAttributes): SlamElement => ({
   tag: "area",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const article = (arg1?: HTMLArticleAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const article = (arg1?: HTMLArticleAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "article",
@@ -213,7 +213,7 @@ export const article = (arg1?: HTMLArticleAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const aside = (arg1?: HTMLAsideAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const aside = (arg1?: HTMLAsideAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "aside",
@@ -223,7 +223,7 @@ export const aside = (arg1?: HTMLAsideAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const audio = (arg1?: HTMLAudioAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const audio = (arg1?: HTMLAudioAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "audio",
@@ -233,7 +233,7 @@ export const audio = (arg1?: HTMLAudioAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const b = (arg1?: HTMLBAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const b = (arg1?: HTMLBAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "b",
@@ -243,14 +243,14 @@ export const b = (arg1?: HTMLBAttributes | Child, ...arg2: Child[]): TypedSlamEl
   };
 };
 
-export const base = (arg1?: HTMLBaseAttributes): TypedSlamElement => ({
+export const base = (arg1?: HTMLBaseAttributes): SlamElement => ({
   tag: "base",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const bdi = (arg1?: HTMLBdiAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const bdi = (arg1?: HTMLBdiAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "bdi",
@@ -260,7 +260,7 @@ export const bdi = (arg1?: HTMLBdiAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const bdo = (arg1?: HTMLBdoAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const bdo = (arg1?: HTMLBdoAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "bdo",
@@ -270,7 +270,7 @@ export const bdo = (arg1?: HTMLBdoAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const blockquote = (arg1?: HTMLBlockquoteAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const blockquote = (arg1?: HTMLBlockquoteAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "blockquote",
@@ -280,7 +280,7 @@ export const blockquote = (arg1?: HTMLBlockquoteAttributes | Child, ...arg2: Chi
   };
 };
 
-export const body = (arg1?: HTMLBodyAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const body = (arg1?: HTMLBodyAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "body",
@@ -290,14 +290,14 @@ export const body = (arg1?: HTMLBodyAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const br = (arg1?: HTMLBrAttributes): TypedSlamElement => ({
+export const br = (arg1?: HTMLBrAttributes): SlamElement => ({
   tag: "br",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const button = (arg1?: HTMLButtonAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const button = (arg1?: HTMLButtonAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "button",
@@ -307,7 +307,7 @@ export const button = (arg1?: HTMLButtonAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const canvas = (arg1?: HTMLCanvasAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const canvas = (arg1?: HTMLCanvasAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "canvas",
@@ -317,7 +317,7 @@ export const canvas = (arg1?: HTMLCanvasAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const caption = (arg1?: HTMLCaptionAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const caption = (arg1?: HTMLCaptionAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "caption",
@@ -327,7 +327,7 @@ export const caption = (arg1?: HTMLCaptionAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const cite = (arg1?: HTMLCiteAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const cite = (arg1?: HTMLCiteAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "cite",
@@ -337,7 +337,7 @@ export const cite = (arg1?: HTMLCiteAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const code = (arg1?: HTMLCodeAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const code = (arg1?: HTMLCodeAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "code",
@@ -347,14 +347,14 @@ export const code = (arg1?: HTMLCodeAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const col = (arg1?: HTMLColAttributes): TypedSlamElement => ({
+export const col = (arg1?: HTMLColAttributes): SlamElement => ({
   tag: "col",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const colgroup = (arg1?: HTMLColgroupAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const colgroup = (arg1?: HTMLColgroupAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "colgroup",
@@ -364,7 +364,7 @@ export const colgroup = (arg1?: HTMLColgroupAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const data = (arg1?: HTMLDataAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const data = (arg1?: HTMLDataAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "data",
@@ -374,7 +374,7 @@ export const data = (arg1?: HTMLDataAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const datalist = (arg1?: HTMLDatalistAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const datalist = (arg1?: HTMLDatalistAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "datalist",
@@ -384,7 +384,7 @@ export const datalist = (arg1?: HTMLDatalistAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const dd = (arg1?: HTMLDdAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const dd = (arg1?: HTMLDdAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "dd",
@@ -394,7 +394,7 @@ export const dd = (arg1?: HTMLDdAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const del = (arg1?: HTMLDelAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const del = (arg1?: HTMLDelAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "del",
@@ -404,7 +404,7 @@ export const del = (arg1?: HTMLDelAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const details = (arg1?: HTMLDetailsAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const details = (arg1?: HTMLDetailsAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "details",
@@ -414,7 +414,7 @@ export const details = (arg1?: HTMLDetailsAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const dfn = (arg1?: HTMLDfnAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const dfn = (arg1?: HTMLDfnAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "dfn",
@@ -424,7 +424,7 @@ export const dfn = (arg1?: HTMLDfnAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const dialog = (arg1?: HTMLDialogAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const dialog = (arg1?: HTMLDialogAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "dialog",
@@ -434,7 +434,7 @@ export const dialog = (arg1?: HTMLDialogAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const div = (arg1?: HTMLDivAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const div = (arg1?: HTMLDivAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "div",
@@ -444,7 +444,7 @@ export const div = (arg1?: HTMLDivAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const dl = (arg1?: HTMLDlAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const dl = (arg1?: HTMLDlAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "dl",
@@ -454,7 +454,7 @@ export const dl = (arg1?: HTMLDlAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const dt = (arg1?: HTMLDtAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const dt = (arg1?: HTMLDtAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "dt",
@@ -464,7 +464,7 @@ export const dt = (arg1?: HTMLDtAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const em = (arg1?: HTMLEmAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const em = (arg1?: HTMLEmAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "em",
@@ -474,14 +474,14 @@ export const em = (arg1?: HTMLEmAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const embed = (arg1?: HTMLEmbedAttributes): TypedSlamElement => ({
+export const embed = (arg1?: HTMLEmbedAttributes): SlamElement => ({
   tag: "embed",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const fieldset = (arg1?: HTMLFieldsetAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const fieldset = (arg1?: HTMLFieldsetAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "fieldset",
@@ -491,7 +491,7 @@ export const fieldset = (arg1?: HTMLFieldsetAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const figcaption = (arg1?: HTMLFigcaptionAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const figcaption = (arg1?: HTMLFigcaptionAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "figcaption",
@@ -501,7 +501,7 @@ export const figcaption = (arg1?: HTMLFigcaptionAttributes | Child, ...arg2: Chi
   };
 };
 
-export const figure = (arg1?: HTMLFigureAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const figure = (arg1?: HTMLFigureAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "figure",
@@ -511,7 +511,7 @@ export const figure = (arg1?: HTMLFigureAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const footer = (arg1?: HTMLFooterAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const footer = (arg1?: HTMLFooterAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "footer",
@@ -521,7 +521,7 @@ export const footer = (arg1?: HTMLFooterAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const form = (arg1?: HTMLFormAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const form = (arg1?: HTMLFormAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "form",
@@ -531,7 +531,7 @@ export const form = (arg1?: HTMLFormAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const h1 = (arg1?: HTMLH1Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const h1 = (arg1?: HTMLH1Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "h1",
@@ -541,7 +541,7 @@ export const h1 = (arg1?: HTMLH1Attributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const h2 = (arg1?: HTMLH2Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const h2 = (arg1?: HTMLH2Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "h2",
@@ -551,7 +551,7 @@ export const h2 = (arg1?: HTMLH2Attributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const h3 = (arg1?: HTMLH3Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const h3 = (arg1?: HTMLH3Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "h3",
@@ -561,7 +561,7 @@ export const h3 = (arg1?: HTMLH3Attributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const h4 = (arg1?: HTMLH4Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const h4 = (arg1?: HTMLH4Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "h4",
@@ -571,7 +571,7 @@ export const h4 = (arg1?: HTMLH4Attributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const h5 = (arg1?: HTMLH5Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const h5 = (arg1?: HTMLH5Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "h5",
@@ -581,7 +581,7 @@ export const h5 = (arg1?: HTMLH5Attributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const h6 = (arg1?: HTMLH6Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const h6 = (arg1?: HTMLH6Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "h6",
@@ -591,7 +591,7 @@ export const h6 = (arg1?: HTMLH6Attributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const head = (arg1?: HTMLHeadAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const head = (arg1?: HTMLHeadAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "head",
@@ -601,7 +601,7 @@ export const head = (arg1?: HTMLHeadAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const header = (arg1?: HTMLHeaderAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const header = (arg1?: HTMLHeaderAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "header",
@@ -611,7 +611,7 @@ export const header = (arg1?: HTMLHeaderAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const hgroup = (arg1?: HTMLHgroupAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const hgroup = (arg1?: HTMLHgroupAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "hgroup",
@@ -621,14 +621,14 @@ export const hgroup = (arg1?: HTMLHgroupAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const hr = (arg1?: HTMLHrAttributes): TypedSlamElement => ({
+export const hr = (arg1?: HTMLHrAttributes): SlamElement => ({
   tag: "hr",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const html = (arg1?: HTMLHtmlAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const html = (arg1?: HTMLHtmlAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "html",
@@ -638,7 +638,7 @@ export const html = (arg1?: HTMLHtmlAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const i = (arg1?: HTMLIAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const i = (arg1?: HTMLIAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "i",
@@ -648,7 +648,7 @@ export const i = (arg1?: HTMLIAttributes | Child, ...arg2: Child[]): TypedSlamEl
   };
 };
 
-export const iframe = (arg1?: HTMLIframeAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const iframe = (arg1?: HTMLIframeAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "iframe",
@@ -658,21 +658,21 @@ export const iframe = (arg1?: HTMLIframeAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const img = (arg1?: HTMLImgAttributes): TypedSlamElement => ({
+export const img = (arg1?: HTMLImgAttributes): SlamElement => ({
   tag: "img",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const input = (arg1?: HTMLInputAttributes): TypedSlamElement => ({
+export const input = (arg1?: HTMLInputAttributes): SlamElement => ({
   tag: "input",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const ins = (arg1?: HTMLInsAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const ins = (arg1?: HTMLInsAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "ins",
@@ -682,7 +682,7 @@ export const ins = (arg1?: HTMLInsAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const kbd = (arg1?: HTMLKbdAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const kbd = (arg1?: HTMLKbdAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "kbd",
@@ -692,7 +692,7 @@ export const kbd = (arg1?: HTMLKbdAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const label = (arg1?: HTMLLabelAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const label = (arg1?: HTMLLabelAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "label",
@@ -702,7 +702,7 @@ export const label = (arg1?: HTMLLabelAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const legend = (arg1?: HTMLLegendAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const legend = (arg1?: HTMLLegendAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "legend",
@@ -712,7 +712,7 @@ export const legend = (arg1?: HTMLLegendAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const li = (arg1?: HTMLLiAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const li = (arg1?: HTMLLiAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "li",
@@ -722,14 +722,14 @@ export const li = (arg1?: HTMLLiAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const link = (arg1?: HTMLLinkAttributes): TypedSlamElement => ({
+export const link = (arg1?: HTMLLinkAttributes): SlamElement => ({
   tag: "link",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const main = (arg1?: HTMLMainAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const main = (arg1?: HTMLMainAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "main",
@@ -739,7 +739,7 @@ export const main = (arg1?: HTMLMainAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const map = (arg1?: HTMLMapAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const map = (arg1?: HTMLMapAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "map",
@@ -749,7 +749,7 @@ export const map = (arg1?: HTMLMapAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const mark = (arg1?: HTMLMarkAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const mark = (arg1?: HTMLMarkAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "mark",
@@ -759,7 +759,7 @@ export const mark = (arg1?: HTMLMarkAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const menu = (arg1?: HTMLMenuAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const menu = (arg1?: HTMLMenuAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "menu",
@@ -769,14 +769,14 @@ export const menu = (arg1?: HTMLMenuAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const meta = (arg1?: HTMLMetaAttributes): TypedSlamElement => ({
+export const meta = (arg1?: HTMLMetaAttributes): SlamElement => ({
   tag: "meta",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const meter = (arg1?: HTMLMeterAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const meter = (arg1?: HTMLMeterAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "meter",
@@ -786,7 +786,7 @@ export const meter = (arg1?: HTMLMeterAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const nav = (arg1?: HTMLNavAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const nav = (arg1?: HTMLNavAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "nav",
@@ -796,7 +796,7 @@ export const nav = (arg1?: HTMLNavAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const noscript = (arg1?: HTMLNoscriptAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const noscript = (arg1?: HTMLNoscriptAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "noscript",
@@ -806,7 +806,7 @@ export const noscript = (arg1?: HTMLNoscriptAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const object = (arg1?: HTMLObjectAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const object = (arg1?: HTMLObjectAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "object",
@@ -816,7 +816,7 @@ export const object = (arg1?: HTMLObjectAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const ol = (arg1?: HTMLOlAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const ol = (arg1?: HTMLOlAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "ol",
@@ -826,7 +826,7 @@ export const ol = (arg1?: HTMLOlAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const optgroup = (arg1?: HTMLOptgroupAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const optgroup = (arg1?: HTMLOptgroupAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "optgroup",
@@ -836,7 +836,7 @@ export const optgroup = (arg1?: HTMLOptgroupAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const option = (arg1?: HTMLOptionAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const option = (arg1?: HTMLOptionAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "option",
@@ -846,7 +846,7 @@ export const option = (arg1?: HTMLOptionAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const output = (arg1?: HTMLOutputAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const output = (arg1?: HTMLOutputAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "output",
@@ -856,7 +856,7 @@ export const output = (arg1?: HTMLOutputAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const p = (arg1?: HTMLPAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const p = (arg1?: HTMLPAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "p",
@@ -866,14 +866,14 @@ export const p = (arg1?: HTMLPAttributes | Child, ...arg2: Child[]): TypedSlamEl
   };
 };
 
-export const param = (arg1?: HTMLParamAttributes): TypedSlamElement => ({
+export const param = (arg1?: HTMLParamAttributes): SlamElement => ({
   tag: "param",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const picture = (arg1?: HTMLPictureAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const picture = (arg1?: HTMLPictureAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "picture",
@@ -883,7 +883,7 @@ export const picture = (arg1?: HTMLPictureAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const pre = (arg1?: HTMLPreAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const pre = (arg1?: HTMLPreAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "pre",
@@ -893,7 +893,7 @@ export const pre = (arg1?: HTMLPreAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const progress = (arg1?: HTMLProgressAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const progress = (arg1?: HTMLProgressAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "progress",
@@ -903,7 +903,7 @@ export const progress = (arg1?: HTMLProgressAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const q = (arg1?: HTMLQAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const q = (arg1?: HTMLQAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "q",
@@ -913,7 +913,7 @@ export const q = (arg1?: HTMLQAttributes | Child, ...arg2: Child[]): TypedSlamEl
   };
 };
 
-export const rp = (arg1?: HTMLRpAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const rp = (arg1?: HTMLRpAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "rp",
@@ -923,7 +923,7 @@ export const rp = (arg1?: HTMLRpAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const rt = (arg1?: HTMLRtAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const rt = (arg1?: HTMLRtAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "rt",
@@ -933,7 +933,7 @@ export const rt = (arg1?: HTMLRtAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const ruby = (arg1?: HTMLRubyAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const ruby = (arg1?: HTMLRubyAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "ruby",
@@ -943,7 +943,7 @@ export const ruby = (arg1?: HTMLRubyAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const s = (arg1?: HTMLSAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const s = (arg1?: HTMLSAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "s",
@@ -953,7 +953,7 @@ export const s = (arg1?: HTMLSAttributes | Child, ...arg2: Child[]): TypedSlamEl
   };
 };
 
-export const samp = (arg1?: HTMLSampAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const samp = (arg1?: HTMLSampAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "samp",
@@ -963,7 +963,7 @@ export const samp = (arg1?: HTMLSampAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const script = (arg1?: HTMLScriptAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const script = (arg1?: HTMLScriptAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "script",
@@ -973,7 +973,7 @@ export const script = (arg1?: HTMLScriptAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const section = (arg1?: HTMLSectionAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const section = (arg1?: HTMLSectionAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "section",
@@ -983,7 +983,7 @@ export const section = (arg1?: HTMLSectionAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const select = (arg1?: HTMLSelectAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const select = (arg1?: HTMLSelectAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "select",
@@ -993,7 +993,7 @@ export const select = (arg1?: HTMLSelectAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const slot = (arg1?: HTMLSlotAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const slot = (arg1?: HTMLSlotAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "slot",
@@ -1003,7 +1003,7 @@ export const slot = (arg1?: HTMLSlotAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const small = (arg1?: HTMLSmallAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const small = (arg1?: HTMLSmallAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "small",
@@ -1013,14 +1013,14 @@ export const small = (arg1?: HTMLSmallAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const source = (arg1?: HTMLSourceAttributes): TypedSlamElement => ({
+export const source = (arg1?: HTMLSourceAttributes): SlamElement => ({
   tag: "source",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const span = (arg1?: HTMLSpanAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const span = (arg1?: HTMLSpanAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "span",
@@ -1030,7 +1030,7 @@ export const span = (arg1?: HTMLSpanAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const strong = (arg1?: HTMLStrongAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const strong = (arg1?: HTMLStrongAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "strong",
@@ -1040,7 +1040,7 @@ export const strong = (arg1?: HTMLStrongAttributes | Child, ...arg2: Child[]): T
   };
 };
 
-export const sub = (arg1?: HTMLSubAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const sub = (arg1?: HTMLSubAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "sub",
@@ -1050,7 +1050,7 @@ export const sub = (arg1?: HTMLSubAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const summary = (arg1?: HTMLSummaryAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const summary = (arg1?: HTMLSummaryAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "summary",
@@ -1060,7 +1060,7 @@ export const summary = (arg1?: HTMLSummaryAttributes | Child, ...arg2: Child[]):
   };
 };
 
-export const sup = (arg1?: HTMLSupAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const sup = (arg1?: HTMLSupAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "sup",
@@ -1070,7 +1070,7 @@ export const sup = (arg1?: HTMLSupAttributes | Child, ...arg2: Child[]): TypedSl
   };
 };
 
-export const table = (arg1?: HTMLTableAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const table = (arg1?: HTMLTableAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "table",
@@ -1080,7 +1080,7 @@ export const table = (arg1?: HTMLTableAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const tbody = (arg1?: HTMLTbodyAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const tbody = (arg1?: HTMLTbodyAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "tbody",
@@ -1090,7 +1090,7 @@ export const tbody = (arg1?: HTMLTbodyAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const td = (arg1?: HTMLTdAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const td = (arg1?: HTMLTdAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "td",
@@ -1100,7 +1100,7 @@ export const td = (arg1?: HTMLTdAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const template = (arg1?: HTMLTemplateAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const template = (arg1?: HTMLTemplateAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "template",
@@ -1110,7 +1110,7 @@ export const template = (arg1?: HTMLTemplateAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const textarea = (arg1?: HTMLTextareaAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const textarea = (arg1?: HTMLTextareaAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "textarea",
@@ -1120,7 +1120,7 @@ export const textarea = (arg1?: HTMLTextareaAttributes | Child, ...arg2: Child[]
   };
 };
 
-export const tfoot = (arg1?: HTMLTfootAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const tfoot = (arg1?: HTMLTfootAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "tfoot",
@@ -1130,7 +1130,7 @@ export const tfoot = (arg1?: HTMLTfootAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const th = (arg1?: HTMLThAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const th = (arg1?: HTMLThAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "th",
@@ -1140,7 +1140,7 @@ export const th = (arg1?: HTMLThAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const thead = (arg1?: HTMLTheadAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const thead = (arg1?: HTMLTheadAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "thead",
@@ -1150,7 +1150,7 @@ export const thead = (arg1?: HTMLTheadAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const time = (arg1?: HTMLTimeAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const time = (arg1?: HTMLTimeAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "time",
@@ -1160,7 +1160,7 @@ export const time = (arg1?: HTMLTimeAttributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const title = (arg1?: HTMLTitleAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const title = (arg1?: HTMLTitleAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "title",
@@ -1170,7 +1170,7 @@ export const title = (arg1?: HTMLTitleAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const tr = (arg1?: HTMLTrAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const tr = (arg1?: HTMLTrAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "tr",
@@ -1180,14 +1180,14 @@ export const tr = (arg1?: HTMLTrAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const track = (arg1?: HTMLTrackAttributes): TypedSlamElement => ({
+export const track = (arg1?: HTMLTrackAttributes): SlamElement => ({
   tag: "track",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const u = (arg1?: HTMLUAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const u = (arg1?: HTMLUAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "u",
@@ -1197,7 +1197,7 @@ export const u = (arg1?: HTMLUAttributes | Child, ...arg2: Child[]): TypedSlamEl
   };
 };
 
-export const ul = (arg1?: HTMLUlAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const ul = (arg1?: HTMLUlAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "ul",
@@ -1207,7 +1207,7 @@ export const ul = (arg1?: HTMLUlAttributes | Child, ...arg2: Child[]): TypedSlam
   };
 };
 
-export const var_ = (arg1?: HTMLVar_Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const var_ = (arg1?: HTMLVar_Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "var",
@@ -1217,7 +1217,7 @@ export const var_ = (arg1?: HTMLVar_Attributes | Child, ...arg2: Child[]): Typed
   };
 };
 
-export const video = (arg1?: HTMLVideoAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const video = (arg1?: HTMLVideoAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "video",
@@ -1227,14 +1227,14 @@ export const video = (arg1?: HTMLVideoAttributes | Child, ...arg2: Child[]): Typ
   };
 };
 
-export const wbr = (arg1?: HTMLWbrAttributes): TypedSlamElement => ({
+export const wbr = (arg1?: HTMLWbrAttributes): SlamElement => ({
   tag: "wbr",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const a = (arg1?: SVGAAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const a = (arg1?: SVGAAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "a",
@@ -1244,7 +1244,7 @@ export const a = (arg1?: SVGAAttributes | Child, ...arg2: Child[]): TypedSlamEle
   };
 };
 
-export const animate = (arg1?: SVGAnimateAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const animate = (arg1?: SVGAnimateAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "animate",
@@ -1254,7 +1254,7 @@ export const animate = (arg1?: SVGAnimateAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const animateMotion = (arg1?: SVGAnimateMotionAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const animateMotion = (arg1?: SVGAnimateMotionAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "animateMotion",
@@ -1264,7 +1264,7 @@ export const animateMotion = (arg1?: SVGAnimateMotionAttributes | Child, ...arg2
   };
 };
 
-export const animateTransform = (arg1?: SVGAnimateTransformAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const animateTransform = (arg1?: SVGAnimateTransformAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "animateTransform",
@@ -1274,14 +1274,14 @@ export const animateTransform = (arg1?: SVGAnimateTransformAttributes | Child, .
   };
 };
 
-export const circle = (arg1?: SVGCircleAttributes): TypedSlamElement => ({
+export const circle = (arg1?: SVGCircleAttributes): SlamElement => ({
   tag: "circle",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const clipPath = (arg1?: SVGClipPathAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const clipPath = (arg1?: SVGClipPathAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "clipPath",
@@ -1291,7 +1291,7 @@ export const clipPath = (arg1?: SVGClipPathAttributes | Child, ...arg2: Child[])
   };
 };
 
-export const defs = (arg1?: SVGDefsAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const defs = (arg1?: SVGDefsAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "defs",
@@ -1301,7 +1301,7 @@ export const defs = (arg1?: SVGDefsAttributes | Child, ...arg2: Child[]): TypedS
   };
 };
 
-export const desc = (arg1?: SVGDescAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const desc = (arg1?: SVGDescAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "desc",
@@ -1311,7 +1311,7 @@ export const desc = (arg1?: SVGDescAttributes | Child, ...arg2: Child[]): TypedS
   };
 };
 
-export const discard = (arg1?: SVGDiscardAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const discard = (arg1?: SVGDiscardAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "discard",
@@ -1321,14 +1321,14 @@ export const discard = (arg1?: SVGDiscardAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const ellipse = (arg1?: SVGEllipseAttributes): TypedSlamElement => ({
+export const ellipse = (arg1?: SVGEllipseAttributes): SlamElement => ({
   tag: "ellipse",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const feBlend = (arg1?: SVGFeBlendAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feBlend = (arg1?: SVGFeBlendAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feBlend",
@@ -1338,7 +1338,7 @@ export const feBlend = (arg1?: SVGFeBlendAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feColorMatrix = (arg1?: SVGFeColorMatrixAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feColorMatrix = (arg1?: SVGFeColorMatrixAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feColorMatrix",
@@ -1348,10 +1348,7 @@ export const feColorMatrix = (arg1?: SVGFeColorMatrixAttributes | Child, ...arg2
   };
 };
 
-export const feComponentTransfer = (
-  arg1?: SVGFeComponentTransferAttributes | Child,
-  ...arg2: Child[]
-): TypedSlamElement => {
+export const feComponentTransfer = (arg1?: SVGFeComponentTransferAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feComponentTransfer",
@@ -1361,7 +1358,7 @@ export const feComponentTransfer = (
   };
 };
 
-export const feComposite = (arg1?: SVGFeCompositeAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feComposite = (arg1?: SVGFeCompositeAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feComposite",
@@ -1371,7 +1368,7 @@ export const feComposite = (arg1?: SVGFeCompositeAttributes | Child, ...arg2: Ch
   };
 };
 
-export const feConvolveMatrix = (arg1?: SVGFeConvolveMatrixAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feConvolveMatrix = (arg1?: SVGFeConvolveMatrixAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feConvolveMatrix",
@@ -1381,10 +1378,7 @@ export const feConvolveMatrix = (arg1?: SVGFeConvolveMatrixAttributes | Child, .
   };
 };
 
-export const feDiffuseLighting = (
-  arg1?: SVGFeDiffuseLightingAttributes | Child,
-  ...arg2: Child[]
-): TypedSlamElement => {
+export const feDiffuseLighting = (arg1?: SVGFeDiffuseLightingAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feDiffuseLighting",
@@ -1394,10 +1388,7 @@ export const feDiffuseLighting = (
   };
 };
 
-export const feDisplacementMap = (
-  arg1?: SVGFeDisplacementMapAttributes | Child,
-  ...arg2: Child[]
-): TypedSlamElement => {
+export const feDisplacementMap = (arg1?: SVGFeDisplacementMapAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feDisplacementMap",
@@ -1407,7 +1398,7 @@ export const feDisplacementMap = (
   };
 };
 
-export const feDistantLight = (arg1?: SVGFeDistantLightAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feDistantLight = (arg1?: SVGFeDistantLightAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feDistantLight",
@@ -1417,7 +1408,7 @@ export const feDistantLight = (arg1?: SVGFeDistantLightAttributes | Child, ...ar
   };
 };
 
-export const feDropShadow = (arg1?: SVGFeDropShadowAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feDropShadow = (arg1?: SVGFeDropShadowAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feDropShadow",
@@ -1427,7 +1418,7 @@ export const feDropShadow = (arg1?: SVGFeDropShadowAttributes | Child, ...arg2: 
   };
 };
 
-export const feFlood = (arg1?: SVGFeFloodAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feFlood = (arg1?: SVGFeFloodAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feFlood",
@@ -1437,7 +1428,7 @@ export const feFlood = (arg1?: SVGFeFloodAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feFuncA = (arg1?: SVGFeFuncAAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feFuncA = (arg1?: SVGFeFuncAAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feFuncA",
@@ -1447,7 +1438,7 @@ export const feFuncA = (arg1?: SVGFeFuncAAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feFuncB = (arg1?: SVGFeFuncBAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feFuncB = (arg1?: SVGFeFuncBAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feFuncB",
@@ -1457,7 +1448,7 @@ export const feFuncB = (arg1?: SVGFeFuncBAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feFuncG = (arg1?: SVGFeFuncGAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feFuncG = (arg1?: SVGFeFuncGAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feFuncG",
@@ -1467,7 +1458,7 @@ export const feFuncG = (arg1?: SVGFeFuncGAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feFuncR = (arg1?: SVGFeFuncRAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feFuncR = (arg1?: SVGFeFuncRAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feFuncR",
@@ -1477,7 +1468,7 @@ export const feFuncR = (arg1?: SVGFeFuncRAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feGaussianBlur = (arg1?: SVGFeGaussianBlurAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feGaussianBlur = (arg1?: SVGFeGaussianBlurAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feGaussianBlur",
@@ -1487,7 +1478,7 @@ export const feGaussianBlur = (arg1?: SVGFeGaussianBlurAttributes | Child, ...ar
   };
 };
 
-export const feImage = (arg1?: SVGFeImageAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feImage = (arg1?: SVGFeImageAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feImage",
@@ -1497,7 +1488,7 @@ export const feImage = (arg1?: SVGFeImageAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feMerge = (arg1?: SVGFeMergeAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feMerge = (arg1?: SVGFeMergeAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feMerge",
@@ -1507,7 +1498,7 @@ export const feMerge = (arg1?: SVGFeMergeAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const feMergeNode = (arg1?: SVGFeMergeNodeAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feMergeNode = (arg1?: SVGFeMergeNodeAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feMergeNode",
@@ -1517,7 +1508,7 @@ export const feMergeNode = (arg1?: SVGFeMergeNodeAttributes | Child, ...arg2: Ch
   };
 };
 
-export const feMorphology = (arg1?: SVGFeMorphologyAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feMorphology = (arg1?: SVGFeMorphologyAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feMorphology",
@@ -1527,7 +1518,7 @@ export const feMorphology = (arg1?: SVGFeMorphologyAttributes | Child, ...arg2: 
   };
 };
 
-export const feOffset = (arg1?: SVGFeOffsetAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feOffset = (arg1?: SVGFeOffsetAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feOffset",
@@ -1537,7 +1528,7 @@ export const feOffset = (arg1?: SVGFeOffsetAttributes | Child, ...arg2: Child[])
   };
 };
 
-export const fePointLight = (arg1?: SVGFePointLightAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const fePointLight = (arg1?: SVGFePointLightAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "fePointLight",
@@ -1547,10 +1538,7 @@ export const fePointLight = (arg1?: SVGFePointLightAttributes | Child, ...arg2: 
   };
 };
 
-export const feSpecularLighting = (
-  arg1?: SVGFeSpecularLightingAttributes | Child,
-  ...arg2: Child[]
-): TypedSlamElement => {
+export const feSpecularLighting = (arg1?: SVGFeSpecularLightingAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feSpecularLighting",
@@ -1560,7 +1548,7 @@ export const feSpecularLighting = (
   };
 };
 
-export const feSpotLight = (arg1?: SVGFeSpotLightAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feSpotLight = (arg1?: SVGFeSpotLightAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feSpotLight",
@@ -1570,7 +1558,7 @@ export const feSpotLight = (arg1?: SVGFeSpotLightAttributes | Child, ...arg2: Ch
   };
 };
 
-export const feTile = (arg1?: SVGFeTileAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feTile = (arg1?: SVGFeTileAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feTile",
@@ -1580,7 +1568,7 @@ export const feTile = (arg1?: SVGFeTileAttributes | Child, ...arg2: Child[]): Ty
   };
 };
 
-export const feTurbulence = (arg1?: SVGFeTurbulenceAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const feTurbulence = (arg1?: SVGFeTurbulenceAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "feTurbulence",
@@ -1590,7 +1578,7 @@ export const feTurbulence = (arg1?: SVGFeTurbulenceAttributes | Child, ...arg2: 
   };
 };
 
-export const filter = (arg1?: SVGFilterAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const filter = (arg1?: SVGFilterAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "filter",
@@ -1600,7 +1588,7 @@ export const filter = (arg1?: SVGFilterAttributes | Child, ...arg2: Child[]): Ty
   };
 };
 
-export const foreignObject = (arg1?: SVGForeignObjectAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const foreignObject = (arg1?: SVGForeignObjectAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "foreignObject",
@@ -1610,7 +1598,7 @@ export const foreignObject = (arg1?: SVGForeignObjectAttributes | Child, ...arg2
   };
 };
 
-export const g = (arg1?: SVGGAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const g = (arg1?: SVGGAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "g",
@@ -1620,7 +1608,7 @@ export const g = (arg1?: SVGGAttributes | Child, ...arg2: Child[]): TypedSlamEle
   };
 };
 
-export const image = (arg1?: SVGImageAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const image = (arg1?: SVGImageAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "image",
@@ -1630,14 +1618,14 @@ export const image = (arg1?: SVGImageAttributes | Child, ...arg2: Child[]): Type
   };
 };
 
-export const line = (arg1?: SVGLineAttributes): TypedSlamElement => ({
+export const line = (arg1?: SVGLineAttributes): SlamElement => ({
   tag: "line",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const linearGradient = (arg1?: SVGLinearGradientAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const linearGradient = (arg1?: SVGLinearGradientAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "linearGradient",
@@ -1647,7 +1635,7 @@ export const linearGradient = (arg1?: SVGLinearGradientAttributes | Child, ...ar
   };
 };
 
-export const marker = (arg1?: SVGMarkerAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const marker = (arg1?: SVGMarkerAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "marker",
@@ -1657,7 +1645,7 @@ export const marker = (arg1?: SVGMarkerAttributes | Child, ...arg2: Child[]): Ty
   };
 };
 
-export const mask = (arg1?: SVGMaskAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const mask = (arg1?: SVGMaskAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "mask",
@@ -1667,7 +1655,7 @@ export const mask = (arg1?: SVGMaskAttributes | Child, ...arg2: Child[]): TypedS
   };
 };
 
-export const metadata = (arg1?: SVGMetadataAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const metadata = (arg1?: SVGMetadataAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "metadata",
@@ -1677,7 +1665,7 @@ export const metadata = (arg1?: SVGMetadataAttributes | Child, ...arg2: Child[])
   };
 };
 
-export const mpath = (arg1?: SVGMpathAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const mpath = (arg1?: SVGMpathAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "mpath",
@@ -1687,14 +1675,14 @@ export const mpath = (arg1?: SVGMpathAttributes | Child, ...arg2: Child[]): Type
   };
 };
 
-export const path = (arg1?: SVGPathAttributes): TypedSlamElement => ({
+export const path = (arg1?: SVGPathAttributes): SlamElement => ({
   tag: "path",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const pattern = (arg1?: SVGPatternAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const pattern = (arg1?: SVGPatternAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "pattern",
@@ -1704,21 +1692,21 @@ export const pattern = (arg1?: SVGPatternAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const polygon = (arg1?: SVGPolygonAttributes): TypedSlamElement => ({
+export const polygon = (arg1?: SVGPolygonAttributes): SlamElement => ({
   tag: "polygon",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const polyline = (arg1?: SVGPolylineAttributes): TypedSlamElement => ({
+export const polyline = (arg1?: SVGPolylineAttributes): SlamElement => ({
   tag: "polyline",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const radialGradient = (arg1?: SVGRadialGradientAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const radialGradient = (arg1?: SVGRadialGradientAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "radialGradient",
@@ -1728,14 +1716,14 @@ export const radialGradient = (arg1?: SVGRadialGradientAttributes | Child, ...ar
   };
 };
 
-export const rect = (arg1?: SVGRectAttributes): TypedSlamElement => ({
+export const rect = (arg1?: SVGRectAttributes): SlamElement => ({
   tag: "rect",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const set = (arg1?: SVGSetAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const set = (arg1?: SVGSetAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "set",
@@ -1745,14 +1733,14 @@ export const set = (arg1?: SVGSetAttributes | Child, ...arg2: Child[]): TypedSla
   };
 };
 
-export const stop = (arg1?: SVGStopAttributes): TypedSlamElement => ({
+export const stop = (arg1?: SVGStopAttributes): SlamElement => ({
   tag: "stop",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const svg = (arg1?: SVGSvgAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const svg = (arg1?: SVGSvgAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "svg",
@@ -1762,7 +1750,7 @@ export const svg = (arg1?: SVGSvgAttributes | Child, ...arg2: Child[]): TypedSla
   };
 };
 
-export const switch_ = (arg1?: SVGSwitch_Attributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const switch_ = (arg1?: SVGSwitch_Attributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "switch",
@@ -1772,7 +1760,7 @@ export const switch_ = (arg1?: SVGSwitch_Attributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const symbol = (arg1?: SVGSymbolAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const symbol = (arg1?: SVGSymbolAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "symbol",
@@ -1782,7 +1770,7 @@ export const symbol = (arg1?: SVGSymbolAttributes | Child, ...arg2: Child[]): Ty
   };
 };
 
-export const text = (arg1?: SVGTextAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const text = (arg1?: SVGTextAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "text",
@@ -1792,7 +1780,7 @@ export const text = (arg1?: SVGTextAttributes | Child, ...arg2: Child[]): TypedS
   };
 };
 
-export const textPath = (arg1?: SVGTextPathAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const textPath = (arg1?: SVGTextPathAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "textPath",
@@ -1802,7 +1790,7 @@ export const textPath = (arg1?: SVGTextPathAttributes | Child, ...arg2: Child[])
   };
 };
 
-export const tspan = (arg1?: SVGTspanAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const tspan = (arg1?: SVGTspanAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "tspan",
@@ -1812,7 +1800,7 @@ export const tspan = (arg1?: SVGTspanAttributes | Child, ...arg2: Child[]): Type
   };
 };
 
-export const unknown = (arg1?: SVGUnknownAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const unknown = (arg1?: SVGUnknownAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "unknown",
@@ -1822,14 +1810,14 @@ export const unknown = (arg1?: SVGUnknownAttributes | Child, ...arg2: Child[]): 
   };
 };
 
-export const use = (arg1?: SVGUseAttributes): TypedSlamElement => ({
+export const use = (arg1?: SVGUseAttributes): SlamElement => ({
   tag: "use",
   type: "element" as "element",
   atts: arg1,
   children: undefined,
 });
 
-export const view = (arg1?: SVGViewAttributes | Child, ...arg2: Child[]): TypedSlamElement => {
+export const view = (arg1?: SVGViewAttributes | Child, ...arg2: Child[]): SlamElement => {
   let arg1IsChild = arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string";
   return {
     tag: "view",

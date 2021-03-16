@@ -2,16 +2,16 @@ import { buildCssFromObject } from "./generateCss";
 import { CSSObject } from "./baseInterfaces";
 import { buildHtmlFromObject, identifyComponents } from "./builders";
 import * as fs from "fs";
-import { TypedSlamElement, TypedSlamComponent, Child } from "./baseInterfaces";
+import { SlamElement, SlamComponent, Child } from "./baseInterfaces";
 
 interface Page {
   readonly type: "page";
   name: string;
-  html?: TypedSlamElement;
+  html?: SlamElement;
   css?: CSSObject;
   js?: () => void;
   components: {
-    [key: number]: TypedSlamComponent[];
+    [key: number]: SlamComponent[];
   };
   finalBuild: {
     html: string;
@@ -87,21 +87,21 @@ export function CreatePage(name: string): Page {
   return page;
 }
 
-interface SlamElement {
+interface SlamElementBase {
   tag: string;
   atts?: any;
   children?: Child[];
 }
 
-interface SlamComponent {
-  html: TypedSlamElement;
+interface SlamComponentBase {
+  html: SlamElement;
   css?: CSSObject;
   js?: () => void;
 }
 
-export function CreateComponent<T>(componentFunction: (props: T) => SlamComponent): (props: T) => TypedSlamComponent;
-export function CreateComponent<T>(component: SlamComponent): TypedSlamComponent;
-export function CreateComponent<T>(arg1: ((props: T) => SlamComponent) | SlamComponent) {
+export function CreateComponent<T>(componentFunction: (props: T) => SlamComponentBase): (props: T) => SlamComponent;
+export function CreateComponent<T>(component: SlamComponentBase): SlamComponent;
+export function CreateComponent<T>(arg1: ((props: T) => SlamComponentBase) | SlamComponentBase) {
   if (typeof arg1 === "function") {
     return (props: T) => ({
       type: "component" as "component",
@@ -115,9 +115,9 @@ export function CreateComponent<T>(arg1: ((props: T) => SlamComponent) | SlamCom
   }
 }
 
-export function CreateElement<T>(elementFunction: (props: T) => SlamElement): (props: T) => TypedSlamElement;
-export function CreateElement<T>(element: SlamElement): TypedSlamElement;
-export function CreateElement<T>(arg1: ((props: T) => SlamElement) | SlamElement) {
+export function CreateElement<T>(elementFunction: (props: T) => SlamElementBase): (props: T) => SlamElement;
+export function CreateElement<T>(element: SlamElementBase): SlamElement;
+export function CreateElement<T>(arg1: ((props: T) => SlamElementBase) | SlamElementBase) {
   if (typeof arg1 === "function") {
     return (props: T) => ({
       type: "element" as "element",

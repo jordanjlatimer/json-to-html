@@ -1,13 +1,13 @@
 import { CSSObject } from "./baseInterfaces";
-import { TypedSlamElement, TypedSlamComponent, Child } from "./baseInterfaces";
+import { SlamElement, SlamComponent, Child } from "./baseInterfaces";
 interface Page {
     readonly type: "page";
     name: string;
-    html?: TypedSlamElement;
+    html?: SlamElement;
     css?: CSSObject;
     js?: () => void;
     components: {
-        [key: number]: TypedSlamComponent[];
+        [key: number]: SlamComponent[];
     };
     finalBuild: {
         html: string;
@@ -25,18 +25,18 @@ interface Page {
     }) => void;
 }
 export declare function CreatePage(name: string): Page;
-interface SlamElement {
+interface SlamElementBase {
     tag: string;
     atts?: any;
     children?: Child[];
 }
-interface SlamComponent {
-    html: TypedSlamElement;
+interface SlamComponentBase {
+    html: SlamElement;
     css?: CSSObject;
     js?: () => void;
 }
-export declare function CreateComponent<T>(componentFunction: (props: T) => SlamComponent): (props: T) => TypedSlamComponent;
-export declare function CreateComponent<T>(component: SlamComponent): TypedSlamComponent;
-export declare function CreateElement<T>(elementFunction: (props: T) => SlamElement): (props: T) => TypedSlamElement;
-export declare function CreateElement<T>(element: SlamElement): TypedSlamElement;
+export declare function CreateComponent<T>(componentFunction: (props: T) => SlamComponentBase): (props: T) => SlamComponent;
+export declare function CreateComponent<T>(component: SlamComponentBase): SlamComponent;
+export declare function CreateElement<T>(elementFunction: (props: T) => SlamElementBase): (props: T) => SlamElement;
+export declare function CreateElement<T>(element: SlamElementBase): SlamElement;
 export {};
