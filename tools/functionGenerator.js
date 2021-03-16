@@ -1,15 +1,16 @@
 const fs = require("fs");
 const path = require("path");
-const { elements } = require("./elements.js");
-const { childless } = require("./childlessElements.js");
+const { elements, childless } = require("./elements.js");
 
+let baseImports = 'import { Child, TypedSlamElement } from "./baseInterfaces";\n';
 let htmlImports = "import {";
 let svgImports = "import {";
-let functionsString = 'import { genElemString } from "./baseFunctions";';
+let functionsString = "";
 let firstSvg = true;
 
 Object.keys(elements).forEach((key, i) => {
-  const elementInterface = "Slam" + elements[key] + key.charAt(0).toUpperCase() + key.slice(1) + "Attributes";
+  const functionName = key + (key === "var" || key === "switch" ? "_" : "");
+  const elementInterface = elements[key] + functionName.charAt(0).toUpperCase() + functionName.slice(1) + "Attributes";
   const isChildless = childless.includes(key);
   elements[key] === "HTML"
     ? (htmlImports += (i === 0 ? " " : ", ") + elementInterface)
@@ -18,42 +19,28 @@ Object.keys(elements).forEach((key, i) => {
     : (svgImports += ", " + elementInterface);
   functionsString += "\n";
   if (isChildless) {
-    functionsString += "\nfunction " + key + "(atts?: " + elementInterface + "): string;";
-    functionsString += "\nfunction " + key + "(): string;";
-    functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + ") {";
-    functionsString += '\n  return genElemString("' + key + '", arg1, []);';
-    functionsString += "\n}";
+    functionsString += `export const ${functionName} = (arg1?: ${elementInterface}): TypedSlamElement => ({\n`;
+    functionsString += `  tag: "${key}",\n`;
+    functionsString += `  type: "element" as "element",\n`;
+    functionsString += `  atts: arg1,\n`;
+    functionsString += `  children: undefined\n`;
+    functionsString += `})\n`;
   } else {
-    functionsString += "\nfunction " + key + "(atts?: " + elementInterface + ", ...children: string[]): string;";
-    functionsString += "\nfunction " + key + "(...children: string[]): string;";
-    functionsString += "\nfunction " + key + "(): string;";
-    functionsString += "\nfunction " + key + "(arg1?: " + elementInterface + " | string, ...arg2: string[]) {";
-    functionsString += '\n  if (typeof arg1 === "string"){';
-    if (key === "html") {
-      functionsString +=
-        '\n    return "<!DOCTYPE html>" + genElemString("' + key + '", undefined, [arg1].concat(arg2));';
-      functionsString += "\n  } else {";
-      functionsString += '\n    return "<!DOCTYPE html>" + genElemString("' + key + '", arg1, arg2);';
-    } else {
-      functionsString += '\n    return genElemString("' + key + '", undefined, [arg1].concat(arg2));';
-      functionsString += "\n  } else {";
-      functionsString += '\n    return genElemString("' + key + '", arg1, arg2);';
-    }
-    functionsString += "\n  }";
-    functionsString += "\n}";
+    functionsString += `export const ${functionName} = (arg1?: ${elementInterface} | Child, ...arg2: Child[]): TypedSlamElement => {\n`;
+    functionsString += `  let arg1IsChild = (arg1?.hasOwnProperty("tag") || arg1?.hasOwnProperty("html") || typeof arg1 === "string")\n`;
+    functionsString += `  return {\n`;
+    functionsString += `    tag: "${key}",\n`;
+    functionsString += `    atts: arg1IsChild ? undefined : arg1,\n`;
+    functionsString += `    type: "element" as "element",\n`;
+    functionsString += `    children: arg1IsChild ? [arg1 as Child].concat(arg2) : arg2.length === 0 ? undefined : arg2\n`;
+    functionsString += `  }\n`;
+    functionsString += `}\n`;
   }
 });
 
 htmlImports += '} from "./htmlInterfaces"\n';
 svgImports += '} from "./svgInterfaces"\n';
-functionsString += "\n\nexport {";
 
-Object.keys(elements).forEach((key, i) => {
-  functionsString += (i === 0 ? " " : ", ") + key;
-});
-
-functionsString += " };";
-
-const finalString = htmlImports + svgImports + functionsString;
+const finalString = baseImports + htmlImports + svgImports + functionsString;
 
 fs.writeFileSync(path.resolve(__dirname, "../src/elementFunctions.ts"), finalString);

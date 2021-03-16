@@ -1,26 +1,26 @@
-import { SlamElementAttributes } from "./baseInterfaces";
-export interface SlamSVGElementAttributes extends SlamElementAttributes {
+import { ElementAttributes } from "./baseInterfaces";
+export interface SVGElementAttributes extends ElementAttributes {
 }
-export interface SlamSVGConditionalProcessingAttributes {
+export interface SVGConditionalProcessingAttributes {
     requiredExtensions?: string;
     systemLanguage?: string;
 }
-export interface SlamSVGPresentationAttributes {
+export interface SVGPresentationAttributes {
     "alignment-baseline"?: string;
     "baseline-shift"?: string;
     "clip-path"?: string;
     "clip-rule"?: string;
-    "color"?: string;
+    color?: string;
     "color-interpolation"?: string;
     "color-interpolation-filters"?: string;
     "color-rendering"?: string;
-    "cursor"?: string;
-    "direction"?: string;
-    "display"?: string;
+    cursor?: string;
+    direction?: string;
+    display?: string;
     "dominant-baseline"?: string;
     "fill-opacity"?: string;
     "fill-rule"?: string;
-    "filter"?: string;
+    filter?: string;
     "flood-color"?: string;
     "flood-opacity"?: string;
     "font-family"?: string;
@@ -38,15 +38,15 @@ export interface SlamSVGPresentationAttributes {
     "marker-end"?: string;
     "marker-mid"?: string;
     "marker-start"?: string;
-    "mask"?: string;
-    "opacity"?: string;
-    "overflow"?: string;
+    mask?: string;
+    opacity?: string;
+    overflow?: string;
     "paint-order"?: string;
     "pointer-events"?: string;
     "shape-rendering"?: string;
     "stop-color"?: string;
     "stop-opacity"?: string;
-    "stroke"?: string;
+    stroke?: string;
     "stroke-dasharray"?: string;
     "stroke-dashoffset"?: string;
     "stroke-linecap"?: string;
@@ -60,22 +60,22 @@ export interface SlamSVGPresentationAttributes {
     "text-rendering"?: string;
     "unicode-bidi"?: string;
     "vector-effect"?: string;
-    "visibility"?: string;
+    visibility?: string;
     "white-space"?: string;
     "word-spacing"?: string;
     "writing-mode"?: string;
 }
-export interface SlamSVGAnimationAdditionAttributes {
+export interface SVGAnimationAdditionAttributes {
     additive?: "replace" | "sum";
     accumulate?: "none" | "sum";
 }
-export interface SlamSVGAnimationTargetElementAttributes {
+export interface SVGAnimationTargetElementAttributes {
     href?: string;
 }
-export interface SlamSVGAnimationAttributeTargetAttributes {
+export interface SVGAnimationAttributeTargetAttributes {
     attributeName?: string;
 }
-export interface SlamSVGAnimationTimingAttributes {
+export interface SVGAnimationTimingAttributes {
     begin?: string;
     dur?: "media" | "indefinite" | string;
     end?: string;
@@ -86,7 +86,7 @@ export interface SlamSVGAnimationTimingAttributes {
     repeatDur?: "indefinite" | string;
     fill?: "freeze" | "remove";
 }
-export interface SlamSVGAnimationValueAttributes {
+export interface SVGAnimationValueAttributes {
     calcMode?: "discrete" | "linear" | "paced" | "spline";
     values?: string;
     keyTimes?: string;
@@ -95,14 +95,14 @@ export interface SlamSVGAnimationValueAttributes {
     to?: string;
     by?: string;
 }
-export interface SlamSVGFilterPrimitiveAttributes {
+export interface SVGFilterPrimitiveAttributes {
     x?: number | string;
     y?: number | string;
     width?: number | string;
     height?: number | string;
     result?: string;
 }
-export interface SlamSVGTransferFunctionElementAttributes {
+export interface SVGTransferFunctionElementAttributes {
     type?: "identity" | "table" | "discrete" | "linear" | "gamma";
     tableValues?: string;
     slope?: number;
@@ -111,7 +111,7 @@ export interface SlamSVGTransferFunctionElementAttributes {
     exponent?: number;
     offset?: number;
 }
-export interface SlamSVGAAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGAAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     href?: string;
     download?: string;
     hreflang?: string;
@@ -121,57 +121,57 @@ export interface SlamSVGAAttributes extends SlamSVGElementAttributes, SlamSVGCon
     target?: "_blank" | "_self" | "_parent" | "_top";
     type?: string;
 }
-export interface SlamSVGAnimateAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes, SlamSVGAnimationAdditionAttributes, SlamSVGAnimationTargetElementAttributes, SlamSVGAnimationAttributeTargetAttributes, SlamSVGAnimationTimingAttributes, SlamSVGAnimationValueAttributes {
+export interface SVGAnimateAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes, SVGAnimationAdditionAttributes, SVGAnimationTargetElementAttributes, SVGAnimationAttributeTargetAttributes, SVGAnimationTimingAttributes, SVGAnimationValueAttributes {
 }
-export interface SlamSVGAnimateMotionAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGAnimationAdditionAttributes, SlamSVGAnimationTargetElementAttributes, SlamSVGAnimationTimingAttributes, SlamSVGAnimationValueAttributes {
+export interface SVGAnimateMotionAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGAnimationAdditionAttributes, SVGAnimationTargetElementAttributes, SVGAnimationTimingAttributes, SVGAnimationValueAttributes {
     path?: string;
     keyPoints?: string;
     rotate?: "auto" | "auto-reverse" | number;
     origin?: "default";
 }
-export interface SlamSVGAnimateTransformAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGAnimationAdditionAttributes, SlamSVGAnimationTargetElementAttributes, SlamSVGAnimationAttributeTargetAttributes, SlamSVGAnimationTimingAttributes, SlamSVGAnimationValueAttributes {
+export interface SVGAnimateTransformAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGAnimationAdditionAttributes, SVGAnimationTargetElementAttributes, SVGAnimationAttributeTargetAttributes, SVGAnimationTimingAttributes, SVGAnimationValueAttributes {
     type?: "translate" | "scale" | "rotate" | "skewX" | "skewY";
 }
-export interface SlamSVGCircleAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGCircleAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     pathLength?: number;
     cx?: number;
     cy?: number;
     r?: number;
 }
-export interface SlamSVGClipPathAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGClipPathAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     externalResourcesRequired?: boolean;
     transform?: string;
     clipPathUnits?: "userSpaceOnUse" | "objectBoundingBox";
 }
-export interface SlamSVGDefsAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGDefsAttributes extends SVGElementAttributes, SVGPresentationAttributes {
 }
-export interface SlamSVGDescAttributes extends SlamSVGElementAttributes {
+export interface SVGDescAttributes extends SVGElementAttributes {
 }
-export interface SlamSVGDiscardAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes {
+export interface SVGDiscardAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes {
     begin?: string;
     href?: string;
 }
-export interface SlamSVGEllipseAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGConditionalProcessingAttributes {
+export interface SVGEllipseAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGConditionalProcessingAttributes {
     pathLength?: number;
     cx?: number;
     cy?: number;
     rx?: number;
     ry?: number;
 }
-export interface SlamSVGFeBlendAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeBlendAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     in2?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     mode?: "normal" | "multiply" | "screen" | "overlay" | "darken" | "lighten" | "color-dodge" | "color-burn" | "hard-light" | "soft-light" | "difference" | "exclusion" | "hue" | "saturation" | "color" | "luminosity";
 }
-export interface SlamSVGFeColorMatrixAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeColorMatrixAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     type?: "matrix" | "saturate" | "hueRotate" | "luminanceToAlpha";
     values?: string;
 }
-export interface SlamSVGFeComponentTransferAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeComponentTransferAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
 }
-export interface SlamSVGFeCompositeAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeCompositeAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     in2?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     operator?: "over" | "in" | "out" | "atop" | "xor" | "lighter" | "arithmetic";
@@ -180,7 +180,7 @@ export interface SlamSVGFeCompositeAttributes extends SlamSVGElementAttributes, 
     k3?: number;
     k4?: number;
 }
-export interface SlamSVGFeConvolveMatrixAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeConvolveMatrixAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     order?: string;
     kernelMatrix?: string;
@@ -192,79 +192,79 @@ export interface SlamSVGFeConvolveMatrixAttributes extends SlamSVGElementAttribu
     kernelUnitLength?: string;
     preserveAlpha?: boolean;
 }
-export interface SlamSVGFeDiffuseLightingAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeDiffuseLightingAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     surfaceScale?: number;
     diffuseConstant?: number;
     kernelUnitLength?: string;
 }
-export interface SlamSVGFeDisplacementMapAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeDisplacementMapAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     in2?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     scale?: number;
     xChannelSelector?: "R" | "G" | "B" | "A";
     yChannelSelector?: "R" | "G" | "B" | "A";
 }
-export interface SlamSVGFeDistantLightAttributes extends SlamSVGElementAttributes {
+export interface SVGFeDistantLightAttributes extends SVGElementAttributes {
     azimuth?: number;
     elevation?: number;
 }
-export interface SlamSVGFeDropShadowAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeDropShadowAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     stdDeviation?: string;
     dx?: number;
     dy?: number;
 }
-export interface SlamSVGFeFloodAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeFloodAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
 }
-export interface SlamSVGFeFuncAAttributes extends SlamSVGElementAttributes, SlamSVGTransferFunctionElementAttributes {
+export interface SVGFeFuncAAttributes extends SVGElementAttributes, SVGTransferFunctionElementAttributes {
 }
-export interface SlamSVGFeFuncBAttributes extends SlamSVGElementAttributes, SlamSVGTransferFunctionElementAttributes {
+export interface SVGFeFuncBAttributes extends SVGElementAttributes, SVGTransferFunctionElementAttributes {
 }
-export interface SlamSVGFeFuncGAttributes extends SlamSVGElementAttributes, SlamSVGTransferFunctionElementAttributes {
+export interface SVGFeFuncGAttributes extends SVGElementAttributes, SVGTransferFunctionElementAttributes {
 }
-export interface SlamSVGFeFuncRAttributes extends SlamSVGElementAttributes, SlamSVGTransferFunctionElementAttributes {
+export interface SVGFeFuncRAttributes extends SVGElementAttributes, SVGTransferFunctionElementAttributes {
 }
-export interface SlamSVGFeGaussianBlurAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeGaussianBlurAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     stdDeviation?: string;
     edgeMode?: "duplicate" | "wrap" | "none";
 }
-export interface SlamSVGFeImageAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
-    "externalResourcesRequired"?: boolean;
-    "preserveAspectRatio"?: string;
+export interface SVGFeImageAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
+    externalResourcesRequired?: boolean;
+    preserveAspectRatio?: string;
     "xlink:href"?: string;
-    "href"?: string;
-    "crossorigin"?: "anonymous" | "use-credentials";
+    href?: string;
+    crossorigin?: "anonymous" | "use-credentials";
 }
-export interface SlamSVGFeMergeAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeMergeAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
 }
-export interface SlamSVGFeMergeNodeAttributes extends SlamSVGElementAttributes {
+export interface SVGFeMergeNodeAttributes extends SVGElementAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
 }
-export interface SlamSVGFeMorphologyAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeMorphologyAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     operator?: "erode" | "dilate";
     radius?: string;
 }
-export interface SlamSVGFeOffsetAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeOffsetAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     dx?: number;
     dy?: number;
 }
-export interface SlamSVGFePointLightAttributes extends SlamSVGElementAttributes {
+export interface SVGFePointLightAttributes extends SVGElementAttributes {
     x?: number;
     y?: number;
     z?: number;
 }
-export interface SlamSVGFeSpecularLightingAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeSpecularLightingAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
     surfaceScale?: number;
     specularConstant?: number;
     specularExponent?: number;
     kernelUnitLength?: string;
 }
-export interface SlamSVGFeSpotLightAttributes extends SlamSVGElementAttributes {
+export interface SVGFeSpotLightAttributes extends SVGElementAttributes {
     x?: number;
     y?: number;
     z?: number;
@@ -274,17 +274,17 @@ export interface SlamSVGFeSpotLightAttributes extends SlamSVGElementAttributes {
     specularExponent?: number;
     limitingConeAngle?: number;
 }
-export interface SlamSVGFeTileAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeTileAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     in?: "SourceGraphic" | "SourceAlpha" | "BackgroundImage" | "BackgroundAlpha" | "FillPaint" | "StrokePaint" | string;
 }
-export interface SlamSVGFeTurbulenceAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes, SlamSVGFilterPrimitiveAttributes {
+export interface SVGFeTurbulenceAttributes extends SVGElementAttributes, SVGPresentationAttributes, SVGFilterPrimitiveAttributes {
     baseFrequency?: string;
     numOctaves?: number;
     seed?: number;
     stitchTiles?: "stitch" | "noStitch";
     type?: "fractalNoise" | "turbulence";
 }
-export interface SlamSVGFilterAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGFilterAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     externalResourcesRequired?: boolean;
     x?: number | string;
     y?: number | string;
@@ -293,15 +293,15 @@ export interface SlamSVGFilterAttributes extends SlamSVGElementAttributes, SlamS
     filterUnits?: "userSpaceOnUse" | "objectBoundingBox";
     primitiveUnits?: "userSpaceOnUse" | "objectBoundingBox";
 }
-export interface SlamSVGForeignObjectAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGForeignObjectAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     x?: number | string;
     y?: number | string;
     width?: number | string;
     height?: number | string;
 }
-export interface SlamSVGGAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGGAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
 }
-export interface SlamSVGImageAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGImageAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     preserveAspectRatio?: string;
     href?: string;
     crossOrigin?: "anonymous" | "use-credentials";
@@ -310,14 +310,14 @@ export interface SlamSVGImageAttributes extends SlamSVGElementAttributes, SlamSV
     width?: number | string;
     height?: number | string;
 }
-export interface SlamSVGLineAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGLineAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     pathLength?: number;
     x1?: string;
     x2?: string;
     y1?: string;
     y2?: string;
 }
-export interface SlamSVGLinearGradientAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGLinearGradientAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     x1?: string;
     x2?: string;
     y1?: string;
@@ -327,7 +327,7 @@ export interface SlamSVGLinearGradientAttributes extends SlamSVGElementAttribute
     spreadMethod?: "pad" | "reflect" | "repeat";
     href?: string;
 }
-export interface SlamSVGMarkerAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGMarkerAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     viewBox?: string;
     preserveAspectRatio?: string;
     refX?: "left" | "center" | "right" | string | number;
@@ -337,7 +337,7 @@ export interface SlamSVGMarkerAttributes extends SlamSVGElementAttributes, SlamS
     markerHeight?: string | number;
     orient?: "auto" | "auto-start-reverse" | string | number;
 }
-export interface SlamSVGMaskAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGMaskAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     x?: number | string;
     y?: number | string;
     width?: number | string;
@@ -345,16 +345,16 @@ export interface SlamSVGMaskAttributes extends SlamSVGElementAttributes, SlamSVG
     maskUnits?: "userSpaceOnUse" | "objectBoundingBox";
     maskContentUnits?: "userSpaceOnUse" | "objectBoundingBox";
 }
-export interface SlamSVGMetadataAttributes extends SlamSVGElementAttributes {
+export interface SVGMetadataAttributes extends SVGElementAttributes {
 }
-export interface SlamSVGMpathAttributes extends SlamSVGElementAttributes {
+export interface SVGMpathAttributes extends SVGElementAttributes {
     href?: string;
 }
-export interface SlamSVGPathAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGPathAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     pathLength?: number;
     d?: string;
 }
-export interface SlamSVGPatternAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGPatternAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     viewBox?: string;
     preserveAspectRatio?: string;
     x?: number | string;
@@ -366,13 +366,13 @@ export interface SlamSVGPatternAttributes extends SlamSVGElementAttributes, Slam
     patternTransform?: string;
     href?: string;
 }
-export interface SlamSVGPolygonAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGPolygonAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     pathLength?: number;
     points?: string;
 }
-export interface SlamSVGPolylineAttributes extends SlamSVGPolygonAttributes {
+export interface SVGPolylineAttributes extends SVGPolygonAttributes {
 }
-export interface SlamSVGRadialGradientAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGRadialGradientAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     cx?: number | string;
     cy?: number | string;
     r?: number | string;
@@ -384,7 +384,7 @@ export interface SlamSVGRadialGradientAttributes extends SlamSVGElementAttribute
     spreadMethod?: "pad" | "reflect" | "repeat";
     href?: string;
 }
-export interface SlamSVGRectAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGRectAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     pathLength?: number;
     x?: number | string;
     y?: number | string;
@@ -393,18 +393,18 @@ export interface SlamSVGRectAttributes extends SlamSVGElementAttributes, SlamSVG
     rx?: number | string;
     ry?: number | string;
 }
-export interface SlamSVGSetAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGAnimationTargetElementAttributes, SlamSVGAnimationAttributeTargetAttributes, SlamSVGAnimationTimingAttributes {
+export interface SVGSetAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGAnimationTargetElementAttributes, SVGAnimationAttributeTargetAttributes, SVGAnimationTimingAttributes {
     to?: string;
 }
-export interface SlamSVGStopAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGStopAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     offset?: number | string;
 }
-export interface SlamSVGStyleAttributes extends SlamSVGElementAttributes {
+export interface SVGStyleAttributes extends SVGElementAttributes {
     type?: string;
     media?: string;
     title?: string;
 }
-export interface SlamSVGSvgAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGSvgAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     viewBox?: string;
     preserveAspectRatio?: string;
     zoomAndPan?: "disable" | "magnify";
@@ -414,9 +414,9 @@ export interface SlamSVGSvgAttributes extends SlamSVGElementAttributes, SlamSVGC
     width?: number | string;
     height?: number | string;
 }
-export interface SlamSVGSwitch_Attributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGSwitch_Attributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
 }
-export interface SlamSVGSymbolAttributes extends SlamSVGElementAttributes, SlamSVGPresentationAttributes {
+export interface SVGSymbolAttributes extends SVGElementAttributes, SVGPresentationAttributes {
     viewBox?: string;
     preserveAspectRatio?: string;
     refX?: "left" | "center" | "right" | string | number;
@@ -426,7 +426,7 @@ export interface SlamSVGSymbolAttributes extends SlamSVGElementAttributes, SlamS
     width?: number | string;
     height?: number | string;
 }
-export interface SlamSVGTextAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGTextAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     lengthAdjust?: "spacing" | "spacingAndGlyphs";
     x?: number | string;
     y?: number | string;
@@ -435,7 +435,7 @@ export interface SlamSVGTextAttributes extends SlamSVGElementAttributes, SlamSVG
     rotate?: string;
     textLength?: string;
 }
-export interface SlamSVGTextPathAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGTextPathAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     lengthAdjust?: "spacing" | "spacingAndGlyphs";
     textLength?: string;
     path?: string;
@@ -445,20 +445,20 @@ export interface SlamSVGTextPathAttributes extends SlamSVGElementAttributes, Sla
     spacing?: "auto" | "exact";
     side?: "left" | "right";
 }
-export interface SlamSVGTitleAttributes extends SlamSVGElementAttributes {
+export interface SVGTitleAttributes extends SVGElementAttributes {
 }
-export interface SlamSVGTspanAttributes extends SlamSVGTextAttributes {
+export interface SVGTspanAttributes extends SVGTextAttributes {
 }
-export interface SlamSVGUnknownAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGUnknownAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
 }
-export interface SlamSVGUseAttributes extends SlamSVGElementAttributes, SlamSVGConditionalProcessingAttributes, SlamSVGPresentationAttributes {
+export interface SVGUseAttributes extends SVGElementAttributes, SVGConditionalProcessingAttributes, SVGPresentationAttributes {
     href?: string;
     x?: number | string;
     y?: number | string;
     width?: number | string;
     height?: number | string;
 }
-export interface SlamSVGViewAttributes extends SlamSVGElementAttributes {
+export interface SVGViewAttributes extends SVGElementAttributes {
     viewBox?: string;
     preserveAspectRatio?: string;
     zoomAndPan?: "disable" | "magnify";

@@ -9,5 +9,10 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CreateElement = exports.CreateComponent = exports.CreatePage = void 0;
 __exportStar(require("./elementFunctions"), exports);
+var page_1 = require("./page");
+Object.defineProperty(exports, "CreatePage", { enumerable: true, get: function () { return page_1.CreatePage; } });
+Object.defineProperty(exports, "CreateComponent", { enumerable: true, get: function () { return page_1.CreateComponent; } });
+Object.defineProperty(exports, "CreateElement", { enumerable: true, get: function () { return page_1.CreateElement; } });

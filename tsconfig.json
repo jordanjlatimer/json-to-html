@@ -4,7 +4,7 @@
     "moduleResolution": "node",
     "lib": ["ES2016"],
     "strict": true,
-    "target": "ES3",
+    "target": "ES5",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",

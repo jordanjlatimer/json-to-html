@@ -1,4 +1,4 @@
-const elements = {
+exports.elements = {
   abbr: "HTML",
   address: "HTML",
   area: "HTML",
@@ -106,7 +106,7 @@ const elements = {
   track: "HTML",
   u: "HTML",
   ul: "HTML",
-  var_: "HTML",
+  var: "HTML",
   video: "HTML",
   wbr: "HTML",
   a: "SVG",
@@ -163,7 +163,7 @@ const elements = {
   set: "SVG",
   stop: "SVG",
   svg: "SVG",
-  switch_: "SVG",
+  switch: "SVG",
   symbol: "SVG",
   text: "SVG",
   textPath: "SVG",
@@ -173,4 +173,28 @@ const elements = {
   view: "SVG",
 };
 
-exports.elements = elements;
+exports.childless = [
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr",
+  "circle",
+  "ellipse",
+  "line",
+  "path",
+  "polygon",
+  "polyline",
+  "rect",
+  "stop",
+  "use",
+];
