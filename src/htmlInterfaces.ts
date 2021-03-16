@@ -1,6 +1,6 @@
-import { SlamElementAttributes } from "./baseInterfaces";
+import { ElementAttributes } from "./baseInterfaces";
 
-export interface SlamHTMLElementAttributes extends SlamElementAttributes {
+export interface HTMLElementAttributes extends ElementAttributes {
   accesskey?: string;
   autocapitalize?: "on" | "off" | "none" | "sentences" | "words" | "characters";
   contenteditable?: string;
@@ -16,11 +16,11 @@ export interface SlamHTMLElementAttributes extends SlamElementAttributes {
   translate?: "yes" | "no";
 }
 
-export interface SlamHTMLAbbrAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLAbbrAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLAddressAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLAddressAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLAreaAttributes extends SlamHTMLElementAttributes {
+export interface HTMLAreaAttributes extends HTMLElementAttributes {
   href?: string;
   alt?: string;
   coords?: string;
@@ -39,11 +39,11 @@ export interface SlamHTMLAreaAttributes extends SlamHTMLElementAttributes {
   shape?: "circle" | "default" | "poly" | "rect";
 }
 
-export interface SlamHTMLArticleAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLArticleAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLAsideAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLAsideAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLAudioAttributes extends SlamHTMLElementAttributes {
+export interface HTMLAudioAttributes extends HTMLElementAttributes {
   autoplay?: boolean;
   controls?: boolean;
   crossorigin?: "anonymous" | "use-credentials";
@@ -53,26 +53,26 @@ export interface SlamHTMLAudioAttributes extends SlamHTMLElementAttributes {
   src?: string;
 }
 
-export interface SlamHTMLBAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLBAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLBaseAttributes extends SlamHTMLElementAttributes {
+export interface HTMLBaseAttributes extends HTMLElementAttributes {
   href?: string;
   target?: "_blank" | "_self" | "_parent" | "_top";
 }
 
-export interface SlamHTMLBdiAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLBdiAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLBdoAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLBdoAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLBlockquoteAttributes extends SlamHTMLElementAttributes {
+export interface HTMLBlockquoteAttributes extends HTMLElementAttributes {
   cite?: string;
 }
 
-export interface SlamHTMLBodyAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLBodyAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLBrAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLBrAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLButtonAttributes extends SlamHTMLElementAttributes {
+export interface HTMLButtonAttributes extends HTMLElementAttributes {
   disabled?: boolean;
   form?: string;
   formaction?: string;
@@ -85,112 +85,112 @@ export interface SlamHTMLButtonAttributes extends SlamHTMLElementAttributes {
   value?: string;
 }
 
-export interface SlamHTMLCanvasAttributes extends SlamHTMLElementAttributes {
+export interface HTMLCanvasAttributes extends HTMLElementAttributes {
   width?: number;
   height?: number;
 }
 
-export interface SlamHTMLCaptionAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLCaptionAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLCiteAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLCiteAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLCodeAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLCodeAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLColAttributes extends SlamHTMLElementAttributes {
+export interface HTMLColAttributes extends HTMLElementAttributes {
   span?: number;
 }
 
-export interface SlamHTMLColgroupAttributes extends SlamHTMLElementAttributes {
+export interface HTMLColgroupAttributes extends HTMLElementAttributes {
   span?: number;
 }
 
-export interface SlamHTMLDataAttributes extends SlamHTMLElementAttributes {
+export interface HTMLDataAttributes extends HTMLElementAttributes {
   value?: string;
 }
 
-export interface SlamHTMLDatalistAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLDatalistAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLDdAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLDdAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLDelAttributes extends SlamHTMLElementAttributes {
+export interface HTMLDelAttributes extends HTMLElementAttributes {
   cite?: string;
   datetime?: string;
 }
 
-export interface SlamHTMLDetailsAttributes extends SlamHTMLElementAttributes {
+export interface HTMLDetailsAttributes extends HTMLElementAttributes {
   open?: boolean;
 }
 
-export interface SlamHTMLDfnAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLDfnAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLDialogAttributes extends SlamHTMLElementAttributes {
+export interface HTMLDialogAttributes extends HTMLElementAttributes {
   open?: boolean;
 }
 
-export interface SlamHTMLDivAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLDivAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLDlAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLDlAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLDtAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLDtAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLEmAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLEmAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLEmbedAttributes extends SlamHTMLElementAttributes {
+export interface HTMLEmbedAttributes extends HTMLElementAttributes {
   height?: string;
   src?: string;
   type?: string;
   width?: string;
 }
 
-export interface SlamHTMLFieldsetAttributes extends SlamHTMLElementAttributes {
+export interface HTMLFieldsetAttributes extends HTMLElementAttributes {
   disabled?: boolean;
   form?: string;
   name?: string;
 }
 
-export interface SlamHTMLFigcaptionAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLFigcaptionAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLFigureAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLFigureAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLFooterAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLFooterAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLFormAttributes extends SlamHTMLElementAttributes {
+export interface HTMLFormAttributes extends HTMLElementAttributes {
   "accept-charset"?: string;
-  "action"?: string;
-  "autocomplete"?: "on" | "off";
-  "enctype"?: "application/x-www-form-urlencoded" | "multipart/form-data" | "text/plain";
-  "method"?: "GET" | "POST" | "dialog";
-  "name"?: string;
-  "novalidate"?: boolean;
-  "target"?: "_blank" | "_self" | "_parent" | "_top";
-  "rel"?: string;
+  action?: string;
+  autocomplete?: "on" | "off";
+  enctype?: "application/x-www-form-urlencoded" | "multipart/form-data" | "text/plain";
+  method?: "GET" | "POST" | "dialog";
+  name?: string;
+  novalidate?: boolean;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
 }
 
-export interface SlamHTMLH1Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLH1Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLH2Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLH2Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLH3Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLH3Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLH4Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLH4Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLH5Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLH5Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLH6Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLH6Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLHeadAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLHeadAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLHeaderAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLHeaderAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLHgroupAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLHgroupAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLHrAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLHrAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLHtmlAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLHtmlAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLIAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLIAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLIframeAttributes extends SlamHTMLElementAttributes {
+export interface HTMLIframeAttributes extends HTMLElementAttributes {
   allow?: string;
   allowfullscreen?: boolean;
   height?: string;
@@ -211,7 +211,7 @@ export interface SlamHTMLIframeAttributes extends SlamHTMLElementAttributes {
   width?: string;
 }
 
-export interface SlamHTMLImgAttributes extends SlamHTMLElementAttributes {
+export interface HTMLImgAttributes extends HTMLElementAttributes {
   alt?: string;
   crossorigin?: "anonymous" | "use-credentials";
   decoding?: "sync" | "async" | "auto";
@@ -234,7 +234,7 @@ export interface SlamHTMLImgAttributes extends SlamHTMLElementAttributes {
   width?: number;
 }
 
-export interface SlamHTMLInputAttributes extends SlamHTMLElementAttributes {
+export interface HTMLInputAttributes extends HTMLElementAttributes {
   accept?: string;
   alt?: string;
   autocomplete?: string;
@@ -289,24 +289,24 @@ export interface SlamHTMLInputAttributes extends SlamHTMLElementAttributes {
   width?: number;
 }
 
-export interface SlamHTMLInsAttributes extends SlamHTMLElementAttributes {
+export interface HTMLInsAttributes extends HTMLElementAttributes {
   cite?: string;
   datetime?: string;
 }
 
-export interface SlamHTMLKbdAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLKbdAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLLabelAttributes extends SlamHTMLElementAttributes {
+export interface HTMLLabelAttributes extends HTMLElementAttributes {
   for?: string;
 }
 
-export interface SlamHTMLLegendAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLLegendAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLLiAttributes extends SlamHTMLElementAttributes {
+export interface HTMLLiAttributes extends HTMLElementAttributes {
   value?: number;
 }
 
-export interface SlamHTMLLinkAttributes extends SlamHTMLElementAttributes {
+export interface HTMLLinkAttributes extends HTMLElementAttributes {
   as?: string;
   color?: string;
   crossorigin?: "anonymous" | "use-credentials";
@@ -331,26 +331,26 @@ export interface SlamHTMLLinkAttributes extends SlamHTMLElementAttributes {
   type?: string;
 }
 
-export interface SlamHTMLMainAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLMainAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLMapAttributes extends SlamHTMLElementAttributes {
+export interface HTMLMapAttributes extends HTMLElementAttributes {
   name?: string;
 }
 
-export interface SlamHTMLMarkAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLMarkAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLMenuAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLMenuAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLLegendAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLLegendAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLMetaAttributes extends SlamHTMLElementAttributes {
-  "charset"?: "utf-8";
-  "content"?: string;
+export interface HTMLMetaAttributes extends HTMLElementAttributes {
+  charset?: "utf-8";
+  content?: string;
   "http-equiv"?: "content-type" | "default-style" | "refresh" | "x-ua-compatible" | "content-security-policy";
-  "name"?: string;
+  name?: string;
 }
 
-export interface SlamHTMLMeterAttributes extends SlamHTMLElementAttributes {
+export interface HTMLMeterAttributes extends HTMLElementAttributes {
   high?: number;
   low?: number;
   max?: number;
@@ -359,11 +359,11 @@ export interface SlamHTMLMeterAttributes extends SlamHTMLElementAttributes {
   value?: number;
 }
 
-export interface SlamHTMLNavAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLNavAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLNoscriptAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLNoscriptAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLObjectAttributes extends SlamHTMLElementAttributes {
+export interface HTMLObjectAttributes extends HTMLElementAttributes {
   data?: string;
   form?: string;
   height?: string;
@@ -373,61 +373,61 @@ export interface SlamHTMLObjectAttributes extends SlamHTMLElementAttributes {
   width?: string;
 }
 
-export interface SlamHTMLOlAttributes extends SlamHTMLElementAttributes {
+export interface HTMLOlAttributes extends HTMLElementAttributes {
   reversed?: boolean;
   start?: number;
   type?: "1" | "a" | "A" | "i" | "I";
 }
 
-export interface SlamHTMLOptgroupAttributes extends SlamHTMLElementAttributes {
+export interface HTMLOptgroupAttributes extends HTMLElementAttributes {
   disabled?: boolean;
   label?: string;
 }
 
-export interface SlamHTMLOptionAttributes extends SlamHTMLElementAttributes {
+export interface HTMLOptionAttributes extends HTMLElementAttributes {
   disabled?: boolean;
   label?: string;
   selected?: boolean;
   value?: string;
 }
 
-export interface SlamHTMLOutputAttributes extends SlamHTMLElementAttributes {
+export interface HTMLOutputAttributes extends HTMLElementAttributes {
   for?: string;
   form?: string;
   name?: string;
 }
 
-export interface SlamHTMLPAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLPAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLParamAttributes extends SlamHTMLElementAttributes {
+export interface HTMLParamAttributes extends HTMLElementAttributes {
   name?: string;
   value?: string;
 }
 
-export interface SlamHTMLPictureAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLPictureAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLPreAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLPreAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLProgressAttributes extends SlamHTMLElementAttributes {
+export interface HTMLProgressAttributes extends HTMLElementAttributes {
   value?: number;
   max?: number;
 }
 
-export interface SlamHTMLQAttributes extends SlamHTMLElementAttributes {
+export interface HTMLQAttributes extends HTMLElementAttributes {
   cite?: string;
 }
 
-export interface SlamHTMLRpAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLRpAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLRtAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLRtAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLRubyAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLRubyAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLSAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLSampAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSampAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLScriptAttributes extends SlamHTMLElementAttributes {
+export interface HTMLScriptAttributes extends HTMLElementAttributes {
   async?: boolean;
   crossorigin?: "anonymous" | "use-credentials";
   defer?: boolean;
@@ -446,9 +446,9 @@ export interface SlamHTMLScriptAttributes extends SlamHTMLElementAttributes {
   type?: "module" | string;
 }
 
-export interface SlamHTMLSectionAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSectionAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLSelectAttributes extends SlamHTMLElementAttributes {
+export interface HTMLSelectAttributes extends HTMLElementAttributes {
   autocomplete?: string;
   disabled?: boolean;
   form?: string;
@@ -458,13 +458,13 @@ export interface SlamHTMLSelectAttributes extends SlamHTMLElementAttributes {
   size?: number;
 }
 
-export interface SlamHTMLSlotAttributes extends SlamHTMLElementAttributes {
+export interface HTMLSlotAttributes extends HTMLElementAttributes {
   name?: string;
 }
 
-export interface SlamHTMLSmallAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSmallAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLSourceAttributes extends SlamHTMLElementAttributes {
+export interface HTMLSourceAttributes extends HTMLElementAttributes {
   media?: string;
   sizes?: string;
   src?: string;
@@ -472,33 +472,33 @@ export interface SlamHTMLSourceAttributes extends SlamHTMLElementAttributes {
   type?: string;
 }
 
-export interface SlamHTMLSpanAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSpanAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLStrongAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLStrongAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLStyleAttributes extends SlamHTMLElementAttributes {
+export interface HTMLStyleAttributes extends HTMLElementAttributes {
   media?: string;
 }
 
-export interface SlamHTMLSubAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSubAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLSummaryAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSummaryAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLSupAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLSupAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTableAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTableAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTbodyAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTbodyAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTdAttributes extends SlamHTMLElementAttributes {
+export interface HTMLTdAttributes extends HTMLElementAttributes {
   colspan?: number;
   rowspan?: number;
   headers?: string;
 }
 
-export interface SlamHTMLTemplateAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTemplateAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTextareaAttributes extends SlamHTMLElementAttributes {
+export interface HTMLTextareaAttributes extends HTMLElementAttributes {
   autocomplete?: string;
   cols?: number;
   dirname?: string;
@@ -514,9 +514,9 @@ export interface SlamHTMLTextareaAttributes extends SlamHTMLElementAttributes {
   wrap?: "soft" | "hard";
 }
 
-export interface SlamHTMLTfootAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTfootAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLThAttributes extends SlamHTMLElementAttributes {
+export interface HTMLThAttributes extends HTMLElementAttributes {
   abbr?: string;
   colspan?: number;
   rowspan?: number;
@@ -524,17 +524,17 @@ export interface SlamHTMLThAttributes extends SlamHTMLElementAttributes {
   scope?: "row" | "col" | "rowgroup" | "colgroup";
 }
 
-export interface SlamHTMLTheadAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTheadAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTimeAttributes extends SlamHTMLElementAttributes {
+export interface HTMLTimeAttributes extends HTMLElementAttributes {
   datetime?: string;
 }
 
-export interface SlamHTMLTitleAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTitleAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTrAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLTrAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLTrackAttributes extends SlamHTMLElementAttributes {
+export interface HTMLTrackAttributes extends HTMLElementAttributes {
   default?: boolean;
   kind?: "subtitles" | "captions" | "descriptions" | "chapters" | "metadata";
   label?: string;
@@ -542,13 +542,13 @@ export interface SlamHTMLTrackAttributes extends SlamHTMLElementAttributes {
   srclang?: string;
 }
 
-export interface SlamHTMLUAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLUAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLUlAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLUlAttributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLVar_Attributes extends SlamHTMLElementAttributes {}
+export interface HTMLVar_Attributes extends HTMLElementAttributes {}
 
-export interface SlamHTMLVideoAttributes extends SlamHTMLElementAttributes {
+export interface HTMLVideoAttributes extends HTMLElementAttributes {
   autoplay?: boolean;
   controls?: boolean;
   crossorigin?: "anonymous" | "use-credentials";
@@ -562,4 +562,4 @@ export interface SlamHTMLVideoAttributes extends SlamHTMLElementAttributes {
   width?: number;
 }
 
-export interface SlamHTMLWbrAttributes extends SlamHTMLElementAttributes {}
+export interface HTMLWbrAttributes extends HTMLElementAttributes {}
