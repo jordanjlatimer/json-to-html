@@ -1,22 +1,8 @@
-import { CSSObject } from "./baseInterfaces";
-import { SlamElement, SlamComponent, Child } from "./baseInterfaces";
+import { SlamElement, SlamComponent, Child, CSSObject } from "./slamInterfaces";
 export interface Page {
-    readonly type: "page";
-    name: string;
-    html: SlamElement;
-    css?: CSSObject;
-    js?: () => void;
-    components: {
-        [key: number]: SlamComponent[];
-    };
-    finalBuild: {
-        html: string;
-        css: string;
-        js: string;
-    };
-    buildHtml: () => void;
-    buildCss: () => void;
-    buildJs: () => void;
+    html: string;
+    css: string;
+    js: string;
     buildAll: () => void;
     writeFiles: (paths?: {
         htmlPath?: string;

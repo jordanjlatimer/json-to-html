@@ -1,5 +1,5 @@
 import { Properties as CSSProperties } from "csstype";
-import { ElementAttributes } from "./baseInterfaces";
+import { ElementAttributes } from "./baseInterface";
 
 export const toKebabCase = (value: string) => {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");

@@ -16,50 +16,41 @@ var generateCss_1 = require("./generateCss");
 var builders_1 = require("./builders");
 var fs = require("fs");
 function CreatePage(config) {
+    var components = {};
     var page = {
-        get type() {
-            return "page";
-        },
-        name: config.name,
-        html: config.html,
-        css: config.css,
-        js: config.js,
-        components: {},
-        finalBuild: {
-            html: "<!DOCTYPE html>",
-            css: "",
-            js: "",
-        },
-        buildHtml: function () {
-            page.finalBuild.html = page.html ? builders_1.buildHtmlFromObject(page.html, page.components) : "";
-        },
-        buildCss: function () {
-            page.components = page.html ? builders_1.identifyComponents(page.html) : {};
-            page.finalBuild.css = page.css ? generateCss_1.buildCssFromObject("html", page.css) : "";
-            Object.keys(page.components).forEach(function (key) {
-                var css = page.components[parseInt(key)][0].css;
-                page.finalBuild.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";
-            });
-        },
-        buildJs: function () {
-            page.finalBuild.js = page.js ? "(" + page.js + ")()" : "";
-            Object.keys(page.components).forEach(function (key) {
-                var js = page.components[parseInt(key)][0].js;
-                page.finalBuild.js += js ? "(" + js + ")()" : "";
-            });
-        },
+        html: "<!DOCTYPE html>",
+        css: "",
+        js: "",
         buildAll: function () {
-            page.buildCss();
-            page.buildJs();
-            page.buildHtml();
-            page.finalBuild.html = page.finalBuild.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
-            page.finalBuild.html = page.finalBuild.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
+            buildCss();
+            buildJs();
+            buildHtml();
+            page.html = page.html.replace("</head>", "<link rel=stylesheet href=\"./" + config.name + ".css\"/></head>\n");
+            page.html = page.html.replace("</body>", "<script src=\"./" + config.name + ".js\"></script></body>\n");
         },
         writeFiles: function (paths) {
-            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.htmlPath) ? paths.htmlPath : "./" + page.name + ".html", page.finalBuild.html);
-            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.cssPath) ? paths.cssPath : "./" + page.name + ".css", page.finalBuild.css);
-            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.jsPath) ? paths.jsPath : "./" + page.name + ".js", page.finalBuild.js);
+            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.htmlPath) ? paths.htmlPath : "./" + config.name + ".html", page.html);
+            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.cssPath) ? paths.cssPath : "./" + config.name + ".css", page.css);
+            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.jsPath) ? paths.jsPath : "./" + config.name + ".js", page.js);
         },
+    };
+    var buildHtml = function () {
+        page.html = config.html ? builders_1.buildHtmlFromObject(config.html, components) : "";
+    };
+    var buildCss = function () {
+        components = config.html ? builders_1.identifyComponents(config.html) : {};
+        page.css = config.css ? generateCss_1.buildCssFromObject("html", config.css) : "";
+        Object.keys(components).forEach(function (key) {
+            var css = components[parseInt(key)][0].css;
+            page.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";
+        });
+    };
+    var buildJs = function () {
+        page.js = page.js ? "(" + page.js + ")()" : "";
+        Object.keys(components).forEach(function (key) {
+            var js = components[parseInt(key)][0].js;
+            page.js += js ? "(" + js + ")()" : "";
+        });
     };
     return page;
 }

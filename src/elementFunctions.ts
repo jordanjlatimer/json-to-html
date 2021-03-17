@@ -1,4 +1,4 @@
-import { Child, SlamElement } from "./baseInterfaces";
+import { Child, SlamElement } from "./slamInterfaces";
 import {
   HTMLAbbrAttributes,
   HTMLAddressAttributes,

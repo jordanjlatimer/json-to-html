@@ -1,4 +1,4 @@
-import { ElementAttributes } from "./baseInterfaces";
+import { ElementAttributes } from "./baseInterface";
 export declare const toKebabCase: (value: string) => string;
 export declare function noChildren(tag: string): boolean;
 export declare function parseAtts<T extends ElementAttributes>(atts: T): string;

@@ -1,26 +1,12 @@
 import { buildCssFromObject } from "./generateCss";
-import { CSSObject } from "./baseInterfaces";
 import { buildHtmlFromObject, identifyComponents } from "./builders";
 import * as fs from "fs";
-import { SlamElement, SlamComponent, Child } from "./baseInterfaces";
+import { SlamElement, SlamComponent, Child, Identification, CSSObject } from "./slamInterfaces";
 
 export interface Page {
-  readonly type: "page";
-  name: string;
-  html: SlamElement;
-  css?: CSSObject;
-  js?: () => void;
-  components: {
-    [key: number]: SlamComponent[];
-  };
-  finalBuild: {
-    html: string;
-    css: string;
-    js: string;
-  };
-  buildHtml: () => void;
-  buildCss: () => void;
-  buildJs: () => void;
+  html: string;
+  css: string;
+  js: string;
   buildAll: () => void;
   writeFiles: (paths?: { htmlPath?: string; cssPath?: string; jsPath?: string }) => void;
 }
@@ -33,57 +19,46 @@ interface PageConfig {
 }
 
 export function CreatePage(config: PageConfig): Page {
+  let components: Identification = {};
   const page: Page = {
-    get type(): "page" {
-      return "page";
-    },
-    name: config.name,
-    html: config.html,
-    css: config.css,
-    js: config.js,
-    components: {},
-    finalBuild: {
-      html: "<!DOCTYPE html>",
-      css: "",
-      js: "",
-    },
-    buildHtml: () => {
-      page.finalBuild.html = page.html ? buildHtmlFromObject(page.html, page.components) : "";
-    },
-    buildCss: () => {
-      page.components = page.html ? identifyComponents(page.html) : {};
-      page.finalBuild.css = page.css ? buildCssFromObject("html", page.css) : "";
-      Object.keys(page.components).forEach(key => {
-        let css = page.components[parseInt(key)][0].css;
-        page.finalBuild.css += css ? buildCssFromObject(`.c${key}`, css) : "";
-      });
-    },
-    buildJs: () => {
-      page.finalBuild.js = page.js ? `(${page.js})()` : "";
-      Object.keys(page.components).forEach(key => {
-        let js = page.components[parseInt(key)][0].js;
-        page.finalBuild.js += js ? `(${js})()` : "";
-      });
-    },
+    html: "<!DOCTYPE html>",
+    css: "",
+    js: "",
     buildAll: () => {
-      page.buildCss();
-      page.buildJs();
-      page.buildHtml();
-      page.finalBuild.html = page.finalBuild.html.replace(
-        "</head>",
-        `<link rel=stylesheet href="./${page.name}.css"/></head>\n`
-      );
-      page.finalBuild.html = page.finalBuild.html.replace(
-        "</body>",
-        `<script src="./${page.name}.js"></script></body>\n`
-      );
+      buildCss();
+      buildJs();
+      buildHtml();
+      page.html = page.html.replace("</head>", `<link rel=stylesheet href="./${config.name}.css"/></head>\n`);
+      page.html = page.html.replace("</body>", `<script src="./${config.name}.js"></script></body>\n`);
     },
     writeFiles: (paths?: { htmlPath?: string; cssPath?: string; jsPath?: string }) => {
-      fs.writeFileSync(paths?.htmlPath ? paths.htmlPath : `./${page.name}.html`, page.finalBuild.html);
-      fs.writeFileSync(paths?.cssPath ? paths.cssPath : `./${page.name}.css`, page.finalBuild.css);
-      fs.writeFileSync(paths?.jsPath ? paths.jsPath : `./${page.name}.js`, page.finalBuild.js);
+      fs.writeFileSync(paths?.htmlPath ? paths.htmlPath : `./${config.name}.html`, page.html);
+      fs.writeFileSync(paths?.cssPath ? paths.cssPath : `./${config.name}.css`, page.css);
+      fs.writeFileSync(paths?.jsPath ? paths.jsPath : `./${config.name}.js`, page.js);
     },
   };
+
+  const buildHtml = () => {
+    page.html = config.html ? buildHtmlFromObject(config.html, components) : "";
+  };
+
+  const buildCss = () => {
+    components = config.html ? identifyComponents(config.html) : {};
+    page.css = config.css ? buildCssFromObject("html", config.css) : "";
+    Object.keys(components).forEach(key => {
+      let css = components[parseInt(key)][0].css;
+      page.css += css ? buildCssFromObject(`.c${key}`, css) : "";
+    });
+  };
+
+  const buildJs = () => {
+    page.js = page.js ? `(${page.js})()` : "";
+    Object.keys(components).forEach(key => {
+      let js = components[parseInt(key)][0].js;
+      page.js += js ? `(${js})()` : "";
+    });
+  };
+
   return page;
 }
 

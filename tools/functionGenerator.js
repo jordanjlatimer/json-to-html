@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { elements, childless } = require("./elements.js");
 
-let baseImports = 'import { Child, SlamElement } from "./baseInterfaces";\n';
+let baseImports = 'import { Child, SlamElement } from "./slamInterfaces";\n';
 let htmlImports = "import {";
 let svgImports = "import {";
 let functionsString = "";

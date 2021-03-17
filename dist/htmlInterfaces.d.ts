@@ -1,4 +1,4 @@
-import { ElementAttributes } from "./baseInterfaces";
+import { ElementAttributes } from "./baseInterface";
 export interface HTMLElementAttributes extends ElementAttributes {
     accesskey?: string;
     autocapitalize?: "on" | "off" | "none" | "sentences" | "words" | "characters";

@@ -1,4 +1,4 @@
-import { ElementAttributes } from "./baseInterfaces";
+import { ElementAttributes } from "./baseInterface";
 export interface SVGElementAttributes extends ElementAttributes {
 }
 export interface SVGConditionalProcessingAttributes {

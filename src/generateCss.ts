@@ -1,5 +1,5 @@
 import { Properties as CSSProperties } from "csstype";
-import { CSSObject } from "./baseInterfaces";
+import { CSSObject } from "./slamInterfaces";
 import { toKebabCase } from "./utils";
 
 const generatePropertiesString = (styles: CSSProperties) => {

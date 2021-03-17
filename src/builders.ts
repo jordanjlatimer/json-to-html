@@ -1,4 +1,4 @@
-import { SlamElement, Child, SlamComponent } from "./baseInterfaces";
+import { SlamElement, Child, SlamComponent, Identification } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 
 const findComponents = (tree: Child, counter: number): SlamComponent[] => {
@@ -16,12 +16,8 @@ const findComponents = (tree: Child, counter: number): SlamComponent[] => {
   return finalArray;
 };
 
-interface Indentification {
-  [key: number]: SlamComponent[];
-}
-
 const findUniqueCss = (array: SlamComponent[]) => {
-  let identities: Indentification = {};
+  let identities: Identification = {};
   let identitiesIndex = 0;
   array.forEach(component => {
     if (identitiesIndex === 0) {
@@ -55,7 +51,7 @@ export const identifyComponents = (tree: SlamElement) => {
 const constructElement = (
   tree: SlamElement | string,
   currentString: string,
-  components: Indentification,
+  components: Identification,
   className?: string
 ) => {
   if (typeof tree === "string") {
@@ -87,7 +83,7 @@ const constructElement = (
   return currentString;
 };
 
-const routeChild = (tree: Child, currentString: string, components: Indentification) => {
+const routeChild = (tree: Child, currentString: string, components: Identification) => {
   if (typeof tree === "string") {
     return tree;
   } else if (tree["type"] === "component") {
@@ -107,6 +103,6 @@ const routeChild = (tree: Child, currentString: string, components: Indentificat
   }
 };
 
-export const buildHtmlFromObject = (tree: Child, components: Indentification) => {
+export const buildHtmlFromObject = (tree: Child, components: Identification) => {
   return routeChild(tree, "", components);
 };
