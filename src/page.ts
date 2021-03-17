@@ -4,10 +4,10 @@ import { buildHtmlFromObject, identifyComponents } from "./builders";
 import * as fs from "fs";
 import { SlamElement, SlamComponent, Child } from "./baseInterfaces";
 
-interface Page {
+export interface Page {
   readonly type: "page";
   name: string;
-  html?: SlamElement;
+  html: SlamElement;
   css?: CSSObject;
   js?: () => void;
   components: {
@@ -25,15 +25,22 @@ interface Page {
   writeFiles: (paths?: { htmlPath?: string; cssPath?: string; jsPath?: string }) => void;
 }
 
-export function CreatePage(name: string): Page {
+interface PageConfig {
+  name: string;
+  html: SlamElement;
+  css?: CSSObject;
+  js?: () => void;
+}
+
+export function CreatePage(config: PageConfig): Page {
   const page: Page = {
     get type(): "page" {
       return "page";
     },
-    name: name,
-    html: undefined,
-    css: undefined,
-    js: undefined,
+    name: config.name,
+    html: config.html,
+    css: config.css,
+    js: config.js,
     components: {},
     finalBuild: {
       html: "<!DOCTYPE html>",
@@ -41,8 +48,7 @@ export function CreatePage(name: string): Page {
       js: "",
     },
     buildHtml: () => {
-      page.finalBuild.html += page.html ? buildHtmlFromObject(page.html, page.components) : "";
-      console.log("HTML Built!");
+      page.finalBuild.html = page.html ? buildHtmlFromObject(page.html, page.components) : "";
     },
     buildCss: () => {
       page.components = page.html ? identifyComponents(page.html) : {};
@@ -51,7 +57,6 @@ export function CreatePage(name: string): Page {
         let css = page.components[parseInt(key)][0].css;
         page.finalBuild.css += css ? buildCssFromObject(`.c${key}`, css) : "";
       });
-      console.log("CSS Built!");
     },
     buildJs: () => {
       page.finalBuild.js = page.js ? `(${page.js})()` : "";
@@ -59,10 +64,8 @@ export function CreatePage(name: string): Page {
         let js = page.components[parseInt(key)][0].js;
         page.finalBuild.js += js ? `(${js})()` : "";
       });
-      console.log("JS Built!");
     },
     buildAll: () => {
-      console.log(`Building page ${page.name}...`);
       page.buildCss();
       page.buildJs();
       page.buildHtml();
@@ -74,14 +77,11 @@ export function CreatePage(name: string): Page {
         "</body>",
         `<script src="./${page.name}.js"></script></body>\n`
       );
-      console.log(`Page ${page.name} built successfully!`);
     },
     writeFiles: (paths?: { htmlPath?: string; cssPath?: string; jsPath?: string }) => {
-      console.log("Writing files...");
       fs.writeFileSync(paths?.htmlPath ? paths.htmlPath : `./${page.name}.html`, page.finalBuild.html);
       fs.writeFileSync(paths?.cssPath ? paths.cssPath : `./${page.name}.css`, page.finalBuild.css);
       fs.writeFileSync(paths?.jsPath ? paths.jsPath : `./${page.name}.js`, page.finalBuild.js);
-      console.log("Files written!");
     },
   };
   return page;

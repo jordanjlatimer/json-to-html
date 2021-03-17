@@ -25,18 +25,14 @@ The function `Document` in this example returns a string constructed based on th
 import { html, head, title, meta, link, body, h1, p } from "slam-js";
 
 const Document = () => {
-  return(
-    html({ lang: "en" },
-      head(
-        title("Jordan Latimer"),
-        meta({ name: "viewport", content: "width=device-width initial-scale=1, minimum-scale=1" }),
-        link({ rel: "icon", href: "assets/favicon.ico" })
-      ),
-      body(
-        h1("Slam-js"),
-        p("A Javascript library for generating static HTML on the server side.")
-      )
-    )
+  return html(
+    { lang: "en" },
+    head(
+      title("Jordan Latimer"),
+      meta({ name: "viewport", content: "width=device-width initial-scale=1, minimum-scale=1" }),
+      link({ rel: "icon", href: "assets/favicon.ico" })
+    ),
+    body(h1("Slam-js"), p("A Javascript library for generating static HTML on the server side."))
   );
 };
 ```
@@ -118,11 +114,7 @@ All Slam-js functions return a string with the tag, its attributes, and children
 import { div, p } from "slam-js";
 
 const Card = () => {
-  return(
-    div({ class: "card" },
-      p("Slam-js")
-    )
-  );
+  return div({ class: "card" }, p("Slam-js"));
 };
 
 console.log(Card());
@@ -157,12 +149,7 @@ import { html, body } from "slam-js";
 import { Head } from "./Head.js";
 
 const indexPage = () => {
-  return(
-    html(
-      Head(),
-      body("Index")
-    )
-  );
+  return html(Head(), body("Index"));
 };
 ```
 
@@ -172,12 +159,7 @@ import { html, body } from "slam-js";
 import { Head } from "./Head.js";
 
 const aboutPage = () => {
-  return(
-    html(
-      Head(),
-      body("About")
-    )
-  );
+  return html(Head(), body("About"));
 };
 ```
 
@@ -190,15 +172,9 @@ Just make sure to return a string.
 
 import { div, img, h4, p } from "slam-js";
 
-export function Card(imgSrc, imgAlt, header, description){
-  return(
-    div({class: "card"},
-      img({src: imgSrc, alt: imgAlt}),
-      h4(header),
-      p(description)
-    )
-  );
-};
+export function Card(imgSrc, imgAlt, header, description) {
+  return div({ class: "card" }, img({ src: imgSrc, alt: imgAlt }), h4(header), p(description));
+}
 ```
 
 ```js
@@ -208,13 +184,11 @@ import { html, body } from "slam-js";
 import { Card } from "slam-js";
 
 const document = () => {
-  return(
-    html(
-      body(
-        Card("./assets/dog.jpg", "A cute brown dog", "Sparky", "Sparky likes to play fetch an run around"),
-        Card("./assets/cat.jpg", "An ugly gray cat", "Sleezy", "Sleezy likes to tear up furniture."),
-        Card("./assets/lizard.jpg", "A plain green lizard.", "Plainola", "Plainola just hangs around.")
-      )
+  return html(
+    body(
+      Card("./assets/dog.jpg", "A cute brown dog", "Sparky", "Sparky likes to play fetch an run around"),
+      Card("./assets/cat.jpg", "An ugly gray cat", "Sleezy", "Sleezy likes to tear up furniture."),
+      Card("./assets/lizard.jpg", "A plain green lizard.", "Plainola", "Plainola just hangs around.")
     )
   );
 };
@@ -227,7 +201,7 @@ SVGs can be constructed manually, or they can be easily inlined:
 ```js
 //hamburgerIcon.js
 
-export function HamburgerIcon(){
+export function HamburgerIcon() {
   return `
     <svg viewBox="0 0 100 80">
       <rect width="100" height="20" rx="8"></rect>
@@ -235,7 +209,7 @@ export function HamburgerIcon(){
       <rect y="60" width="100" height="20" rx="8"></rect>
     </svg>
   `;
-};
+}
 ```
 
 ## FAQs
@@ -254,11 +228,9 @@ The `style` attribute takes an object of attribute/value pairs:
 
 ```js
 import { div } from "slam-js";
-export function WideRed(){
-  return(
-    div({style: {"background-color": "red", width: "100%"}})
-  );
-};
+export function WideRed() {
+  return div({ style: { "background-color": "red", width: "100%" } });
+}
 ```
 
 ### How do I integrate with Webpack?
@@ -270,15 +242,9 @@ Export the template, and use it with [HtmlWebpackPlugin](https://github.com/jant
 
 import { html, body } from "slam-js";
 
-export function Document(){
-  return(
-    html(
-      body(
-        "Slam-js"
-      )
-    )
-  );
-};
+export function Document() {
+  return html(body("Slam-js"));
+}
 ```
 
 ```js
@@ -289,7 +255,7 @@ export function Document(){
       template: "./index.js",
       filename: index.html,
       chunks: [name],
-    })
-  ]
+    }),
+  ];
 }
 ```

@@ -1,9 +1,9 @@
 import { CSSObject } from "./baseInterfaces";
 import { SlamElement, SlamComponent, Child } from "./baseInterfaces";
-interface Page {
+export interface Page {
     readonly type: "page";
     name: string;
-    html?: SlamElement;
+    html: SlamElement;
     css?: CSSObject;
     js?: () => void;
     components: {
@@ -24,7 +24,13 @@ interface Page {
         jsPath?: string;
     }) => void;
 }
-export declare function CreatePage(name: string): Page;
+interface PageConfig {
+    name: string;
+    html: SlamElement;
+    css?: CSSObject;
+    js?: () => void;
+}
+export declare function CreatePage(config: PageConfig): Page;
 interface SlamElementBase {
     tag: string;
     atts?: any;

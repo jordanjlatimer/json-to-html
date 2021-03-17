@@ -11,6 +11,7 @@
   "author": "jordanjlatimer",
   "license": "MIT",
   "devDependencies": {
+    "@types/express": "^4.17.11",
     "@types/node": "^14.14.33",
     "csstype": "^3.0.7",
     "fs": "^0.0.1-security",
@@ -28,5 +29,9 @@
   "prettier": {
     "printWidth": 120,
     "arrowParens": "avoid"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "express": "^4.17.1"
   }
 }

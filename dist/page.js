@@ -15,15 +15,15 @@ exports.CreateElement = exports.CreateComponent = exports.CreatePage = void 0;
 var generateCss_1 = require("./generateCss");
 var builders_1 = require("./builders");
 var fs = require("fs");
-function CreatePage(name) {
+function CreatePage(config) {
     var page = {
         get type() {
             return "page";
         },
-        name: name,
-        html: undefined,
-        css: undefined,
-        js: undefined,
+        name: config.name,
+        html: config.html,
+        css: config.css,
+        js: config.js,
         components: {},
         finalBuild: {
             html: "<!DOCTYPE html>",
@@ -31,8 +31,7 @@ function CreatePage(name) {
             js: "",
         },
         buildHtml: function () {
-            page.finalBuild.html += page.html ? builders_1.buildHtmlFromObject(page.html, page.components) : "";
-            console.log("HTML Built!");
+            page.finalBuild.html = page.html ? builders_1.buildHtmlFromObject(page.html, page.components) : "";
         },
         buildCss: function () {
             page.components = page.html ? builders_1.identifyComponents(page.html) : {};
@@ -41,7 +40,6 @@ function CreatePage(name) {
                 var css = page.components[parseInt(key)][0].css;
                 page.finalBuild.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";
             });
-            console.log("CSS Built!");
         },
         buildJs: function () {
             page.finalBuild.js = page.js ? "(" + page.js + ")()" : "";
@@ -49,23 +47,18 @@ function CreatePage(name) {
                 var js = page.components[parseInt(key)][0].js;
                 page.finalBuild.js += js ? "(" + js + ")()" : "";
             });
-            console.log("JS Built!");
         },
         buildAll: function () {
-            console.log("Building page " + page.name + "...");
             page.buildCss();
             page.buildJs();
             page.buildHtml();
             page.finalBuild.html = page.finalBuild.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
             page.finalBuild.html = page.finalBuild.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
-            console.log("Page " + page.name + " built successfully!");
         },
         writeFiles: function (paths) {
-            console.log("Writing files...");
             fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.htmlPath) ? paths.htmlPath : "./" + page.name + ".html", page.finalBuild.html);
             fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.cssPath) ? paths.cssPath : "./" + page.name + ".css", page.finalBuild.css);
             fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.jsPath) ? paths.jsPath : "./" + page.name + ".js", page.finalBuild.js);
-            console.log("Files written!");
         },
     };
     return page;
