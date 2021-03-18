@@ -7,7 +7,7 @@ import { Socket } from "node:net";
 import * as tsNode from "ts-node";
 tsNode.register();
 
-let reloadScript = (port: number) => `
+const reloadScript = (port: number) => `
 <script>
 let lastUpdate = undefined;
 window.setInterval(() => {
@@ -27,14 +27,26 @@ window.setInterval(() => {
 </script>
 `;
 
+const clearCache = (module: NodeModule) => {
+  module.children.forEach(child => {
+    if (/node_modules/.test(child.id)) {
+      return;
+    } else {
+      clearCache(child);
+    }
+  });
+  delete require.cache[require.resolve(module.id)];
+};
+
 export const CreateSlamServer = (pages: { name: string; path: string }[], port: number, watchList: string[]) => {
   let sockets: Socket[] = [];
   let webServer: Server;
   let lastUpdate = Date.now();
 
   const server = {
-    start: () => {
-      buildWebserver();
+    start: async () => {
+      console.log("Starting server...\n");
+      await buildWebserver();
       watchList.forEach(item => {
         let itemChanged = false;
         fs.watch(item).on("change", () => {
@@ -53,12 +65,13 @@ export const CreateSlamServer = (pages: { name: string; path: string }[], port: 
     },
   };
 
-  const buildWebserver = () => {
+  const buildWebserver = async () => {
     const newServer = express();
-    pages.map(page => {
-      delete require.cache[require.resolve(page.path)];
+    await pages.map(async page => {
+      let module = require.cache[require.resolve(page.path)];
+      module && clearCache(module);
       const currentPage: Page = require(page.path)["default"];
-      currentPage.buildAll();
+      await currentPage.buildAll();
       currentPage.html = currentPage.html.replace("</body>", reloadScript(port));
       newServer.get("/slamserver", (req, res) => {
         res.send(lastUpdate.toString());
@@ -82,7 +95,9 @@ export const CreateSlamServer = (pages: { name: string; path: string }[], port: 
     let runningServer = newServer.listen(port, () => {
       console.clear();
       console.log(`Server listening at http://localhost:${port}`);
-      console.log("Last Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
+      console.log(`Pages:`);
+      pages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
+      console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
     });
     runningServer.on("connection", socket => {
       sockets.push(socket);

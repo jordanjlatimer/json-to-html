@@ -11,7 +11,20 @@ export interface SlamComponent {
     css?: CSSObject;
     js?: () => void;
 }
-export declare type Child = SlamElement | SlamComponent | string;
+export interface ResolvedSlamElement {
+    type: "element";
+    tag: string;
+    atts?: any;
+    children?: ResolvedChild[];
+}
+export interface ResolvedSlamComponent {
+    type: "component";
+    html: ResolvedSlamElement;
+    css?: CSSObject;
+    js?: () => void;
+}
+export declare type Child = ResolvedChild | Promise<ResolvedSlamElement> | Promise<ResolvedSlamComponent> | string;
+export declare type ResolvedChild = ResolvedSlamElement | ResolvedSlamComponent | string;
 interface Selector {
     [key: string]: CSSProperties;
 }
@@ -23,6 +36,6 @@ interface MediaQuery {
 }
 export declare type CSSObject = Keyframe | MediaQuery | Selector | CSSProperties;
 export interface Identification {
-    [key: number]: SlamComponent[];
+    [key: number]: ResolvedSlamComponent[];
 }
 export {};

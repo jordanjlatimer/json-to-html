@@ -1,8 +1,8 @@
-import { SlamElement, Child, SlamComponent, Identification } from "./slamInterfaces";
+import { Identification, ResolvedChild, ResolvedSlamComponent, ResolvedSlamElement } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 
-const findComponents = (tree: Child, counter: number): SlamComponent[] => {
-  let finalArray: SlamComponent[] = [];
+const findComponents = (tree: ResolvedChild, counter: number): ResolvedSlamComponent[] => {
+  let finalArray: ResolvedSlamComponent[] = [];
   if (typeof tree === "string") {
     undefined;
   } else if (tree["type"] === "element") {
@@ -16,7 +16,7 @@ const findComponents = (tree: Child, counter: number): SlamComponent[] => {
   return finalArray;
 };
 
-const findUniqueCss = (array: SlamComponent[]) => {
+const findUniqueCss = (array: ResolvedSlamComponent[]) => {
   let identities: Identification = {};
   let identitiesIndex = 0;
   array.forEach(component => {
@@ -44,12 +44,12 @@ const findUniqueCss = (array: SlamComponent[]) => {
   return identities;
 };
 
-export const identifyComponents = (tree: SlamElement) => {
+export const identifyComponents = (tree: ResolvedSlamElement) => {
   return findUniqueCss(findComponents(tree, 0));
 };
 
 const constructElement = (
-  tree: SlamElement | string,
+  tree: ResolvedSlamElement | string,
   currentString: string,
   components: Identification,
   className?: string
@@ -83,7 +83,7 @@ const constructElement = (
   return currentString;
 };
 
-const routeChild = (tree: Child, currentString: string, components: Identification) => {
+const routeChild = (tree: ResolvedChild, currentString: string, components: Identification) => {
   if (typeof tree === "string") {
     return tree;
   } else if (tree["type"] === "component") {
@@ -103,6 +103,6 @@ const routeChild = (tree: Child, currentString: string, components: Identificati
   }
 };
 
-export const buildHtmlFromObject = (tree: Child, components: Identification) => {
+export const buildHtmlFromObject = (tree: ResolvedChild, components: Identification) => {
   return routeChild(tree, "", components);
 };
