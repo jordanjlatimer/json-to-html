@@ -78,7 +78,7 @@ var CreateSlamServer = function (pages, port, watchList) {
                         _a.sent();
                         watchList.forEach(function (item) {
                             var itemChanged = false;
-                            fs.watch(item).on("change", function () {
+                            fs.watch(item, { recursive: true }).on("change", function () {
                                 if (itemChanged) {
                                     return;
                                 }

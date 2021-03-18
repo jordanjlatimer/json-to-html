@@ -59,7 +59,7 @@ export const CreateSlamServer = (pages: { name: string; path: string }[], port: 
       await buildWebserver();
       watchList.forEach(item => {
         let itemChanged = false;
-        fs.watch(item).on("change", () => {
+        fs.watch(item, { recursive: true }).on("change", () => {
           if (itemChanged) {
             return;
           }
