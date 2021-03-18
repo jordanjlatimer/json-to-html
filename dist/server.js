@@ -40,11 +40,21 @@ exports.CreateSlamServer = void 0;
 var express = require("express");
 var fs = require("fs");
 var tsNode = require("ts-node");
-tsNode.register();
+tsNode.register({
+    compilerOptions: {
+        module: "CommonJS",
+        moduleResolution: "node",
+        lib: ["ES6"],
+        strict: true,
+        target: "ES5",
+        resolveJsonModule: true,
+        allowSyntheticDefaultImports: true,
+    },
+});
 var reloadScript = function (port) { return "\n<script>\nlet lastUpdate = undefined;\nwindow.setInterval(() => {\n  fetch(\"http://localhost:" + port + "/slamserver\")\n  .then(response => response.json())\n  .then(json => {\n    if (lastUpdate) {\n      if (lastUpdate < new Date(parseInt(json))) {\n        console.log(\"Changes detected. Refreshing page...\")\n        setTimeout(() => window.location.reload(), 600)\n      }\n    } else {\n      lastUpdate = new Date(parseInt(json))\n    }\n  })\n}, 500)\n</script>\n"; };
 var clearCache = function (module) {
     module.children.forEach(function (child) {
-        if (/node_modules/.test(child.id)) {
+        if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
             return;
         }
         else {

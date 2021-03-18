@@ -5,7 +5,17 @@ import * as fs from "fs";
 import { Server } from "node:http";
 import { Socket } from "node:net";
 import * as tsNode from "ts-node";
-tsNode.register();
+tsNode.register({
+  compilerOptions: {
+    module: "CommonJS",
+    moduleResolution: "node",
+    lib: ["ES6"],
+    strict: true,
+    target: "ES5",
+    resolveJsonModule: true,
+    allowSyntheticDefaultImports: true,
+  },
+});
 
 const reloadScript = (port: number) => `
 <script>
@@ -29,7 +39,7 @@ window.setInterval(() => {
 
 const clearCache = (module: NodeModule) => {
   module.children.forEach(child => {
-    if (/node_modules/.test(child.id)) {
+    if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
       return;
     } else {
       clearCache(child);
