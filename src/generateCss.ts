@@ -27,11 +27,7 @@ export const buildCssFromObject = (className: string, styles: CSSObject, isKeyfr
     } else if (/@media/.test(key)) {
       finalString += generateMediaQueryString(className, key, styles[key] as CSSObject);
     } else if (typeof styles[key] === "object") {
-      finalString += generateSelectorString(
-        isKeyframe ? "" : className,
-        key,
-        generatePropertiesString(styles[key] as CSSObject)
-      );
+      finalString += buildCssFromObject(`${className}${key}`, styles[key] as CSSObject);
     } else {
       //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
       rootCss[key] = styles[key];

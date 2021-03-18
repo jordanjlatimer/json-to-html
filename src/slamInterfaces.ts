@@ -33,18 +33,14 @@ export type Child = ResolvedChild | Promise<ResolvedSlamElement> | Promise<Resol
 export type ResolvedChild = ResolvedSlamElement | ResolvedSlamComponent | string;
 
 interface Selector {
-  [key: string]: CSSProperties;
+  [key: string]: CSSProperties | Selector;
 }
 
 interface Keyframe {
   [key: string]: Selector;
 }
 
-interface MediaQuery {
-  [key: string]: Selector | CSSProperties;
-}
-
-export type CSSObject = Keyframe | MediaQuery | Selector | CSSProperties;
+export type CSSObject = Keyframe | Selector | CSSProperties;
 
 export interface Identification {
   [key: number]: ResolvedSlamComponent[];

@@ -25,7 +25,7 @@ var buildCssFromObject = function (className, styles, isKeyframe) {
             finalString += generateMediaQueryString(className, key, styles[key]);
         }
         else if (typeof styles[key] === "object") {
-            finalString += generateSelectorString(isKeyframe ? "" : className, key, generatePropertiesString(styles[key]));
+            finalString += exports.buildCssFromObject("" + className + key, styles[key]);
         }
         else {
             //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""

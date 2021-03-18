@@ -26,15 +26,12 @@ export interface ResolvedSlamComponent {
 export declare type Child = ResolvedChild | Promise<ResolvedSlamElement> | Promise<ResolvedSlamComponent> | string;
 export declare type ResolvedChild = ResolvedSlamElement | ResolvedSlamComponent | string;
 interface Selector {
-    [key: string]: CSSProperties;
+    [key: string]: CSSProperties | Selector;
 }
 interface Keyframe {
     [key: string]: Selector;
 }
-interface MediaQuery {
-    [key: string]: Selector | CSSProperties;
-}
-export declare type CSSObject = Keyframe | MediaQuery | Selector | CSSProperties;
+export declare type CSSObject = Keyframe | Selector | CSSProperties;
 export interface Identification {
     [key: number]: ResolvedSlamComponent[];
 }
