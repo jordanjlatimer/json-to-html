@@ -1,9 +1,9 @@
-import { SlamElement, SlamComponent, Child, CSSObject } from "./slamInterfaces";
+import { CSSObject, ResolvedSlamElement, ResolvedSlamComponent } from "./slamInterfaces";
 export interface Page {
     html: string;
     css: string;
     js: string;
-    buildAll: () => void;
+    buildAll: () => Promise<void>;
     writeFiles: (paths?: {
         htmlPath?: string;
         cssPath?: string;
@@ -12,23 +12,16 @@ export interface Page {
 }
 interface PageConfig {
     name: string;
-    html: SlamElement;
+    html: Promise<ResolvedSlamElement>;
     css?: CSSObject;
     js?: () => void;
 }
 export declare function CreatePage(config: PageConfig): Page;
-interface SlamElementBase {
-    tag: string;
-    atts?: any;
-    children?: Child[];
-}
 interface SlamComponentBase {
-    html: SlamElement;
+    html: Promise<ResolvedSlamElement>;
     css?: CSSObject;
     js?: () => void;
 }
-export declare function CreateComponent<T>(componentFunction: (props: T) => SlamComponentBase): (props: T) => SlamComponent;
-export declare function CreateComponent<T>(component: SlamComponentBase): SlamComponent;
-export declare function CreateElement<T>(elementFunction: (props: T) => SlamElementBase): (props: T) => SlamElement;
-export declare function CreateElement<T>(element: SlamElementBase): SlamElement;
+export declare function CreateComponent<T>(componentFunction: (props?: T) => SlamComponentBase | Promise<SlamComponentBase>): (props?: T) => Promise<ResolvedSlamComponent>;
+export declare function CreateComponent<T>(component: SlamComponentBase): Promise<ResolvedSlamComponent>;
 export {};

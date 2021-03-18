@@ -3,5 +3,5 @@ export declare const CreateSlamServer: (pages: {
     name: string;
     path: string;
 }[], port: number, watchList: string[]) => {
-    start: () => void;
+    start: () => Promise<void>;
 };
