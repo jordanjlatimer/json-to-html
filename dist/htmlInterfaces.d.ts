@@ -71,8 +71,8 @@ export interface HTMLButtonAttributes extends HTMLElementAttributes {
     value?: string;
 }
 export interface HTMLCanvasAttributes extends HTMLElementAttributes {
-    width?: number;
-    height?: number;
+    width?: number | string;
+    height?: number | string;
 }
 export interface HTMLCaptionAttributes extends HTMLElementAttributes {
 }
@@ -181,7 +181,7 @@ export interface HTMLImgAttributes extends HTMLElementAttributes {
     alt?: string;
     crossorigin?: "anonymous" | "use-credentials";
     decoding?: "sync" | "async" | "auto";
-    height?: number;
+    height?: number | string;
     isMap?: boolean;
     loading?: "lazy" | "eager";
     referrerpolicy?: "no-referrer" | "no-referrer-when-downgrade" | "same-origin" | "origin" | "strict-origin" | "origin-when-cross-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
@@ -189,7 +189,7 @@ export interface HTMLImgAttributes extends HTMLElementAttributes {
     src?: string;
     srcset?: string;
     useMap?: string;
-    width?: number;
+    width?: number | string;
 }
 export interface HTMLInputAttributes extends HTMLElementAttributes {
     accept?: string;
@@ -204,7 +204,7 @@ export interface HTMLInputAttributes extends HTMLElementAttributes {
     formmethod?: "GET" | "POST" | "dialog";
     formnovalidate?: boolean;
     formtarget?: "_blank" | "_self" | "_parent" | "_top";
-    height?: number;
+    height?: number | string;
     list?: string;
     max?: string;
     maxlength?: number;
@@ -221,7 +221,7 @@ export interface HTMLInputAttributes extends HTMLElementAttributes {
     step?: string;
     type?: "hidden" | "text" | "search" | "tel" | "url" | "email" | "password" | "date" | "month" | "week" | "time" | "datetime-local" | "number" | "range" | "color" | "checkbox" | "radio" | "file" | "submit" | "image" | "reset" | "button";
     value?: string;
-    width?: number;
+    width?: number | string;
 }
 export interface HTMLInsAttributes extends HTMLElementAttributes {
     cite?: string;
@@ -449,10 +449,10 @@ export interface HTMLVideoAttributes extends HTMLElementAttributes {
     muted?: boolean;
     preload?: "none" | "metadata" | "auto";
     src?: string;
-    height?: number;
+    height?: number | string;
     playsinline?: boolean;
     poster?: string;
-    width?: number;
+    width?: number | string;
 }
 export interface HTMLWbrAttributes extends HTMLElementAttributes {
 }
