@@ -86,8 +86,8 @@ export interface HTMLButtonAttributes extends HTMLElementAttributes {
 }
 
 export interface HTMLCanvasAttributes extends HTMLElementAttributes {
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
 }
 
 export interface HTMLCaptionAttributes extends HTMLElementAttributes {}
@@ -215,7 +215,7 @@ export interface HTMLImgAttributes extends HTMLElementAttributes {
   alt?: string;
   crossorigin?: "anonymous" | "use-credentials";
   decoding?: "sync" | "async" | "auto";
-  height?: number;
+  height?: number | string;
   isMap?: boolean;
   loading?: "lazy" | "eager";
   referrerpolicy?:
@@ -231,7 +231,7 @@ export interface HTMLImgAttributes extends HTMLElementAttributes {
   src?: string;
   srcset?: string;
   useMap?: string;
-  width?: number;
+  width?: number | string;
 }
 
 export interface HTMLInputAttributes extends HTMLElementAttributes {
@@ -247,7 +247,7 @@ export interface HTMLInputAttributes extends HTMLElementAttributes {
   formmethod?: "GET" | "POST" | "dialog";
   formnovalidate?: boolean;
   formtarget?: "_blank" | "_self" | "_parent" | "_top";
-  height?: number;
+  height?: number | string;
   list?: string;
   max?: string;
   maxlength?: number;
@@ -286,7 +286,7 @@ export interface HTMLInputAttributes extends HTMLElementAttributes {
     | "reset"
     | "button";
   value?: string;
-  width?: number;
+  width?: number | string;
 }
 
 export interface HTMLInsAttributes extends HTMLElementAttributes {
@@ -556,10 +556,10 @@ export interface HTMLVideoAttributes extends HTMLElementAttributes {
   muted?: boolean;
   preload?: "none" | "metadata" | "auto";
   src?: string;
-  height?: number;
+  height?: number | string;
   playsinline?: boolean;
   poster?: string;
-  width?: number;
+  width?: number | string;
 }
 
 export interface HTMLWbrAttributes extends HTMLElementAttributes {}
