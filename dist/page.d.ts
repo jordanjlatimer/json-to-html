@@ -16,7 +16,7 @@ interface PageConfig {
     css?: CSSObject;
     js?: () => void;
 }
-export declare function CreatePage(config: PageConfig): Page;
+export declare function CreatePage(config: PageConfig | (() => PageConfig | Promise<PageConfig>)): Page;
 interface SlamComponentBase {
     html: Promise<ResolvedSlamElement>;
     css?: CSSObject;

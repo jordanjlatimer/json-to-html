@@ -18,16 +18,24 @@ interface PageConfig {
   js?: () => void;
 }
 
-export function CreatePage(config: PageConfig): Page {
+export function CreatePage(config: PageConfig | (() => PageConfig | Promise<PageConfig>)): Page {
   let components: Identification = {};
   const page: Page = {
     html: "<!DOCTYPE html>",
     css: "",
     js: "",
     buildAll: async () => {
-      const finalizedHtml = await config.html;
-      buildCss(finalizedHtml);
-      buildJs(finalizedHtml);
+      let finalizedHtml: ResolvedSlamElement;
+      let finalizedConfig: PageConfig;
+      if (typeof config === "function") {
+        finalizedConfig = await config();
+        finalizedHtml = await finalizedConfig.html;
+      } else {
+        finalizedConfig = config;
+        finalizedHtml = await finalizedConfig.html;
+      }
+      buildCss(finalizedHtml, finalizedConfig.css);
+      buildJs();
       buildHtml(finalizedHtml);
       page.html = page.html.replace("</head>", `<link rel=stylesheet href="./${config.name}.css"/></head>\n`);
       page.html = page.html.replace("</body>", `<script src="./${config.name}.js"></script></body>\n`);
@@ -43,16 +51,16 @@ export function CreatePage(config: PageConfig): Page {
     page.html = buildHtmlFromObject(tree, components);
   };
 
-  const buildCss = (tree: ResolvedSlamElement) => {
+  const buildCss = (tree: ResolvedSlamElement, pageCss?: CSSObject) => {
     components = identifyComponents(tree);
-    page.css = config.css ? buildCssFromObject("html", config.css) : "";
+    page.css = pageCss ? buildCssFromObject("html", pageCss) : "";
     Object.keys(components).forEach(key => {
       let css = components[parseInt(key)][0].css;
       page.css += css ? buildCssFromObject(`.c${key}`, css) : "";
     });
   };
 
-  const buildJs = (tree: ResolvedSlamElement) => {
+  const buildJs = () => {
     page.js = page.js ? `(${page.js})()` : "";
     Object.keys(components).forEach(key => {
       let js = components[parseInt(key)][0].js;

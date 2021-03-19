@@ -48,14 +48,27 @@ function CreatePage(config) {
         css: "",
         js: "",
         buildAll: function () { return __awaiter(_this, void 0, void 0, function () {
-            var finalizedHtml;
+            var finalizedHtml, finalizedConfig;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, config.html];
+                    case 0:
+                        if (!(typeof config === "function")) return [3 /*break*/, 3];
+                        return [4 /*yield*/, config()];
                     case 1:
+                        finalizedConfig = _a.sent();
+                        return [4 /*yield*/, finalizedConfig.html];
+                    case 2:
                         finalizedHtml = _a.sent();
-                        buildCss(finalizedHtml);
-                        buildJs(finalizedHtml);
+                        return [3 /*break*/, 5];
+                    case 3:
+                        finalizedConfig = config;
+                        return [4 /*yield*/, finalizedConfig.html];
+                    case 4:
+                        finalizedHtml = _a.sent();
+                        _a.label = 5;
+                    case 5:
+                        buildCss(finalizedHtml, finalizedConfig.css);
+                        buildJs();
                         buildHtml(finalizedHtml);
                         page.html = page.html.replace("</head>", "<link rel=stylesheet href=\"./" + config.name + ".css\"/></head>\n");
                         page.html = page.html.replace("</body>", "<script src=\"./" + config.name + ".js\"></script></body>\n");
@@ -72,15 +85,15 @@ function CreatePage(config) {
     var buildHtml = function (tree) {
         page.html = builders_1.buildHtmlFromObject(tree, components);
     };
-    var buildCss = function (tree) {
+    var buildCss = function (tree, pageCss) {
         components = builders_1.identifyComponents(tree);
-        page.css = config.css ? generateCss_1.buildCssFromObject("html", config.css) : "";
+        page.css = pageCss ? generateCss_1.buildCssFromObject("html", pageCss) : "";
         Object.keys(components).forEach(function (key) {
             var css = components[parseInt(key)][0].css;
             page.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";
         });
     };
-    var buildJs = function (tree) {
+    var buildJs = function () {
         page.js = page.js ? "(" + page.js + ")()" : "";
         Object.keys(components).forEach(function (key) {
             var js = components[parseInt(key)][0].js;
