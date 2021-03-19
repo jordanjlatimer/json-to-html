@@ -15,6 +15,7 @@ interface PageConfig {
     html: Promise<ResolvedSlamElement>;
     css?: CSSObject;
     js?: () => void;
+    noCssReset?: true;
 }
 export declare function CreatePage(config: PageConfig | (() => PageConfig | Promise<PageConfig>)): Page;
 interface SlamComponentBase {

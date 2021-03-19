@@ -40,6 +40,7 @@ exports.CreateComponent = exports.CreatePage = void 0;
 var generateCss_1 = require("./generateCss");
 var builders_1 = require("./builders");
 var fs = require("fs");
+var cssReset_1 = require("./cssReset");
 function CreatePage(config) {
     var _this = this;
     var components = {};
@@ -67,7 +68,7 @@ function CreatePage(config) {
                         finalizedHtml = _a.sent();
                         _a.label = 5;
                     case 5:
-                        buildCss(finalizedHtml, finalizedConfig.css);
+                        buildCss(finalizedHtml, finalizedConfig.css, finalizedConfig.noCssReset);
                         buildJs();
                         buildHtml(finalizedHtml);
                         page.html = page.html.replace("</head>", "<link rel=stylesheet href=\"./" + finalizedConfig.name + ".css\"/></head>\n");
@@ -101,8 +102,9 @@ function CreatePage(config) {
     var buildHtml = function (tree) {
         page.html = builders_1.buildHtmlFromObject(tree, components);
     };
-    var buildCss = function (tree, pageCss) {
+    var buildCss = function (tree, pageCss, noReset) {
         components = builders_1.identifyComponents(tree);
+        page.css += noReset ? "" : cssReset_1.cssReset;
         page.css = pageCss ? generateCss_1.buildCssFromObject("html", pageCss) : "";
         Object.keys(components).forEach(function (key) {
             var css = components[parseInt(key)][0].css;

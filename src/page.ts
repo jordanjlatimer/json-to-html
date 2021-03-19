@@ -2,6 +2,7 @@ import { buildCssFromObject } from "./generateCss";
 import { buildHtmlFromObject, identifyComponents } from "./builders";
 import * as fs from "fs";
 import { Identification, CSSObject, ResolvedSlamElement, ResolvedSlamComponent } from "./slamInterfaces";
+import { cssReset } from "./cssReset";
 
 export interface Page {
   html: string;
@@ -16,6 +17,7 @@ interface PageConfig {
   html: Promise<ResolvedSlamElement>;
   css?: CSSObject;
   js?: () => void;
+  noCssReset?: true;
 }
 
 export function CreatePage(config: PageConfig | (() => PageConfig | Promise<PageConfig>)): Page {
@@ -34,7 +36,7 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
         finalizedConfig = config;
         finalizedHtml = await finalizedConfig.html;
       }
-      buildCss(finalizedHtml, finalizedConfig.css);
+      buildCss(finalizedHtml, finalizedConfig.css, finalizedConfig.noCssReset);
       buildJs();
       buildHtml(finalizedHtml);
       page.html = page.html.replace("</head>", `<link rel=stylesheet href="./${finalizedConfig.name}.css"/></head>\n`);
@@ -57,8 +59,9 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
     page.html = buildHtmlFromObject(tree, components);
   };
 
-  const buildCss = (tree: ResolvedSlamElement, pageCss?: CSSObject) => {
+  const buildCss = (tree: ResolvedSlamElement, pageCss?: CSSObject, noReset?: true) => {
     components = identifyComponents(tree);
+    page.css += noReset ? "" : cssReset;
     page.css = pageCss ? buildCssFromObject("html", pageCss) : "";
     Object.keys(components).forEach(key => {
       let css = components[parseInt(key)][0].css;
