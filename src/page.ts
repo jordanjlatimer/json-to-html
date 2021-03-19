@@ -78,14 +78,14 @@ interface SlamComponentBase {
 }
 
 export function CreateComponent<T>(
-  componentFunction: (props?: T) => SlamComponentBase | Promise<SlamComponentBase>
-): (props?: T) => Promise<ResolvedSlamComponent>;
+  componentFunction: (props: T) => SlamComponentBase | Promise<SlamComponentBase>
+): (props: T) => Promise<ResolvedSlamComponent>;
 export function CreateComponent<T>(component: SlamComponentBase): Promise<ResolvedSlamComponent>;
 export function CreateComponent<T>(
-  arg1: ((props?: T) => SlamComponentBase | Promise<SlamComponentBase>) | SlamComponentBase
+  arg1: ((props: T) => SlamComponentBase | Promise<SlamComponentBase>) | SlamComponentBase
 ): ((props: T) => Promise<ResolvedSlamComponent>) | Promise<ResolvedSlamComponent> {
   if (typeof arg1 === "function") {
-    return async (props?: T) => {
+    return async (props: T) => {
       const resolved = await arg1(props);
       const html = await resolved.html;
       return {

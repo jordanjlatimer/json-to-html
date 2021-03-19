@@ -22,6 +22,6 @@ interface SlamComponentBase {
     css?: CSSObject;
     js?: () => void;
 }
-export declare function CreateComponent<T>(componentFunction: (props?: T) => SlamComponentBase | Promise<SlamComponentBase>): (props?: T) => Promise<ResolvedSlamComponent>;
+export declare function CreateComponent<T>(componentFunction: (props: T) => SlamComponentBase | Promise<SlamComponentBase>): (props: T) => Promise<ResolvedSlamComponent>;
 export declare function CreateComponent<T>(component: SlamComponentBase): Promise<ResolvedSlamComponent>;
 export {};
