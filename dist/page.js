@@ -70,17 +70,33 @@ function CreatePage(config) {
                         buildCss(finalizedHtml, finalizedConfig.css);
                         buildJs();
                         buildHtml(finalizedHtml);
-                        page.html = page.html.replace("</head>", "<link rel=stylesheet href=\"./" + config.name + ".css\"/></head>\n");
-                        page.html = page.html.replace("</body>", "<script src=\"./" + config.name + ".js\"></script></body>\n");
+                        page.html = page.html.replace("</head>", "<link rel=stylesheet href=\"./" + finalizedConfig.name + ".css\"/></head>\n");
+                        page.html = page.html.replace("</body>", "<script src=\"./" + finalizedConfig.name + ".js\"></script></body>\n");
                         return [2 /*return*/];
                 }
             });
         }); },
-        writeFiles: function (paths) {
-            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.htmlPath) ? paths.htmlPath : "./" + config.name + ".html", page.html);
-            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.cssPath) ? paths.cssPath : "./" + config.name + ".css", page.css);
-            fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.jsPath) ? paths.jsPath : "./" + config.name + ".js", page.js);
-        },
+        writeFiles: function (paths) { return __awaiter(_this, void 0, void 0, function () {
+            var finalizedConfig;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!(typeof config === "function")) return [3 /*break*/, 2];
+                        return [4 /*yield*/, config()];
+                    case 1:
+                        finalizedConfig = _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        finalizedConfig = config;
+                        _a.label = 3;
+                    case 3:
+                        fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.htmlPath) ? paths.htmlPath : "./" + finalizedConfig.name + ".html", page.html);
+                        fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.cssPath) ? paths.cssPath : "./" + finalizedConfig.name + ".css", page.css);
+                        fs.writeFileSync((paths === null || paths === void 0 ? void 0 : paths.jsPath) ? paths.jsPath : "./" + finalizedConfig.name + ".js", page.js);
+                        return [2 /*return*/];
+                }
+            });
+        }); },
     };
     var buildHtml = function (tree) {
         page.html = builders_1.buildHtmlFromObject(tree, components);

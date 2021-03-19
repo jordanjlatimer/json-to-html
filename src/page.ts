@@ -37,13 +37,19 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
       buildCss(finalizedHtml, finalizedConfig.css);
       buildJs();
       buildHtml(finalizedHtml);
-      page.html = page.html.replace("</head>", `<link rel=stylesheet href="./${config.name}.css"/></head>\n`);
-      page.html = page.html.replace("</body>", `<script src="./${config.name}.js"></script></body>\n`);
+      page.html = page.html.replace("</head>", `<link rel=stylesheet href="./${finalizedConfig.name}.css"/></head>\n`);
+      page.html = page.html.replace("</body>", `<script src="./${finalizedConfig.name}.js"></script></body>\n`);
     },
-    writeFiles: (paths?: { htmlPath?: string; cssPath?: string; jsPath?: string }) => {
-      fs.writeFileSync(paths?.htmlPath ? paths.htmlPath : `./${config.name}.html`, page.html);
-      fs.writeFileSync(paths?.cssPath ? paths.cssPath : `./${config.name}.css`, page.css);
-      fs.writeFileSync(paths?.jsPath ? paths.jsPath : `./${config.name}.js`, page.js);
+    writeFiles: async (paths?: { htmlPath?: string; cssPath?: string; jsPath?: string }) => {
+      let finalizedConfig: PageConfig;
+      if (typeof config === "function") {
+        finalizedConfig = await config();
+      } else {
+        finalizedConfig = config;
+      }
+      fs.writeFileSync(paths?.htmlPath ? paths.htmlPath : `./${finalizedConfig.name}.html`, page.html);
+      fs.writeFileSync(paths?.cssPath ? paths.cssPath : `./${finalizedConfig.name}.css`, page.css);
+      fs.writeFileSync(paths?.jsPath ? paths.jsPath : `./${finalizedConfig.name}.js`, page.js);
     },
   };
 
