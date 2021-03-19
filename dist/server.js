@@ -44,9 +44,7 @@ tsNode.register({
     compilerOptions: {
         module: "CommonJS",
         moduleResolution: "node",
-        lib: ["ES6"],
         strict: true,
-        target: "ES5",
         resolveJsonModule: true,
         allowSyntheticDefaultImports: true,
     },
