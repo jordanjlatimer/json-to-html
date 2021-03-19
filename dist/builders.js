@@ -13,7 +13,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.buildHtmlFromObject = exports.identifyComponents = void 0;
 var utils_1 = require("./utils");
-var findComponents = function (tree, counter) {
+var findComponents = function (tree) {
     var _a;
     var finalArray = [];
     if (typeof tree === "string") {
@@ -21,12 +21,12 @@ var findComponents = function (tree, counter) {
     }
     else if (tree["type"] === "element") {
         (_a = tree["children"]) === null || _a === void 0 ? void 0 : _a.forEach(function (child) {
-            finalArray = finalArray.concat(findComponents(child, counter));
+            finalArray = finalArray.concat(findComponents(child));
         });
     }
     else if (tree["type"] === "component") {
         finalArray.push(tree);
-        finalArray = finalArray.concat(findComponents(tree["html"], counter + 1));
+        finalArray = finalArray.concat(findComponents(tree["html"]));
     }
     return finalArray;
 };
@@ -49,6 +49,7 @@ var findUniqueCss = function (array) {
                             }
                             else {
                                 identities[identitiesIndex] = [component];
+                                identitiesIndex += 1;
                             }
                             keepGoing_1 = false;
                         }
@@ -60,7 +61,7 @@ var findUniqueCss = function (array) {
     return identities;
 };
 var identifyComponents = function (tree) {
-    return findUniqueCss(findComponents(tree, 0));
+    return findUniqueCss(findComponents(tree));
 };
 exports.identifyComponents = identifyComponents;
 var constructElement = function (tree, currentString, components, className) {

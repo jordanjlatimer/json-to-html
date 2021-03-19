@@ -1,17 +1,17 @@
 import { Identification, ResolvedChild, ResolvedSlamComponent, ResolvedSlamElement } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 
-const findComponents = (tree: ResolvedChild, counter: number): ResolvedSlamComponent[] => {
+const findComponents = (tree: ResolvedChild): ResolvedSlamComponent[] => {
   let finalArray: ResolvedSlamComponent[] = [];
   if (typeof tree === "string") {
     undefined;
   } else if (tree["type"] === "element") {
     tree["children"]?.forEach(child => {
-      finalArray = finalArray.concat(findComponents(child, counter));
+      finalArray = finalArray.concat(findComponents(child));
     });
   } else if (tree["type"] === "component") {
     finalArray.push(tree);
-    finalArray = finalArray.concat(findComponents(tree["html"], counter + 1));
+    finalArray = finalArray.concat(findComponents(tree["html"]));
   }
   return finalArray;
 };
@@ -33,6 +33,7 @@ const findUniqueCss = (array: ResolvedSlamComponent[]) => {
                 identities[parseInt(key)].push(component);
               } else {
                 identities[identitiesIndex] = [component];
+                identitiesIndex += 1;
               }
               keepGoing = false;
             }
@@ -45,7 +46,7 @@ const findUniqueCss = (array: ResolvedSlamComponent[]) => {
 };
 
 export const identifyComponents = (tree: ResolvedSlamElement) => {
-  return findUniqueCss(findComponents(tree, 0));
+  return findUniqueCss(findComponents(tree));
 };
 
 const constructElement = (
