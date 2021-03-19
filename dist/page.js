@@ -105,7 +105,7 @@ function CreatePage(config) {
     var buildCss = function (tree, pageCss, noReset) {
         components = builders_1.identifyComponents(tree);
         page.css += noReset ? "" : cssReset_1.cssReset;
-        page.css = pageCss ? generateCss_1.buildCssFromObject("html", pageCss) : "";
+        page.css += pageCss ? generateCss_1.buildCssFromObject("html", pageCss) : "";
         Object.keys(components).forEach(function (key) {
             var css = components[parseInt(key)][0].css;
             page.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";

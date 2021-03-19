@@ -62,7 +62,7 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
   const buildCss = (tree: ResolvedSlamElement, pageCss?: CSSObject, noReset?: true) => {
     components = identifyComponents(tree);
     page.css += noReset ? "" : cssReset;
-    page.css = pageCss ? buildCssFromObject("html", pageCss) : "";
+    page.css += pageCss ? buildCssFromObject("html", pageCss) : "";
     Object.keys(components).forEach(key => {
       let css = components[parseInt(key)][0].css;
       page.css += css ? buildCssFromObject(`.c${key}`, css) : "";
