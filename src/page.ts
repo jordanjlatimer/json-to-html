@@ -86,11 +86,18 @@ interface SlamComponentBase {
   js?: () => void;
 }
 
-export function CreateComponent<T>(
+interface PropsObject {
+  [key: string]: any;
+}
+
+export function CreateComponent(
+  componentFunction: () => SlamComponentBase | Promise<SlamComponentBase>
+): () => Promise<ResolvedSlamComponent>;
+export function CreateComponent<T extends PropsObject>(
   componentFunction: (props: T) => SlamComponentBase | Promise<SlamComponentBase>
 ): (props: T) => Promise<ResolvedSlamComponent>;
-export function CreateComponent<T>(component: SlamComponentBase): Promise<ResolvedSlamComponent>;
-export function CreateComponent<T>(
+export function CreateComponent(component: SlamComponentBase): Promise<ResolvedSlamComponent>;
+export function CreateComponent<T extends PropsObject>(
   arg1: ((props: T) => SlamComponentBase | Promise<SlamComponentBase>) | SlamComponentBase
 ): ((props: T) => Promise<ResolvedSlamComponent>) | Promise<ResolvedSlamComponent> {
   if (typeof arg1 === "function") {

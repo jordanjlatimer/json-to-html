@@ -1,6 +1,5 @@
 import * as express from "express";
 import { Page } from "./page";
-import * as path from "path";
 import * as fs from "fs";
 import { Server } from "node:http";
 import { Socket } from "node:net";
