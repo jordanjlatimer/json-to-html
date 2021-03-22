@@ -201,11 +201,9 @@ var buildCssFromObject = function (className, styles, isKeyframe) {
         else if (typeof styles[key] === "object") {
             var finalKey = "";
             if (tagNames.includes(key)) {
-                finalKey = ">" + key;
+                finalKey += ">";
             }
-            else {
-                finalKey = key;
-            }
+            finalKey += key;
             finalString += exports.buildCssFromObject("" + className + finalKey, styles[key]);
         }
         else {

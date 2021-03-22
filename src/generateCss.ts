@@ -204,10 +204,9 @@ export const buildCssFromObject = (className: string, styles: CSSObject, isKeyfr
     } else if (typeof styles[key] === "object") {
       let finalKey = "";
       if (tagNames.includes(key)) {
-        finalKey = `>${key}`;
-      } else {
-        finalKey = key;
+        finalKey += ">";
       }
+      finalKey += key;
       finalString += buildCssFromObject(`${className}${finalKey}`, styles[key] as CSSObject);
     } else {
       //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
