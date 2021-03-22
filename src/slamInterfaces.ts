@@ -36,11 +36,7 @@ interface Selector {
   [key: string]: CSSProperties | Selector;
 }
 
-interface Keyframe {
-  [key: string]: Selector;
-}
-
-export type CSSObject = Keyframe | Selector | CSSProperties;
+export type CSSObject = CSSProperties | Selector;
 
 export interface Identification {
   [key: number]: ResolvedSlamComponent[];

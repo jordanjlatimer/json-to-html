@@ -121,47 +121,24 @@ function CreatePage(config) {
     return page;
 }
 exports.CreatePage = CreatePage;
-function CreateComponent(arg1) {
+function CreateComponent(config) {
     var _this = this;
-    if (typeof arg1 === "function") {
-        return function (props) { return __awaiter(_this, void 0, void 0, function () {
-            var resolved, html;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, arg1(props)];
-                    case 1:
-                        resolved = _a.sent();
-                        return [4 /*yield*/, resolved.html];
-                    case 2:
-                        html = _a.sent();
-                        return [2 /*return*/, {
-                                type: "component",
-                                html: html,
-                                css: resolved.css,
-                                js: resolved.js,
-                            }];
-                }
-            });
-        }); };
-    }
-    else {
-        var promise = function () { return __awaiter(_this, void 0, void 0, function () {
-            var html;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, arg1.html];
-                    case 1:
-                        html = _a.sent();
-                        return [2 /*return*/, {
-                                type: "component",
-                                html: html,
-                                css: arg1.css,
-                                js: arg1.js,
-                            }];
-                }
-            });
-        }); };
-        return promise();
-    }
+    var promise = function () { return __awaiter(_this, void 0, void 0, function () {
+        var html;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, config.html];
+                case 1:
+                    html = _a.sent();
+                    return [2 /*return*/, {
+                            type: "component",
+                            html: html,
+                            css: config.css,
+                            js: config.js,
+                        }];
+            }
+        });
+    }); };
+    return promise();
 }
 exports.CreateComponent = CreateComponent;

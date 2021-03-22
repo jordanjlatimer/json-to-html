@@ -28,10 +28,7 @@ export declare type ResolvedChild = ResolvedSlamElement | ResolvedSlamComponent 
 interface Selector {
     [key: string]: CSSProperties | Selector;
 }
-interface Keyframe {
-    [key: string]: Selector;
-}
-export declare type CSSObject = Keyframe | Selector | CSSProperties;
+export declare type CSSObject = CSSProperties | Selector;
 export interface Identification {
     [key: number]: ResolvedSlamComponent[];
 }

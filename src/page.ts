@@ -86,41 +86,15 @@ interface SlamComponentBase {
   js?: () => void;
 }
 
-interface PropsObject {
-  [key: string]: any;
-}
-
-export function CreateComponent(
-  componentFunction: () => SlamComponentBase | Promise<SlamComponentBase>
-): () => Promise<ResolvedSlamComponent>;
-export function CreateComponent<T extends PropsObject>(
-  componentFunction: (props: T) => SlamComponentBase | Promise<SlamComponentBase>
-): (props: T) => Promise<ResolvedSlamComponent>;
-export function CreateComponent(component: SlamComponentBase): Promise<ResolvedSlamComponent>;
-export function CreateComponent<T extends PropsObject>(
-  arg1: ((props: T) => SlamComponentBase | Promise<SlamComponentBase>) | SlamComponentBase
-): ((props: T) => Promise<ResolvedSlamComponent>) | Promise<ResolvedSlamComponent> {
-  if (typeof arg1 === "function") {
-    return async (props: T) => {
-      const resolved = await arg1(props);
-      const html = await resolved.html;
-      return {
-        type: "component" as "component",
-        html: html,
-        css: resolved.css,
-        js: resolved.js,
-      };
+export function CreateComponent(config: SlamComponentBase): Promise<ResolvedSlamComponent> {
+  const promise = async (): Promise<ResolvedSlamComponent> => {
+    const html = await config.html;
+    return {
+      type: "component" as "component",
+      html: html,
+      css: config.css,
+      js: config.js,
     };
-  } else {
-    const promise = async (): Promise<ResolvedSlamComponent> => {
-      const html = await arg1.html;
-      return {
-        type: "component" as "component",
-        html: html,
-        css: arg1.css,
-        js: arg1.js,
-      };
-    };
-    return promise();
-  }
+  };
+  return promise();
 }
