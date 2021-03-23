@@ -108,7 +108,7 @@ var area = function (arg1) {
     return {
         type: "element",
         tag: "area",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -219,7 +219,7 @@ var base = function (arg1) {
     return {
         type: "element",
         tag: "base",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -330,7 +330,7 @@ var br = function (arg1) {
     return {
         type: "element",
         tag: "br",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -466,7 +466,7 @@ var col = function (arg1) {
     return {
         type: "element",
         tag: "col",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -777,7 +777,7 @@ var embed = function (arg1) {
     return {
         type: "element",
         tag: "embed",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -1138,7 +1138,7 @@ var hr = function (arg1) {
     return {
         type: "element",
         tag: "hr",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -1224,7 +1224,7 @@ var img = function (arg1) {
     return {
         type: "element",
         tag: "img",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -1235,7 +1235,7 @@ var input = function (arg1) {
     return {
         type: "element",
         tag: "input",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -1371,7 +1371,7 @@ var link = function (arg1) {
     return {
         type: "element",
         tag: "link",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -1482,7 +1482,7 @@ var meta = function (arg1) {
     return {
         type: "element",
         tag: "meta",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -1718,7 +1718,7 @@ var param = function (arg1) {
     return {
         type: "element",
         tag: "param",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -2079,7 +2079,7 @@ var source = function (arg1) {
     return {
         type: "element",
         tag: "source",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -2490,7 +2490,7 @@ var track = function (arg1) {
     return {
         type: "element",
         tag: "track",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -2601,7 +2601,7 @@ var wbr = function (arg1) {
     return {
         type: "element",
         tag: "wbr",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -2712,7 +2712,7 @@ var circle = function (arg1) {
     return {
         type: "element",
         tag: "circle",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -2823,7 +2823,7 @@ var ellipse = function (arg1) {
     return {
         type: "element",
         tag: "ellipse",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -3559,7 +3559,7 @@ var line = function (arg1) {
     return {
         type: "element",
         tag: "line",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -3695,7 +3695,7 @@ var path = function (arg1) {
     return {
         type: "element",
         tag: "path",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -3731,7 +3731,7 @@ var polygon = function (arg1) {
     return {
         type: "element",
         tag: "polygon",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -3742,7 +3742,7 @@ var polyline = function (arg1) {
     return {
         type: "element",
         tag: "polyline",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -3778,7 +3778,7 @@ var rect = function (arg1) {
     return {
         type: "element",
         tag: "rect",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -3814,7 +3814,7 @@ var stop = function (arg1) {
     return {
         type: "element",
         tag: "stop",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };
@@ -4000,7 +4000,7 @@ var use = function (arg1) {
     return {
         type: "element",
         tag: "use",
-        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        atts: __assign(__assign({}, arg1), { css: css, js: js }),
         children: undefined,
     };
 };

@@ -141,31 +141,26 @@ function equalObjects(object1, object2) {
 }
 exports.equalObjects = equalObjects;
 function resolveAndType(arg1, arg2, atts, tag) {
-    var _a, _b;
     return __awaiter(this, void 0, void 0, function () {
-        var css, js, children, r1;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        var children, r1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    css = undefined;
-                    js = undefined;
                     children = [];
                     if (!arg1) return [3 /*break*/, 2];
                     return [4 /*yield*/, arg1];
                 case 1:
-                    r1 = _c.sent();
+                    r1 = _a.sent();
                     if (typeof r1 === "string") {
                         children.push(r1);
                     }
                     else if ("type" in r1) {
                         children.push(r1);
-                        css = (_a = r1.atts) === null || _a === void 0 ? void 0 : _a.css;
-                        js = (_b = r1.atts) === null || _b === void 0 ? void 0 : _b.js;
                     }
                     else {
                         atts = r1;
                     }
-                    _c.label = 2;
+                    _a.label = 2;
                 case 2:
                     children = children.concat(arg2);
                     return [2 /*return*/, {

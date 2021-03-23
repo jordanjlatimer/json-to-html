@@ -195,7 +195,7 @@ export const area = (arg1?: HTMLAreaAttributes): SlamElement => {
   return {
     type: "element",
     tag: "area",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -230,7 +230,7 @@ export const base = (arg1?: HTMLBaseAttributes): SlamElement => {
   return {
     type: "element",
     tag: "base",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -265,7 +265,7 @@ export const br = (arg1?: HTMLBrAttributes): SlamElement => {
   return {
     type: "element",
     tag: "br",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -306,7 +306,7 @@ export const col = (arg1?: HTMLColAttributes): SlamElement => {
   return {
     type: "element",
     tag: "col",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -389,7 +389,7 @@ export const embed = (arg1?: HTMLEmbedAttributes): SlamElement => {
   return {
     type: "element",
     tag: "embed",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -484,7 +484,7 @@ export const hr = (arg1?: HTMLHrAttributes): SlamElement => {
   return {
     type: "element",
     tag: "hr",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -513,7 +513,7 @@ export const img = (arg1?: HTMLImgAttributes): SlamElement => {
   return {
     type: "element",
     tag: "img",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -524,7 +524,7 @@ export const input = (arg1?: HTMLInputAttributes): SlamElement => {
   return {
     type: "element",
     tag: "input",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -565,7 +565,7 @@ export const link = (arg1?: HTMLLinkAttributes): SlamElement => {
   return {
     type: "element",
     tag: "link",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -600,7 +600,7 @@ export const meta = (arg1?: HTMLMetaAttributes): SlamElement => {
   return {
     type: "element",
     tag: "meta",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -665,7 +665,7 @@ export const param = (arg1?: HTMLParamAttributes): SlamElement => {
   return {
     type: "element",
     tag: "param",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -760,7 +760,7 @@ export const source = (arg1?: HTMLSourceAttributes): SlamElement => {
   return {
     type: "element",
     tag: "source",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -867,7 +867,7 @@ export const track = (arg1?: HTMLTrackAttributes): SlamElement => {
   return {
     type: "element",
     tag: "track",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -902,7 +902,7 @@ export const wbr = (arg1?: HTMLWbrAttributes): SlamElement => {
   return {
     type: "element",
     tag: "wbr",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -943,7 +943,7 @@ export const circle = (arg1?: SVGCircleAttributes): SlamElement => {
   return {
     type: "element",
     tag: "circle",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -978,7 +978,7 @@ export const ellipse = (arg1?: SVGEllipseAttributes): SlamElement => {
   return {
     type: "element",
     tag: "ellipse",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1202,7 +1202,7 @@ export const line = (arg1?: SVGLineAttributes): SlamElement => {
   return {
     type: "element",
     tag: "line",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1246,7 +1246,7 @@ export const path = (arg1?: SVGPathAttributes): SlamElement => {
   return {
     type: "element",
     tag: "path",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1263,7 +1263,7 @@ export const polygon = (arg1?: SVGPolygonAttributes): SlamElement => {
   return {
     type: "element",
     tag: "polygon",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1274,7 +1274,7 @@ export const polyline = (arg1?: SVGPolylineAttributes): SlamElement => {
   return {
     type: "element",
     tag: "polyline",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1294,7 +1294,7 @@ export const rect = (arg1?: SVGRectAttributes): SlamElement => {
   return {
     type: "element",
     tag: "rect",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1311,7 +1311,7 @@ export const stop = (arg1?: SVGStopAttributes): SlamElement => {
   return {
     type: "element",
     tag: "stop",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };
@@ -1364,7 +1364,7 @@ export const use = (arg1?: SVGUseAttributes): SlamElement => {
   return {
     type: "element",
     tag: "use",
-    atts: { ...arg1, css: undefined, js: undefined },
+    atts: { ...arg1, css: css, js: js },
     children: undefined,
   };
 };

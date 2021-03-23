@@ -1,4 +1,4 @@
-import { Child, CSSObject, ElementAttributes, ResolvedChild, SlamElement } from "./slamInterfaces";
+import { Child, ElementAttributes, ResolvedChild, SlamElement } from "./slamInterfaces";
 
 export const toKebabCase = (value: string) => {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
@@ -110,8 +110,6 @@ export async function resolveAndType<T>(
   atts: T | undefined,
   tag: string
 ): Promise<SlamElement> {
-  let css: CSSObject | undefined = undefined;
-  let js: (() => void) | undefined = undefined;
   let children: SlamElement["children"] = [];
   if (arg1) {
     let r1 = await arg1;
@@ -119,8 +117,6 @@ export async function resolveAndType<T>(
       children.push(r1);
     } else if ("type" in r1) {
       children.push(r1);
-      css = r1.atts?.css;
-      js = r1.atts?.js;
     } else {
       atts = r1;
     }
