@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateComponent = exports.CreatePage = void 0;
+exports.CreatePage = void 0;
 var generateCss_1 = require("./generateCss");
 var builders_1 = require("./builders");
 var fs = require("fs");
@@ -103,42 +103,22 @@ function CreatePage(config) {
         page.html = builders_1.buildHtmlFromObject(tree, components);
     };
     var buildCss = function (tree, pageCss, noReset) {
-        components = builders_1.identifyComponents(tree);
+        components = builders_1.identifyCssElements(tree);
         page.css += noReset ? "" : cssReset_1.cssReset;
         page.css += pageCss ? generateCss_1.buildCssFromObject("html", pageCss) : "";
         Object.keys(components).forEach(function (key) {
-            var css = components[parseInt(key)][0].css;
+            var _a;
+            var css = (_a = components[parseInt(key)][0].atts) === null || _a === void 0 ? void 0 : _a.css;
             page.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";
         });
     };
     var buildJs = function () {
         page.js = page.js ? "(" + page.js + ")()" : "";
         Object.keys(components).forEach(function (key) {
-            var js = components[parseInt(key)][0].js;
+            var js = components[parseInt(key)][0].atts.js;
             page.js += js ? "(" + js + ")()" : "";
         });
     };
     return page;
 }
 exports.CreatePage = CreatePage;
-function CreateComponent(config) {
-    var _this = this;
-    var promise = function () { return __awaiter(_this, void 0, void 0, function () {
-        var html;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, config.html];
-                case 1:
-                    html = _a.sent();
-                    return [2 /*return*/, {
-                            type: "component",
-                            html: html,
-                            css: config.css,
-                            js: config.js,
-                        }];
-            }
-        });
-    }); };
-    return promise();
-}
-exports.CreateComponent = CreateComponent;

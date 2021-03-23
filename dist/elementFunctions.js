@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -40,33 +51,27 @@ exports.iframe = exports.i = exports.html = exports.hr = exports.hgroup = export
 exports.th = exports.tfoot = exports.textarea = exports.template = exports.td = exports.tbody = exports.table = exports.sup = exports.summary = exports.sub = exports.strong = exports.span = exports.source = exports.small = exports.slot = exports.select = exports.section = exports.script = exports.samp = exports.s = exports.ruby = exports.rt = exports.rp = exports.q = exports.progress = exports.pre = exports.picture = exports.param = exports.p = exports.output = exports.option = exports.optgroup = exports.ol = exports.object = exports.noscript = exports.nav = exports.meter = exports.meta = exports.menu = exports.mark = exports.map = exports.main = exports.link = exports.li = exports.legend = exports.label = exports.kbd = exports.ins = exports.input = exports.img = void 0;
 exports.line = exports.image = exports.g = exports.foreignObject = exports.filter = exports.feTurbulence = exports.feTile = exports.feSpotLight = exports.feSpecularLighting = exports.fePointLight = exports.feOffset = exports.feMorphology = exports.feMergeNode = exports.feMerge = exports.feImage = exports.feGaussianBlur = exports.feFuncR = exports.feFuncG = exports.feFuncB = exports.feFuncA = exports.feFlood = exports.feDropShadow = exports.feDistantLight = exports.feDisplacementMap = exports.feDiffuseLighting = exports.feConvolveMatrix = exports.feComposite = exports.feComponentTransfer = exports.feColorMatrix = exports.feBlend = exports.ellipse = exports.discard = exports.desc = exports.defs = exports.clipPath = exports.circle = exports.animateTransform = exports.animateMotion = exports.animate = exports.a = exports.wbr = exports.video = exports.var_ = exports.ul = exports.u = exports.track = exports.tr = exports.title = exports.time = exports.thead = void 0;
 exports.view = exports.use = exports.unknown = exports.tspan = exports.textPath = exports.text = exports.symbol = exports.switch_ = exports.svg = exports.stop = exports.set = exports.rect = exports.radialGradient = exports.polyline = exports.polygon = exports.pattern = exports.path = exports.mpath = exports.metadata = exports.mask = exports.marker = exports.linearGradient = void 0;
+var utils_1 = require("./utils");
 var abbr = function (arg1) {
     var arg2 = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "abbr",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "abbr")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -78,38 +83,35 @@ var address = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "address",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "address")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.address = address;
-var area = function (arg1) { return ({
-    tag: "area",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var area = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "area",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.area = area;
 var article = function (arg1) {
     var arg2 = [];
@@ -117,27 +119,20 @@ var article = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "article",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "article")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -149,27 +144,20 @@ var aside = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "aside",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "aside")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -181,27 +169,20 @@ var audio = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "audio",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "audio")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -213,38 +194,35 @@ var b = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "b",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "b")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.b = b;
-var base = function (arg1) { return ({
-    tag: "base",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var base = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "base",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.base = base;
 var bdi = function (arg1) {
     var arg2 = [];
@@ -252,27 +230,20 @@ var bdi = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "bdi",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "bdi")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -284,27 +255,20 @@ var bdo = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "bdo",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "bdo")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -316,27 +280,20 @@ var blockquote = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "blockquote",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "blockquote")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -348,38 +305,35 @@ var body = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "body",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "body")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.body = body;
-var br = function (arg1) { return ({
-    tag: "br",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var br = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "br",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.br = br;
 var button = function (arg1) {
     var arg2 = [];
@@ -387,27 +341,20 @@ var button = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "button",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "button")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -419,27 +366,20 @@ var canvas = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "canvas",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "canvas")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -451,27 +391,20 @@ var caption = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "caption",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "caption")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -483,27 +416,20 @@ var cite = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "cite",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "cite")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -515,38 +441,35 @@ var code = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "code",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "code")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.code = code;
-var col = function (arg1) { return ({
-    tag: "col",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var col = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "col",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.col = col;
 var colgroup = function (arg1) {
     var arg2 = [];
@@ -554,27 +477,20 @@ var colgroup = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "colgroup",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "colgroup")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -586,27 +502,20 @@ var data = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "data",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "data")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -618,27 +527,20 @@ var datalist = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "datalist",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "datalist")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -650,27 +552,20 @@ var dd = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "dd",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "dd")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -682,27 +577,20 @@ var del = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "del",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "del")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -714,27 +602,20 @@ var details = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "details",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "details")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -746,27 +627,20 @@ var dfn = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "dfn",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "dfn")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -778,27 +652,20 @@ var dialog = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "dialog",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "dialog")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -810,27 +677,20 @@ var div = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "div",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "div")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -842,27 +702,20 @@ var dl = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "dl",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "dl")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -874,27 +727,20 @@ var dt = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "dt",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "dt")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -906,38 +752,35 @@ var em = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "em",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "em")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.em = em;
-var embed = function (arg1) { return ({
-    tag: "embed",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var embed = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "embed",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.embed = embed;
 var fieldset = function (arg1) {
     var arg2 = [];
@@ -945,27 +788,20 @@ var fieldset = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "fieldset",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "fieldset")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -977,27 +813,20 @@ var figcaption = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "figcaption",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "figcaption")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1009,27 +838,20 @@ var figure = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "figure",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "figure")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1041,27 +863,20 @@ var footer = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "footer",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "footer")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1073,27 +888,20 @@ var form = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "form",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "form")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1105,27 +913,20 @@ var h1 = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "h1",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "h1")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1137,27 +938,20 @@ var h2 = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "h2",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "h2")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1169,27 +963,20 @@ var h3 = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "h3",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "h3")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1201,27 +988,20 @@ var h4 = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "h4",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "h4")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1233,27 +1013,20 @@ var h5 = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "h5",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "h5")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1265,27 +1038,20 @@ var h6 = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "h6",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "h6")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1297,27 +1063,20 @@ var head = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "head",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "head")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1329,27 +1088,20 @@ var header = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "header",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "header")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1361,38 +1113,35 @@ var hgroup = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "hgroup",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "hgroup")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.hgroup = hgroup;
-var hr = function (arg1) { return ({
-    tag: "hr",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var hr = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "hr",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.hr = hr;
 var html = function (arg1) {
     var arg2 = [];
@@ -1400,27 +1149,20 @@ var html = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "html",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "html")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1432,27 +1174,20 @@ var i = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "i",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "i")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1464,45 +1199,46 @@ var iframe = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "iframe",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "iframe")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.iframe = iframe;
-var img = function (arg1) { return ({
-    tag: "img",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var img = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "img",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.img = img;
-var input = function (arg1) { return ({
-    tag: "input",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var input = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "input",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.input = input;
 var ins = function (arg1) {
     var arg2 = [];
@@ -1510,27 +1246,20 @@ var ins = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "ins",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "ins")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1542,27 +1271,20 @@ var kbd = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "kbd",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "kbd")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1574,27 +1296,20 @@ var label = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "label",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "label")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1606,27 +1321,20 @@ var legend = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "legend",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "legend")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1638,38 +1346,35 @@ var li = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "li",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "li")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.li = li;
-var link = function (arg1) { return ({
-    tag: "link",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var link = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "link",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.link = link;
 var main = function (arg1) {
     var arg2 = [];
@@ -1677,27 +1382,20 @@ var main = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "main",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "main")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1709,27 +1407,20 @@ var map = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "map",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "map")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1741,27 +1432,20 @@ var mark = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "mark",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "mark")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1773,38 +1457,35 @@ var menu = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "menu",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "menu")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.menu = menu;
-var meta = function (arg1) { return ({
-    tag: "meta",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var meta = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "meta",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.meta = meta;
 var meter = function (arg1) {
     var arg2 = [];
@@ -1812,27 +1493,20 @@ var meter = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "meter",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "meter")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1844,27 +1518,20 @@ var nav = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "nav",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "nav")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1876,27 +1543,20 @@ var noscript = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "noscript",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "noscript")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1908,27 +1568,20 @@ var object = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "object",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "object")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1940,27 +1593,20 @@ var ol = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "ol",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "ol")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -1972,27 +1618,20 @@ var optgroup = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "optgroup",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "optgroup")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2004,27 +1643,20 @@ var option = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "option",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "option")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2036,27 +1668,20 @@ var output = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "output",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "output")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2068,38 +1693,35 @@ var p = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "p",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "p")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.p = p;
-var param = function (arg1) { return ({
-    tag: "param",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var param = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "param",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.param = param;
 var picture = function (arg1) {
     var arg2 = [];
@@ -2107,27 +1729,20 @@ var picture = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "picture",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "picture")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2139,27 +1754,20 @@ var pre = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "pre",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "pre")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2171,27 +1779,20 @@ var progress = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "progress",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "progress")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2203,27 +1804,20 @@ var q = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "q",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "q")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2235,27 +1829,20 @@ var rp = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "rp",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "rp")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2267,27 +1854,20 @@ var rt = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "rt",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "rt")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2299,27 +1879,20 @@ var ruby = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "ruby",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "ruby")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2331,27 +1904,20 @@ var s = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "s",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "s")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2363,27 +1929,20 @@ var samp = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "samp",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "samp")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2395,27 +1954,20 @@ var script = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "script",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "script")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2427,27 +1979,20 @@ var section = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "section",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "section")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2459,27 +2004,20 @@ var select = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "select",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "select")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2491,27 +2029,20 @@ var slot = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "slot",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "slot")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2523,38 +2054,35 @@ var small = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "small",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "small")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.small = small;
-var source = function (arg1) { return ({
-    tag: "source",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var source = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "source",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.source = source;
 var span = function (arg1) {
     var arg2 = [];
@@ -2562,27 +2090,20 @@ var span = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "span",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "span")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2594,27 +2115,20 @@ var strong = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "strong",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "strong")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2626,27 +2140,20 @@ var sub = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "sub",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "sub")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2658,27 +2165,20 @@ var summary = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "summary",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "summary")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2690,27 +2190,20 @@ var sup = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "sup",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "sup")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2722,27 +2215,20 @@ var table = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "table",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "table")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2754,27 +2240,20 @@ var tbody = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "tbody",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "tbody")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2786,27 +2265,20 @@ var td = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "td",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "td")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2818,27 +2290,20 @@ var template = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "template",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "template")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2850,27 +2315,20 @@ var textarea = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "textarea",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "textarea")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2882,27 +2340,20 @@ var tfoot = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "tfoot",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "tfoot")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2914,27 +2365,20 @@ var th = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "th",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "th")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2946,27 +2390,20 @@ var thead = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "thead",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "thead")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -2978,27 +2415,20 @@ var time = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "time",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "time")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3010,27 +2440,20 @@ var title = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "title",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "title")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3042,38 +2465,35 @@ var tr = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "tr",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "tr")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.tr = tr;
-var track = function (arg1) { return ({
-    tag: "track",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var track = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "track",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.track = track;
 var u = function (arg1) {
     var arg2 = [];
@@ -3081,27 +2501,20 @@ var u = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "u",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "u")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3113,27 +2526,20 @@ var ul = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "ul",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "ul")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3145,27 +2551,20 @@ var var_ = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "var",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "var")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3177,38 +2576,35 @@ var video = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "video",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "video")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.video = video;
-var wbr = function (arg1) { return ({
-    tag: "wbr",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var wbr = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "wbr",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.wbr = wbr;
 var a = function (arg1) {
     var arg2 = [];
@@ -3216,27 +2612,20 @@ var a = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "a",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "a")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3248,27 +2637,20 @@ var animate = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "animate",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "animate")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3280,27 +2662,20 @@ var animateMotion = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "animateMotion",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "animateMotion")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3312,38 +2687,35 @@ var animateTransform = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "animateTransform",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "animateTransform")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.animateTransform = animateTransform;
-var circle = function (arg1) { return ({
-    tag: "circle",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var circle = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "circle",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.circle = circle;
 var clipPath = function (arg1) {
     var arg2 = [];
@@ -3351,27 +2723,20 @@ var clipPath = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "clipPath",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "clipPath")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3383,27 +2748,20 @@ var defs = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "defs",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "defs")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3415,27 +2773,20 @@ var desc = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "desc",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "desc")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3447,38 +2798,35 @@ var discard = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "discard",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "discard")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.discard = discard;
-var ellipse = function (arg1) { return ({
-    tag: "ellipse",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var ellipse = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "ellipse",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.ellipse = ellipse;
 var feBlend = function (arg1) {
     var arg2 = [];
@@ -3486,27 +2834,20 @@ var feBlend = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feBlend",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feBlend")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3518,27 +2859,20 @@ var feColorMatrix = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feColorMatrix",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feColorMatrix")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3550,27 +2884,20 @@ var feComponentTransfer = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feComponentTransfer",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feComponentTransfer")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3582,27 +2909,20 @@ var feComposite = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feComposite",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feComposite")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3614,27 +2934,20 @@ var feConvolveMatrix = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feConvolveMatrix",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feConvolveMatrix")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3646,27 +2959,20 @@ var feDiffuseLighting = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feDiffuseLighting",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feDiffuseLighting")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3678,27 +2984,20 @@ var feDisplacementMap = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feDisplacementMap",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feDisplacementMap")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3710,27 +3009,20 @@ var feDistantLight = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feDistantLight",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feDistantLight")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3742,27 +3034,20 @@ var feDropShadow = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feDropShadow",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feDropShadow")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3774,27 +3059,20 @@ var feFlood = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feFlood",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feFlood")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3806,27 +3084,20 @@ var feFuncA = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feFuncA",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feFuncA")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3838,27 +3109,20 @@ var feFuncB = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feFuncB",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feFuncB")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3870,27 +3134,20 @@ var feFuncG = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feFuncG",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feFuncG")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3902,27 +3159,20 @@ var feFuncR = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feFuncR",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feFuncR")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3934,27 +3184,20 @@ var feGaussianBlur = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feGaussianBlur",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feGaussianBlur")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3966,27 +3209,20 @@ var feImage = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feImage",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feImage")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -3998,27 +3234,20 @@ var feMerge = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feMerge",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feMerge")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4030,27 +3259,20 @@ var feMergeNode = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feMergeNode",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feMergeNode")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4062,27 +3284,20 @@ var feMorphology = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feMorphology",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feMorphology")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4094,27 +3309,20 @@ var feOffset = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feOffset",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feOffset")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4126,27 +3334,20 @@ var fePointLight = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "fePointLight",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "fePointLight")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4158,27 +3359,20 @@ var feSpecularLighting = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feSpecularLighting",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feSpecularLighting")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4190,27 +3384,20 @@ var feSpotLight = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feSpotLight",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feSpotLight")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4222,27 +3409,20 @@ var feTile = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feTile",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feTile")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4254,27 +3434,20 @@ var feTurbulence = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "feTurbulence",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "feTurbulence")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4286,27 +3459,20 @@ var filter = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "filter",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "filter")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4318,27 +3484,20 @@ var foreignObject = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "foreignObject",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "foreignObject")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4350,27 +3509,20 @@ var g = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "g",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "g")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4382,38 +3534,35 @@ var image = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "image",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "image")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.image = image;
-var line = function (arg1) { return ({
-    tag: "line",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var line = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "line",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.line = line;
 var linearGradient = function (arg1) {
     var arg2 = [];
@@ -4421,27 +3570,20 @@ var linearGradient = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "linearGradient",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "linearGradient")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4453,27 +3595,20 @@ var marker = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "marker",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "marker")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4485,27 +3620,20 @@ var mask = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "mask",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "mask")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4517,27 +3645,20 @@ var metadata = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "metadata",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "metadata")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4549,38 +3670,35 @@ var mpath = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "mpath",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "mpath")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.mpath = mpath;
-var path = function (arg1) { return ({
-    tag: "path",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var path = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "path",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.path = path;
 var pattern = function (arg1) {
     var arg2 = [];
@@ -4588,45 +3706,46 @@ var pattern = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "pattern",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "pattern")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.pattern = pattern;
-var polygon = function (arg1) { return ({
-    tag: "polygon",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var polygon = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "polygon",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.polygon = polygon;
-var polyline = function (arg1) { return ({
-    tag: "polyline",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var polyline = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "polyline",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.polyline = polyline;
 var radialGradient = function (arg1) {
     var arg2 = [];
@@ -4634,38 +3753,35 @@ var radialGradient = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "radialGradient",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "radialGradient")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.radialGradient = radialGradient;
-var rect = function (arg1) { return ({
-    tag: "rect",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var rect = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "rect",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.rect = rect;
 var set = function (arg1) {
     var arg2 = [];
@@ -4673,38 +3789,35 @@ var set = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "set",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "set")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.set = set;
-var stop = function (arg1) { return ({
-    tag: "stop",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var stop = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "stop",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.stop = stop;
 var svg = function (arg1) {
     var arg2 = [];
@@ -4712,27 +3825,20 @@ var svg = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "svg",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "svg")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4744,27 +3850,20 @@ var switch_ = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "switch",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "switch")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4776,27 +3875,20 @@ var symbol = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "symbol",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "symbol")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4808,27 +3900,20 @@ var text = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "text",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "text")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4840,27 +3925,20 @@ var textPath = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "textPath",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "textPath")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4872,27 +3950,20 @@ var tspan = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "tspan",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "tspan")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
@@ -4904,38 +3975,35 @@ var unknown = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "unknown",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "unknown")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 };
 exports.unknown = unknown;
-var use = function (arg1) { return ({
-    tag: "use",
-    type: "element",
-    atts: arg1,
-    children: undefined,
-}); };
+var use = function (arg1) {
+    var css = arg1 ? arg1["css"] : undefined;
+    var js = arg1 ? arg1["js"] : undefined;
+    return {
+        type: "element",
+        tag: "use",
+        atts: __assign(__assign({}, arg1), { css: undefined, js: undefined }),
+        children: undefined,
+    };
+};
 exports.use = use;
 var view = function (arg1) {
     var arg2 = [];
@@ -4943,27 +4011,20 @@ var view = function (arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     return __awaiter(void 0, void 0, void 0, function () {
-        var r1, r2, arg1IsChild;
+        var r2, atts;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, arg1];
+                case 0: return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, item];
+                            case 1: return [2 /*return*/, _a.sent()];
+                        }
+                    }); }); }))];
                 case 1:
-                    r1 = _a.sent();
-                    return [4 /*yield*/, Promise.all(arg2.map(function (item) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, item];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }))];
-                case 2:
                     r2 = _a.sent();
-                    arg1IsChild = (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("tag")) || (r1 === null || r1 === void 0 ? void 0 : r1.hasOwnProperty("html")) || typeof r1 === "string";
-                    return [2 /*return*/, {
-                            tag: "view",
-                            atts: arg1IsChild ? undefined : r1,
-                            type: "element",
-                            children: r1 ? (arg1IsChild ? [r1].concat(r2) : r2) : r2,
-                        }];
+                    atts = undefined;
+                    return [4 /*yield*/, utils_1.resolveAndType(arg1, r2, atts, "view")];
+                case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });

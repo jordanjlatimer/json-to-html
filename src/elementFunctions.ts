@@ -1,4 +1,5 @@
-import { Child, ResolvedSlamElement, ResolvedChild } from "./slamInterfaces";
+import { Child, SlamElement } from "./slamInterfaces";
+import { resolveAndType } from "./utils";
 import {
   HTMLAbbrAttributes,
   HTMLAddressAttributes,
@@ -176,2053 +177,1200 @@ import {
   SVGViewAttributes,
 } from "./svgInterfaces";
 
-export const abbr = async (arg1?: HTMLAbbrAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const abbr = async (arg1?: HTMLAbbrAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "abbr",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLAbbrAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "abbr");
 };
 
-export const address = async (arg1?: HTMLAddressAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const address = async (arg1?: HTMLAddressAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLAddressAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "address");
+};
+
+export const area = (arg1?: HTMLAreaAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "address",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "area",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const area = (arg1?: HTMLAreaAttributes): ResolvedSlamElement => ({
-  tag: "area",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const article = async (arg1?: HTMLArticleAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const article = async (arg1?: HTMLArticleAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "article",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLArticleAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "article");
 };
 
-export const aside = async (arg1?: HTMLAsideAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const aside = async (arg1?: HTMLAsideAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "aside",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLAsideAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "aside");
 };
 
-export const audio = async (arg1?: HTMLAudioAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const audio = async (arg1?: HTMLAudioAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "audio",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLAudioAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "audio");
 };
 
-export const b = async (arg1?: HTMLBAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const b = async (arg1?: HTMLBAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLBAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "b");
+};
+
+export const base = (arg1?: HTMLBaseAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "b",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "base",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const base = (arg1?: HTMLBaseAttributes): ResolvedSlamElement => ({
-  tag: "base",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const bdi = async (arg1?: HTMLBdiAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const bdi = async (arg1?: HTMLBdiAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "bdi",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLBdiAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "bdi");
 };
 
-export const bdo = async (arg1?: HTMLBdoAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const bdo = async (arg1?: HTMLBdoAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "bdo",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLBdoAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "bdo");
 };
 
-export const blockquote = async (
-  arg1?: HTMLBlockquoteAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const blockquote = async (arg1?: HTMLBlockquoteAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "blockquote",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLBlockquoteAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "blockquote");
 };
 
-export const body = async (arg1?: HTMLBodyAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const body = async (arg1?: HTMLBodyAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLBodyAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "body");
+};
+
+export const br = (arg1?: HTMLBrAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "body",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "br",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const br = (arg1?: HTMLBrAttributes): ResolvedSlamElement => ({
-  tag: "br",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const button = async (arg1?: HTMLButtonAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const button = async (arg1?: HTMLButtonAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "button",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLButtonAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "button");
 };
 
-export const canvas = async (arg1?: HTMLCanvasAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const canvas = async (arg1?: HTMLCanvasAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "canvas",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLCanvasAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "canvas");
 };
 
-export const caption = async (arg1?: HTMLCaptionAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const caption = async (arg1?: HTMLCaptionAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "caption",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLCaptionAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "caption");
 };
 
-export const cite = async (arg1?: HTMLCiteAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const cite = async (arg1?: HTMLCiteAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "cite",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLCiteAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "cite");
 };
 
-export const code = async (arg1?: HTMLCodeAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const code = async (arg1?: HTMLCodeAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLCodeAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "code");
+};
+
+export const col = (arg1?: HTMLColAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "code",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "col",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const col = (arg1?: HTMLColAttributes): ResolvedSlamElement => ({
-  tag: "col",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const colgroup = async (
-  arg1?: HTMLColgroupAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const colgroup = async (arg1?: HTMLColgroupAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "colgroup",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLColgroupAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "colgroup");
 };
 
-export const data = async (arg1?: HTMLDataAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const data = async (arg1?: HTMLDataAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "data",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDataAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "data");
 };
 
-export const datalist = async (
-  arg1?: HTMLDatalistAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const datalist = async (arg1?: HTMLDatalistAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "datalist",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDatalistAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "datalist");
 };
 
-export const dd = async (arg1?: HTMLDdAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const dd = async (arg1?: HTMLDdAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "dd",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDdAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "dd");
 };
 
-export const del = async (arg1?: HTMLDelAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const del = async (arg1?: HTMLDelAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "del",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDelAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "del");
 };
 
-export const details = async (arg1?: HTMLDetailsAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const details = async (arg1?: HTMLDetailsAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "details",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDetailsAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "details");
 };
 
-export const dfn = async (arg1?: HTMLDfnAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const dfn = async (arg1?: HTMLDfnAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "dfn",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDfnAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "dfn");
 };
 
-export const dialog = async (arg1?: HTMLDialogAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const dialog = async (arg1?: HTMLDialogAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "dialog",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDialogAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "dialog");
 };
 
-export const div = async (arg1?: HTMLDivAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const div = async (arg1?: HTMLDivAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "div",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDivAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "div");
 };
 
-export const dl = async (arg1?: HTMLDlAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const dl = async (arg1?: HTMLDlAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "dl",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDlAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "dl");
 };
 
-export const dt = async (arg1?: HTMLDtAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const dt = async (arg1?: HTMLDtAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "dt",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLDtAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "dt");
 };
 
-export const em = async (arg1?: HTMLEmAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const em = async (arg1?: HTMLEmAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLEmAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "em");
+};
+
+export const embed = (arg1?: HTMLEmbedAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "em",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "embed",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const embed = (arg1?: HTMLEmbedAttributes): ResolvedSlamElement => ({
-  tag: "embed",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const fieldset = async (
-  arg1?: HTMLFieldsetAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const fieldset = async (arg1?: HTMLFieldsetAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "fieldset",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLFieldsetAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "fieldset");
 };
 
-export const figcaption = async (
-  arg1?: HTMLFigcaptionAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const figcaption = async (arg1?: HTMLFigcaptionAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "figcaption",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLFigcaptionAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "figcaption");
 };
 
-export const figure = async (arg1?: HTMLFigureAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const figure = async (arg1?: HTMLFigureAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "figure",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLFigureAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "figure");
 };
 
-export const footer = async (arg1?: HTMLFooterAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const footer = async (arg1?: HTMLFooterAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "footer",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLFooterAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "footer");
 };
 
-export const form = async (arg1?: HTMLFormAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const form = async (arg1?: HTMLFormAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "form",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLFormAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "form");
 };
 
-export const h1 = async (arg1?: HTMLH1Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const h1 = async (arg1?: HTMLH1Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "h1",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLH1Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "h1");
 };
 
-export const h2 = async (arg1?: HTMLH2Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const h2 = async (arg1?: HTMLH2Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "h2",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLH2Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "h2");
 };
 
-export const h3 = async (arg1?: HTMLH3Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const h3 = async (arg1?: HTMLH3Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "h3",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLH3Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "h3");
 };
 
-export const h4 = async (arg1?: HTMLH4Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const h4 = async (arg1?: HTMLH4Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "h4",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLH4Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "h4");
 };
 
-export const h5 = async (arg1?: HTMLH5Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const h5 = async (arg1?: HTMLH5Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "h5",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLH5Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "h5");
 };
 
-export const h6 = async (arg1?: HTMLH6Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const h6 = async (arg1?: HTMLH6Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "h6",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLH6Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "h6");
 };
 
-export const head = async (arg1?: HTMLHeadAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const head = async (arg1?: HTMLHeadAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "head",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLHeadAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "head");
 };
 
-export const header = async (arg1?: HTMLHeaderAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const header = async (arg1?: HTMLHeaderAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "header",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLHeaderAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "header");
 };
 
-export const hgroup = async (arg1?: HTMLHgroupAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const hgroup = async (arg1?: HTMLHgroupAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLHgroupAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "hgroup");
+};
+
+export const hr = (arg1?: HTMLHrAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "hgroup",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "hr",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const hr = (arg1?: HTMLHrAttributes): ResolvedSlamElement => ({
-  tag: "hr",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
+export const html = async (arg1?: HTMLHtmlAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: HTMLHtmlAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "html");
+};
 
-export const html = async (arg1?: HTMLHtmlAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const i = async (arg1?: HTMLIAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "html",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLIAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "i");
 };
 
-export const i = async (arg1?: HTMLIAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const iframe = async (arg1?: HTMLIframeAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLIframeAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "iframe");
+};
+
+export const img = (arg1?: HTMLImgAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "i",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "img",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const iframe = async (arg1?: HTMLIframeAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+export const input = (arg1?: HTMLInputAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "iframe",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "input",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const img = (arg1?: HTMLImgAttributes): ResolvedSlamElement => ({
-  tag: "img",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const input = (arg1?: HTMLInputAttributes): ResolvedSlamElement => ({
-  tag: "input",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const ins = async (arg1?: HTMLInsAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const ins = async (arg1?: HTMLInsAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "ins",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLInsAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "ins");
 };
 
-export const kbd = async (arg1?: HTMLKbdAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const kbd = async (arg1?: HTMLKbdAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "kbd",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLKbdAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "kbd");
 };
 
-export const label = async (arg1?: HTMLLabelAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const label = async (arg1?: HTMLLabelAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "label",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLLabelAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "label");
 };
 
-export const legend = async (arg1?: HTMLLegendAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const legend = async (arg1?: HTMLLegendAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "legend",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLLegendAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "legend");
 };
 
-export const li = async (arg1?: HTMLLiAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const li = async (arg1?: HTMLLiAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLLiAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "li");
+};
+
+export const link = (arg1?: HTMLLinkAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "li",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "link",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const link = (arg1?: HTMLLinkAttributes): ResolvedSlamElement => ({
-  tag: "link",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const main = async (arg1?: HTMLMainAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const main = async (arg1?: HTMLMainAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "main",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLMainAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "main");
 };
 
-export const map = async (arg1?: HTMLMapAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const map = async (arg1?: HTMLMapAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "map",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLMapAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "map");
 };
 
-export const mark = async (arg1?: HTMLMarkAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const mark = async (arg1?: HTMLMarkAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "mark",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLMarkAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "mark");
 };
 
-export const menu = async (arg1?: HTMLMenuAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const menu = async (arg1?: HTMLMenuAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLMenuAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "menu");
+};
+
+export const meta = (arg1?: HTMLMetaAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "menu",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "meta",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
-
-export const meta = (arg1?: HTMLMetaAttributes): ResolvedSlamElement => ({
-  tag: "meta",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
 
-export const meter = async (arg1?: HTMLMeterAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const meter = async (arg1?: HTMLMeterAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "meter",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLMeterAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "meter");
 };
 
-export const nav = async (arg1?: HTMLNavAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const nav = async (arg1?: HTMLNavAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "nav",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLNavAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "nav");
 };
 
-export const noscript = async (
-  arg1?: HTMLNoscriptAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const noscript = async (arg1?: HTMLNoscriptAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "noscript",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLNoscriptAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "noscript");
 };
 
-export const object = async (arg1?: HTMLObjectAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const object = async (arg1?: HTMLObjectAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "object",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLObjectAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "object");
 };
 
-export const ol = async (arg1?: HTMLOlAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const ol = async (arg1?: HTMLOlAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "ol",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLOlAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "ol");
 };
 
-export const optgroup = async (
-  arg1?: HTMLOptgroupAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const optgroup = async (arg1?: HTMLOptgroupAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "optgroup",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLOptgroupAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "optgroup");
 };
 
-export const option = async (arg1?: HTMLOptionAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const option = async (arg1?: HTMLOptionAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "option",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLOptionAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "option");
 };
 
-export const output = async (arg1?: HTMLOutputAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const output = async (arg1?: HTMLOutputAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "output",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLOutputAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "output");
 };
 
-export const p = async (arg1?: HTMLPAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const p = async (arg1?: HTMLPAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLPAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "p");
+};
+
+export const param = (arg1?: HTMLParamAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "p",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "param",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const param = (arg1?: HTMLParamAttributes): ResolvedSlamElement => ({
-  tag: "param",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const picture = async (arg1?: HTMLPictureAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const picture = async (arg1?: HTMLPictureAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "picture",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLPictureAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "picture");
 };
 
-export const pre = async (arg1?: HTMLPreAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const pre = async (arg1?: HTMLPreAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "pre",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLPreAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "pre");
 };
 
-export const progress = async (
-  arg1?: HTMLProgressAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const progress = async (arg1?: HTMLProgressAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "progress",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLProgressAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "progress");
 };
 
-export const q = async (arg1?: HTMLQAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const q = async (arg1?: HTMLQAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "q",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLQAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "q");
 };
 
-export const rp = async (arg1?: HTMLRpAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const rp = async (arg1?: HTMLRpAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "rp",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLRpAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "rp");
 };
 
-export const rt = async (arg1?: HTMLRtAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const rt = async (arg1?: HTMLRtAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "rt",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLRtAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "rt");
 };
 
-export const ruby = async (arg1?: HTMLRubyAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const ruby = async (arg1?: HTMLRubyAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "ruby",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLRubyAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "ruby");
 };
 
-export const s = async (arg1?: HTMLSAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const s = async (arg1?: HTMLSAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "s",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "s");
 };
 
-export const samp = async (arg1?: HTMLSampAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const samp = async (arg1?: HTMLSampAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "samp",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSampAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "samp");
 };
 
-export const script = async (arg1?: HTMLScriptAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const script = async (arg1?: HTMLScriptAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "script",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLScriptAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "script");
 };
 
-export const section = async (arg1?: HTMLSectionAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const section = async (arg1?: HTMLSectionAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "section",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSectionAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "section");
 };
 
-export const select = async (arg1?: HTMLSelectAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const select = async (arg1?: HTMLSelectAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "select",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSelectAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "select");
 };
 
-export const slot = async (arg1?: HTMLSlotAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const slot = async (arg1?: HTMLSlotAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "slot",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSlotAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "slot");
 };
 
-export const small = async (arg1?: HTMLSmallAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const small = async (arg1?: HTMLSmallAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLSmallAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "small");
+};
+
+export const source = (arg1?: HTMLSourceAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "small",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "source",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const source = (arg1?: HTMLSourceAttributes): ResolvedSlamElement => ({
-  tag: "source",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const span = async (arg1?: HTMLSpanAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const span = async (arg1?: HTMLSpanAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "span",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSpanAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "span");
 };
 
-export const strong = async (arg1?: HTMLStrongAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const strong = async (arg1?: HTMLStrongAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "strong",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLStrongAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "strong");
 };
 
-export const sub = async (arg1?: HTMLSubAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const sub = async (arg1?: HTMLSubAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "sub",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSubAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "sub");
 };
 
-export const summary = async (arg1?: HTMLSummaryAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const summary = async (arg1?: HTMLSummaryAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "summary",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSummaryAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "summary");
 };
 
-export const sup = async (arg1?: HTMLSupAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const sup = async (arg1?: HTMLSupAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "sup",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLSupAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "sup");
 };
 
-export const table = async (arg1?: HTMLTableAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const table = async (arg1?: HTMLTableAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "table",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTableAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "table");
 };
 
-export const tbody = async (arg1?: HTMLTbodyAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const tbody = async (arg1?: HTMLTbodyAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "tbody",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTbodyAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "tbody");
 };
 
-export const td = async (arg1?: HTMLTdAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const td = async (arg1?: HTMLTdAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "td",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTdAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "td");
 };
 
-export const template = async (
-  arg1?: HTMLTemplateAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const template = async (arg1?: HTMLTemplateAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "template",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTemplateAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "template");
 };
 
-export const textarea = async (
-  arg1?: HTMLTextareaAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const textarea = async (arg1?: HTMLTextareaAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "textarea",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTextareaAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "textarea");
 };
 
-export const tfoot = async (arg1?: HTMLTfootAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const tfoot = async (arg1?: HTMLTfootAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "tfoot",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTfootAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "tfoot");
 };
 
-export const th = async (arg1?: HTMLThAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const th = async (arg1?: HTMLThAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "th",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLThAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "th");
 };
 
-export const thead = async (arg1?: HTMLTheadAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const thead = async (arg1?: HTMLTheadAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "thead",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTheadAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "thead");
 };
 
-export const time = async (arg1?: HTMLTimeAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const time = async (arg1?: HTMLTimeAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "time",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTimeAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "time");
 };
 
-export const title = async (arg1?: HTMLTitleAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const title = async (arg1?: HTMLTitleAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "title",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLTitleAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "title");
 };
 
-export const tr = async (arg1?: HTMLTrAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const tr = async (arg1?: HTMLTrAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLTrAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "tr");
+};
+
+export const track = (arg1?: HTMLTrackAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "tr",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "track",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const track = (arg1?: HTMLTrackAttributes): ResolvedSlamElement => ({
-  tag: "track",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const u = async (arg1?: HTMLUAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const u = async (arg1?: HTMLUAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "u",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLUAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "u");
 };
 
-export const ul = async (arg1?: HTMLUlAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const ul = async (arg1?: HTMLUlAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "ul",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLUlAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "ul");
 };
 
-export const var_ = async (arg1?: HTMLVar_Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const var_ = async (arg1?: HTMLVar_Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "var",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: HTMLVar_Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "var");
 };
 
-export const video = async (arg1?: HTMLVideoAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const video = async (arg1?: HTMLVideoAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: HTMLVideoAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "video");
+};
+
+export const wbr = (arg1?: HTMLWbrAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "video",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "wbr",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
-
-export const wbr = (arg1?: HTMLWbrAttributes): ResolvedSlamElement => ({
-  tag: "wbr",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
 
-export const a = async (arg1?: SVGAAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const a = async (arg1?: SVGAAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "a",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGAAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "a");
 };
 
-export const animate = async (arg1?: SVGAnimateAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const animate = async (arg1?: SVGAnimateAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "animate",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGAnimateAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "animate");
 };
 
 export const animateMotion = async (
   arg1?: SVGAnimateMotionAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "animateMotion",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGAnimateMotionAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "animateMotion");
 };
 
 export const animateTransform = async (
   arg1?: SVGAnimateTransformAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGAnimateTransformAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "animateTransform");
+};
+
+export const circle = (arg1?: SVGCircleAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "animateTransform",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "circle",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const circle = (arg1?: SVGCircleAttributes): ResolvedSlamElement => ({
-  tag: "circle",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const clipPath = async (
-  arg1?: SVGClipPathAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const clipPath = async (arg1?: SVGClipPathAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGClipPathAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "clipPath");
+};
+
+export const defs = async (arg1?: SVGDefsAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGDefsAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "defs");
+};
+
+export const desc = async (arg1?: SVGDescAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGDescAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "desc");
+};
+
+export const discard = async (arg1?: SVGDiscardAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGDiscardAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "discard");
+};
+
+export const ellipse = (arg1?: SVGEllipseAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "clipPath",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "ellipse",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const defs = async (arg1?: SVGDefsAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feBlend = async (arg1?: SVGFeBlendAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "defs",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const desc = async (arg1?: SVGDescAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "desc",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const discard = async (arg1?: SVGDiscardAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "discard",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const ellipse = (arg1?: SVGEllipseAttributes): ResolvedSlamElement => ({
-  tag: "ellipse",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const feBlend = async (arg1?: SVGFeBlendAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feBlend",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeBlendAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feBlend");
 };
 
 export const feColorMatrix = async (
   arg1?: SVGFeColorMatrixAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feColorMatrix",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeColorMatrixAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feColorMatrix");
 };
 
 export const feComponentTransfer = async (
   arg1?: SVGFeComponentTransferAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feComponentTransfer",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeComponentTransferAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feComponentTransfer");
 };
 
-export const feComposite = async (
-  arg1?: SVGFeCompositeAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feComposite = async (arg1?: SVGFeCompositeAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feComposite",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeCompositeAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feComposite");
 };
 
 export const feConvolveMatrix = async (
   arg1?: SVGFeConvolveMatrixAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feConvolveMatrix",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeConvolveMatrixAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feConvolveMatrix");
 };
 
 export const feDiffuseLighting = async (
   arg1?: SVGFeDiffuseLightingAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feDiffuseLighting",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeDiffuseLightingAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feDiffuseLighting");
 };
 
 export const feDisplacementMap = async (
   arg1?: SVGFeDisplacementMapAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feDisplacementMap",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeDisplacementMapAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feDisplacementMap");
 };
 
 export const feDistantLight = async (
   arg1?: SVGFeDistantLightAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feDistantLight",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeDistantLightAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feDistantLight");
 };
 
 export const feDropShadow = async (
   arg1?: SVGFeDropShadowAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feDropShadow",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeDropShadowAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feDropShadow");
 };
 
-export const feFlood = async (arg1?: SVGFeFloodAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feFlood = async (arg1?: SVGFeFloodAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feFlood",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeFloodAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feFlood");
 };
 
-export const feFuncA = async (arg1?: SVGFeFuncAAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feFuncA = async (arg1?: SVGFeFuncAAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feFuncA",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeFuncAAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feFuncA");
 };
 
-export const feFuncB = async (arg1?: SVGFeFuncBAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feFuncB = async (arg1?: SVGFeFuncBAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feFuncB",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeFuncBAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feFuncB");
 };
 
-export const feFuncG = async (arg1?: SVGFeFuncGAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feFuncG = async (arg1?: SVGFeFuncGAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feFuncG",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeFuncGAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feFuncG");
 };
 
-export const feFuncR = async (arg1?: SVGFeFuncRAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feFuncR = async (arg1?: SVGFeFuncRAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feFuncR",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeFuncRAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feFuncR");
 };
 
 export const feGaussianBlur = async (
   arg1?: SVGFeGaussianBlurAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feGaussianBlur",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeGaussianBlurAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feGaussianBlur");
 };
 
-export const feImage = async (arg1?: SVGFeImageAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feImage = async (arg1?: SVGFeImageAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feImage",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeImageAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feImage");
 };
 
-export const feMerge = async (arg1?: SVGFeMergeAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feMerge = async (arg1?: SVGFeMergeAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feMerge",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeMergeAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feMerge");
 };
 
-export const feMergeNode = async (
-  arg1?: SVGFeMergeNodeAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feMergeNode = async (arg1?: SVGFeMergeNodeAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feMergeNode",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeMergeNodeAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feMergeNode");
 };
 
 export const feMorphology = async (
   arg1?: SVGFeMorphologyAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feMorphology",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeMorphologyAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feMorphology");
 };
 
-export const feOffset = async (
-  arg1?: SVGFeOffsetAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feOffset = async (arg1?: SVGFeOffsetAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feOffset",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeOffsetAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feOffset");
 };
 
 export const fePointLight = async (
   arg1?: SVGFePointLightAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "fePointLight",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFePointLightAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "fePointLight");
 };
 
 export const feSpecularLighting = async (
   arg1?: SVGFeSpecularLightingAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feSpecularLighting",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeSpecularLightingAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feSpecularLighting");
 };
 
-export const feSpotLight = async (
-  arg1?: SVGFeSpotLightAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feSpotLight = async (arg1?: SVGFeSpotLightAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feSpotLight",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeSpotLightAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feSpotLight");
 };
 
-export const feTile = async (arg1?: SVGFeTileAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const feTile = async (arg1?: SVGFeTileAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feTile",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeTileAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feTile");
 };
 
 export const feTurbulence = async (
   arg1?: SVGFeTurbulenceAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "feTurbulence",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFeTurbulenceAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "feTurbulence");
 };
 
-export const filter = async (arg1?: SVGFilterAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const filter = async (arg1?: SVGFilterAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "filter",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGFilterAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "filter");
 };
 
 export const foreignObject = async (
   arg1?: SVGForeignObjectAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "foreignObject",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGForeignObjectAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "foreignObject");
 };
 
-export const g = async (arg1?: SVGGAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const g = async (arg1?: SVGGAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "g",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGGAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "g");
 };
 
-export const image = async (arg1?: SVGImageAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const image = async (arg1?: SVGImageAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "image",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGImageAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "image");
 };
 
-export const line = (arg1?: SVGLineAttributes): ResolvedSlamElement => ({
-  tag: "line",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
+export const line = (arg1?: SVGLineAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
+  return {
+    type: "element",
+    tag: "line",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
+  };
+};
 
 export const linearGradient = async (
   arg1?: SVGLinearGradientAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGLinearGradientAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "linearGradient");
+};
+
+export const marker = async (arg1?: SVGMarkerAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGMarkerAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "marker");
+};
+
+export const mask = async (arg1?: SVGMaskAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGMaskAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "mask");
+};
+
+export const metadata = async (arg1?: SVGMetadataAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGMetadataAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "metadata");
+};
+
+export const mpath = async (arg1?: SVGMpathAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGMpathAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "mpath");
+};
+
+export const path = (arg1?: SVGPathAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "linearGradient",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "path",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const marker = async (arg1?: SVGMarkerAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const pattern = async (arg1?: SVGPatternAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGPatternAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "pattern");
+};
+
+export const polygon = (arg1?: SVGPolygonAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "marker",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "polygon",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const mask = async (arg1?: SVGMaskAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+export const polyline = (arg1?: SVGPolylineAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "mask",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "polyline",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
-
-export const metadata = async (
-  arg1?: SVGMetadataAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "metadata",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const mpath = async (arg1?: SVGMpathAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "mpath",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const path = (arg1?: SVGPathAttributes): ResolvedSlamElement => ({
-  tag: "path",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const pattern = async (arg1?: SVGPatternAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "pattern",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const polygon = (arg1?: SVGPolygonAttributes): ResolvedSlamElement => ({
-  tag: "polygon",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const polyline = (arg1?: SVGPolylineAttributes): ResolvedSlamElement => ({
-  tag: "polyline",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
 
 export const radialGradient = async (
   arg1?: SVGRadialGradientAttributes | Child,
   ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGRadialGradientAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "radialGradient");
+};
+
+export const rect = (arg1?: SVGRectAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "radialGradient",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "rect",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const rect = (arg1?: SVGRectAttributes): ResolvedSlamElement => ({
-  tag: "rect",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const set = async (arg1?: SVGSetAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const set = async (arg1?: SVGSetAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGSetAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "set");
+};
+
+export const stop = (arg1?: SVGStopAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "set",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "stop",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const stop = (arg1?: SVGStopAttributes): ResolvedSlamElement => ({
-  tag: "stop",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const svg = async (arg1?: SVGSvgAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const svg = async (arg1?: SVGSvgAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
+  let atts: SVGSvgAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "svg");
+};
+
+export const switch_ = async (arg1?: SVGSwitch_Attributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGSwitch_Attributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "switch");
+};
+
+export const symbol = async (arg1?: SVGSymbolAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGSymbolAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "symbol");
+};
+
+export const text = async (arg1?: SVGTextAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGTextAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "text");
+};
+
+export const textPath = async (arg1?: SVGTextPathAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGTextPathAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "textPath");
+};
+
+export const tspan = async (arg1?: SVGTspanAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGTspanAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "tspan");
+};
+
+export const unknown = async (arg1?: SVGUnknownAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
+  let r2 = await Promise.all(arg2.map(async item => await item));
+  let atts: SVGUnknownAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "unknown");
+};
+
+export const use = (arg1?: SVGUseAttributes): SlamElement => {
+  let css = arg1 ? arg1["css"] : undefined;
+  let js = arg1 ? arg1["js"] : undefined;
   return {
-    tag: "svg",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
+    type: "element",
+    tag: "use",
+    atts: { ...arg1, css: undefined, js: undefined },
+    children: undefined,
   };
 };
 
-export const switch_ = async (arg1?: SVGSwitch_Attributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
+export const view = async (arg1?: SVGViewAttributes | Child, ...arg2: Child[]): Promise<SlamElement> => {
   let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "switch",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const symbol = async (arg1?: SVGSymbolAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "symbol",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const text = async (arg1?: SVGTextAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "text",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const textPath = async (
-  arg1?: SVGTextPathAttributes | Child,
-  ...arg2: Child[]
-): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "textPath",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const tspan = async (arg1?: SVGTspanAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "tspan",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const unknown = async (arg1?: SVGUnknownAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "unknown",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
-};
-
-export const use = (arg1?: SVGUseAttributes): ResolvedSlamElement => ({
-  tag: "use",
-  type: "element" as "element",
-  atts: arg1,
-  children: undefined,
-});
-
-export const view = async (arg1?: SVGViewAttributes | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {
-  let r1 = await arg1;
-  let r2 = await Promise.all(arg2.map(async item => await item));
-  let arg1IsChild = r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string";
-  return {
-    tag: "view",
-    atts: arg1IsChild ? undefined : r1,
-    type: "element" as "element",
-    children: r1 ? (arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2) : r2,
-  };
+  let atts: SVGViewAttributes | undefined = undefined;
+  return await resolveAndType(arg1, r2, atts, "view");
 };

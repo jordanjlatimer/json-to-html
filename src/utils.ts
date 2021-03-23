@@ -1,5 +1,4 @@
-import { Properties as CSSProperties } from "csstype";
-import { ElementAttributes } from "./baseInterface";
+import { Child, CSSObject, ElementAttributes, ResolvedChild, SlamElement } from "./slamInterfaces";
 
 export const toKebabCase = (value: string) => {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
@@ -68,13 +67,8 @@ export function parseAtts<T extends ElementAttributes>(atts: T) {
   (Object.keys(atts) as Array<keyof T>).forEach(att => {
     if (presentAtt(att.toString())) {
       attsText += " " + att;
-    } else if (att === "style") {
-      attsText += ' style="';
-      Object.keys(atts[att]).forEach(styleProp => {
-        attsText +=
-          toKebabCase(styleProp) + ": " + (atts[att] as CSSProperties)[styleProp as keyof CSSProperties] + ";";
-      });
-      attsText += '"';
+    } else if (att === "js" || att === "css") {
+      undefined; //do nothing.
     } else {
       attsText += " " + att + '="' + atts[att] + '"';
     }
@@ -108,4 +102,34 @@ export function equalObjects(object1: GenericObject, object2: GenericObject) {
     }
   }
   return true;
+}
+
+export async function resolveAndType<T>(
+  arg1: Child | T,
+  arg2: ResolvedChild[],
+  atts: T | undefined,
+  tag: string
+): Promise<SlamElement> {
+  let css: CSSObject | undefined = undefined;
+  let js: (() => void) | undefined = undefined;
+  let children: SlamElement["children"] = [];
+  if (arg1) {
+    let r1 = await arg1;
+    if (typeof r1 === "string") {
+      children.push(r1);
+    } else if ("type" in r1) {
+      children.push(r1);
+      css = r1.atts?.css;
+      js = r1.atts?.js;
+    } else {
+      atts = r1;
+    }
+  }
+  children = children.concat(arg2);
+  return {
+    type: "element",
+    tag: tag,
+    atts: atts,
+    children: children.length > 0 ? children : undefined,
+  };
 }

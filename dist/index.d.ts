@@ -1,4 +1,5 @@
 export * from "./elementFunctions";
-export { CreatePage, CreateComponent } from "./page";
-export { SlamElement, SlamComponent, Child } from "./slamInterfaces";
+export { CreatePage } from "./page";
+export { Child, CSSObject } from "./slamInterfaces";
 export { CreateSlamServer } from "./server";
+export { CSS } from "./generateCss";

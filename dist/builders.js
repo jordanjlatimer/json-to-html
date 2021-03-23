@@ -11,31 +11,28 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildHtmlFromObject = exports.identifyComponents = void 0;
+exports.buildHtmlFromObject = exports.identifyCssElements = void 0;
 var utils_1 = require("./utils");
-var findComponents = function (tree) {
-    var _a;
+var findElementsWithCSS = function (tree) {
+    var _a, _b;
     var finalArray = [];
-    if (typeof tree === "string") {
-        undefined;
-    }
-    else if (tree["type"] === "element") {
-        (_a = tree["children"]) === null || _a === void 0 ? void 0 : _a.forEach(function (child) {
-            finalArray = finalArray.concat(findComponents(child));
+    console.log("Here:", tree);
+    if (typeof tree === "object") {
+        if ((_a = tree.atts) === null || _a === void 0 ? void 0 : _a.css) {
+            finalArray.push(tree);
+        }
+        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) {
+            finalArray = finalArray.concat(findElementsWithCSS(child));
         });
-    }
-    else if (tree["type"] === "component") {
-        finalArray.push(tree);
-        finalArray = finalArray.concat(findComponents(tree["html"]));
     }
     return finalArray;
 };
 var findUniqueCss = function (array) {
     var identities = {};
     var identitiesIndex = 0;
-    array.forEach(function (component) {
+    array.forEach(function (element) {
         if (identitiesIndex === 0) {
-            identities[identitiesIndex] = [component];
+            identities[identitiesIndex] = [element];
             identitiesIndex += 1;
         }
         else {
@@ -43,12 +40,13 @@ var findUniqueCss = function (array) {
             Object.keys(identities).forEach(function (key) {
                 if (keepGoing_1) {
                     identities[parseInt(key)].forEach(function (item) {
+                        var _a, _b;
                         if (keepGoing_1) {
-                            if (utils_1.equalObjects(component.css || {}, item.css || {})) {
-                                identities[parseInt(key)].push(component);
+                            if (utils_1.equalObjects(((_a = element.atts) === null || _a === void 0 ? void 0 : _a.css) || {}, ((_b = item.atts) === null || _b === void 0 ? void 0 : _b.css) || {})) {
+                                identities[parseInt(key)].push(element);
                             }
                             else {
-                                identities[identitiesIndex] = [component];
+                                identities[identitiesIndex] = [element];
                                 identitiesIndex += 1;
                             }
                             keepGoing_1 = false;
@@ -60,10 +58,10 @@ var findUniqueCss = function (array) {
     });
     return identities;
 };
-var identifyComponents = function (tree) {
-    return findUniqueCss(findComponents(tree));
+var identifyCssElements = function (tree) {
+    return findUniqueCss(findElementsWithCSS(tree));
 };
-exports.identifyComponents = identifyComponents;
+exports.identifyCssElements = identifyCssElements;
 var constructElement = function (tree, currentString, components, className) {
     if (typeof tree === "string") {
         return tree;
@@ -94,29 +92,23 @@ var constructElement = function (tree, currentString, components, className) {
     }
     return currentString;
 };
-var routeChild = function (tree, currentString, components) {
+var routeChild = function (tree, currentString, cssElements) {
     if (typeof tree === "string") {
         return tree;
     }
-    else if (tree["type"] === "component") {
+    else {
         var className_1 = "";
-        Object.keys(components).forEach(function (key) {
-            components[parseInt(key)].forEach(function (component) {
-                if (component === tree) {
+        Object.keys(cssElements).forEach(function (key) {
+            cssElements[parseInt(key)].forEach(function (element) {
+                if (element === tree) {
                     className_1 = "c" + key;
                 }
             });
         });
-        return constructElement(tree["html"], currentString, components, className_1);
-    }
-    else if (tree["type"] === "element") {
-        return constructElement(tree, currentString, components);
-    }
-    else {
-        return currentString;
+        return constructElement(tree, currentString, cssElements, className_1);
     }
 };
-var buildHtmlFromObject = function (tree, components) {
-    return routeChild(tree, "", components);
+var buildHtmlFromObject = function (tree, cssElements) {
+    return routeChild(tree, "", cssElements);
 };
 exports.buildHtmlFromObject = buildHtmlFromObject;

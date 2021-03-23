@@ -1,3 +1,3 @@
-import { Identification, ResolvedChild, ResolvedSlamElement } from "./slamInterfaces";
-export declare const identifyComponents: (tree: ResolvedSlamElement) => Identification;
-export declare const buildHtmlFromObject: (tree: ResolvedChild, components: Identification) => string;
+import { Identification, ResolvedChild, SlamElement } from "./slamInterfaces";
+export declare const identifyCssElements: (tree: SlamElement) => Identification;
+export declare const buildHtmlFromObject: (tree: ResolvedChild, cssElements: Identification) => string;

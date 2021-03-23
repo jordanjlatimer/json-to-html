@@ -1,4 +1,4 @@
-import { CSSObject, ResolvedSlamElement, ResolvedSlamComponent } from "./slamInterfaces";
+import { CSSObject, SlamElement } from "./slamInterfaces";
 export interface Page {
     html: string;
     css: string;
@@ -12,16 +12,10 @@ export interface Page {
 }
 interface PageConfig {
     name: string;
-    html: Promise<ResolvedSlamElement>;
+    html: Promise<SlamElement>;
     css?: CSSObject;
     js?: () => void;
     noCssReset?: true;
 }
 export declare function CreatePage(config: PageConfig | (() => PageConfig | Promise<PageConfig>)): Page;
-interface SlamComponentBase {
-    html: Promise<ResolvedSlamElement>;
-    css?: CSSObject;
-    js?: () => void;
-}
-export declare function CreateComponent(config: SlamComponentBase): Promise<ResolvedSlamComponent>;
 export {};

@@ -1,7 +1,7 @@
 import { buildCssFromObject } from "./generateCss";
-import { buildHtmlFromObject, identifyComponents } from "./builders";
+import { buildHtmlFromObject, identifyCssElements } from "./builders";
 import * as fs from "fs";
-import { Identification, CSSObject, ResolvedSlamElement, ResolvedSlamComponent } from "./slamInterfaces";
+import { Identification, CSSObject, SlamElement } from "./slamInterfaces";
 import { cssReset } from "./cssReset";
 
 export interface Page {
@@ -14,7 +14,7 @@ export interface Page {
 
 interface PageConfig {
   name: string;
-  html: Promise<ResolvedSlamElement>;
+  html: Promise<SlamElement>;
   css?: CSSObject;
   js?: () => void;
   noCssReset?: true;
@@ -27,7 +27,7 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
     css: "",
     js: "",
     buildAll: async () => {
-      let finalizedHtml: ResolvedSlamElement;
+      let finalizedHtml: SlamElement;
       let finalizedConfig: PageConfig;
       if (typeof config === "function") {
         finalizedConfig = await config();
@@ -55,16 +55,16 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
     },
   };
 
-  const buildHtml = (tree: ResolvedSlamElement) => {
+  const buildHtml = (tree: SlamElement) => {
     page.html = buildHtmlFromObject(tree, components);
   };
 
-  const buildCss = (tree: ResolvedSlamElement, pageCss?: CSSObject, noReset?: true) => {
-    components = identifyComponents(tree);
+  const buildCss = (tree: SlamElement, pageCss?: CSSObject, noReset?: true) => {
+    components = identifyCssElements(tree);
     page.css += noReset ? "" : cssReset;
     page.css += pageCss ? buildCssFromObject("html", pageCss) : "";
     Object.keys(components).forEach(key => {
-      let css = components[parseInt(key)][0].css;
+      let css = components[parseInt(key)][0].atts?.css;
       page.css += css ? buildCssFromObject(`.c${key}`, css) : "";
     });
   };
@@ -72,29 +72,10 @@ export function CreatePage(config: PageConfig | (() => PageConfig | Promise<Page
   const buildJs = () => {
     page.js = page.js ? `(${page.js})()` : "";
     Object.keys(components).forEach(key => {
-      let js = components[parseInt(key)][0].js;
+      let js = components[parseInt(key)][0].atts.js;
       page.js += js ? `(${js})()` : "";
     });
   };
 
   return page;
-}
-
-interface SlamComponentBase {
-  html: Promise<ResolvedSlamElement>;
-  css?: CSSObject;
-  js?: () => void;
-}
-
-export function CreateComponent(config: SlamComponentBase): Promise<ResolvedSlamComponent> {
-  const promise = async (): Promise<ResolvedSlamComponent> => {
-    const html = await config.html;
-    return {
-      type: "component" as "component",
-      html: html,
-      css: config.css,
-      js: config.js,
-    };
-  };
-  return promise();
 }

@@ -1,27 +1,26 @@
-import { Identification, ResolvedChild, ResolvedSlamComponent, ResolvedSlamElement } from "./slamInterfaces";
+import { Identification, ResolvedChild, SlamElement } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 
-const findComponents = (tree: ResolvedChild): ResolvedSlamComponent[] => {
-  let finalArray: ResolvedSlamComponent[] = [];
-  if (typeof tree === "string") {
-    undefined;
-  } else if (tree["type"] === "element") {
+const findElementsWithCSS = (tree: ResolvedChild): SlamElement[] => {
+  let finalArray: SlamElement[] = [];
+  console.log("Here:", tree);
+  if (typeof tree === "object") {
+    if (tree.atts?.css) {
+      finalArray.push(tree);
+    }
     tree["children"]?.forEach(child => {
-      finalArray = finalArray.concat(findComponents(child));
+      finalArray = finalArray.concat(findElementsWithCSS(child));
     });
-  } else if (tree["type"] === "component") {
-    finalArray.push(tree);
-    finalArray = finalArray.concat(findComponents(tree["html"]));
   }
   return finalArray;
 };
 
-const findUniqueCss = (array: ResolvedSlamComponent[]) => {
+const findUniqueCss = (array: SlamElement[]) => {
   let identities: Identification = {};
   let identitiesIndex = 0;
-  array.forEach(component => {
+  array.forEach(element => {
     if (identitiesIndex === 0) {
-      identities[identitiesIndex] = [component];
+      identities[identitiesIndex] = [element];
       identitiesIndex += 1;
     } else {
       let keepGoing = true;
@@ -29,10 +28,10 @@ const findUniqueCss = (array: ResolvedSlamComponent[]) => {
         if (keepGoing) {
           identities[parseInt(key)].forEach(item => {
             if (keepGoing) {
-              if (equalObjects(component.css || {}, item.css || {})) {
-                identities[parseInt(key)].push(component);
+              if (equalObjects(element.atts?.css || {}, item.atts?.css || {})) {
+                identities[parseInt(key)].push(element);
               } else {
-                identities[identitiesIndex] = [component];
+                identities[identitiesIndex] = [element];
                 identitiesIndex += 1;
               }
               keepGoing = false;
@@ -45,12 +44,12 @@ const findUniqueCss = (array: ResolvedSlamComponent[]) => {
   return identities;
 };
 
-export const identifyComponents = (tree: ResolvedSlamElement) => {
-  return findUniqueCss(findComponents(tree));
+export const identifyCssElements = (tree: SlamElement) => {
+  return findUniqueCss(findElementsWithCSS(tree));
 };
 
 const constructElement = (
-  tree: ResolvedSlamElement | string,
+  tree: SlamElement | string,
   currentString: string,
   components: Identification,
   className?: string
@@ -84,26 +83,22 @@ const constructElement = (
   return currentString;
 };
 
-const routeChild = (tree: ResolvedChild, currentString: string, components: Identification) => {
+const routeChild = (tree: ResolvedChild, currentString: string, cssElements: Identification) => {
   if (typeof tree === "string") {
     return tree;
-  } else if (tree["type"] === "component") {
+  } else {
     let className = "";
-    Object.keys(components).forEach(key => {
-      components[parseInt(key)].forEach(component => {
-        if (component === tree) {
+    Object.keys(cssElements).forEach(key => {
+      cssElements[parseInt(key)].forEach(element => {
+        if (element === tree) {
           className = `c${key}`;
         }
       });
     });
-    return constructElement(tree["html"], currentString, components, className);
-  } else if (tree["type"] === "element") {
-    return constructElement(tree, currentString, components);
-  } else {
-    return currentString;
+    return constructElement(tree, currentString, cssElements, className);
   }
 };
 
-export const buildHtmlFromObject = (tree: ResolvedChild, components: Identification) => {
-  return routeChild(tree, "", components);
+export const buildHtmlFromObject = (tree: ResolvedChild, cssElements: Identification) => {
+  return routeChild(tree, "", cssElements);
 };

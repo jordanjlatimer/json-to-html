@@ -219,3 +219,5 @@ export const buildCssFromObject = (className: string, styles: CSSObject, isKeyfr
     return generateSelectorString(className, "", generatePropertiesString(rootCss)) + finalString;
   }
 };
+
+export const CSS = (styles: CSSObject) => styles;

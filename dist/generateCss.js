@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildCssFromObject = void 0;
+exports.CSS = exports.buildCssFromObject = void 0;
 var utils_1 = require("./utils");
 var tagNames = [
     "abbr",
@@ -219,3 +219,5 @@ var buildCssFromObject = function (className, styles, isKeyframe) {
     }
 };
 exports.buildCssFromObject = buildCssFromObject;
+var CSS = function (styles) { return styles; };
+exports.CSS = CSS;

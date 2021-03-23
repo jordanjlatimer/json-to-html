@@ -2,7 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const { elements, childless } = require("./elements.js");
 
-let baseImports = 'import { Child, ResolvedSlamElement, ResolvedChild } from "./slamInterfaces";\n';
+let baseImports = 'import { Child, SlamElement } from "./slamInterfaces";\n';
+baseImports += `import { resolveAndType } from "./utils";\n`;
 let htmlImports = "import {";
 let svgImports = "import {";
 let functionsString = "";
@@ -19,23 +20,21 @@ Object.keys(elements).forEach((key, i) => {
     : (svgImports += ", " + elementInterface);
   functionsString += "\n";
   if (isChildless) {
-    functionsString += `export const ${functionName} = (arg1?: ${elementInterface}): ResolvedSlamElement => ({\n`;
-    functionsString += `  tag: "${key}",\n`;
-    functionsString += `  type: "element" as "element",\n`;
-    functionsString += `  atts: arg1,\n`;
-    functionsString += `  children: undefined\n`;
-    functionsString += `});\n`;
-  } else {
-    functionsString += `export const ${functionName} = async (arg1?: ${elementInterface} | Child, ...arg2: Child[]): Promise<ResolvedSlamElement> => {\n`;
-    functionsString += `  let r1 = await arg1;\n`;
-    functionsString += `  let r2 = await Promise.all(arg2.map(async item => await item));\n`;
-    functionsString += `  let arg1IsChild = (r1?.hasOwnProperty("tag") || r1?.hasOwnProperty("html") || typeof r1 === "string");\n`;
+    functionsString += `export const ${functionName} = (arg1?: ${elementInterface}): SlamElement => {\n`;
+    functionsString += `  let css = arg1 ? arg1["css"] : undefined\n`;
+    functionsString += `  let js = arg1 ? arg1["js"] : undefined\n`;
     functionsString += `  return {\n`;
+    functionsString += `    type: "element",\n`;
     functionsString += `    tag: "${key}",\n`;
-    functionsString += `    atts: arg1IsChild ? undefined : r1,\n`;
-    functionsString += `    type: "element" as "element",\n`;
-    functionsString += `    children: r1 ? arg1IsChild ? [r1 as ResolvedChild].concat(r2) : r2 : r2\n`;
-    functionsString += `  };\n`;
+    functionsString += `    atts: {...arg1, css: undefined, js: undefined},\n`;
+    functionsString += `    children: undefined\n`;
+    functionsString += `  }\n`;
+    functionsString += `};\n`;
+  } else {
+    functionsString += `export const ${functionName} = async (arg1?: ${elementInterface} | Child, ...arg2: Child[]): Promise<SlamElement> => {\n`;
+    functionsString += `  let r2 = await Promise.all(arg2.map(async item => await item));\n`;
+    functionsString += `  let atts: (${elementInterface} | undefined) = undefined\n`;
+    functionsString += `  return await resolveAndType(arg1, r2, atts, "${key}")\n`;
     functionsString += `};\n`;
   }
 });

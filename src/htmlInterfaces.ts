@@ -1,4 +1,4 @@
-import { ElementAttributes } from "./baseInterface";
+import { ElementAttributes } from "./slamInterfaces";
 
 export interface HTMLElementAttributes extends ElementAttributes {
   accesskey?: string;
