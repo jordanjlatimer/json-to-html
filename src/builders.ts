@@ -3,7 +3,6 @@ import { parseAtts, noChildren, equalObjects } from "./utils";
 
 const findElementsWithCSS = (tree: ResolvedChild): SlamElement[] => {
   let finalArray: SlamElement[] = [];
-  console.log("Here:", tree);
   if (typeof tree === "object") {
     if (tree.atts?.css) {
       finalArray.push(tree);

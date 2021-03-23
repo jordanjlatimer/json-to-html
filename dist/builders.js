@@ -16,7 +16,6 @@ var utils_1 = require("./utils");
 var findElementsWithCSS = function (tree) {
     var _a, _b;
     var finalArray = [];
-    console.log("Here:", tree);
     if (typeof tree === "object") {
         if ((_a = tree.atts) === null || _a === void 0 ? void 0 : _a.css) {
             finalArray.push(tree);
