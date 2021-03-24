@@ -31,6 +31,11 @@ window.setInterval(() => {
       lastUpdate = new Date(parseInt(json))
     }
   })
+  .catch(err => {
+    console.clear()
+    console.log("Disconnected. Connection will resume when server restarts.")
+    }
+  )
 }, 500)
 </script>
 `;
