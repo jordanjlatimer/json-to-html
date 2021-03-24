@@ -104,10 +104,7 @@ function parseAtts(atts) {
         if (presentAtt(att.toString())) {
             attsText += " " + att;
         }
-        else if (att === "js" || att === "css") {
-            undefined; //do nothing.
-        }
-        else {
+        else if (att !== "js" || att !== "css") {
             attsText += " " + att + '="' + atts[att] + '"';
         }
     });

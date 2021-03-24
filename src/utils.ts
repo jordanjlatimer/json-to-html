@@ -67,9 +67,7 @@ export function parseAtts<T extends ElementAttributes>(atts: T) {
   (Object.keys(atts) as Array<keyof T>).forEach(att => {
     if (presentAtt(att.toString())) {
       attsText += " " + att;
-    } else if (att === "js" || att === "css") {
-      undefined; //do nothing.
-    } else {
+    } else if (att !== "js" || att !== "css") {
       attsText += " " + att + '="' + atts[att] + '"';
     }
   });
