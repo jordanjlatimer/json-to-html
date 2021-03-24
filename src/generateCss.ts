@@ -220,4 +220,6 @@ export const buildCssFromObject = (className: string, styles: CSSObject, isKeyfr
   }
 };
 
-export const CSS = (styles: CSSObject) => styles;
+export const CSS = <T extends Record<string, CSSObject>>(arg: T): T => arg;
+
+
