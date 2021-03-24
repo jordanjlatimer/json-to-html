@@ -32,7 +32,8 @@ export const buildCssFromObject = (className: string, styles: CSSObject, isKeyfr
       if (tagNames.includes(key)) {
         finalKey += ">";
       }
-      finalString += key + buildCssFromObject(`${className}${finalKey}`, styles[key] as CSSObject);
+      finalKey += key;
+      finalString += buildCssFromObject(`${className}${finalKey}`, styles[key] as CSSObject);
     } else {
       //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
       rootCss[key] = styles[key];

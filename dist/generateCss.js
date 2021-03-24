@@ -30,7 +30,8 @@ var buildCssFromObject = function (className, styles, isKeyframe) {
             if (tagNames_1.tagNames.includes(key)) {
                 finalKey += ">";
             }
-            finalString += key + exports.buildCssFromObject("" + className + finalKey, styles[key]);
+            finalKey += key;
+            finalString += exports.buildCssFromObject("" + className + finalKey, styles[key]);
         }
         else {
             //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
