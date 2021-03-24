@@ -22,22 +22,23 @@ const findUniqueCss = (array: SlamElement[]) => {
       identities[identitiesIndex] = [element];
       identitiesIndex += 1;
     } else {
-      let keepGoing = true;
+      let matchFound = false;
       Object.keys(identities).forEach(key => {
-        if (keepGoing) {
+        if (!matchFound) {
           identities[parseInt(key)].forEach(item => {
-            if (keepGoing) {
+            if (!matchFound) {
               if (equalObjects(element.atts?.css || {}, item.atts?.css || {})) {
                 identities[parseInt(key)].push(element);
-              } else {
-                identities[identitiesIndex] = [element];
-                identitiesIndex += 1;
+                matchFound = true;
               }
-              keepGoing = false;
             }
           });
         }
       });
+      if (!matchFound) {
+        identities[identitiesIndex] = [element];
+        identitiesIndex += 1;
+      }
     }
   });
   return identities;

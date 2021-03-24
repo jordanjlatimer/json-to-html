@@ -35,24 +35,24 @@ var findUniqueCss = function (array) {
             identitiesIndex += 1;
         }
         else {
-            var keepGoing_1 = true;
+            var matchFound_1 = false;
             Object.keys(identities).forEach(function (key) {
-                if (keepGoing_1) {
+                if (!matchFound_1) {
                     identities[parseInt(key)].forEach(function (item) {
                         var _a, _b;
-                        if (keepGoing_1) {
+                        if (!matchFound_1) {
                             if (utils_1.equalObjects(((_a = element.atts) === null || _a === void 0 ? void 0 : _a.css) || {}, ((_b = item.atts) === null || _b === void 0 ? void 0 : _b.css) || {})) {
                                 identities[parseInt(key)].push(element);
+                                matchFound_1 = true;
                             }
-                            else {
-                                identities[identitiesIndex] = [element];
-                                identitiesIndex += 1;
-                            }
-                            keepGoing_1 = false;
                         }
                     });
                 }
             });
+            if (!matchFound_1) {
+                identities[identitiesIndex] = [element];
+                identitiesIndex += 1;
+            }
         }
     });
     return identities;
