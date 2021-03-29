@@ -47,22 +47,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuildFiles = exports.buildPage = exports.identifyCssElements = void 0;
+exports.buildPage = exports.identifyCssElements = void 0;
 var cssReset_1 = require("./cssReset");
 var generateCss_1 = require("./generateCss");
 var utils_1 = require("./utils");
-var fs = require("fs");
-var path = require("path");
-var tsNode = require("ts-node");
-tsNode.register({
-    compilerOptions: {
-        module: "CommonJS",
-        moduleResolution: "node",
-        strict: true,
-        resolveJsonModule: true,
-        allowSyntheticDefaultImports: true,
-    },
-});
 var findElementsWithCSS = function (tree) {
     var _a, _b;
     var finalArray = [];
@@ -201,37 +189,3 @@ var buildPage = function (page) { return __awaiter(void 0, void 0, void 0, funct
     });
 }); };
 exports.buildPage = buildPage;
-function BuildFiles(indexFile, outDir) {
-    return __awaiter(this, void 0, void 0, function () {
-        var pages, builds;
-        var _this = this;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    pages = require(indexFile)["default"];
-                    return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
-                            var resolved, _a;
-                            return __generator(this, function (_b) {
-                                switch (_b.label) {
-                                    case 0: return [4 /*yield*/, page];
-                                    case 1:
-                                        resolved = _b.sent();
-                                        _a = [{ name: resolved.name }];
-                                        return [4 /*yield*/, exports.buildPage(page)];
-                                    case 2: return [2 /*return*/, __assign.apply(void 0, _a.concat([(_b.sent())]))];
-                                }
-                            });
-                        }); }))];
-                case 1:
-                    builds = _a.sent();
-                    builds.forEach(function (build) {
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".html"), build.html);
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".css"), build.css);
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".js"), build.js);
-                    });
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-exports.BuildFiles = BuildFiles;

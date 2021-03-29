@@ -2,19 +2,6 @@ import { cssReset } from "./cssReset";
 import { buildCssFromObject } from "./generateCss";
 import { BuildObject, Identification, Page, ResolvedChild, SlamElement } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
-import * as fs from "fs";
-import * as path from "path";
-import * as tsNode from "ts-node";
-
-tsNode.register({
-  compilerOptions: {
-    module: "CommonJS",
-    moduleResolution: "node",
-    strict: true,
-    resolveJsonModule: true,
-    allowSyntheticDefaultImports: true,
-  },
-});
 
 const findElementsWithCSS = (tree: ResolvedChild): SlamElement[] => {
   let finalArray: SlamElement[] = [];
@@ -153,21 +140,3 @@ export const buildPage = async (page: Page | Promise<Page>) => {
   finalObject.html = finalObject.html.replace("</body>", `<script src="./${finalizedPage.name}.js"></script></body>\n`);
   return finalObject;
 };
-
-export async function BuildFiles(indexFile: string, outDir: string) {
-  const pages: Page[] = require(indexFile)["default"];
-  let builds = await Promise.all(
-    pages.map(async page => {
-      let resolved = await page;
-      return {
-        name: resolved.name,
-        ...(await buildPage(page)),
-      };
-    })
-  );
-  builds.forEach(build => {
-    fs.writeFileSync(path.resolve(outDir, `${build.name}.html`), build.html);
-    fs.writeFileSync(path.resolve(outDir, `${build.name}.css`), build.css);
-    fs.writeFileSync(path.resolve(outDir, `${build.name}.js`), build.js);
-  });
-}
