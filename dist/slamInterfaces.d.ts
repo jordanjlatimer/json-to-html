@@ -15,6 +15,16 @@ export interface SlamElement {
     atts?: any;
     children?: ResolvedChild[];
 }
+export interface Page {
+    name: string;
+    html: Promise<SlamElement>;
+    cssReset?: boolean;
+}
+export interface BuildObject {
+    html: string;
+    css: string;
+    js: string;
+}
 export declare type Child = ResolvedChild | Promise<SlamElement>;
 export declare type ResolvedChild = SlamElement | string;
 interface Selector {

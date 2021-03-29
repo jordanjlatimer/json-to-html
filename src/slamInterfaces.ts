@@ -18,6 +18,18 @@ export interface SlamElement {
   children?: ResolvedChild[];
 }
 
+export interface Page {
+  name: string;
+  html: Promise<SlamElement>;
+  cssReset?: boolean;
+}
+
+export interface BuildObject {
+  html: string;
+  css: string;
+  js: string;
+}
+
 export type Child = ResolvedChild | Promise<SlamElement>;
 
 export type ResolvedChild = SlamElement | string;

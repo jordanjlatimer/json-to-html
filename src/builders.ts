@@ -1,5 +1,20 @@
-import { Identification, ResolvedChild, SlamElement } from "./slamInterfaces";
+import { cssReset } from "./cssReset";
+import { buildCssFromObject } from "./generateCss";
+import { BuildObject, Identification, Page, ResolvedChild, SlamElement } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
+import * as fs from "fs";
+import * as path from "path";
+import * as tsNode from "ts-node";
+
+tsNode.register({
+  compilerOptions: {
+    module: "CommonJS",
+    moduleResolution: "node",
+    strict: true,
+    resolveJsonModule: true,
+    allowSyntheticDefaultImports: true,
+  },
+});
 
 const findElementsWithCSS = (tree: ResolvedChild): SlamElement[] => {
   let finalArray: SlamElement[] = [];
@@ -50,55 +65,109 @@ export const identifyCssElements = (tree: SlamElement) => {
 
 const constructElement = (
   tree: SlamElement | string,
-  currentString: string,
+  build: BuildObject,
   components: Identification,
   className?: string
 ) => {
   if (typeof tree === "string") {
-    return tree;
+    build.html += tree;
+    return;
   }
-  currentString += `<${tree["tag"]}`;
+  build.html += `<${tree["tag"]}`;
   if (tree["atts"] || className) {
     const atts = tree["atts"] || {};
     const attsClass = atts["class"] || "";
     const fullClass = className ? (attsClass ? `${attsClass} ${className}` : className) : attsClass;
     const classObject = fullClass ? { class: fullClass } : {};
-    currentString += parseAtts({ ...atts, ...classObject });
+    build.html += parseAtts({ ...atts, ...classObject });
   }
   if (noChildren(tree["tag"])) {
-    currentString += "/>";
+    build.html += "/>";
   } else {
-    currentString += ">";
+    build.html += ">";
   }
   if (tree["children"]) {
     tree["children"].forEach(child => {
-      currentString += routeChild(child, "", components);
+      routeChild(child, build, components);
     });
   }
   if (tree["tag"]) {
     if (!noChildren(tree["tag"])) {
-      currentString += `</${tree["tag"]}>`;
+      build.html += `</${tree["tag"]}>`;
     }
   }
-  return currentString;
 };
 
-const routeChild = (tree: ResolvedChild, currentString: string, cssElements: Identification) => {
+const routeChild = (tree: ResolvedChild, build: BuildObject, components: Identification) => {
   if (typeof tree === "string") {
-    return tree;
+    build.html += tree;
+    return;
   } else {
     let className = "";
-    Object.keys(cssElements).forEach(key => {
-      cssElements[parseInt(key)].forEach(element => {
-        if (element === tree) {
+    Object.keys(components).forEach(key => {
+      components[parseInt(key)].forEach(component => {
+        if (component === tree) {
           className = `c${key}`;
         }
       });
     });
-    return constructElement(tree, currentString, cssElements, className);
+    constructElement(tree, build, components, className);
   }
 };
 
-export const buildHtmlFromObject = (tree: ResolvedChild, cssElements: Identification) => {
-  return routeChild(tree, "", cssElements);
+const buildHtmlFromObject = (tree: ResolvedChild, build: BuildObject, components: Identification) => {
+  return routeChild(tree, build, components);
 };
+
+const buildCss = (finalObject: BuildObject, components: Identification, reset?: boolean) => {
+  finalObject.css += reset ? cssReset : "";
+  Object.keys(components).forEach(key => {
+    let css = components[parseInt(key)][0].atts?.css;
+    finalObject.css += css ? buildCssFromObject(`.c${key}`, css) : "";
+  });
+};
+
+const buildJs = (finalObject: BuildObject, components: Identification) => {
+  Object.keys(components).forEach(key => {
+    let js = components[parseInt(key)][0].atts.js;
+    finalObject.js += js ? `(${js})()` : "";
+  });
+};
+
+export const buildPage = async (page: Page | Promise<Page>) => {
+  let finalizedPage = await page;
+  let finalizedHtml = await finalizedPage.html;
+  let components = identifyCssElements(finalizedHtml);
+  let finalObject = {
+    html: "",
+    css: "",
+    js: "",
+  };
+  buildCss(finalObject, components, finalizedPage.cssReset);
+  buildJs(finalObject, components);
+  buildHtmlFromObject(finalizedHtml, finalObject, components);
+  finalObject.html = finalObject.html.replace(
+    "</head>",
+    `<link rel=stylesheet href="./${finalizedPage.name}.css"/></head>\n`
+  );
+  finalObject.html = finalObject.html.replace("</body>", `<script src="./${finalizedPage.name}.js"></script></body>\n`);
+  return finalObject;
+};
+
+export async function BuildFiles(indexFile: string, outDir: string) {
+  const pages: Page[] = require(indexFile)["default"];
+  let builds = await Promise.all(
+    pages.map(async page => {
+      let resolved = await page;
+      return {
+        name: resolved.name,
+        ...(await buildPage(page)),
+      };
+    })
+  );
+  builds.forEach(build => {
+    fs.writeFileSync(path.resolve(outDir, `${build.name}.html`), build.html);
+    fs.writeFileSync(path.resolve(outDir, `${build.name}.css`), build.css);
+    fs.writeFileSync(path.resolve(outDir, `${build.name}.js`), build.js);
+  });
+}

@@ -1,9 +1,10 @@
 import * as express from "express";
-import { Page } from "./page";
+import { Page } from "./slamInterfaces";
 import * as fs from "fs";
 import { Server } from "node:http";
 import { Socket } from "node:net";
 import * as tsNode from "ts-node";
+import { buildPage } from "./builders";
 
 tsNode.register({
   compilerOptions: {
@@ -51,7 +52,7 @@ const clearCache = (module: NodeModule) => {
   delete require.cache[require.resolve(module.id)];
 };
 
-export const CreateSlamServer = (pages: { name: string; path: string }[], port: number, watchList: string[]) => {
+export const CreateSlamServer = (indexFile: string, port: number, watchList: string[]) => {
   let sockets: Socket[] = [];
   let webServer: Server;
   let lastUpdate = Date.now();
@@ -80,28 +81,28 @@ export const CreateSlamServer = (pages: { name: string; path: string }[], port: 
 
   const buildWebserver = async () => {
     const newServer = express();
+    let module = require.cache[require.resolve(indexFile)];
+    module && clearCache(module);
+    const pages: Page[] = require(indexFile)["default"];
     await pages.map(async page => {
-      let module = require.cache[require.resolve(page.path)];
-      module && clearCache(module);
-      const currentPage: Page = require(page.path)["default"];
-      await currentPage.buildAll();
-      currentPage.html = currentPage.html.replace("</body>", reloadScript(port));
+      const build = await buildPage(page);
+      build.html = build.html.replace("</body>", reloadScript(port));
       newServer.get("/slamserver", (req, res) => {
         res.send(lastUpdate.toString());
       });
       newServer.get(`/${page.name}`, (req, res) => {
         res.setHeader("content-type", `text/html`);
-        res.send(currentPage.html);
+        res.send(build.html);
         res.end();
       });
       newServer.get(`/${page.name}.css`, (req, res) => {
         res.setHeader("content-type", `text/css`);
-        res.send(currentPage.css);
+        res.send(build.css);
         res.end();
       });
       newServer.get(`/${page.name}.js`, (req, res) => {
         res.setHeader("content-type", `text/js`);
-        res.send(currentPage.js);
+        res.send(build.js);
         res.end();
       });
     });

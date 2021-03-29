@@ -40,6 +40,7 @@ exports.CreateSlamServer = void 0;
 var express = require("express");
 var fs = require("fs");
 var tsNode = require("ts-node");
+var builders_1 = require("./builders");
 tsNode.register({
     compilerOptions: {
         module: "CommonJS",
@@ -61,7 +62,7 @@ var clearCache = function (module) {
     });
     delete require.cache[require.resolve(module.id)];
 };
-var CreateSlamServer = function (pages, port, watchList) {
+var CreateSlamServer = function (indexFile, port, watchList) {
     var sockets = [];
     var webServer;
     var lastUpdate = Date.now();
@@ -95,39 +96,38 @@ var CreateSlamServer = function (pages, port, watchList) {
         }); },
     };
     var buildWebserver = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var newServer, runningServer;
+        var newServer, module, pages, runningServer;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     newServer = express();
+                    module = require.cache[require.resolve(indexFile)];
+                    module && clearCache(module);
+                    pages = require(indexFile)["default"];
                     return [4 /*yield*/, pages.map(function (page) { return __awaiter(void 0, void 0, void 0, function () {
-                            var module, currentPage;
+                            var build;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
-                                    case 0:
-                                        module = require.cache[require.resolve(page.path)];
-                                        module && clearCache(module);
-                                        currentPage = require(page.path)["default"];
-                                        return [4 /*yield*/, currentPage.buildAll()];
+                                    case 0: return [4 /*yield*/, builders_1.buildPage(page)];
                                     case 1:
-                                        _a.sent();
-                                        currentPage.html = currentPage.html.replace("</body>", reloadScript(port));
+                                        build = _a.sent();
+                                        build.html = build.html.replace("</body>", reloadScript(port));
                                         newServer.get("/slamserver", function (req, res) {
                                             res.send(lastUpdate.toString());
                                         });
                                         newServer.get("/" + page.name, function (req, res) {
                                             res.setHeader("content-type", "text/html");
-                                            res.send(currentPage.html);
+                                            res.send(build.html);
                                             res.end();
                                         });
                                         newServer.get("/" + page.name + ".css", function (req, res) {
                                             res.setHeader("content-type", "text/css");
-                                            res.send(currentPage.css);
+                                            res.send(build.css);
                                             res.end();
                                         });
                                         newServer.get("/" + page.name + ".js", function (req, res) {
                                             res.setHeader("content-type", "text/js");
-                                            res.send(currentPage.js);
+                                            res.send(build.js);
                                             res.end();
                                         });
                                         return [2 /*return*/];

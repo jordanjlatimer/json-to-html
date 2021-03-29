@@ -1,3 +1,8 @@
-import { Identification, ResolvedChild, SlamElement } from "./slamInterfaces";
+import { Identification, Page, SlamElement } from "./slamInterfaces";
 export declare const identifyCssElements: (tree: SlamElement) => Identification;
-export declare const buildHtmlFromObject: (tree: ResolvedChild, cssElements: Identification) => string;
+export declare const buildPage: (page: Page | Promise<Page>) => Promise<{
+    html: string;
+    css: string;
+    js: string;
+}>;
+export declare function BuildFiles(indexFile: string, outDir: string): Promise<void>;
