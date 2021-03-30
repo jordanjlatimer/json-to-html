@@ -144,31 +144,20 @@ var buildJs = function (finalObject, components) {
         finalObject.js += js ? "(" + js + ")()" : "";
     });
 };
-var buildPage = function (page) { return __awaiter(void 0, void 0, void 0, function () {
-    var finalizedPage, finalizedHtml, components, finalObject;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, page];
-            case 1:
-                finalizedPage = _a.sent();
-                return [4 /*yield*/, finalizedPage.html];
-            case 2:
-                finalizedHtml = _a.sent();
-                components = findUniqueCss(findElementsWithCSS(finalizedHtml));
-                finalObject = {
-                    html: "",
-                    css: "",
-                    js: "",
-                };
-                buildCss(finalObject, components, finalizedPage.cssReset);
-                buildJs(finalObject, components);
-                buildHtmlFromObject(finalizedHtml, finalObject, components);
-                finalObject.html = finalObject.html.replace("</head>", "<link rel=stylesheet href=\"./" + finalizedPage.name + ".css\"/></head>\n");
-                finalObject.html = finalObject.html.replace("</body>", "<script src=\"./" + finalizedPage.name + ".js\"></script></body>\n");
-                return [2 /*return*/, finalObject];
-        }
-    });
-}); };
+var buildPage = function (page) {
+    var components = findUniqueCss(findElementsWithCSS(page.html));
+    var finalObject = {
+        html: "",
+        css: "",
+        js: "",
+    };
+    buildCss(finalObject, components, page.cssReset);
+    buildJs(finalObject, components);
+    buildHtmlFromObject(page.html, finalObject, components);
+    finalObject.html = finalObject.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
+    finalObject.html = finalObject.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
+    return finalObject;
+};
 exports.buildPage = buildPage;
 function BuildFiles(indexFile, outDir) {
     return __awaiter(this, void 0, void 0, function () {
@@ -179,15 +168,22 @@ function BuildFiles(indexFile, outDir) {
                 case 0:
                     pages = require(indexFile)["default"];
                     return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
-                            var resolved, _a;
+                            var content, _a, contentPage;
                             return __generator(this, function (_b) {
                                 switch (_b.label) {
-                                    case 0: return [4 /*yield*/, page];
+                                    case 0:
+                                        if (!page.content) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, page.content()];
                                     case 1:
-                                        resolved = _b.sent();
-                                        _a = [{ name: resolved.name }];
-                                        return [4 /*yield*/, exports.buildPage(page)];
-                                    case 2: return [2 /*return*/, __assign.apply(void 0, _a.concat([(_b.sent())]))];
+                                        _a = _b.sent();
+                                        return [3 /*break*/, 3];
+                                    case 2:
+                                        _a = undefined;
+                                        _b.label = 3;
+                                    case 3:
+                                        content = _a;
+                                        contentPage = typeof page.page === "function" ? page.page(content) : page.page;
+                                        return [2 /*return*/, __assign({ name: page.page.name }, exports.buildPage(contentPage))];
                                 }
                             });
                         }); }))];

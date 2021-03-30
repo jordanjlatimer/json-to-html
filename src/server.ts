@@ -1,5 +1,5 @@
 import * as express from "express";
-import { BuildObject, Page } from "./slamInterfaces";
+import { BuildObject, ContentPage } from "./slamInterfaces";
 import * as fs from "fs";
 import { Server } from "node:http";
 import { Socket } from "node:net";
@@ -45,6 +45,7 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
   let sockets: Socket[] = [];
   let webServer: Server;
   let lastUpdate = Date.now();
+  let contentCache: Record<string, any> = {};
 
   const server = {
     start: async () => {
@@ -72,10 +73,23 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
     const newServer = express();
     let module = require.cache[require.resolve(indexFile)];
     module && clearCache(module);
-    const pages: (Page | (() => Page | Promise<Page>))[] = require(indexFile)["default"];
-    let resolvedPages = await Promise.all(pages.map(async page => (typeof page === "function" ? await page() : page)));
-    await resolvedPages.forEach(async page => {
-      const build = await buildPage(page);
+    const pages: ContentPage[] = require(indexFile)["default"];
+    await Promise.all(
+      pages.map(async page => {
+        if (contentCache[page.page.name]) {
+          return;
+        } else {
+          if (page.content) {
+            contentCache[page.page.name] = await page.content();
+          }
+        }
+      })
+    );
+    const finalizedPages = pages.map(page => {
+      return typeof page.page === "function" ? page.page(contentCache[page.page.name]) : page.page;
+    });
+    finalizedPages.forEach(page => {
+      const build = buildPage(page);
       build.html = build.html.replace("</body>", reloadScript(port));
       newServer.get("/slamserver", (req, res) => res.send(lastUpdate.toString()));
       ["html", "css", "js"].forEach(item => {
@@ -90,7 +104,7 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
       console.clear();
       console.log(`Server listening at http://localhost:${port}`);
       console.log(`Pages:`);
-      resolvedPages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
+      finalizedPages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
       console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
     });
     runningServer.on("connection", socket => sockets.push(socket));

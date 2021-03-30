@@ -3,7 +3,7 @@ const path = require("path");
 const { elements, childless } = require("./elements.js");
 
 let baseImports = 'import { Child, SlamElement } from "./slamInterfaces";\n';
-baseImports += `import { resolveAndType } from "./utils";\n`;
+baseImports += `import { typeTag } from "./utils";\n`;
 let htmlImports = "import {";
 let svgImports = "import {";
 let functionsString = "";
@@ -31,10 +31,9 @@ Object.keys(elements).forEach((key, i) => {
     functionsString += `  }\n`;
     functionsString += `};\n`;
   } else {
-    functionsString += `export const ${functionName} = async (arg1?: ${elementInterface} | Child, ...arg2: Child[]): Promise<SlamElement> => {\n`;
-    functionsString += `  let r2 = await Promise.all(arg2.map(async item => await item));\n`;
+    functionsString += `export const ${functionName} = (arg1?: ${elementInterface} | Child, ...arg2: Child[]): SlamElement => {\n`;
     functionsString += `  let atts: (${elementInterface} | undefined) = undefined\n`;
-    functionsString += `  return await resolveAndType(arg1, r2, atts, "${key}")\n`;
+    functionsString += `  return typeTag(arg1, arg2, atts, "${key}")\n`;
     functionsString += `};\n`;
   }
 });

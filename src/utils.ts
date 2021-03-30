@@ -1,4 +1,4 @@
-import { Child, ElementAttributes, ResolvedChild, SlamElement } from "./slamInterfaces";
+import { ElementAttributes, Child, SlamElement } from "./slamInterfaces";
 
 export const toKebabCase = (value: string) => {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
@@ -105,24 +105,18 @@ export function equalObjects(object1: GenericObject, object2: GenericObject) {
   return true;
 }
 
-export async function resolveAndType<T>(
-  arg1: Child | T,
-  arg2: ResolvedChild[],
-  atts: T | undefined,
-  tag: string
-): Promise<SlamElement> {
+export function typeTag<T>(arg1: Child | T, arg2: Child[], atts: T | undefined, tag: string): SlamElement {
   let children: SlamElement["children"] = [];
   if (arg1) {
-    let r1 = await arg1;
-    if (typeof r1 === "string") {
-      children.push(r1);
-    } else if ("type" in r1) {
-      children.push(r1);
+    if (typeof arg1 === "string") {
+      children.push(arg1);
+    } else if ("type" in arg1) {
+      children.push(arg1);
     } else {
-      atts = r1;
+      atts = arg1;
     }
   }
-  children = children.concat(arg2);
+  children.push(...arg2);
   return {
     type: "element",
     tag: tag,

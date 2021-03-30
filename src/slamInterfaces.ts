@@ -15,13 +15,18 @@ export interface SlamElement {
   type: "element";
   tag: string;
   atts?: any;
-  children?: ResolvedChild[];
+  children?: Child[];
 }
 
 export interface Page {
   name: string;
-  html: Promise<SlamElement>;
+  html: SlamElement;
   cssReset?: boolean;
+}
+
+export interface ContentPage {
+  page: Page | ((args: any) => Page);
+  content?: () => any | Promise<any>;
 }
 
 export interface BuildObject {
@@ -30,9 +35,7 @@ export interface BuildObject {
   js: string;
 }
 
-export type Child = ResolvedChild | Promise<SlamElement>;
-
-export type ResolvedChild = SlamElement | string;
+export type Child = SlamElement | string;
 
 interface Selector {
   [key: string]: CSSProperties | Selector;

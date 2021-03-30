@@ -1,11 +1,11 @@
 import { cssReset } from "./cssReset";
 import { buildCssFromObject } from "./generateCss";
-import { BuildObject, Identification, Page, ResolvedChild, SlamElement } from "./slamInterfaces";
+import { BuildObject, Identification, Page, Child, SlamElement, ContentPage } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 import * as fs from "fs";
 import * as path from "path";
 
-const findElementsWithCSS = (tree: ResolvedChild): SlamElement[] => {
+const findElementsWithCSS = (tree: Child): SlamElement[] => {
   let finalArray: SlamElement[] = [];
   if (typeof tree === "object") {
     tree.atts?.css && finalArray.push(tree);
@@ -67,7 +67,7 @@ const constructElement = (
   build.html += tree["tag"] && !noChildren(tree["tag"]) ? `</${tree["tag"]}>` : "";
 };
 
-const routeChild = (tree: ResolvedChild, build: BuildObject, components: Identification) => {
+const routeChild = (tree: Child, build: BuildObject, components: Identification) => {
   if (typeof tree === "string") {
     build.html += tree;
     return;
@@ -84,7 +84,7 @@ const routeChild = (tree: ResolvedChild, build: BuildObject, components: Identif
   }
 };
 
-const buildHtmlFromObject = (tree: ResolvedChild, build: BuildObject, components: Identification) => {
+const buildHtmlFromObject = (tree: Child, build: BuildObject, components: Identification) => {
   return routeChild(tree, build, components);
 };
 
@@ -103,34 +103,30 @@ const buildJs = (finalObject: BuildObject, components: Identification) => {
   });
 };
 
-export const buildPage = async (page: Page | Promise<Page>) => {
-  let finalizedPage = await page;
-  let finalizedHtml = await finalizedPage.html;
-  let components = findUniqueCss(findElementsWithCSS(finalizedHtml));
+export const buildPage = (page: Page) => {
+  let components = findUniqueCss(findElementsWithCSS(page.html));
   let finalObject = {
     html: "",
     css: "",
     js: "",
   };
-  buildCss(finalObject, components, finalizedPage.cssReset);
+  buildCss(finalObject, components, page.cssReset);
   buildJs(finalObject, components);
-  buildHtmlFromObject(finalizedHtml, finalObject, components);
-  finalObject.html = finalObject.html.replace(
-    "</head>",
-    `<link rel=stylesheet href="./${finalizedPage.name}.css"/></head>\n`
-  );
-  finalObject.html = finalObject.html.replace("</body>", `<script src="./${finalizedPage.name}.js"></script></body>\n`);
+  buildHtmlFromObject(page.html, finalObject, components);
+  finalObject.html = finalObject.html.replace("</head>", `<link rel=stylesheet href="./${page.name}.css"/></head>\n`);
+  finalObject.html = finalObject.html.replace("</body>", `<script src="./${page.name}.js"></script></body>\n`);
   return finalObject;
 };
 
 export async function BuildFiles(indexFile: string, outDir: string) {
-  const pages: Page[] = require(indexFile)["default"];
+  const pages: ContentPage[] = require(indexFile)["default"];
   let builds = await Promise.all(
     pages.map(async page => {
-      let resolved = await page;
+      let content = page.content ? await page.content() : undefined;
+      let contentPage = typeof page.page === "function" ? page.page(content) : page.page;
       return {
-        name: resolved.name,
-        ...(await buildPage(page)),
+        name: page.page.name,
+        ...buildPage(contentPage),
       };
     })
   );

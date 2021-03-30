@@ -13,20 +13,23 @@ export interface SlamElement {
     type: "element";
     tag: string;
     atts?: any;
-    children?: ResolvedChild[];
+    children?: Child[];
 }
 export interface Page {
     name: string;
-    html: Promise<SlamElement>;
+    html: SlamElement;
     cssReset?: boolean;
+}
+export interface ContentPage {
+    page: Page | ((args: any) => Page);
+    content?: () => any | Promise<any>;
 }
 export interface BuildObject {
     html: string;
     css: string;
     js: string;
 }
-export declare type Child = ResolvedChild | Promise<SlamElement>;
-export declare type ResolvedChild = SlamElement | string;
+export declare type Child = SlamElement | string;
 interface Selector {
     [key: string]: CSSProperties | Selector;
 }

@@ -1,7 +1,7 @@
 import { body, CSS, head, html, title } from "../../dist";
 import { Box } from "./components/Box";
 
-export const Home = async () => {
+export const Home = () => {
   const classes = CSS({
     root: {
       backgroundColor: "green",
