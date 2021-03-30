@@ -1,5 +1,4 @@
-import { Identification, Page, SlamElement } from "./slamInterfaces";
-export declare const identifyCssElements: (tree: SlamElement) => Identification;
+import { Page } from "./slamInterfaces";
 export declare const buildPage: (page: Page | Promise<Page>) => Promise<{
     html: string;
     css: string;

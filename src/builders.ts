@@ -44,10 +44,6 @@ const findUniqueCss = (array: SlamElement[]) => {
   return identities;
 };
 
-export const identifyCssElements = (tree: SlamElement) => {
-  return findUniqueCss(findElementsWithCSS(tree));
-};
-
 const constructElement = (
   tree: SlamElement | string,
   build: BuildObject,
@@ -78,7 +74,11 @@ const routeChild = (tree: ResolvedChild, build: BuildObject, components: Identif
   } else {
     let className = "";
     Object.keys(components).forEach(key => {
-      components[parseInt(key)].forEach(component => (className = component === tree ? `c${key}` : ""));
+      components[parseInt(key)].forEach(component => {
+        if (component === tree) {
+          className = `c${key}`;
+        }
+      });
     });
     constructElement(tree, build, components, className);
   }
@@ -106,7 +106,7 @@ const buildJs = (finalObject: BuildObject, components: Identification) => {
 export const buildPage = async (page: Page | Promise<Page>) => {
   let finalizedPage = await page;
   let finalizedHtml = await finalizedPage.html;
-  let components = identifyCssElements(finalizedHtml);
+  let components = findUniqueCss(findElementsWithCSS(finalizedHtml));
   let finalObject = {
     html: "",
     css: "",

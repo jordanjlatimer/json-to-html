@@ -1,6 +1,7 @@
-import { body, CSS, div, head, html, title } from "../../dist";
+import { body, CSS, head, html, title } from "../../dist";
+import { Box } from "./components/Box";
 
-const Home = async () => {
+export const Home = async () => {
   const classes = CSS({
     root: {
       backgroundColor: "green",
@@ -9,9 +10,7 @@ const Home = async () => {
   const js = () => console.log("Hello");
   return {
     name: "home",
-    html: html({ css: classes.root, js: js }, head(title("Test")), body(div("Hello World"))),
+    html: html({ css: classes.root, js: js }, head(title("Test")), body(Box())),
     cssReset: true,
   };
 };
-
-export default Home;

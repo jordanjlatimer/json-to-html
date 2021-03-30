@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuildFiles = exports.buildPage = exports.identifyCssElements = void 0;
+exports.BuildFiles = exports.buildPage = void 0;
 var cssReset_1 = require("./cssReset");
 var generateCss_1 = require("./generateCss");
 var utils_1 = require("./utils");
@@ -93,10 +93,6 @@ var findUniqueCss = function (array) {
     });
     return identities;
 };
-var identifyCssElements = function (tree) {
-    return findUniqueCss(findElementsWithCSS(tree));
-};
-exports.identifyCssElements = identifyCssElements;
 var constructElement = function (tree, build, components, className) {
     if (typeof tree === "string") {
         build.html += tree;
@@ -122,7 +118,11 @@ var routeChild = function (tree, build, components) {
     else {
         var className_1 = "";
         Object.keys(components).forEach(function (key) {
-            components[parseInt(key)].forEach(function (component) { return (className_1 = component === tree ? "c" + key : ""); });
+            components[parseInt(key)].forEach(function (component) {
+                if (component === tree) {
+                    className_1 = "c" + key;
+                }
+            });
         });
         constructElement(tree, build, components, className_1);
     }
@@ -154,7 +154,7 @@ var buildPage = function (page) { return __awaiter(void 0, void 0, void 0, funct
                 return [4 /*yield*/, finalizedPage.html];
             case 2:
                 finalizedHtml = _a.sent();
-                components = exports.identifyCssElements(finalizedHtml);
+                components = findUniqueCss(findElementsWithCSS(finalizedHtml));
                 finalObject = {
                     html: "",
                     css: "",
