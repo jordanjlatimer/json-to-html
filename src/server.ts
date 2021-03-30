@@ -1,20 +1,9 @@
 import * as express from "express";
-import { Page } from "./slamInterfaces";
+import { BuildObject, Page } from "./slamInterfaces";
 import * as fs from "fs";
 import { Server } from "node:http";
 import { Socket } from "node:net";
-import * as tsNode from "ts-node";
 import { buildPage } from "./builders";
-
-tsNode.register({
-  compilerOptions: {
-    module: "CommonJS",
-    moduleResolution: "node",
-    strict: true,
-    resolveJsonModule: true,
-    allowSyntheticDefaultImports: true,
-  },
-});
 
 const reloadScript = (port: number) => `
 <script>
@@ -83,39 +72,28 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
     const newServer = express();
     let module = require.cache[require.resolve(indexFile)];
     module && clearCache(module);
-    const pages: Page[] = require(indexFile)["default"];
-    await pages.map(async page => {
+    const pages: (Page | (() => Page | Promise<Page>))[] = require(indexFile)["default"];
+    let resolvedPages = await Promise.all(pages.map(async page => (typeof page === "function" ? await page() : page)));
+    await resolvedPages.forEach(async page => {
       const build = await buildPage(page);
       build.html = build.html.replace("</body>", reloadScript(port));
-      newServer.get("/slamserver", (req, res) => {
-        res.send(lastUpdate.toString());
-      });
-      newServer.get(`/${page.name}`, (req, res) => {
-        res.setHeader("content-type", `text/html`);
-        res.send(build.html);
-        res.end();
-      });
-      newServer.get(`/${page.name}.css`, (req, res) => {
-        res.setHeader("content-type", `text/css`);
-        res.send(build.css);
-        res.end();
-      });
-      newServer.get(`/${page.name}.js`, (req, res) => {
-        res.setHeader("content-type", `text/js`);
-        res.send(build.js);
-        res.end();
+      newServer.get("/slamserver", (req, res) => res.send(lastUpdate.toString()));
+      ["html", "css", "js"].forEach(item => {
+        newServer.get(`/${page.name}${item === "html" ? "" : `.${item}`}`, (req, res) => {
+          res.setHeader("content-type", `text/${item}`);
+          res.send(build[item as keyof BuildObject]);
+          res.end();
+        });
       });
     });
     let runningServer = newServer.listen(port, () => {
       console.clear();
       console.log(`Server listening at http://localhost:${port}`);
       console.log(`Pages:`);
-      pages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
+      resolvedPages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
       console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
     });
-    runningServer.on("connection", socket => {
-      sockets.push(socket);
-    });
+    runningServer.on("connection", socket => sockets.push(socket));
     webServer = runningServer;
     lastUpdate = Date.now();
   };

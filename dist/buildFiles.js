@@ -50,17 +50,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuildFiles = void 0;
 var fs = require("fs");
 var path = require("path");
-var tsNode = require("ts-node");
 var builders_1 = require("./builders");
-tsNode.register({
-    compilerOptions: {
-        module: "CommonJS",
-        moduleResolution: "node",
-        strict: true,
-        resolveJsonModule: true,
-        allowSyntheticDefaultImports: true,
-    },
-});
 function BuildFiles(indexFile, outDir) {
     return __awaiter(this, void 0, void 0, function () {
         var pages, builds;

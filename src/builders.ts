@@ -2,16 +2,14 @@ import { cssReset } from "./cssReset";
 import { buildCssFromObject } from "./generateCss";
 import { BuildObject, Identification, Page, ResolvedChild, SlamElement } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
+import * as fs from "fs";
+import * as path from "path";
 
 const findElementsWithCSS = (tree: ResolvedChild): SlamElement[] => {
   let finalArray: SlamElement[] = [];
   if (typeof tree === "object") {
-    if (tree.atts?.css) {
-      finalArray.push(tree);
-    }
-    tree["children"]?.forEach(child => {
-      finalArray = finalArray.concat(findElementsWithCSS(child));
-    });
+    tree.atts?.css && finalArray.push(tree);
+    tree["children"]?.forEach(child => finalArray.push(...findElementsWithCSS(child)));
   }
   return finalArray;
 };
@@ -21,8 +19,8 @@ const findUniqueCss = (array: SlamElement[]) => {
   let identitiesIndex = 0;
   array.forEach(element => {
     if (identitiesIndex === 0) {
-      identities[identitiesIndex] = [element];
-      identitiesIndex += 1;
+      identities[identitiesIndex++] = [element];
+      identitiesIndex++;
     } else {
       let matchFound = false;
       Object.keys(identities).forEach(key => {
@@ -39,7 +37,7 @@ const findUniqueCss = (array: SlamElement[]) => {
       });
       if (!matchFound) {
         identities[identitiesIndex] = [element];
-        identitiesIndex += 1;
+        identitiesIndex++;
       }
     }
   });
@@ -68,21 +66,9 @@ const constructElement = (
     const classObject = fullClass ? { class: fullClass } : {};
     build.html += parseAtts({ ...atts, ...classObject });
   }
-  if (noChildren(tree["tag"])) {
-    build.html += "/>";
-  } else {
-    build.html += ">";
-  }
-  if (tree["children"]) {
-    tree["children"].forEach(child => {
-      routeChild(child, build, components);
-    });
-  }
-  if (tree["tag"]) {
-    if (!noChildren(tree["tag"])) {
-      build.html += `</${tree["tag"]}>`;
-    }
-  }
+  build.html += noChildren(tree["tag"]) ? "/>" : ">";
+  tree["children"] && tree["children"].forEach(child => routeChild(child, build, components));
+  build.html += tree["tag"] && !noChildren(tree["tag"]) ? `</${tree["tag"]}>` : "";
 };
 
 const routeChild = (tree: ResolvedChild, build: BuildObject, components: Identification) => {
@@ -92,11 +78,7 @@ const routeChild = (tree: ResolvedChild, build: BuildObject, components: Identif
   } else {
     let className = "";
     Object.keys(components).forEach(key => {
-      components[parseInt(key)].forEach(component => {
-        if (component === tree) {
-          className = `c${key}`;
-        }
-      });
+      components[parseInt(key)].forEach(component => (className = component === tree ? `c${key}` : ""));
     });
     constructElement(tree, build, components, className);
   }
@@ -140,3 +122,21 @@ export const buildPage = async (page: Page | Promise<Page>) => {
   finalObject.html = finalObject.html.replace("</body>", `<script src="./${finalizedPage.name}.js"></script></body>\n`);
   return finalObject;
 };
+
+export async function BuildFiles(indexFile: string, outDir: string) {
+  const pages: Page[] = require(indexFile)["default"];
+  let builds = await Promise.all(
+    pages.map(async page => {
+      let resolved = await page;
+      return {
+        name: resolved.name,
+        ...(await buildPage(page)),
+      };
+    })
+  );
+  builds.forEach(build => {
+    fs.writeFileSync(path.resolve(outDir, `${build.name}.html`), build.html);
+    fs.writeFileSync(path.resolve(outDir, `${build.name}.css`), build.css);
+    fs.writeFileSync(path.resolve(outDir, `${build.name}.js`), build.js);
+  });
+}

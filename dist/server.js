@@ -39,17 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateSlamServer = void 0;
 var express = require("express");
 var fs = require("fs");
-var tsNode = require("ts-node");
 var builders_1 = require("./builders");
-tsNode.register({
-    compilerOptions: {
-        module: "CommonJS",
-        moduleResolution: "node",
-        strict: true,
-        resolveJsonModule: true,
-        allowSyntheticDefaultImports: true,
-    },
-});
 var reloadScript = function (port) { return "\n<script>\nlet lastUpdate = undefined;\nwindow.setInterval(() => {\n  fetch(\"http://localhost:" + port + "/slamserver\")\n  .then(response => response.json())\n  .then(json => {\n    if (lastUpdate) {\n      if (lastUpdate < new Date(parseInt(json))) {\n        console.log(\"Changes detected. Refreshing page...\")\n        setTimeout(() => window.location.reload(), 600)\n      }\n    } else {\n      lastUpdate = new Date(parseInt(json))\n    }\n  })\n  .catch(err => {\n    console.clear()\n    console.log(\"Disconnected. Connection will resume when server restarts.\")\n    }\n  )\n}, 500)\n</script>\n"; };
 var clearCache = function (module) {
     module.children.forEach(function (child) {
@@ -96,7 +86,7 @@ var CreateSlamServer = function (indexFile, port, watchList) {
         }); },
     };
     var buildWebserver = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var newServer, module, pages, runningServer;
+        var newServer, module, pages, resolvedPages, runningServer;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -104,7 +94,23 @@ var CreateSlamServer = function (indexFile, port, watchList) {
                     module = require.cache[require.resolve(indexFile)];
                     module && clearCache(module);
                     pages = require(indexFile)["default"];
-                    return [4 /*yield*/, pages.map(function (page) { return __awaiter(void 0, void 0, void 0, function () {
+                    return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(void 0, void 0, void 0, function () { var _a; return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0:
+                                    if (!(typeof page === "function")) return [3 /*break*/, 2];
+                                    return [4 /*yield*/, page()];
+                                case 1:
+                                    _a = _b.sent();
+                                    return [3 /*break*/, 3];
+                                case 2:
+                                    _a = page;
+                                    _b.label = 3;
+                                case 3: return [2 /*return*/, (_a)];
+                            }
+                        }); }); }))];
+                case 1:
+                    resolvedPages = _a.sent();
+                    return [4 /*yield*/, resolvedPages.forEach(function (page) { return __awaiter(void 0, void 0, void 0, function () {
                             var build;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
@@ -112,40 +118,28 @@ var CreateSlamServer = function (indexFile, port, watchList) {
                                     case 1:
                                         build = _a.sent();
                                         build.html = build.html.replace("</body>", reloadScript(port));
-                                        newServer.get("/slamserver", function (req, res) {
-                                            res.send(lastUpdate.toString());
-                                        });
-                                        newServer.get("/" + page.name, function (req, res) {
-                                            res.setHeader("content-type", "text/html");
-                                            res.send(build.html);
-                                            res.end();
-                                        });
-                                        newServer.get("/" + page.name + ".css", function (req, res) {
-                                            res.setHeader("content-type", "text/css");
-                                            res.send(build.css);
-                                            res.end();
-                                        });
-                                        newServer.get("/" + page.name + ".js", function (req, res) {
-                                            res.setHeader("content-type", "text/js");
-                                            res.send(build.js);
-                                            res.end();
+                                        newServer.get("/slamserver", function (req, res) { return res.send(lastUpdate.toString()); });
+                                        ["html", "css", "js"].forEach(function (item) {
+                                            newServer.get("/" + page.name + (item === "html" ? "" : "." + item), function (req, res) {
+                                                res.setHeader("content-type", "text/" + item);
+                                                res.send(build[item]);
+                                                res.end();
+                                            });
                                         });
                                         return [2 /*return*/];
                                 }
                             });
                         }); })];
-                case 1:
+                case 2:
                     _a.sent();
                     runningServer = newServer.listen(port, function () {
                         console.clear();
                         console.log("Server listening at http://localhost:" + port);
                         console.log("Pages:");
-                        pages.forEach(function (page) { return console.log("\t" + page.name + ": http://localhost:" + port + "/" + page.name); });
+                        resolvedPages.forEach(function (page) { return console.log("\t" + page.name + ": http://localhost:" + port + "/" + page.name); });
                         console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
                     });
-                    runningServer.on("connection", function (socket) {
-                        sockets.push(socket);
-                    });
+                    runningServer.on("connection", function (socket) { return sockets.push(socket); });
                     webServer = runningServer;
                     lastUpdate = Date.now();
                     return [2 /*return*/];

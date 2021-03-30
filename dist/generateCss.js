@@ -27,10 +27,7 @@ var buildCssFromObject = function (className, styles, isKeyframe) {
         }
         else if (typeof styles[key] === "object") {
             var finalKey = "";
-            if (tagNames_1.tagNames.includes(key)) {
-                finalKey += ">";
-            }
-            finalKey += key;
+            finalKey += (tagNames_1.tagNames.includes(key) ? ">" : "") + key;
             finalString += exports.buildCssFromObject("" + className + finalKey, styles[key]);
         }
         else {
@@ -38,12 +35,9 @@ var buildCssFromObject = function (className, styles, isKeyframe) {
             rootCss[key] = styles[key];
         }
     });
-    if (isKeyframe) {
-        return finalString;
-    }
-    else {
-        return generateSelectorString(className, "", generatePropertiesString(rootCss)) + finalString;
-    }
+    return isKeyframe
+        ? finalString
+        : generateSelectorString(className, "", generatePropertiesString(rootCss)) + finalString;
 };
 exports.buildCssFromObject = buildCssFromObject;
 var CSS = function (arg) { return arg; };

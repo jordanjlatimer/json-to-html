@@ -29,21 +29,16 @@ export const buildCssFromObject = (className: string, styles: CSSObject, isKeyfr
       finalString += generateMediaQueryString(className, key, styles[key] as CSSObject);
     } else if (typeof styles[key] === "object") {
       let finalKey = "";
-      if (tagNames.includes(key)) {
-        finalKey += ">";
-      }
-      finalKey += key;
+      finalKey += (tagNames.includes(key) ? ">" : "") + key;
       finalString += buildCssFromObject(`${className}${finalKey}`, styles[key] as CSSObject);
     } else {
       //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
       rootCss[key] = styles[key];
     }
   });
-  if (isKeyframe) {
-    return finalString;
-  } else {
-    return generateSelectorString(className, "", generatePropertiesString(rootCss)) + finalString;
-  }
+  return isKeyframe
+    ? finalString
+    : generateSelectorString(className, "", generatePropertiesString(rootCss)) + finalString;
 };
 
 export const CSS = <T extends Record<string, CSSObject>>(arg: T): T => arg;

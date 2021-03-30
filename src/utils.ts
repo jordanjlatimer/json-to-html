@@ -85,6 +85,9 @@ export function equalObjects(object1: GenericObject, object2: GenericObject) {
   if (typeof object2 !== "object") {
     throw "Parameter 2 is not an object.";
   }
+  if (object1 === object2) {
+    return true;
+  }
   let object1Keys = Object.keys(object1);
   let object2Keys = Object.keys(object2);
   if (object1Keys.length !== object2Keys.length) {

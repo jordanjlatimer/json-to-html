@@ -11,10 +11,19 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CSS = exports.BuildFiles = exports.CreateSlamServer = void 0;
+var tsNode = require("ts-node");
+tsNode.register({
+    compilerOptions: {
+        module: "CommonJS",
+        moduleResolution: "node",
+        resolveJsonModule: true,
+        allowSyntheticDefaultImports: true,
+    },
+});
 __exportStar(require("./elementFunctions"), exports);
 var server_1 = require("./server");
 Object.defineProperty(exports, "CreateSlamServer", { enumerable: true, get: function () { return server_1.CreateSlamServer; } });
-var buildFiles_1 = require("./buildFiles");
-Object.defineProperty(exports, "BuildFiles", { enumerable: true, get: function () { return buildFiles_1.BuildFiles; } });
+var builders_1 = require("./builders");
+Object.defineProperty(exports, "BuildFiles", { enumerable: true, get: function () { return builders_1.BuildFiles; } });
 var generateCss_1 = require("./generateCss");
 Object.defineProperty(exports, "CSS", { enumerable: true, get: function () { return generateCss_1.CSS; } });

@@ -5,3 +5,4 @@ export declare const buildPage: (page: Page | Promise<Page>) => Promise<{
     css: string;
     js: string;
 }>;
+export declare function BuildFiles(indexFile: string, outDir: string): Promise<void>;

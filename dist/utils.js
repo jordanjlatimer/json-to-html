@@ -118,6 +118,9 @@ function equalObjects(object1, object2) {
     if (typeof object2 !== "object") {
         throw "Parameter 2 is not an object.";
     }
+    if (object1 === object2) {
+        return true;
+    }
     var object1Keys = Object.keys(object1);
     var object2Keys = Object.keys(object2);
     if (object1Keys.length !== object2Keys.length) {
