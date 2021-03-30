@@ -58,8 +58,8 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
           }
           itemChanged = true;
           console.log("Change detected. Restarting server...\n");
-          webServer.close(() => {
-            buildWebserver();
+          webServer.close(async () => {
+            await buildWebserver();
             itemChanged = false;
           });
           sockets.forEach(socket => socket.destroy());

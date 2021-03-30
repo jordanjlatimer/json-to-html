@@ -73,10 +73,17 @@ var CreateSlamServer = function (indexFile, port, watchList) {
                                 }
                                 itemChanged = true;
                                 console.log("Change detected. Restarting server...\n");
-                                webServer.close(function () {
-                                    buildWebserver();
-                                    itemChanged = false;
-                                });
+                                webServer.close(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                    return __generator(this, function (_a) {
+                                        switch (_a.label) {
+                                            case 0: return [4 /*yield*/, buildWebserver()];
+                                            case 1:
+                                                _a.sent();
+                                                itemChanged = false;
+                                                return [2 /*return*/];
+                                        }
+                                    });
+                                }); });
                                 sockets.forEach(function (socket) { return socket.destroy(); });
                             });
                         });
