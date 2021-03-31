@@ -67,7 +67,7 @@ var findUniqueCss = function (array) {
     var identitiesIndex = 0;
     array.forEach(function (element) {
         if (identitiesIndex === 0) {
-            identities[identitiesIndex++] = [element];
+            identities[identitiesIndex] = [element];
             identitiesIndex++;
         }
         else {
