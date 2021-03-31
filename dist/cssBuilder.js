@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CSS = exports.buildCssFromObject = void 0;
+exports.SlamStyles = exports.buildCssFromObject = void 0;
 var utils_1 = require("./utils");
 var tagNames_1 = require("./tagNames");
-function generatePropertiesString(styles) {
+function buildPropertiesString(styles) {
     return Object.keys(styles).reduce(function (a, b) { return "" + a + utils_1.toKebabCase(b) + ":" + styles[b] + ";"; }, "");
 }
-function generateSelectorString(className, selector, properties) {
+function buildSelectorString(className, selector, properties) {
     return "" + className + selector + "{" + properties + "}";
 }
-function generateKeyframeString(keyframe, selectors) {
+function buildKeyframeString(keyframe, selectors) {
     return keyframe + "{" + selectors + "}";
 }
-function generateMediaQueryString(className, query, styleObject) {
+function buildMediaQueryString(className, query, styleObject) {
     return query + "{" + buildCssFromObject(className, styleObject) + "}";
 }
 function buildCssFromObject(className, styles, isKeyframe) {
@@ -20,10 +20,10 @@ function buildCssFromObject(className, styles, isKeyframe) {
     var finalString = "";
     Object.keys(styles).forEach(function (key) {
         if (/@keyframes/.test(key)) {
-            finalString += generateKeyframeString(key, buildCssFromObject(className, styles[key], true));
+            finalString += buildKeyframeString(key, buildCssFromObject(className, styles[key], true));
         }
         else if (/@media/.test(key)) {
-            finalString += generateMediaQueryString(className, key, styles[key]);
+            finalString += buildMediaQueryString(className, key, styles[key]);
         }
         else if (typeof styles[key] === "object") {
             var finalKey = "";
@@ -35,12 +35,10 @@ function buildCssFromObject(className, styles, isKeyframe) {
             rootCss[key] = styles[key];
         }
     });
-    return isKeyframe
-        ? finalString
-        : generateSelectorString(className, "", generatePropertiesString(rootCss)) + finalString;
+    return isKeyframe ? finalString : buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
 }
 exports.buildCssFromObject = buildCssFromObject;
-function CSS(arg) {
+function SlamStyles(arg) {
     return arg;
 }
-exports.CSS = CSS;
+exports.SlamStyles = SlamStyles;

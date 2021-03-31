@@ -1,10 +1,10 @@
 import { ElementAttributes, Child, SlamElement } from "./slamInterfaces";
 
-export const toKebabCase = (value: string) => {
+export function toKebabCase(value: string) {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
-};
+}
 
-const presentAtt = (attName: string) => {
+function isPresentAtt(attName: string) {
   const atts = [
     "allowfullscreen",
     "allowpaymentrequest",
@@ -31,10 +31,10 @@ const presentAtt = (attName: string) => {
     "typemustmatch",
   ];
   return atts.includes(attName);
-};
+}
 
-export function noChildren(tag: string) {
-  const noChildren = [
+export function isChildless(tag: string) {
+  const isChildless = [
     "area",
     "base",
     "br",
@@ -59,13 +59,13 @@ export function noChildren(tag: string) {
     "stop",
     "use",
   ];
-  return noChildren.includes(tag);
+  return isChildless.includes(tag);
 }
 
-export function parseAtts<T extends ElementAttributes>(atts: T) {
+export function buildAttsString<T extends ElementAttributes>(atts: T) {
   let attsText = "";
   (Object.keys(atts) as Array<keyof T>).forEach(att => {
-    if (presentAtt(att.toString())) {
+    if (isPresentAtt(att.toString())) {
       attsText += " " + att;
     } else if (att !== "js" && att !== "css") {
       attsText += " " + att + '="' + atts[att] + '"';
@@ -78,7 +78,7 @@ interface GenericObject {
   [key: string]: any;
 }
 
-export function equalObjects(object1: GenericObject, object2: GenericObject) {
+export function areEqualObjects(object1: GenericObject, object2: GenericObject) {
   if (typeof object1 !== "object") {
     throw "Parameter 1 is not an object.";
   }
@@ -95,7 +95,7 @@ export function equalObjects(object1: GenericObject, object2: GenericObject) {
   }
   for (let key of object1Keys) {
     if (typeof object1[key] === "object") {
-      if (!equalObjects(object1[key], object2[key])) {
+      if (!areEqualObjects(object1[key], object2[key])) {
         return false;
       }
     } else if (object1[key] !== object2[key]) {
@@ -105,7 +105,7 @@ export function equalObjects(object1: GenericObject, object2: GenericObject) {
   return true;
 }
 
-export function typeTag<T>(arg1: Child | T, arg2: Child[], atts: T | undefined, tag: string): SlamElement {
+export function buildSlamElement<T>(arg1: Child | T, arg2: Child[], atts: T | undefined, tag: string): SlamElement {
   let children: SlamElement["children"] = [];
   if (arg1) {
     if (typeof arg1 === "string") {

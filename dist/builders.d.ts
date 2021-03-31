@@ -1,7 +1,7 @@
 import { Page } from "./slamInterfaces";
-export declare const buildPage: (page: Page, content: any) => {
+export declare function buildPage(page: Page, content: any): {
     html: string;
     css: string;
     js: string;
 };
-export declare function BuildFiles(indexFile: string, outDir: string): Promise<void>;
+export declare function buildFiles(indexFile: string, outDir: string): Promise<void>;

@@ -3,7 +3,7 @@ const path = require("path");
 const { elements, childless } = require("./elements.js");
 
 let baseImports = 'import { Child, SlamElement } from "./slamInterfaces";\n';
-baseImports += `import { typeTag } from "./utils";\n`;
+baseImports += `import { buildSlamElement } from "./utils";\n`;
 let htmlImports = "import {";
 let svgImports = "import {";
 let functionsString = "";
@@ -20,7 +20,7 @@ Object.keys(elements).forEach((key, i) => {
     : (svgImports += ", " + elementInterface);
   functionsString += "\n";
   if (isChildless) {
-    functionsString += `export const ${functionName} = (arg1?: ${elementInterface}): SlamElement => {\n`;
+    functionsString += `export function ${functionName}(arg1?: ${elementInterface}): SlamElement {\n`;
     functionsString += `  let css = arg1 ? arg1["css"] : undefined\n`;
     functionsString += `  let js = arg1 ? arg1["js"] : undefined\n`;
     functionsString += `  return {\n`;
@@ -31,9 +31,9 @@ Object.keys(elements).forEach((key, i) => {
     functionsString += `  }\n`;
     functionsString += `};\n`;
   } else {
-    functionsString += `export const ${functionName} = (arg1?: ${elementInterface} | Child, ...arg2: Child[]): SlamElement => {\n`;
+    functionsString += `export function ${functionName}(arg1?: ${elementInterface} | Child, ...arg2: Child[]): SlamElement {\n`;
     functionsString += `  let atts: (${elementInterface} | undefined) = undefined\n`;
-    functionsString += `  return typeTag(arg1, arg2, atts, "${key}")\n`;
+    functionsString += `  return buildSlamElement(arg1, arg2, atts, "${key}")\n`;
     functionsString += `};\n`;
   }
 });

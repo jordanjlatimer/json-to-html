@@ -47,22 +47,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuildFiles = exports.buildPage = void 0;
+exports.buildFiles = exports.buildPage = void 0;
 var cssReset_1 = require("./cssReset");
-var generateCss_1 = require("./generateCss");
+var cssBuilder_1 = require("./cssBuilder");
 var utils_1 = require("./utils");
 var fs = require("fs");
 var path = require("path");
-var findElementsWithCSS = function (tree) {
+function collectElementsWithCss(tree) {
     var _a, _b;
     var finalArray = [];
     if (typeof tree === "object") {
         ((_a = tree.atts) === null || _a === void 0 ? void 0 : _a.css) && finalArray.push(tree);
-        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) { return finalArray.push.apply(finalArray, findElementsWithCSS(child)); });
+        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) { return finalArray.push.apply(finalArray, collectElementsWithCss(child)); });
     }
     return finalArray;
-};
-var findUniqueCss = function (array) {
+}
+function determineSimilarElementsByCss(array) {
     var identities = {};
     var identitiesIndex = 0;
     array.forEach(function (element) {
@@ -77,7 +77,7 @@ var findUniqueCss = function (array) {
                     identities[parseInt(key)].forEach(function (item) {
                         var _a, _b;
                         if (!matchFound_1) {
-                            if (utils_1.equalObjects(((_a = element.atts) === null || _a === void 0 ? void 0 : _a.css) || {}, ((_b = item.atts) === null || _b === void 0 ? void 0 : _b.css) || {})) {
+                            if (utils_1.areEqualObjects(((_a = element.atts) === null || _a === void 0 ? void 0 : _a.css) || {}, ((_b = item.atts) === null || _b === void 0 ? void 0 : _b.css) || {})) {
                                 identities[parseInt(key)].push(element);
                                 matchFound_1 = true;
                             }
@@ -92,8 +92,8 @@ var findUniqueCss = function (array) {
         }
     });
     return identities;
-};
-var constructElement = function (tree, build, components, className) {
+}
+function appendElementAndChildren(tree, build, components, className) {
     if (typeof tree === "string") {
         build.html += tree;
         return;
@@ -104,13 +104,13 @@ var constructElement = function (tree, build, components, className) {
         var attsClass = atts["class"] || "";
         var fullClass = className ? (attsClass ? attsClass + " " + className : className) : attsClass;
         var classObject = fullClass ? { class: fullClass } : {};
-        build.html += utils_1.parseAtts(__assign(__assign({}, atts), classObject));
+        build.html += utils_1.buildAttsString(__assign(__assign({}, atts), classObject));
     }
-    build.html += utils_1.noChildren(tree["tag"]) ? "/>" : ">";
-    tree["children"] && tree["children"].forEach(function (child) { return routeChild(child, build, components); });
-    build.html += tree["tag"] && !utils_1.noChildren(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
-};
-var routeChild = function (tree, build, components) {
+    build.html += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
+    tree["children"] && tree["children"].forEach(function (child) { return buildHtml(child, build, components); });
+    build.html += tree["tag"] && !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
+}
+function buildHtml(tree, build, components) {
     if (typeof tree === "string") {
         build.html += tree;
         return;
@@ -124,29 +124,26 @@ var routeChild = function (tree, build, components) {
                 }
             });
         });
-        constructElement(tree, build, components, className_1);
+        appendElementAndChildren(tree, build, components, className_1);
     }
-};
-var buildHtmlFromObject = function (tree, build, components) {
-    return routeChild(tree, build, components);
-};
-var buildCss = function (finalObject, components, reset) {
+}
+function buildCss(finalObject, components, reset) {
     finalObject.css += reset ? cssReset_1.cssReset : "";
     Object.keys(components).forEach(function (key) {
         var _a;
         var css = (_a = components[parseInt(key)][0].atts) === null || _a === void 0 ? void 0 : _a.css;
-        finalObject.css += css ? generateCss_1.buildCssFromObject(".c" + key, css) : "";
+        finalObject.css += css ? cssBuilder_1.buildCssFromObject(".c" + key, css) : "";
     });
-};
-var buildJs = function (finalObject, components) {
+}
+function buildJs(finalObject, components) {
     Object.keys(components).forEach(function (key) {
         var js = components[parseInt(key)][0].atts.js;
         finalObject.js += js ? "(" + js + ")()" : "";
     });
-};
-var buildPage = function (page, content) {
+}
+function buildPage(page, content) {
     var build = typeof page.html === "function" ? page.html(content) : page.html;
-    var components = findUniqueCss(findElementsWithCSS(build));
+    var components = determineSimilarElementsByCss(collectElementsWithCss(build));
     var finalObject = {
         html: "",
         css: "",
@@ -154,13 +151,13 @@ var buildPage = function (page, content) {
     };
     buildCss(finalObject, components, page.cssReset);
     buildJs(finalObject, components);
-    buildHtmlFromObject(build, finalObject, components);
+    buildHtml(build, finalObject, components);
     finalObject.html = finalObject.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
     finalObject.html = finalObject.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
     return finalObject;
-};
+}
 exports.buildPage = buildPage;
-function BuildFiles(indexFile, outDir) {
+function buildFiles(indexFile, outDir) {
     return __awaiter(this, void 0, void 0, function () {
         var pages, builds;
         var _this = this;
@@ -183,7 +180,7 @@ function BuildFiles(indexFile, outDir) {
                                         _b.label = 3;
                                     case 3:
                                         content = _a;
-                                        return [2 /*return*/, __assign({ name: page.name }, exports.buildPage(page, content))];
+                                        return [2 /*return*/, __assign({ name: page.name }, buildPage(page, content))];
                                 }
                             });
                         }); }))];
@@ -199,4 +196,4 @@ function BuildFiles(indexFile, outDir) {
         });
     });
 }
-exports.BuildFiles = BuildFiles;
+exports.buildFiles = buildFiles;

@@ -5,7 +5,8 @@ import { Server } from "node:http";
 import { Socket } from "node:net";
 import { buildPage } from "./builders";
 
-const reloadScript = (port: number) => `
+function buildReloadScript(port: number) {
+  return `
 <script>
 let lastUpdate = undefined;
 window.setInterval(() => {
@@ -29,8 +30,9 @@ window.setInterval(() => {
 }, 500)
 </script>
 `;
+}
 
-const clearCache = (module: NodeModule) => {
+function clearCache(module: NodeModule) {
   module.children.forEach(child => {
     if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
       return;
@@ -39,16 +41,16 @@ const clearCache = (module: NodeModule) => {
     }
   });
   delete require.cache[require.resolve(module.id)];
-};
+}
 
-export const CreateSlamServer = (indexFile: string, port: number, watchList: string[]) => {
+export function CreateSlamServer(indexFile: string, port: number, watchList: string[]) {
   let sockets: Socket[] = [];
   let webServer: Server;
   let lastUpdate = Date.now();
   let contentCache: Record<string, any> = {};
 
   const server = {
-    start: async () => {
+    start: async function () {
       console.log("Starting server...\n");
       await buildWebserver();
       watchList.forEach(item => {
@@ -69,7 +71,7 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
     },
   };
 
-  const buildWebserver = async () => {
+  async function buildWebserver() {
     const newServer = express();
     let module = require.cache[require.resolve(indexFile)];
     module && clearCache(module);
@@ -87,7 +89,7 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
     );
     pages.forEach(page => {
       const build = buildPage(page, contentCache[page.name]);
-      build.html = build.html.replace("</body>", reloadScript(port));
+      build.html = build.html.replace("</body>", buildReloadScript(port));
       newServer.get("/slamserver", (req, res) => res.send(lastUpdate.toString()));
       ["html", "css", "js"].forEach(item => {
         newServer.get(`/${page.name}${item === "html" ? "" : `.${item}`}`, (req, res) => {
@@ -107,7 +109,7 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
     runningServer.on("connection", socket => sockets.push(socket));
     webServer = runningServer;
     lastUpdate = Date.now();
-  };
+  }
 
   return server;
-};
+}

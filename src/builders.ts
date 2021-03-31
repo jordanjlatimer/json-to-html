@@ -1,20 +1,20 @@
 import { cssReset } from "./cssReset";
-import { buildCssFromObject } from "./generateCss";
+import { buildCssFromObject } from "./cssBuilder";
 import { BuildObject, Identification, Child, SlamElement, Page } from "./slamInterfaces";
-import { parseAtts, noChildren, equalObjects } from "./utils";
+import { buildAttsString, isChildless, areEqualObjects } from "./utils";
 import * as fs from "fs";
 import * as path from "path";
 
-const findElementsWithCSS = (tree: Child): SlamElement[] => {
+function collectElementsWithCss(tree: Child): SlamElement[] {
   let finalArray: SlamElement[] = [];
   if (typeof tree === "object") {
     tree.atts?.css && finalArray.push(tree);
-    tree["children"]?.forEach(child => finalArray.push(...findElementsWithCSS(child)));
+    tree["children"]?.forEach(child => finalArray.push(...collectElementsWithCss(child)));
   }
   return finalArray;
-};
+}
 
-const findUniqueCss = (array: SlamElement[]) => {
+function determineSimilarElementsByCss(array: SlamElement[]): Identification {
   let identities: Identification = {};
   let identitiesIndex = 0;
   array.forEach(element => {
@@ -27,7 +27,7 @@ const findUniqueCss = (array: SlamElement[]) => {
         if (!matchFound) {
           identities[parseInt(key)].forEach(item => {
             if (!matchFound) {
-              if (equalObjects(element.atts?.css || {}, item.atts?.css || {})) {
+              if (areEqualObjects(element.atts?.css || {}, item.atts?.css || {})) {
                 identities[parseInt(key)].push(element);
                 matchFound = true;
               }
@@ -42,14 +42,14 @@ const findUniqueCss = (array: SlamElement[]) => {
     }
   });
   return identities;
-};
+}
 
-const constructElement = (
+function appendElementAndChildren(
   tree: SlamElement | string,
   build: BuildObject,
   components: Identification,
   className?: string
-) => {
+): void {
   if (typeof tree === "string") {
     build.html += tree;
     return;
@@ -60,14 +60,14 @@ const constructElement = (
     const attsClass = atts["class"] || "";
     const fullClass = className ? (attsClass ? `${attsClass} ${className}` : className) : attsClass;
     const classObject = fullClass ? { class: fullClass } : {};
-    build.html += parseAtts({ ...atts, ...classObject });
+    build.html += buildAttsString({ ...atts, ...classObject });
   }
-  build.html += noChildren(tree["tag"]) ? "/>" : ">";
-  tree["children"] && tree["children"].forEach(child => routeChild(child, build, components));
-  build.html += tree["tag"] && !noChildren(tree["tag"]) ? `</${tree["tag"]}>` : "";
-};
+  build.html += isChildless(tree["tag"]) ? "/>" : ">";
+  tree["children"] && tree["children"].forEach(child => buildHtml(child, build, components));
+  build.html += tree["tag"] && !isChildless(tree["tag"]) ? `</${tree["tag"]}>` : "";
+}
 
-const routeChild = (tree: Child, build: BuildObject, components: Identification) => {
+function buildHtml(tree: Child, build: BuildObject, components: Identification): void {
   if (typeof tree === "string") {
     build.html += tree;
     return;
@@ -80,32 +80,28 @@ const routeChild = (tree: Child, build: BuildObject, components: Identification)
         }
       });
     });
-    constructElement(tree, build, components, className);
+    appendElementAndChildren(tree, build, components, className);
   }
-};
+}
 
-const buildHtmlFromObject = (tree: Child, build: BuildObject, components: Identification) => {
-  return routeChild(tree, build, components);
-};
-
-const buildCss = (finalObject: BuildObject, components: Identification, reset?: boolean) => {
+function buildCss(finalObject: BuildObject, components: Identification, reset?: boolean) {
   finalObject.css += reset ? cssReset : "";
   Object.keys(components).forEach(key => {
     let css = components[parseInt(key)][0].atts?.css;
     finalObject.css += css ? buildCssFromObject(`.c${key}`, css) : "";
   });
-};
+}
 
-const buildJs = (finalObject: BuildObject, components: Identification) => {
+function buildJs(finalObject: BuildObject, components: Identification) {
   Object.keys(components).forEach(key => {
     let js = components[parseInt(key)][0].atts.js;
     finalObject.js += js ? `(${js})()` : "";
   });
-};
+}
 
-export const buildPage = (page: Page, content: any) => {
+export function buildPage(page: Page, content: any) {
   let build = typeof page.html === "function" ? page.html(content) : page.html;
-  let components = findUniqueCss(findElementsWithCSS(build));
+  let components = determineSimilarElementsByCss(collectElementsWithCss(build));
   let finalObject = {
     html: "",
     css: "",
@@ -113,13 +109,13 @@ export const buildPage = (page: Page, content: any) => {
   };
   buildCss(finalObject, components, page.cssReset);
   buildJs(finalObject, components);
-  buildHtmlFromObject(build, finalObject, components);
+  buildHtml(build, finalObject, components);
   finalObject.html = finalObject.html.replace("</head>", `<link rel=stylesheet href="./${page.name}.css"/></head>\n`);
   finalObject.html = finalObject.html.replace("</body>", `<script src="./${page.name}.js"></script></body>\n`);
   return finalObject;
-};
+}
 
-export async function BuildFiles(indexFile: string, outDir: string) {
+export async function buildFiles(indexFile: string, outDir: string) {
   const pages: Page[] = require(indexFile)["default"];
   let builds = await Promise.all(
     pages.map(async page => {
