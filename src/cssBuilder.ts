@@ -38,7 +38,3 @@ export function buildCssFromObject(className: string, styles: CSSObject, isKeyfr
   });
   return isKeyframe ? finalString : buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
 }
-
-export function SlamStyles<T extends Record<string, CSSObject>>(arg: T): T {
-  return arg;
-}

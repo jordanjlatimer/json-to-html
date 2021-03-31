@@ -1,6 +1,7 @@
+import { SlamPageBuilder } from "../../dist";
 import { Home } from "./home";
 
-export default async () => {
+export default SlamPageBuilder(async () => {
   return [
     ...["1", "2", "3"].map(item => ({
       name: item,
@@ -9,4 +10,4 @@ export default async () => {
       cssReset: true,
     })),
   ];
-};
+})

@@ -1,10 +1,10 @@
-import { CSS, div } from "../../../dist";
+import { SlamStyles, div, SlamComponent } from "../../../dist";
 
-export const Box = () => {
-  const classes = CSS({
+export const Box = SlamComponent((rootColor: string) => {
+  const classes = SlamStyles({
     root: {
       height: "200px",
-      backgroundColor: "green",
+      backgroundColor: rootColor,
     },
     t1: {
       backgroundColor: "blue",
@@ -20,4 +20,4 @@ export const Box = () => {
     div({ css: classes.t1 }, "Hello Again"),
     div({ css: classes.t2 }, "Goodbye")
   );
-};
+});

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SlamStyles = exports.buildCssFromObject = void 0;
+exports.buildCssFromObject = void 0;
 var utils_1 = require("./utils");
 var tagNames_1 = require("./tagNames");
 function buildPropertiesString(styles) {
@@ -38,7 +38,3 @@ function buildCssFromObject(className, styles, isKeyframe) {
     return isKeyframe ? finalString : buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
 }
 exports.buildCssFromObject = buildCssFromObject;
-function SlamStyles(arg) {
-    return arg;
-}
-exports.SlamStyles = SlamStyles;
