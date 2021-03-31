@@ -94,25 +94,27 @@ var CreateSlamServer = function (indexFile, port, watchList) {
         }); },
     };
     var buildWebserver = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var newServer, module, pages, finalizedPages, runningServer;
+        var newServer, module, pages, runningServer;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     newServer = express();
                     module = require.cache[require.resolve(indexFile)];
                     module && clearCache(module);
-                    pages = require(indexFile)["default"];
+                    return [4 /*yield*/, require(indexFile)["default"]()];
+                case 1:
+                    pages = _a.sent();
                     return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(void 0, void 0, void 0, function () {
                             var _a, _b;
                             return __generator(this, function (_c) {
                                 switch (_c.label) {
                                     case 0:
-                                        if (!contentCache[page.page.name]) return [3 /*break*/, 1];
+                                        if (!contentCache[page.name]) return [3 /*break*/, 1];
                                         return [2 /*return*/];
                                     case 1:
                                         if (!page.content) return [3 /*break*/, 3];
                                         _a = contentCache;
-                                        _b = page.page.name;
+                                        _b = page.name;
                                         return [4 /*yield*/, page.content()];
                                     case 2:
                                         _a[_b] = _c.sent();
@@ -121,13 +123,10 @@ var CreateSlamServer = function (indexFile, port, watchList) {
                                 }
                             });
                         }); }))];
-                case 1:
+                case 2:
                     _a.sent();
-                    finalizedPages = pages.map(function (page) {
-                        return typeof page.page === "function" ? page.page(contentCache[page.page.name]) : page.page;
-                    });
-                    finalizedPages.forEach(function (page) {
-                        var build = builders_1.buildPage(page);
+                    pages.forEach(function (page) {
+                        var build = builders_1.buildPage(page, contentCache[page.name]);
                         build.html = build.html.replace("</body>", reloadScript(port));
                         newServer.get("/slamserver", function (req, res) { return res.send(lastUpdate.toString()); });
                         ["html", "css", "js"].forEach(function (item) {
@@ -142,7 +141,7 @@ var CreateSlamServer = function (indexFile, port, watchList) {
                         console.clear();
                         console.log("Server listening at http://localhost:" + port);
                         console.log("Pages:");
-                        finalizedPages.forEach(function (page) { return console.log("\t" + page.name + ": http://localhost:" + port + "/" + page.name); });
+                        pages.forEach(function (page) { return console.log("\t" + page.name + ": http://localhost:" + port + "/" + page.name); });
                         console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
                     });
                     runningServer.on("connection", function (socket) { return sockets.push(socket); });

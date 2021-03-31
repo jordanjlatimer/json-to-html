@@ -20,12 +20,8 @@ export interface SlamElement {
 
 export interface Page {
   name: string;
-  html: SlamElement;
+  html: SlamElement | ((args: any) => SlamElement);
   cssReset?: boolean;
-}
-
-export interface ContentPage {
-  page: Page | ((args: any) => Page);
   content?: () => any | Promise<any>;
 }
 

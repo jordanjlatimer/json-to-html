@@ -1,5 +1,5 @@
 import { Page } from "./slamInterfaces";
-export declare const buildPage: (page: Page) => {
+export declare const buildPage: (page: Page, content: any) => {
     html: string;
     css: string;
     js: string;

@@ -144,8 +144,9 @@ var buildJs = function (finalObject, components) {
         finalObject.js += js ? "(" + js + ")()" : "";
     });
 };
-var buildPage = function (page) {
-    var components = findUniqueCss(findElementsWithCSS(page.html));
+var buildPage = function (page, content) {
+    var build = typeof page.html === "function" ? page.html(content) : page.html;
+    var components = findUniqueCss(findElementsWithCSS(build));
     var finalObject = {
         html: "",
         css: "",
@@ -153,7 +154,7 @@ var buildPage = function (page) {
     };
     buildCss(finalObject, components, page.cssReset);
     buildJs(finalObject, components);
-    buildHtmlFromObject(page.html, finalObject, components);
+    buildHtmlFromObject(build, finalObject, components);
     finalObject.html = finalObject.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
     finalObject.html = finalObject.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
     return finalObject;
@@ -168,7 +169,7 @@ function BuildFiles(indexFile, outDir) {
                 case 0:
                     pages = require(indexFile)["default"];
                     return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
-                            var content, _a, contentPage;
+                            var content, _a;
                             return __generator(this, function (_b) {
                                 switch (_b.label) {
                                     case 0:
@@ -182,8 +183,7 @@ function BuildFiles(indexFile, outDir) {
                                         _b.label = 3;
                                     case 3:
                                         content = _a;
-                                        contentPage = typeof page.page === "function" ? page.page(content) : page.page;
-                                        return [2 /*return*/, __assign({ name: page.page.name }, exports.buildPage(contentPage))];
+                                        return [2 /*return*/, __assign({ name: page.name }, exports.buildPage(page, content))];
                                 }
                             });
                         }); }))];

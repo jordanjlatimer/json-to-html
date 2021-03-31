@@ -1,6 +1,6 @@
 import { cssReset } from "./cssReset";
 import { buildCssFromObject } from "./generateCss";
-import { BuildObject, Identification, Page, Child, SlamElement, ContentPage } from "./slamInterfaces";
+import { BuildObject, Identification, Child, SlamElement, Page } from "./slamInterfaces";
 import { parseAtts, noChildren, equalObjects } from "./utils";
 import * as fs from "fs";
 import * as path from "path";
@@ -19,7 +19,7 @@ const findUniqueCss = (array: SlamElement[]) => {
   let identitiesIndex = 0;
   array.forEach(element => {
     if (identitiesIndex === 0) {
-      identities[identitiesIndex++] = [element];
+      identities[identitiesIndex] = [element];
       identitiesIndex++;
     } else {
       let matchFound = false;
@@ -103,8 +103,9 @@ const buildJs = (finalObject: BuildObject, components: Identification) => {
   });
 };
 
-export const buildPage = (page: Page) => {
-  let components = findUniqueCss(findElementsWithCSS(page.html));
+export const buildPage = (page: Page, content: any) => {
+  let build = typeof page.html === "function" ? page.html(content) : page.html;
+  let components = findUniqueCss(findElementsWithCSS(build));
   let finalObject = {
     html: "",
     css: "",
@@ -112,21 +113,20 @@ export const buildPage = (page: Page) => {
   };
   buildCss(finalObject, components, page.cssReset);
   buildJs(finalObject, components);
-  buildHtmlFromObject(page.html, finalObject, components);
+  buildHtmlFromObject(build, finalObject, components);
   finalObject.html = finalObject.html.replace("</head>", `<link rel=stylesheet href="./${page.name}.css"/></head>\n`);
   finalObject.html = finalObject.html.replace("</body>", `<script src="./${page.name}.js"></script></body>\n`);
   return finalObject;
 };
 
 export async function BuildFiles(indexFile: string, outDir: string) {
-  const pages: ContentPage[] = require(indexFile)["default"];
+  const pages: Page[] = require(indexFile)["default"];
   let builds = await Promise.all(
     pages.map(async page => {
       let content = page.content ? await page.content() : undefined;
-      let contentPage = typeof page.page === "function" ? page.page(content) : page.page;
       return {
-        name: page.page.name,
-        ...buildPage(contentPage),
+        name: page.name,
+        ...buildPage(page, content),
       };
     })
   );

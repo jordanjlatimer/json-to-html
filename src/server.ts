@@ -1,5 +1,5 @@
 import * as express from "express";
-import { BuildObject, ContentPage } from "./slamInterfaces";
+import { BuildObject, Page } from "./slamInterfaces";
 import * as fs from "fs";
 import { Server } from "node:http";
 import { Socket } from "node:net";
@@ -73,23 +73,20 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
     const newServer = express();
     let module = require.cache[require.resolve(indexFile)];
     module && clearCache(module);
-    const pages: ContentPage[] = require(indexFile)["default"];
+    const pages: Page[] = await require(indexFile)["default"]();
     await Promise.all(
       pages.map(async page => {
-        if (contentCache[page.page.name]) {
+        if (contentCache[page.name]) {
           return;
         } else {
           if (page.content) {
-            contentCache[page.page.name] = await page.content();
+            contentCache[page.name] = await page.content();
           }
         }
       })
     );
-    const finalizedPages = pages.map(page => {
-      return typeof page.page === "function" ? page.page(contentCache[page.page.name]) : page.page;
-    });
-    finalizedPages.forEach(page => {
-      const build = buildPage(page);
+    pages.forEach(page => {
+      const build = buildPage(page, contentCache[page.name]);
       build.html = build.html.replace("</body>", reloadScript(port));
       newServer.get("/slamserver", (req, res) => res.send(lastUpdate.toString()));
       ["html", "css", "js"].forEach(item => {
@@ -104,7 +101,7 @@ export const CreateSlamServer = (indexFile: string, port: number, watchList: str
       console.clear();
       console.log(`Server listening at http://localhost:${port}`);
       console.log(`Pages:`);
-      finalizedPages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
+      pages.forEach(page => console.log(`\t${page.name}: http://localhost:${port}/${page.name}`));
       console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
     });
     runningServer.on("connection", socket => sockets.push(socket));
