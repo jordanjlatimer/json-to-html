@@ -10,4 +10,4 @@ export default SlamPageBuilder(async () => {
       cssReset: true,
     })),
   ];
-})
+});

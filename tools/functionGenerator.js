@@ -3,7 +3,7 @@ const path = require("path");
 const { elements, childless } = require("./elements.js");
 
 let baseImports = 'import { Child, SlamElement } from "./slamInterfaces";\n';
-baseImports += `import { buildSlamElement } from "./utils";\n`;
+baseImports += `import { buildSlamElementObject } from "./builders";\n`;
 let htmlImports = "import {";
 let svgImports = "import {";
 let functionsString = "";
@@ -33,7 +33,7 @@ Object.keys(elements).forEach((key, i) => {
   } else {
     functionsString += `export function ${functionName}(arg1?: ${elementInterface} | Child, ...arg2: Child[]): SlamElement {\n`;
     functionsString += `  let atts: (${elementInterface} | undefined) = undefined\n`;
-    functionsString += `  return buildSlamElement(arg1, arg2, atts, "${key}")\n`;
+    functionsString += `  return buildSlamElementObject(arg1, arg2, atts, "${key}")\n`;
     functionsString += `};\n`;
   }
 });

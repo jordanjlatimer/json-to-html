@@ -15,14 +15,14 @@ exports.iframe = exports.i = exports.html = exports.hr = exports.hgroup = export
 exports.th = exports.tfoot = exports.textarea = exports.template = exports.td = exports.tbody = exports.table = exports.sup = exports.summary = exports.sub = exports.strong = exports.span = exports.source = exports.small = exports.slot = exports.select = exports.section = exports.script = exports.samp = exports.s = exports.ruby = exports.rt = exports.rp = exports.q = exports.progress = exports.pre = exports.picture = exports.param = exports.p = exports.output = exports.option = exports.optgroup = exports.ol = exports.object = exports.noscript = exports.nav = exports.meter = exports.meta = exports.menu = exports.mark = exports.map = exports.main = exports.link = exports.li = exports.legend = exports.label = exports.kbd = exports.ins = exports.input = exports.img = void 0;
 exports.line = exports.image = exports.g = exports.foreignObject = exports.filter = exports.feTurbulence = exports.feTile = exports.feSpotLight = exports.feSpecularLighting = exports.fePointLight = exports.feOffset = exports.feMorphology = exports.feMergeNode = exports.feMerge = exports.feImage = exports.feGaussianBlur = exports.feFuncR = exports.feFuncG = exports.feFuncB = exports.feFuncA = exports.feFlood = exports.feDropShadow = exports.feDistantLight = exports.feDisplacementMap = exports.feDiffuseLighting = exports.feConvolveMatrix = exports.feComposite = exports.feComponentTransfer = exports.feColorMatrix = exports.feBlend = exports.ellipse = exports.discard = exports.desc = exports.defs = exports.clipPath = exports.circle = exports.animateTransform = exports.animateMotion = exports.animate = exports.a = exports.wbr = exports.video = exports.var_ = exports.ul = exports.u = exports.track = exports.tr = exports.title = exports.time = exports.thead = void 0;
 exports.view = exports.use = exports.unknown = exports.tspan = exports.textPath = exports.text = exports.symbol = exports.switch_ = exports.svg = exports.stop = exports.set = exports.rect = exports.radialGradient = exports.polyline = exports.polygon = exports.pattern = exports.path = exports.mpath = exports.metadata = exports.mask = exports.marker = exports.linearGradient = void 0;
-var utils_1 = require("./utils");
+var builders_1 = require("./builders");
 function abbr(arg1) {
     var arg2 = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "abbr");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "abbr");
 }
 exports.abbr = abbr;
 function address(arg1) {
@@ -31,7 +31,7 @@ function address(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "address");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "address");
 }
 exports.address = address;
 function area(arg1) {
@@ -51,7 +51,7 @@ function article(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "article");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "article");
 }
 exports.article = article;
 function aside(arg1) {
@@ -60,7 +60,7 @@ function aside(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "aside");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "aside");
 }
 exports.aside = aside;
 function audio(arg1) {
@@ -69,7 +69,7 @@ function audio(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "audio");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "audio");
 }
 exports.audio = audio;
 function b(arg1) {
@@ -78,7 +78,7 @@ function b(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "b");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "b");
 }
 exports.b = b;
 function base(arg1) {
@@ -98,7 +98,7 @@ function bdi(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "bdi");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "bdi");
 }
 exports.bdi = bdi;
 function bdo(arg1) {
@@ -107,7 +107,7 @@ function bdo(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "bdo");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "bdo");
 }
 exports.bdo = bdo;
 function blockquote(arg1) {
@@ -116,7 +116,7 @@ function blockquote(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "blockquote");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "blockquote");
 }
 exports.blockquote = blockquote;
 function body(arg1) {
@@ -125,7 +125,7 @@ function body(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "body");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "body");
 }
 exports.body = body;
 function br(arg1) {
@@ -145,7 +145,7 @@ function button(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "button");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "button");
 }
 exports.button = button;
 function canvas(arg1) {
@@ -154,7 +154,7 @@ function canvas(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "canvas");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "canvas");
 }
 exports.canvas = canvas;
 function caption(arg1) {
@@ -163,7 +163,7 @@ function caption(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "caption");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "caption");
 }
 exports.caption = caption;
 function cite(arg1) {
@@ -172,7 +172,7 @@ function cite(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "cite");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "cite");
 }
 exports.cite = cite;
 function code(arg1) {
@@ -181,7 +181,7 @@ function code(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "code");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "code");
 }
 exports.code = code;
 function col(arg1) {
@@ -201,7 +201,7 @@ function colgroup(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "colgroup");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "colgroup");
 }
 exports.colgroup = colgroup;
 function data(arg1) {
@@ -210,7 +210,7 @@ function data(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "data");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "data");
 }
 exports.data = data;
 function datalist(arg1) {
@@ -219,7 +219,7 @@ function datalist(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "datalist");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "datalist");
 }
 exports.datalist = datalist;
 function dd(arg1) {
@@ -228,7 +228,7 @@ function dd(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "dd");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "dd");
 }
 exports.dd = dd;
 function del(arg1) {
@@ -237,7 +237,7 @@ function del(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "del");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "del");
 }
 exports.del = del;
 function details(arg1) {
@@ -246,7 +246,7 @@ function details(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "details");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "details");
 }
 exports.details = details;
 function dfn(arg1) {
@@ -255,7 +255,7 @@ function dfn(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "dfn");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "dfn");
 }
 exports.dfn = dfn;
 function dialog(arg1) {
@@ -264,7 +264,7 @@ function dialog(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "dialog");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "dialog");
 }
 exports.dialog = dialog;
 function div(arg1) {
@@ -273,7 +273,7 @@ function div(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "div");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "div");
 }
 exports.div = div;
 function dl(arg1) {
@@ -282,7 +282,7 @@ function dl(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "dl");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "dl");
 }
 exports.dl = dl;
 function dt(arg1) {
@@ -291,7 +291,7 @@ function dt(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "dt");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "dt");
 }
 exports.dt = dt;
 function em(arg1) {
@@ -300,7 +300,7 @@ function em(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "em");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "em");
 }
 exports.em = em;
 function embed(arg1) {
@@ -320,7 +320,7 @@ function fieldset(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "fieldset");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "fieldset");
 }
 exports.fieldset = fieldset;
 function figcaption(arg1) {
@@ -329,7 +329,7 @@ function figcaption(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "figcaption");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "figcaption");
 }
 exports.figcaption = figcaption;
 function figure(arg1) {
@@ -338,7 +338,7 @@ function figure(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "figure");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "figure");
 }
 exports.figure = figure;
 function footer(arg1) {
@@ -347,7 +347,7 @@ function footer(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "footer");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "footer");
 }
 exports.footer = footer;
 function form(arg1) {
@@ -356,7 +356,7 @@ function form(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "form");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "form");
 }
 exports.form = form;
 function h1(arg1) {
@@ -365,7 +365,7 @@ function h1(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "h1");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "h1");
 }
 exports.h1 = h1;
 function h2(arg1) {
@@ -374,7 +374,7 @@ function h2(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "h2");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "h2");
 }
 exports.h2 = h2;
 function h3(arg1) {
@@ -383,7 +383,7 @@ function h3(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "h3");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "h3");
 }
 exports.h3 = h3;
 function h4(arg1) {
@@ -392,7 +392,7 @@ function h4(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "h4");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "h4");
 }
 exports.h4 = h4;
 function h5(arg1) {
@@ -401,7 +401,7 @@ function h5(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "h5");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "h5");
 }
 exports.h5 = h5;
 function h6(arg1) {
@@ -410,7 +410,7 @@ function h6(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "h6");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "h6");
 }
 exports.h6 = h6;
 function head(arg1) {
@@ -419,7 +419,7 @@ function head(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "head");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "head");
 }
 exports.head = head;
 function header(arg1) {
@@ -428,7 +428,7 @@ function header(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "header");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "header");
 }
 exports.header = header;
 function hgroup(arg1) {
@@ -437,7 +437,7 @@ function hgroup(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "hgroup");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "hgroup");
 }
 exports.hgroup = hgroup;
 function hr(arg1) {
@@ -457,7 +457,7 @@ function html(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "html");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "html");
 }
 exports.html = html;
 function i(arg1) {
@@ -466,7 +466,7 @@ function i(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "i");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "i");
 }
 exports.i = i;
 function iframe(arg1) {
@@ -475,7 +475,7 @@ function iframe(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "iframe");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "iframe");
 }
 exports.iframe = iframe;
 function img(arg1) {
@@ -506,7 +506,7 @@ function ins(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "ins");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "ins");
 }
 exports.ins = ins;
 function kbd(arg1) {
@@ -515,7 +515,7 @@ function kbd(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "kbd");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "kbd");
 }
 exports.kbd = kbd;
 function label(arg1) {
@@ -524,7 +524,7 @@ function label(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "label");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "label");
 }
 exports.label = label;
 function legend(arg1) {
@@ -533,7 +533,7 @@ function legend(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "legend");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "legend");
 }
 exports.legend = legend;
 function li(arg1) {
@@ -542,7 +542,7 @@ function li(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "li");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "li");
 }
 exports.li = li;
 function link(arg1) {
@@ -562,7 +562,7 @@ function main(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "main");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "main");
 }
 exports.main = main;
 function map(arg1) {
@@ -571,7 +571,7 @@ function map(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "map");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "map");
 }
 exports.map = map;
 function mark(arg1) {
@@ -580,7 +580,7 @@ function mark(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "mark");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "mark");
 }
 exports.mark = mark;
 function menu(arg1) {
@@ -589,7 +589,7 @@ function menu(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "menu");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "menu");
 }
 exports.menu = menu;
 function meta(arg1) {
@@ -609,7 +609,7 @@ function meter(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "meter");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "meter");
 }
 exports.meter = meter;
 function nav(arg1) {
@@ -618,7 +618,7 @@ function nav(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "nav");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "nav");
 }
 exports.nav = nav;
 function noscript(arg1) {
@@ -627,7 +627,7 @@ function noscript(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "noscript");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "noscript");
 }
 exports.noscript = noscript;
 function object(arg1) {
@@ -636,7 +636,7 @@ function object(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "object");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "object");
 }
 exports.object = object;
 function ol(arg1) {
@@ -645,7 +645,7 @@ function ol(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "ol");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "ol");
 }
 exports.ol = ol;
 function optgroup(arg1) {
@@ -654,7 +654,7 @@ function optgroup(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "optgroup");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "optgroup");
 }
 exports.optgroup = optgroup;
 function option(arg1) {
@@ -663,7 +663,7 @@ function option(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "option");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "option");
 }
 exports.option = option;
 function output(arg1) {
@@ -672,7 +672,7 @@ function output(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "output");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "output");
 }
 exports.output = output;
 function p(arg1) {
@@ -681,7 +681,7 @@ function p(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "p");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "p");
 }
 exports.p = p;
 function param(arg1) {
@@ -701,7 +701,7 @@ function picture(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "picture");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "picture");
 }
 exports.picture = picture;
 function pre(arg1) {
@@ -710,7 +710,7 @@ function pre(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "pre");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "pre");
 }
 exports.pre = pre;
 function progress(arg1) {
@@ -719,7 +719,7 @@ function progress(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "progress");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "progress");
 }
 exports.progress = progress;
 function q(arg1) {
@@ -728,7 +728,7 @@ function q(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "q");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "q");
 }
 exports.q = q;
 function rp(arg1) {
@@ -737,7 +737,7 @@ function rp(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "rp");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "rp");
 }
 exports.rp = rp;
 function rt(arg1) {
@@ -746,7 +746,7 @@ function rt(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "rt");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "rt");
 }
 exports.rt = rt;
 function ruby(arg1) {
@@ -755,7 +755,7 @@ function ruby(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "ruby");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "ruby");
 }
 exports.ruby = ruby;
 function s(arg1) {
@@ -764,7 +764,7 @@ function s(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "s");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "s");
 }
 exports.s = s;
 function samp(arg1) {
@@ -773,7 +773,7 @@ function samp(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "samp");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "samp");
 }
 exports.samp = samp;
 function script(arg1) {
@@ -782,7 +782,7 @@ function script(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "script");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "script");
 }
 exports.script = script;
 function section(arg1) {
@@ -791,7 +791,7 @@ function section(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "section");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "section");
 }
 exports.section = section;
 function select(arg1) {
@@ -800,7 +800,7 @@ function select(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "select");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "select");
 }
 exports.select = select;
 function slot(arg1) {
@@ -809,7 +809,7 @@ function slot(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "slot");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "slot");
 }
 exports.slot = slot;
 function small(arg1) {
@@ -818,7 +818,7 @@ function small(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "small");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "small");
 }
 exports.small = small;
 function source(arg1) {
@@ -838,7 +838,7 @@ function span(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "span");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "span");
 }
 exports.span = span;
 function strong(arg1) {
@@ -847,7 +847,7 @@ function strong(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "strong");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "strong");
 }
 exports.strong = strong;
 function sub(arg1) {
@@ -856,7 +856,7 @@ function sub(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "sub");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "sub");
 }
 exports.sub = sub;
 function summary(arg1) {
@@ -865,7 +865,7 @@ function summary(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "summary");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "summary");
 }
 exports.summary = summary;
 function sup(arg1) {
@@ -874,7 +874,7 @@ function sup(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "sup");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "sup");
 }
 exports.sup = sup;
 function table(arg1) {
@@ -883,7 +883,7 @@ function table(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "table");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "table");
 }
 exports.table = table;
 function tbody(arg1) {
@@ -892,7 +892,7 @@ function tbody(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "tbody");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "tbody");
 }
 exports.tbody = tbody;
 function td(arg1) {
@@ -901,7 +901,7 @@ function td(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "td");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "td");
 }
 exports.td = td;
 function template(arg1) {
@@ -910,7 +910,7 @@ function template(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "template");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "template");
 }
 exports.template = template;
 function textarea(arg1) {
@@ -919,7 +919,7 @@ function textarea(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "textarea");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "textarea");
 }
 exports.textarea = textarea;
 function tfoot(arg1) {
@@ -928,7 +928,7 @@ function tfoot(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "tfoot");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "tfoot");
 }
 exports.tfoot = tfoot;
 function th(arg1) {
@@ -937,7 +937,7 @@ function th(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "th");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "th");
 }
 exports.th = th;
 function thead(arg1) {
@@ -946,7 +946,7 @@ function thead(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "thead");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "thead");
 }
 exports.thead = thead;
 function time(arg1) {
@@ -955,7 +955,7 @@ function time(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "time");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "time");
 }
 exports.time = time;
 function title(arg1) {
@@ -964,7 +964,7 @@ function title(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "title");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "title");
 }
 exports.title = title;
 function tr(arg1) {
@@ -973,7 +973,7 @@ function tr(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "tr");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "tr");
 }
 exports.tr = tr;
 function track(arg1) {
@@ -993,7 +993,7 @@ function u(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "u");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "u");
 }
 exports.u = u;
 function ul(arg1) {
@@ -1002,7 +1002,7 @@ function ul(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "ul");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "ul");
 }
 exports.ul = ul;
 function var_(arg1) {
@@ -1011,7 +1011,7 @@ function var_(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "var");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "var");
 }
 exports.var_ = var_;
 function video(arg1) {
@@ -1020,7 +1020,7 @@ function video(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "video");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "video");
 }
 exports.video = video;
 function wbr(arg1) {
@@ -1040,7 +1040,7 @@ function a(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "a");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "a");
 }
 exports.a = a;
 function animate(arg1) {
@@ -1049,7 +1049,7 @@ function animate(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "animate");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "animate");
 }
 exports.animate = animate;
 function animateMotion(arg1) {
@@ -1058,7 +1058,7 @@ function animateMotion(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "animateMotion");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "animateMotion");
 }
 exports.animateMotion = animateMotion;
 function animateTransform(arg1) {
@@ -1067,7 +1067,7 @@ function animateTransform(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "animateTransform");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "animateTransform");
 }
 exports.animateTransform = animateTransform;
 function circle(arg1) {
@@ -1087,7 +1087,7 @@ function clipPath(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "clipPath");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "clipPath");
 }
 exports.clipPath = clipPath;
 function defs(arg1) {
@@ -1096,7 +1096,7 @@ function defs(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "defs");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "defs");
 }
 exports.defs = defs;
 function desc(arg1) {
@@ -1105,7 +1105,7 @@ function desc(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "desc");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "desc");
 }
 exports.desc = desc;
 function discard(arg1) {
@@ -1114,7 +1114,7 @@ function discard(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "discard");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "discard");
 }
 exports.discard = discard;
 function ellipse(arg1) {
@@ -1134,7 +1134,7 @@ function feBlend(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feBlend");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feBlend");
 }
 exports.feBlend = feBlend;
 function feColorMatrix(arg1) {
@@ -1143,7 +1143,7 @@ function feColorMatrix(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feColorMatrix");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feColorMatrix");
 }
 exports.feColorMatrix = feColorMatrix;
 function feComponentTransfer(arg1) {
@@ -1152,7 +1152,7 @@ function feComponentTransfer(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feComponentTransfer");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feComponentTransfer");
 }
 exports.feComponentTransfer = feComponentTransfer;
 function feComposite(arg1) {
@@ -1161,7 +1161,7 @@ function feComposite(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feComposite");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feComposite");
 }
 exports.feComposite = feComposite;
 function feConvolveMatrix(arg1) {
@@ -1170,7 +1170,7 @@ function feConvolveMatrix(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feConvolveMatrix");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feConvolveMatrix");
 }
 exports.feConvolveMatrix = feConvolveMatrix;
 function feDiffuseLighting(arg1) {
@@ -1179,7 +1179,7 @@ function feDiffuseLighting(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feDiffuseLighting");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feDiffuseLighting");
 }
 exports.feDiffuseLighting = feDiffuseLighting;
 function feDisplacementMap(arg1) {
@@ -1188,7 +1188,7 @@ function feDisplacementMap(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feDisplacementMap");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feDisplacementMap");
 }
 exports.feDisplacementMap = feDisplacementMap;
 function feDistantLight(arg1) {
@@ -1197,7 +1197,7 @@ function feDistantLight(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feDistantLight");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feDistantLight");
 }
 exports.feDistantLight = feDistantLight;
 function feDropShadow(arg1) {
@@ -1206,7 +1206,7 @@ function feDropShadow(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feDropShadow");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feDropShadow");
 }
 exports.feDropShadow = feDropShadow;
 function feFlood(arg1) {
@@ -1215,7 +1215,7 @@ function feFlood(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feFlood");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feFlood");
 }
 exports.feFlood = feFlood;
 function feFuncA(arg1) {
@@ -1224,7 +1224,7 @@ function feFuncA(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feFuncA");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feFuncA");
 }
 exports.feFuncA = feFuncA;
 function feFuncB(arg1) {
@@ -1233,7 +1233,7 @@ function feFuncB(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feFuncB");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feFuncB");
 }
 exports.feFuncB = feFuncB;
 function feFuncG(arg1) {
@@ -1242,7 +1242,7 @@ function feFuncG(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feFuncG");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feFuncG");
 }
 exports.feFuncG = feFuncG;
 function feFuncR(arg1) {
@@ -1251,7 +1251,7 @@ function feFuncR(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feFuncR");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feFuncR");
 }
 exports.feFuncR = feFuncR;
 function feGaussianBlur(arg1) {
@@ -1260,7 +1260,7 @@ function feGaussianBlur(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feGaussianBlur");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feGaussianBlur");
 }
 exports.feGaussianBlur = feGaussianBlur;
 function feImage(arg1) {
@@ -1269,7 +1269,7 @@ function feImage(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feImage");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feImage");
 }
 exports.feImage = feImage;
 function feMerge(arg1) {
@@ -1278,7 +1278,7 @@ function feMerge(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feMerge");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feMerge");
 }
 exports.feMerge = feMerge;
 function feMergeNode(arg1) {
@@ -1287,7 +1287,7 @@ function feMergeNode(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feMergeNode");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feMergeNode");
 }
 exports.feMergeNode = feMergeNode;
 function feMorphology(arg1) {
@@ -1296,7 +1296,7 @@ function feMorphology(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feMorphology");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feMorphology");
 }
 exports.feMorphology = feMorphology;
 function feOffset(arg1) {
@@ -1305,7 +1305,7 @@ function feOffset(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feOffset");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feOffset");
 }
 exports.feOffset = feOffset;
 function fePointLight(arg1) {
@@ -1314,7 +1314,7 @@ function fePointLight(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "fePointLight");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "fePointLight");
 }
 exports.fePointLight = fePointLight;
 function feSpecularLighting(arg1) {
@@ -1323,7 +1323,7 @@ function feSpecularLighting(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feSpecularLighting");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feSpecularLighting");
 }
 exports.feSpecularLighting = feSpecularLighting;
 function feSpotLight(arg1) {
@@ -1332,7 +1332,7 @@ function feSpotLight(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feSpotLight");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feSpotLight");
 }
 exports.feSpotLight = feSpotLight;
 function feTile(arg1) {
@@ -1341,7 +1341,7 @@ function feTile(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feTile");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feTile");
 }
 exports.feTile = feTile;
 function feTurbulence(arg1) {
@@ -1350,7 +1350,7 @@ function feTurbulence(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "feTurbulence");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "feTurbulence");
 }
 exports.feTurbulence = feTurbulence;
 function filter(arg1) {
@@ -1359,7 +1359,7 @@ function filter(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "filter");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "filter");
 }
 exports.filter = filter;
 function foreignObject(arg1) {
@@ -1368,7 +1368,7 @@ function foreignObject(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "foreignObject");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "foreignObject");
 }
 exports.foreignObject = foreignObject;
 function g(arg1) {
@@ -1377,7 +1377,7 @@ function g(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "g");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "g");
 }
 exports.g = g;
 function image(arg1) {
@@ -1386,7 +1386,7 @@ function image(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "image");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "image");
 }
 exports.image = image;
 function line(arg1) {
@@ -1406,7 +1406,7 @@ function linearGradient(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "linearGradient");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "linearGradient");
 }
 exports.linearGradient = linearGradient;
 function marker(arg1) {
@@ -1415,7 +1415,7 @@ function marker(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "marker");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "marker");
 }
 exports.marker = marker;
 function mask(arg1) {
@@ -1424,7 +1424,7 @@ function mask(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "mask");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "mask");
 }
 exports.mask = mask;
 function metadata(arg1) {
@@ -1433,7 +1433,7 @@ function metadata(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "metadata");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "metadata");
 }
 exports.metadata = metadata;
 function mpath(arg1) {
@@ -1442,7 +1442,7 @@ function mpath(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "mpath");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "mpath");
 }
 exports.mpath = mpath;
 function path(arg1) {
@@ -1462,7 +1462,7 @@ function pattern(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "pattern");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "pattern");
 }
 exports.pattern = pattern;
 function polygon(arg1) {
@@ -1493,7 +1493,7 @@ function radialGradient(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "radialGradient");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "radialGradient");
 }
 exports.radialGradient = radialGradient;
 function rect(arg1) {
@@ -1513,7 +1513,7 @@ function set(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "set");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "set");
 }
 exports.set = set;
 function stop(arg1) {
@@ -1533,7 +1533,7 @@ function svg(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "svg");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "svg");
 }
 exports.svg = svg;
 function switch_(arg1) {
@@ -1542,7 +1542,7 @@ function switch_(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "switch");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "switch");
 }
 exports.switch_ = switch_;
 function symbol(arg1) {
@@ -1551,7 +1551,7 @@ function symbol(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "symbol");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "symbol");
 }
 exports.symbol = symbol;
 function text(arg1) {
@@ -1560,7 +1560,7 @@ function text(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "text");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "text");
 }
 exports.text = text;
 function textPath(arg1) {
@@ -1569,7 +1569,7 @@ function textPath(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "textPath");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "textPath");
 }
 exports.textPath = textPath;
 function tspan(arg1) {
@@ -1578,7 +1578,7 @@ function tspan(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "tspan");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "tspan");
 }
 exports.tspan = tspan;
 function unknown(arg1) {
@@ -1587,7 +1587,7 @@ function unknown(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "unknown");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "unknown");
 }
 exports.unknown = unknown;
 function use(arg1) {
@@ -1607,6 +1607,6 @@ function view(arg1) {
         arg2[_i - 1] = arguments[_i];
     }
     var atts = undefined;
-    return utils_1.buildSlamElement(arg1, arg2, atts, "view");
+    return builders_1.buildSlamElementObject(arg1, arg2, atts, "view");
 }
 exports.view = view;

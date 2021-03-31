@@ -1,10 +1,10 @@
-import { ElementAttributes, Child, SlamElement } from "./slamInterfaces";
+import { Child, SlamElement, Identification } from "./slamInterfaces";
 
-export function toKebabCase(value: string) {
+export function toKebabCase(value: string): string {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
 }
 
-function isPresentAtt(attName: string) {
+export function isPresentAtt(attName: string): boolean {
   const atts = [
     "allowfullscreen",
     "allowpaymentrequest",
@@ -33,7 +33,7 @@ function isPresentAtt(attName: string) {
   return atts.includes(attName);
 }
 
-export function isChildless(tag: string) {
+export function isChildless(tag: string): boolean {
   const isChildless = [
     "area",
     "base",
@@ -62,23 +62,11 @@ export function isChildless(tag: string) {
   return isChildless.includes(tag);
 }
 
-export function buildAttsString<T extends ElementAttributes>(atts: T) {
-  let attsText = "";
-  (Object.keys(atts) as Array<keyof T>).forEach(att => {
-    if (isPresentAtt(att.toString())) {
-      attsText += " " + att;
-    } else if (att !== "js" && att !== "css") {
-      attsText += " " + att + '="' + atts[att] + '"';
-    }
-  });
-  return attsText;
-}
-
 interface GenericObject {
   [key: string]: any;
 }
 
-export function areEqualObjects(object1: GenericObject, object2: GenericObject) {
+export function areEqualObjects(object1: GenericObject, object2: GenericObject): boolean {
   if (typeof object1 !== "object") {
     throw "Parameter 1 is not an object.";
   }
@@ -105,22 +93,52 @@ export function areEqualObjects(object1: GenericObject, object2: GenericObject) 
   return true;
 }
 
-export function buildSlamElement<T>(arg1: Child | T, arg2: Child[], atts: T | undefined, tag: string): SlamElement {
-  let children: SlamElement["children"] = [];
-  if (arg1) {
-    if (typeof arg1 === "string") {
-      children.push(arg1);
-    } else if ("type" in arg1) {
-      children.push(arg1);
-    } else {
-      atts = arg1;
-    }
+export function collectElementsWithCss(tree: Child): SlamElement[] {
+  let finalArray: SlamElement[] = [];
+  if (typeof tree === "object") {
+    tree.atts?.css && finalArray.push(tree);
+    tree["children"]?.forEach(child => finalArray.push(...collectElementsWithCss(child)));
   }
-  children.push(...arg2);
-  return {
-    type: "element",
-    tag: tag,
-    atts: atts,
-    children: children.length > 0 ? children : undefined,
-  };
+  return finalArray;
+}
+
+export function determineSimilarElementsByCss(array: SlamElement[]): Identification {
+  let identities: Identification = {};
+  let identitiesIndex = 0;
+  array.forEach(element => {
+    if (identitiesIndex === 0) {
+      identities[identitiesIndex] = [element];
+      identitiesIndex++;
+    } else {
+      let matchFound = false;
+      Object.keys(identities).forEach(key => {
+        if (!matchFound) {
+          identities[parseInt(key)].forEach(item => {
+            if (!matchFound) {
+              if (areEqualObjects(element.atts?.css || {}, item.atts?.css || {})) {
+                identities[parseInt(key)].push(element);
+                matchFound = true;
+              }
+            }
+          });
+        }
+      });
+      if (!matchFound) {
+        identities[identitiesIndex] = [element];
+        identitiesIndex++;
+      }
+    }
+  });
+  return identities;
+}
+
+export function clearCache(module: NodeModule): void {
+  module.children.forEach(child => {
+    if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
+      return;
+    } else {
+      clearCache(child);
+    }
+  });
+  delete require.cache[require.resolve(module.id)];
 }

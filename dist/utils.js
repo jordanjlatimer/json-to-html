@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildSlamElement = exports.areEqualObjects = exports.buildAttsString = exports.isChildless = exports.toKebabCase = void 0;
+exports.clearCache = exports.determineSimilarElementsByCss = exports.collectElementsWithCss = exports.areEqualObjects = exports.isChildless = exports.isPresentAtt = exports.toKebabCase = void 0;
 function toKebabCase(value) {
     return value.split("").reduce(function (a, b) { return a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b); }, "");
 }
@@ -33,6 +33,7 @@ function isPresentAtt(attName) {
     ];
     return atts.includes(attName);
 }
+exports.isPresentAtt = isPresentAtt;
 function isChildless(tag) {
     var isChildless = [
         "area",
@@ -62,19 +63,6 @@ function isChildless(tag) {
     return isChildless.includes(tag);
 }
 exports.isChildless = isChildless;
-function buildAttsString(atts) {
-    var attsText = "";
-    Object.keys(atts).forEach(function (att) {
-        if (isPresentAtt(att.toString())) {
-            attsText += " " + att;
-        }
-        else if (att !== "js" && att !== "css") {
-            attsText += " " + att + '="' + atts[att] + '"';
-        }
-    });
-    return attsText;
-}
-exports.buildAttsString = buildAttsString;
 function areEqualObjects(object1, object2) {
     if (typeof object1 !== "object") {
         throw "Parameter 1 is not an object.";
@@ -104,25 +92,57 @@ function areEqualObjects(object1, object2) {
     return true;
 }
 exports.areEqualObjects = areEqualObjects;
-function buildSlamElement(arg1, arg2, atts, tag) {
-    var children = [];
-    if (arg1) {
-        if (typeof arg1 === "string") {
-            children.push(arg1);
-        }
-        else if ("type" in arg1) {
-            children.push(arg1);
+function collectElementsWithCss(tree) {
+    var _a, _b;
+    var finalArray = [];
+    if (typeof tree === "object") {
+        ((_a = tree.atts) === null || _a === void 0 ? void 0 : _a.css) && finalArray.push(tree);
+        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) { return finalArray.push.apply(finalArray, collectElementsWithCss(child)); });
+    }
+    return finalArray;
+}
+exports.collectElementsWithCss = collectElementsWithCss;
+function determineSimilarElementsByCss(array) {
+    var identities = {};
+    var identitiesIndex = 0;
+    array.forEach(function (element) {
+        if (identitiesIndex === 0) {
+            identities[identitiesIndex] = [element];
+            identitiesIndex++;
         }
         else {
-            atts = arg1;
+            var matchFound_1 = false;
+            Object.keys(identities).forEach(function (key) {
+                if (!matchFound_1) {
+                    identities[parseInt(key)].forEach(function (item) {
+                        var _a, _b;
+                        if (!matchFound_1) {
+                            if (areEqualObjects(((_a = element.atts) === null || _a === void 0 ? void 0 : _a.css) || {}, ((_b = item.atts) === null || _b === void 0 ? void 0 : _b.css) || {})) {
+                                identities[parseInt(key)].push(element);
+                                matchFound_1 = true;
+                            }
+                        }
+                    });
+                }
+            });
+            if (!matchFound_1) {
+                identities[identitiesIndex] = [element];
+                identitiesIndex++;
+            }
         }
-    }
-    children.push.apply(children, arg2);
-    return {
-        type: "element",
-        tag: tag,
-        atts: atts,
-        children: children.length > 0 ? children : undefined,
-    };
+    });
+    return identities;
 }
-exports.buildSlamElement = buildSlamElement;
+exports.determineSimilarElementsByCss = determineSimilarElementsByCss;
+function clearCache(module) {
+    module.children.forEach(function (child) {
+        if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
+            return;
+        }
+        else {
+            clearCache(child);
+        }
+    });
+    delete require.cache[require.resolve(module.id)];
+}
+exports.clearCache = clearCache;

@@ -12,7 +12,7 @@ export function SlamPage<T>(arg: (args: T) => SlamElement): (args: T) => SlamEle
 
 export function SlamPageBuilder(
   builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>
-) {
+): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>> {
   return builderFunction;
 }
 

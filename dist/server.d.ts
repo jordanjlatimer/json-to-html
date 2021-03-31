@@ -1,3 +1,1 @@
-export declare function CreateSlamServer(indexFile: string, port: number, watchList: string[]): {
-    start: () => Promise<void>;
-};
+export declare function StartSlamServer(indexFile: string, port: number, watchList: string[]): Promise<void>;

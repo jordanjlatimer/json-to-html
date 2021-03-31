@@ -47,73 +47,79 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildFiles = exports.buildPage = void 0;
+exports.buildWebserver = exports.buildReloadScript = exports.buildFiles = exports.buildPage = exports.buildSlamElementObject = void 0;
 var cssReset_1 = require("./cssReset");
-var cssBuilder_1 = require("./cssBuilder");
 var utils_1 = require("./utils");
 var fs = require("fs");
 var path = require("path");
-function collectElementsWithCss(tree) {
-    var _a, _b;
-    var finalArray = [];
-    if (typeof tree === "object") {
-        ((_a = tree.atts) === null || _a === void 0 ? void 0 : _a.css) && finalArray.push(tree);
-        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) { return finalArray.push.apply(finalArray, collectElementsWithCss(child)); });
-    }
-    return finalArray;
+var tagNames_1 = require("./tagNames");
+var express = require("express");
+function buildPropertiesString(styles) {
+    return Object.keys(styles).reduce(function (a, b) { return "" + a + utils_1.toKebabCase(b) + ":" + styles[b] + ";"; }, "");
 }
-function determineSimilarElementsByCss(array) {
-    var identities = {};
-    var identitiesIndex = 0;
-    array.forEach(function (element) {
-        if (identitiesIndex === 0) {
-            identities[identitiesIndex] = [element];
-            identitiesIndex++;
+function buildSelectorString(className, selector, properties) {
+    return "" + className + selector + "{" + properties + "}";
+}
+function buildKeyframeString(keyframe, selectors) {
+    return keyframe + "{" + selectors + "}";
+}
+function buildMediaQueryString(className, query, styleObject) {
+    return query + "{" + buildCssFromObject(className, styleObject) + "}";
+}
+function buildCssFromObject(className, styles, isKeyframe) {
+    var rootCss = {};
+    var finalString = "";
+    Object.keys(styles).forEach(function (key) {
+        if (/@keyframes/.test(key)) {
+            finalString += buildKeyframeString(key, buildCssFromObject(className, styles[key], true));
+        }
+        else if (/@media/.test(key)) {
+            finalString += buildMediaQueryString(className, key, styles[key]);
+        }
+        else if (typeof styles[key] === "object") {
+            var finalKey = "";
+            finalKey += (tagNames_1.tagNames.includes(key) ? ">" : "") + key;
+            finalString += buildCssFromObject("" + className + finalKey, styles[key]);
         }
         else {
-            var matchFound_1 = false;
-            Object.keys(identities).forEach(function (key) {
-                if (!matchFound_1) {
-                    identities[parseInt(key)].forEach(function (item) {
-                        var _a, _b;
-                        if (!matchFound_1) {
-                            if (utils_1.areEqualObjects(((_a = element.atts) === null || _a === void 0 ? void 0 : _a.css) || {}, ((_b = item.atts) === null || _b === void 0 ? void 0 : _b.css) || {})) {
-                                identities[parseInt(key)].push(element);
-                                matchFound_1 = true;
-                            }
-                        }
-                    });
-                }
-            });
-            if (!matchFound_1) {
-                identities[identitiesIndex] = [element];
-                identitiesIndex++;
-            }
+            //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
+            rootCss[key] = styles[key];
         }
     });
-    return identities;
+    return isKeyframe ? finalString : buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
 }
-function appendElementAndChildren(tree, build, components, className) {
+function buildAttsString(atts) {
+    var attsText = "";
+    Object.keys(atts).forEach(function (att) {
+        if (utils_1.isPresentAtt(att.toString())) {
+            attsText += " " + att;
+        }
+        else if (att !== "js" && att !== "css") {
+            attsText += " " + att + '="' + atts[att] + '"';
+        }
+    });
+    return attsText;
+}
+function buildElementAndChildrenStrings(tree, components, className) {
     if (typeof tree === "string") {
-        build.html += tree;
-        return;
+        return tree;
     }
-    build.html += "<" + tree["tag"];
+    var build = "<" + tree["tag"];
     if (tree["atts"] || className) {
         var atts = tree["atts"] || {};
         var attsClass = atts["class"] || "";
         var fullClass = className ? (attsClass ? attsClass + " " + className : className) : attsClass;
         var classObject = fullClass ? { class: fullClass } : {};
-        build.html += utils_1.buildAttsString(__assign(__assign({}, atts), classObject));
+        build += buildAttsString(__assign(__assign({}, atts), classObject));
     }
-    build.html += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
-    tree["children"] && tree["children"].forEach(function (child) { return buildHtml(child, build, components); });
-    build.html += tree["tag"] && !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
+    build += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
+    tree["children"] && tree["children"].forEach(function (child) { return (build += buildHtml(child, components)); });
+    build += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
+    return build;
 }
-function buildHtml(tree, build, components) {
+function buildHtml(tree, components) {
     if (typeof tree === "string") {
-        build.html += tree;
-        return;
+        return tree;
     }
     else {
         var className_1 = "";
@@ -124,37 +130,60 @@ function buildHtml(tree, build, components) {
                 }
             });
         });
-        appendElementAndChildren(tree, build, components, className_1);
+        return buildElementAndChildrenStrings(tree, components, className_1);
     }
 }
-function buildCss(finalObject, components, reset) {
-    finalObject.css += reset ? cssReset_1.cssReset : "";
+function buildCss(components, reset) {
+    var build = "";
+    build += reset ? cssReset_1.cssReset : "";
     Object.keys(components).forEach(function (key) {
         var _a;
         var css = (_a = components[parseInt(key)][0].atts) === null || _a === void 0 ? void 0 : _a.css;
-        finalObject.css += css ? cssBuilder_1.buildCssFromObject(".c" + key, css) : "";
+        build += css ? buildCssFromObject(".c" + key, css) : "";
     });
+    return build;
 }
-function buildJs(finalObject, components) {
+function buildJs(components) {
+    var build = "";
     Object.keys(components).forEach(function (key) {
         var js = components[parseInt(key)][0].atts.js;
-        finalObject.js += js ? "(" + js + ")()" : "";
+        build += js ? "(" + js + ")()" : "";
     });
+    return build;
 }
-function buildPage(page, content) {
-    var build = typeof page.html === "function" ? page.html(content) : page.html;
-    var components = determineSimilarElementsByCss(collectElementsWithCss(build));
-    var finalObject = {
-        html: "",
-        css: "",
-        js: "",
+function buildSlamElementObject(arg1, arg2, atts, tag) {
+    var children = [];
+    if (arg1) {
+        if (typeof arg1 === "string") {
+            children.push(arg1);
+        }
+        else if ("type" in arg1) {
+            children.push(arg1);
+        }
+        else {
+            atts = arg1;
+        }
+    }
+    children.push.apply(children, arg2);
+    return {
+        type: "element",
+        tag: tag,
+        atts: atts,
+        children: children.length > 0 ? children : undefined,
     };
-    buildCss(finalObject, components, page.cssReset);
-    buildJs(finalObject, components);
-    buildHtml(build, finalObject, components);
-    finalObject.html = finalObject.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
-    finalObject.html = finalObject.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
-    return finalObject;
+}
+exports.buildSlamElementObject = buildSlamElementObject;
+function buildPage(page, content) {
+    var finalPage = typeof page.html === "function" ? page.html(content) : page.html;
+    var components = utils_1.determineSimilarElementsByCss(utils_1.collectElementsWithCss(finalPage));
+    var build = {
+        html: buildHtml(finalPage, components),
+        css: buildCss(components, page.cssReset),
+        js: buildJs(components),
+    };
+    build.html = build.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
+    build.html = build.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
+    return build;
 }
 exports.buildPage = buildPage;
 function buildFiles(indexFile, outDir) {
@@ -163,8 +192,9 @@ function buildFiles(indexFile, outDir) {
         var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    pages = require(indexFile)["default"];
+                case 0: return [4 /*yield*/, require(indexFile)["default"]()];
+                case 1:
+                    pages = _a.sent();
                     return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
                             var content, _a;
                             return __generator(this, function (_b) {
@@ -184,7 +214,7 @@ function buildFiles(indexFile, outDir) {
                                 }
                             });
                         }); }))];
-                case 1:
+                case 2:
                     builds = _a.sent();
                     builds.forEach(function (build) {
                         fs.writeFileSync(path.resolve(outDir, build.name + ".html"), build.html);
@@ -197,3 +227,67 @@ function buildFiles(indexFile, outDir) {
     });
 }
 exports.buildFiles = buildFiles;
+function buildReloadScript(port) {
+    return "\n<script>\nlet lastUpdate = undefined;\nwindow.setInterval(() => {\n  fetch(\"http://localhost:" + port + "/slamserver\")\n  .then(response => response.json())\n  .then(json => {\n    if (lastUpdate) {\n      if (lastUpdate < new Date(parseInt(json))) {\n        console.log(\"Changes detected. Refreshing page...\")\n        setTimeout(() => window.location.reload(), 600)\n      }\n    } else {\n      lastUpdate = new Date(parseInt(json))\n    }\n  })\n  .catch(err => {\n    console.clear()\n    console.log(\"Disconnected. Connection will resume when server restarts.\")\n    }\n  )\n}, 500)\n</script>\n";
+}
+exports.buildReloadScript = buildReloadScript;
+function buildWebserver(indexFile, cache, port) {
+    return __awaiter(this, void 0, void 0, function () {
+        var lastUpdate, newServer, module, pages, runningServer;
+        var _this = this;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    lastUpdate = Date.now();
+                    newServer = express();
+                    module = require.cache[require.resolve(indexFile)];
+                    module && utils_1.clearCache(module);
+                    return [4 /*yield*/, require(indexFile)["default"]()];
+                case 1:
+                    pages = _a.sent();
+                    return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
+                            var _a, _b;
+                            return __generator(this, function (_c) {
+                                switch (_c.label) {
+                                    case 0:
+                                        if (!cache[page.name]) return [3 /*break*/, 1];
+                                        return [2 /*return*/];
+                                    case 1:
+                                        if (!page.content) return [3 /*break*/, 3];
+                                        _a = cache;
+                                        _b = page.name;
+                                        return [4 /*yield*/, page.content()];
+                                    case 2:
+                                        _a[_b] = _c.sent();
+                                        _c.label = 3;
+                                    case 3: return [2 /*return*/];
+                                }
+                            });
+                        }); }))];
+                case 2:
+                    _a.sent();
+                    pages.forEach(function (page) {
+                        var build = buildPage(page, cache[page.name]);
+                        build.html = build.html.replace("</body>", buildReloadScript(port));
+                        newServer.get("/slamserver", function (req, res) { return res.send(lastUpdate.toString()); });
+                        ["html", "css", "js"].forEach(function (item) {
+                            newServer.get("/" + page.name + (item === "html" ? "" : "." + item), function (req, res) {
+                                res.setHeader("content-type", "text/" + item);
+                                res.send(build[item]);
+                                res.end();
+                            });
+                        });
+                    });
+                    runningServer = newServer.listen(port, function () {
+                        console.clear();
+                        console.log("Server listening at http://localhost:" + port);
+                        console.log("Pages:");
+                        pages.forEach(function (page) { return console.log("\t" + page.name + ": http://localhost:" + port + "/" + page.name); });
+                        console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
+                    });
+                    return [2 /*return*/, runningServer];
+            }
+        });
+    });
+}
+exports.buildWebserver = buildWebserver;
