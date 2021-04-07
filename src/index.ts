@@ -7,6 +7,7 @@ tsNode.register({
     resolveJsonModule: true,
     allowSyntheticDefaultImports: true,
   },
+  transpileOnly: true,
 });
 
 export * from "./elementFunctions";

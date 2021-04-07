@@ -19,6 +19,7 @@ tsNode.register({
         resolveJsonModule: true,
         allowSyntheticDefaultImports: true,
     },
+    transpileOnly: true,
 });
 __exportStar(require("./elementFunctions"), exports);
 __exportStar(require("./helperFunctions"), exports);

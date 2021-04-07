@@ -147,7 +147,7 @@ function buildJs(components) {
     var build = "";
     Object.keys(components).forEach(function (key) {
         var js = components[parseInt(key)][0].atts.js;
-        build += js ? "(" + js + ")()" : "";
+        build += js ? "(" + js + ")();\n" : "";
     });
     return build;
 }
