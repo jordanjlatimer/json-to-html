@@ -7,6 +7,7 @@ export const Box = SlamComponent((inner: string) => {
       width: "200px",
       backgroundColor: "white",
       cursor: "move",
+      border: "2px solid green",
     },
   });
 

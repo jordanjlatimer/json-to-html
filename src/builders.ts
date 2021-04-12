@@ -41,7 +41,11 @@ function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: b
       finalString += buildMediaQueryString(className, key, styles[key] as CSSObject);
     } else if (typeof styles[key] === "object") {
       let finalKey = "";
-      finalKey += (tagNames.includes(key) ? ">" : "") + key;
+      if (className) {
+        finalKey += (tagNames.includes(key) ? ">" : "") + key;
+      } else {
+        finalKey = key;
+      }
       finalString += buildCssFromObject(`${className}${finalKey}`, styles[key] as CSSObject);
     } else {
       //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
@@ -101,9 +105,10 @@ function buildHtml(tree: Child, components: Identification): string {
   }
 }
 
-function buildCss(components: Identification, reset?: boolean): string {
+function buildCss(components: Identification, reset?: boolean, globalStyles?: CSSObject): string {
   let build = "";
   build += reset ? cssReset : "";
+  build += globalStyles ? buildCssFromObject("", globalStyles) : "";
   Object.keys(components).forEach(key => {
     let css = components[parseInt(key)][0].atts?.css;
     build += css ? buildCssFromObject(`.c${key}`, css) : "";
@@ -150,7 +155,7 @@ export function buildPage(page: Page, content: any) {
   let components = determineSimilarElementsByCss(collectElementsWithCss(finalPage));
   let build = {
     html: buildHtml(finalPage, components),
-    css: buildCss(components, page.cssReset),
+    css: buildCss(components, page.cssReset, page.globalStyles),
     js: buildJs(components),
   };
   build.html = build.html.replace("</head>", `<link rel=stylesheet href="./${page.name}.css"/></head>\n`);

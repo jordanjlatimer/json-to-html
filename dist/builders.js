@@ -78,7 +78,12 @@ function buildCssFromObject(className, styles, isKeyframe) {
         }
         else if (typeof styles[key] === "object") {
             var finalKey = "";
-            finalKey += (tagNames_1.tagNames.includes(key) ? ">" : "") + key;
+            if (className) {
+                finalKey += (tagNames_1.tagNames.includes(key) ? ">" : "") + key;
+            }
+            else {
+                finalKey = key;
+            }
             finalString += buildCssFromObject("" + className + finalKey, styles[key]);
         }
         else {
@@ -133,9 +138,10 @@ function buildHtml(tree, components) {
         return buildElementAndChildrenStrings(tree, components, className_1);
     }
 }
-function buildCss(components, reset) {
+function buildCss(components, reset, globalStyles) {
     var build = "";
     build += reset ? cssReset_1.cssReset : "";
+    build += globalStyles ? buildCssFromObject("", globalStyles) : "";
     Object.keys(components).forEach(function (key) {
         var _a;
         var css = (_a = components[parseInt(key)][0].atts) === null || _a === void 0 ? void 0 : _a.css;
@@ -178,7 +184,7 @@ function buildPage(page, content) {
     var components = utils_1.determineSimilarElementsByCss(utils_1.collectElementsWithCss(finalPage));
     var build = {
         html: buildHtml(finalPage, components),
-        css: buildCss(components, page.cssReset),
+        css: buildCss(components, page.cssReset, page.globalStyles),
         js: buildJs(components),
     };
     build.html = build.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");

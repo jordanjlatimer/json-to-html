@@ -19,6 +19,7 @@ export interface Page {
     name: string;
     html: SlamElement | ((args: any) => SlamElement);
     cssReset?: boolean;
+    globalStyles?: CSSObject;
     content?: () => any | Promise<any>;
 }
 export interface BuildObject {
@@ -31,6 +32,8 @@ interface Selector {
     [key: string]: CSSProperties | Selector;
 }
 export declare type CSSObject = CSSProperties | Selector;
+export interface CssClassList extends Record<string, CSSObject> {
+}
 export interface Identification {
     [key: number]: SlamElement[];
 }

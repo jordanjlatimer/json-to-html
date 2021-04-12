@@ -22,7 +22,6 @@ tsNode.register({
     transpileOnly: true,
 });
 __exportStar(require("./elementFunctions"), exports);
-__exportStar(require("./helperFunctions"), exports);
 var server_1 = require("./server");
 Object.defineProperty(exports, "StartSlamServer", { enumerable: true, get: function () { return server_1.StartSlamServer; } });
 var builders_1 = require("./builders");
