@@ -38,9 +38,11 @@ interface Selector {
   [key: string]: CSSProperties | Selector;
 }
 
-export type CSSObject = CSSProperties | Selector;
+interface ImportDeclaration {
+  "@import": string;
+}
 
-export interface CssClassList extends Record<string, CSSObject> {}
+export type CSSObject = CSSProperties | Selector | ImportDeclaration;
 
 export interface Identification {
   [key: number]: SlamElement[];

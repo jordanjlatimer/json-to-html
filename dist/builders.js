@@ -69,12 +69,16 @@ function buildMediaQueryString(className, query, styleObject) {
 function buildCssFromObject(className, styles, isKeyframe) {
     var rootCss = {};
     var finalString = "";
+    var imports = "";
     Object.keys(styles).forEach(function (key) {
         if (/@keyframes/.test(key)) {
             finalString += buildKeyframeString(key, buildCssFromObject(className, styles[key], true));
         }
         else if (/@media/.test(key)) {
             finalString += buildMediaQueryString(className, key, styles[key]);
+        }
+        else if (/@import/.test(key)) {
+            imports += "@import url(" + styles[key] + ");";
         }
         else if (typeof styles[key] === "object") {
             var finalKey = "";
@@ -91,7 +95,9 @@ function buildCssFromObject(className, styles, isKeyframe) {
             rootCss[key] = styles[key];
         }
     });
-    return isKeyframe ? finalString : buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
+    return isKeyframe
+        ? finalString
+        : imports + buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
 }
 function buildAttsString(atts) {
     var attsText = "";
@@ -140,7 +146,6 @@ function buildHtml(tree, components) {
 }
 function buildCss(components, reset, globalStyles) {
     var build = "";
-    build += reset ? cssReset_1.cssReset : "";
     build += globalStyles ? buildCssFromObject("", globalStyles) : "";
     Object.keys(components).forEach(function (key) {
         var _a;
@@ -187,6 +192,9 @@ function buildPage(page, content) {
         css: buildCss(components, page.cssReset, page.globalStyles),
         js: buildJs(components),
     };
+    build.html = page.cssReset
+        ? build.html.replace("</head>", "<link rel=stylesheet href=\"./reset.css\"/></head>\n")
+        : build.html;
     build.html = build.html.replace("</head>", "<link rel=stylesheet href=\"./" + page.name + ".css\"/></head>\n");
     build.html = build.html.replace("</body>", "<script src=\"./" + page.name + ".js\"></script></body>\n");
     return build;
@@ -194,13 +202,14 @@ function buildPage(page, content) {
 exports.buildPage = buildPage;
 function buildFiles(indexFile, outDir) {
     return __awaiter(this, void 0, void 0, function () {
-        var pages, builds;
+        var pages, includeReset, builds;
         var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, require(indexFile)["default"]()];
                 case 1:
                     pages = _a.sent();
+                    includeReset = pages.some(function (page) { return page.cssReset; });
                     return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
                             var content, _a;
                             return __generator(this, function (_b) {
@@ -226,6 +235,7 @@ function buildFiles(indexFile, outDir) {
                         fs.writeFileSync(path.resolve(outDir, build.name + ".html"), build.html);
                         fs.writeFileSync(path.resolve(outDir, build.name + ".css"), build.css);
                         fs.writeFileSync(path.resolve(outDir, build.name + ".js"), build.js);
+                        includeReset && fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset_1.cssReset);
                     });
                     return [2 /*return*/];
             }
@@ -283,6 +293,11 @@ function buildWebserver(indexFile, cache, port) {
                                 res.end();
                             });
                         });
+                    });
+                    newServer.get("/reset.css", function (req, res) {
+                        res.setHeader("content-type", "text/css");
+                        res.send(cssReset_1.cssReset);
+                        res.end();
                     });
                     runningServer = newServer.listen(port, function () {
                         console.clear();

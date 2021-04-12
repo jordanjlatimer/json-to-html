@@ -9,8 +9,10 @@ export default SlamPageBuilder(async () => {
       content: async () => ({ name: "jimmy" }),
       cssReset: true,
       globalStyles: {
+        "@import": "https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap",
         div: {
           border: "2px solid red",
+          fontFamily: "Dela Gothic One",
         },
       },
     },

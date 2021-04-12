@@ -1,5 +1,5 @@
-import { cssReset } from "./cssReset";
 import { Identification, Child, SlamElement, Page, CSSObject, ElementAttributes, BuildObject } from "./slamInterfaces";
+import { cssReset } from "./cssReset";
 import {
   isChildless,
   isPresentAtt,
@@ -34,11 +34,14 @@ function buildMediaQueryString(className: string, query: string, styleObject: CS
 function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: boolean): string {
   let rootCss: CSSProperties = {};
   let finalString = "";
+  let imports = "";
   (Object.keys(styles) as Array<keyof CSSObject>).forEach(key => {
     if (/@keyframes/.test(key)) {
       finalString += buildKeyframeString(key, buildCssFromObject(className, styles[key] as CSSObject, true));
     } else if (/@media/.test(key)) {
       finalString += buildMediaQueryString(className, key, styles[key] as CSSObject);
+    } else if (/@import/.test(key)) {
+      imports += `@import url(${styles[key]});`;
     } else if (typeof styles[key] === "object") {
       let finalKey = "";
       if (className) {
@@ -52,7 +55,9 @@ function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: b
       rootCss[key] = styles[key];
     }
   });
-  return isKeyframe ? finalString : buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
+  return isKeyframe
+    ? finalString
+    : imports + buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
 }
 
 function buildAttsString<T extends ElementAttributes>(atts: T): string {
@@ -107,7 +112,6 @@ function buildHtml(tree: Child, components: Identification): string {
 
 function buildCss(components: Identification, reset?: boolean, globalStyles?: CSSObject): string {
   let build = "";
-  build += reset ? cssReset : "";
   build += globalStyles ? buildCssFromObject("", globalStyles) : "";
   Object.keys(components).forEach(key => {
     let css = components[parseInt(key)][0].atts?.css;
@@ -158,6 +162,9 @@ export function buildPage(page: Page, content: any) {
     css: buildCss(components, page.cssReset, page.globalStyles),
     js: buildJs(components),
   };
+  build.html = page.cssReset
+    ? build.html.replace("</head>", `<link rel=stylesheet href="./reset.css"/></head>\n`)
+    : build.html;
   build.html = build.html.replace("</head>", `<link rel=stylesheet href="./${page.name}.css"/></head>\n`);
   build.html = build.html.replace("</body>", `<script src="./${page.name}.js"></script></body>\n`);
   return build;
@@ -165,6 +172,7 @@ export function buildPage(page: Page, content: any) {
 
 export async function buildFiles(indexFile: string, outDir: string): Promise<void> {
   const pages: Page[] = await require(indexFile)["default"]();
+  const includeReset = pages.some(page => page.cssReset);
   let builds = await Promise.all(
     pages.map(async page => {
       let content = page.content ? await page.content() : undefined;
@@ -178,6 +186,7 @@ export async function buildFiles(indexFile: string, outDir: string): Promise<voi
     fs.writeFileSync(path.resolve(outDir, `${build.name}.html`), build.html);
     fs.writeFileSync(path.resolve(outDir, `${build.name}.css`), build.css);
     fs.writeFileSync(path.resolve(outDir, `${build.name}.js`), build.js);
+    includeReset && fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset);
   });
 }
 
@@ -236,6 +245,11 @@ export async function buildWebserver(indexFile: string, cache: Record<string, an
         res.end();
       });
     });
+  });
+  newServer.get("/reset.css", (req, res) => {
+    res.setHeader("content-type", "text/css");
+    res.send(cssReset);
+    res.end();
   });
   let runningServer = newServer.listen(port, () => {
     console.clear();
