@@ -15,8 +15,12 @@ import * as fs from "fs";
 import * as path from "path";
 import { cssReset } from "./cssReset";
 
-function SlamStyles<T extends Record<string, CSSObject>>(arg: T): T {
-  return arg;
+function SlamStyleApplier(element: SlamElement<TagName>, styles: CSSObject) {
+  if (isChildless(element.tag)) {
+    return (element: SlamElement<ChildlessElements>) => SlamStyledElement(element, styles);
+  } else {
+    return (element: SlamElement<ParentalElements>) => SlamStyledElement(element, styles);
+  }
 }
 
 function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html"> {
@@ -115,7 +119,7 @@ async function writeFiles(indexFile: string, outDir: string): Promise<void> {
 }
 
 export const Slam = {
-  styles: SlamStyles,
+  styleApplier: SlamStyleApplier,
   page: SlamPage,
   pageBuilder: SlamPageBuilder,
   component: SlamComponent,
