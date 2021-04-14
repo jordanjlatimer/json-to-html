@@ -35,19 +35,20 @@ function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => 
   return arg;
 }
 
-function SlamStyledComponent<T extends ChildlessElements>(
+function SlamStyledElement<U extends ChildlessElements, T extends SlamElement<U>>(
   tag: T,
   styles: CSSObject
-): (arg1?: TagAttributes<T>) => SlamElement<T>;
-function SlamStyledComponent<T extends ParentalElements>(
+): (arg1?: TagAttributes<T>) => SlamElement<U>;
+function SlamStyledElement<U extends ParentalElements, T extends SlamElement<U>>(
   tag: T,
   styles: CSSObject
-): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<T>;
-function SlamStyledComponent<T extends TagName>(tag: T, styles: CSSObject) {
-  if (isChildless(tag)) {
-    return (arg1?: TagAttributes<T>) => {
-      const obj = buildSlamElementObject(tag, arg1);
+): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<U>;
+function SlamStyledElement<U extends TagName, T extends SlamElement<U>>(element: T, styles: CSSObject) {
+  if (isChildless(element.tag)) {
+    return (arg1?: TagAttributes<U>) => {
+      const obj = buildSlamElementObject(element.tag, arg1);
       const css = {
+        ...element.atts.css,
         ...styles,
         ...obj.atts.css,
       };
@@ -55,9 +56,10 @@ function SlamStyledComponent<T extends TagName>(tag: T, styles: CSSObject) {
       return obj;
     };
   } else {
-    return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
-      const obj = buildSlamElementObject(tag, arg1, arg2);
+    return (arg1?: TagAttributes<U> | Child, ...arg2: Child[]) => {
+      const obj = buildSlamElementObject(element.tag, arg1, arg2);
       const css = {
+        ...element.atts.css,
         ...styles,
         ...obj.atts.css,
       };
@@ -117,7 +119,7 @@ export const Slam = {
   page: SlamPage,
   pageBuilder: SlamPageBuilder,
   component: SlamComponent,
-  styledComponent: SlamStyledComponent,
+  styledElement: SlamStyledElement,
   startServer: StartSlamServer,
   writeFiles: writeFiles,
 };

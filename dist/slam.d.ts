@@ -4,8 +4,8 @@ declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) =
 declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
 declare function SlamComponent(arg: () => SlamElement<TagName>): () => SlamElement<TagName>;
 declare function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => SlamElement<TagName>;
-declare function SlamStyledComponent<T extends ChildlessElements>(tag: T, styles: CSSObject): (arg1?: TagAttributes<T>) => SlamElement<T>;
-declare function SlamStyledComponent<T extends ParentalElements>(tag: T, styles: CSSObject): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<T>;
+declare function SlamStyledElement<U extends ChildlessElements, T extends SlamElement<U>>(tag: T, styles: CSSObject): (arg1?: TagAttributes<T>) => SlamElement<U>;
+declare function SlamStyledElement<U extends ParentalElements, T extends SlamElement<U>>(tag: T, styles: CSSObject): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<U>;
 declare function StartSlamServer(indexFile: string, port: number, watchList: string[]): Promise<void>;
 declare function writeFiles(indexFile: string, outDir: string): Promise<void>;
 export declare const Slam: {
@@ -13,7 +13,7 @@ export declare const Slam: {
     page: typeof SlamPage;
     pageBuilder: typeof SlamPageBuilder;
     component: typeof SlamComponent;
-    styledComponent: typeof SlamStyledComponent;
+    styledElement: typeof SlamStyledElement;
     startServer: typeof StartSlamServer;
     writeFiles: typeof writeFiles;
 };

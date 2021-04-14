@@ -65,11 +65,11 @@ function SlamPageBuilder(builderFunction) {
 function SlamComponent(arg) {
     return arg;
 }
-function SlamStyledComponent(tag, styles) {
-    if (utils_1.isChildless(tag)) {
+function SlamStyledElement(element, styles) {
+    if (utils_1.isChildless(element.tag)) {
         return function (arg1) {
-            var obj = otherBuilders_1.buildSlamElementObject(tag, arg1);
-            var css = __assign(__assign({}, styles), obj.atts.css);
+            var obj = otherBuilders_1.buildSlamElementObject(element.tag, arg1);
+            var css = __assign(__assign(__assign({}, element.atts.css), styles), obj.atts.css);
             obj.atts.css = css;
             return obj;
         };
@@ -80,8 +80,8 @@ function SlamStyledComponent(tag, styles) {
             for (var _i = 1; _i < arguments.length; _i++) {
                 arg2[_i - 1] = arguments[_i];
             }
-            var obj = otherBuilders_1.buildSlamElementObject(tag, arg1, arg2);
-            var css = __assign(__assign({}, styles), obj.atts.css);
+            var obj = otherBuilders_1.buildSlamElementObject(element.tag, arg1, arg2);
+            var css = __assign(__assign(__assign({}, element.atts.css), styles), obj.atts.css);
             obj.atts.css = css;
             return obj;
         };
@@ -176,7 +176,7 @@ exports.Slam = {
     page: SlamPage,
     pageBuilder: SlamPageBuilder,
     component: SlamComponent,
-    styledComponent: SlamStyledComponent,
+    styledElement: SlamStyledElement,
     startServer: StartSlamServer,
     writeFiles: writeFiles,
 };
