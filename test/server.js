@@ -1,8 +1,8 @@
-const { StartSlamServer } = require("../dist");
+const { Slam } = require("../dist");
 const path = require("path");
 
 const watchList = [path.resolve(__dirname, "./pages")];
 
-const indexFile = path.resolve(__dirname, "./pages/index.ts");
+const indexFile = path.resolve(__dirname, "./index.ts");
 
-StartSlamServer(indexFile, 3000, watchList);
+Slam.startServer(indexFile, 3000, watchList);

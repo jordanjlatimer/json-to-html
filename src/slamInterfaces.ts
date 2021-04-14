@@ -1,4 +1,6 @@
 import { Properties as CSSProperties } from "csstype";
+import { HtmlTagAttributes } from "./htmlInterfaces";
+import { SvgTagAttributes } from "./svgInterfaces";
 
 export interface ElementAttributes {
   class?: string;
@@ -11,16 +13,51 @@ export interface ElementAttributes {
   tabindex?: number;
 }
 
-export interface SlamElement {
+export type TagName = keyof HtmlTagAttributes | keyof SvgTagAttributes;
+
+export type TagAttributes<T> = T extends keyof HtmlTagAttributes
+  ? HtmlTagAttributes[T]
+  : T extends keyof SvgTagAttributes
+  ? SvgTagAttributes[T]
+  : never;
+
+export type ChildlessElements =
+  | "area"
+  | "base"
+  | "br"
+  | "col"
+  | "embed"
+  | "hr"
+  | "img"
+  | "input"
+  | "link"
+  | "meta"
+  | "param"
+  | "source"
+  | "track"
+  | "wbr"
+  | "circle"
+  | "ellipse"
+  | "line"
+  | "path"
+  | "polygon"
+  | "polyline"
+  | "rect"
+  | "stop"
+  | "use";
+
+export type ParentalElements = Exclude<TagName, ChildlessElements>;
+
+export interface SlamElement<T extends TagName> {
   type: "element";
-  tag: string;
-  atts?: any;
-  children?: Child[];
+  tag: T;
+  atts: TagAttributes<T>;
+  children?: T extends ChildlessElements ? undefined : Child[];
 }
 
 export interface Page {
   name: string;
-  html: SlamElement | ((args: any) => SlamElement);
+  html: SlamElement<"html"> | ((args: any) => SlamElement<"html">);
   cssReset?: boolean;
   globalStyles?: CSSObject;
   content?: () => any | Promise<any>;
@@ -32,7 +69,7 @@ export interface BuildObject {
   js: string;
 }
 
-export type Child = SlamElement | string;
+export type Child = SlamElement<keyof HtmlTagAttributes | keyof SvgTagAttributes> | string;
 
 interface Selector {
   [key: string]: CSSProperties | Selector;
@@ -45,5 +82,5 @@ interface ImportDeclaration {
 export type CSSObject = CSSProperties | Selector | ImportDeclaration;
 
 export interface Identification {
-  [key: number]: SlamElement[];
+  [key: number]: SlamElement<TagName>[];
 }

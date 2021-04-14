@@ -1,12 +1,13 @@
-import { body, SlamStyles, head, html, title, SlamPage } from "../../dist";
+import { body, Slam, head, html, title } from "../../dist";
 import { Box } from "./components/Box";
+import { StyledDiv } from "./components/StyledDiv";
 
-export const Home = SlamPage((content: any) => {
-  const classes = SlamStyles({
+export const Home = Slam.page((content: any) => {
+  const classes = Slam.styles({
     root: {
       backgroundColor: "lightgray",
     },
   });
   const js = () => console.log("Hello");
-  return html({ css: classes.root, js: js }, head(title("Test")), body(Box("gray")));
+  return html({ css: classes.root, js: js }, head(title("Test")), body(Box("gray"), StyledDiv({class: "Hello"},"Hello", "Goodbye")));
 });

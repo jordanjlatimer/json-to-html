@@ -6,7 +6,7 @@ function toKebabCase(value) {
 }
 exports.toKebabCase = toKebabCase;
 function isPresentAtt(attName) {
-    var atts = [
+    return [
         "allowfullscreen",
         "allowpaymentrequest",
         "async",
@@ -30,12 +30,11 @@ function isPresentAtt(attName) {
         "reversed",
         "selected",
         "typemustmatch",
-    ];
-    return atts.includes(attName);
+    ].includes(attName);
 }
 exports.isPresentAtt = isPresentAtt;
 function isChildless(tag) {
-    var isChildless = [
+    return [
         "area",
         "base",
         "br",
@@ -59,8 +58,7 @@ function isChildless(tag) {
         "rect",
         "stop",
         "use",
-    ];
-    return isChildless.includes(tag);
+    ].includes(tag);
 }
 exports.isChildless = isChildless;
 function areEqualObjects(object1, object2) {

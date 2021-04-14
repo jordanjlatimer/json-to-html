@@ -12,10 +12,6 @@ tsNode.register({
 
 export * from "./elementFunctions";
 
-export * from "./helperFunctions";
+export { Slam } from "./slam";
 
 export { Child, CSSObject } from "./slamInterfaces";
-
-export { StartSlamServer } from "./server";
-
-export { buildFiles } from "./builders";

@@ -1,7 +1,7 @@
-import { CSSObject, SlamPageBuilder } from "../../dist";
-import { Home } from "./home";
+import { Slam } from "../dist";
+import { Home } from "./pages/home";
 
-export default SlamPageBuilder(async () => {
+export default Slam.pageBuilder(async () => {
   return [
     {
       name: "jimmy",

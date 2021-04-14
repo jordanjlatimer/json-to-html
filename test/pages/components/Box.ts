@@ -1,7 +1,7 @@
-import { SlamStyles, div, SlamComponent } from "../../../dist";
+import { Slam, div } from "../../../dist";
 
-export const Box = SlamComponent((inner: string) => {
-  const classes = SlamStyles({
+export const Box = Slam.component((inner: string) => {
+  const classes = Slam.styles({
     root: {
       height: "200px",
       width: "200px",

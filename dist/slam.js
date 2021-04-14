@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,9 +47,46 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StartSlamServer = void 0;
+exports.Slam = void 0;
+var utils_1 = require("./utils");
+var otherBuilders_1 = require("./otherBuilders");
 var fs = require("fs");
-var builders_1 = require("./builders");
+var path = require("path");
+var cssReset_1 = require("./cssReset");
+function SlamStyles(arg) {
+    return arg;
+}
+function SlamPage(arg) {
+    return arg;
+}
+function SlamPageBuilder(builderFunction) {
+    return builderFunction;
+}
+function SlamComponent(arg) {
+    return arg;
+}
+function SlamStyledComponent(tag, styles) {
+    if (utils_1.isChildless(tag)) {
+        return function (arg1) {
+            var obj = otherBuilders_1.buildSlamElementObject(tag, arg1);
+            var css = __assign(__assign({}, styles), obj.atts.css);
+            obj.atts.css = css;
+            return obj;
+        };
+    }
+    else {
+        return function (arg1) {
+            var arg2 = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                arg2[_i - 1] = arguments[_i];
+            }
+            var obj = otherBuilders_1.buildSlamElementObject(tag, arg1, arg2);
+            var css = __assign(__assign({}, styles), obj.atts.css);
+            obj.atts.css = css;
+            return obj;
+        };
+    }
+}
 function StartSlamServer(indexFile, port, watchList) {
     return __awaiter(this, void 0, void 0, function () {
         var sockets, cache, webServer;
@@ -49,7 +97,7 @@ function StartSlamServer(indexFile, port, watchList) {
                     sockets = [];
                     cache = {};
                     console.log("Starting server...\n");
-                    return [4 /*yield*/, builders_1.buildWebserver(indexFile, cache, port)];
+                    return [4 /*yield*/, otherBuilders_1.buildWebserver(indexFile, cache, port)];
                 case 1:
                     webServer = _a.sent();
                     webServer.on("connection", function (socket) { return sockets.push(socket); });
@@ -64,7 +112,7 @@ function StartSlamServer(indexFile, port, watchList) {
                             webServer.close(function () { return __awaiter(_this, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
-                                        case 0: return [4 /*yield*/, builders_1.buildWebserver(indexFile, cache, port)];
+                                        case 0: return [4 /*yield*/, otherBuilders_1.buildWebserver(indexFile, cache, port)];
                                         case 1:
                                             webServer = _a.sent();
                                             webServer.on("connection", function (socket) { return sockets.push(socket); });
@@ -81,4 +129,54 @@ function StartSlamServer(indexFile, port, watchList) {
         });
     });
 }
-exports.StartSlamServer = StartSlamServer;
+function writeFiles(indexFile, outDir) {
+    return __awaiter(this, void 0, void 0, function () {
+        var pages, includeReset, builds;
+        var _this = this;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, require(indexFile)["default"]()];
+                case 1:
+                    pages = _a.sent();
+                    includeReset = pages.some(function (page) { return page.cssReset; });
+                    return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
+                            var content, _a;
+                            return __generator(this, function (_b) {
+                                switch (_b.label) {
+                                    case 0:
+                                        if (!page.content) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, page.content()];
+                                    case 1:
+                                        _a = _b.sent();
+                                        return [3 /*break*/, 3];
+                                    case 2:
+                                        _a = undefined;
+                                        _b.label = 3;
+                                    case 3:
+                                        content = _a;
+                                        return [2 /*return*/, __assign({ name: page.name }, otherBuilders_1.buildPage(page, content))];
+                                }
+                            });
+                        }); }))];
+                case 2:
+                    builds = _a.sent();
+                    builds.forEach(function (build) {
+                        fs.writeFileSync(path.resolve(outDir, build.name + ".html"), build.html);
+                        fs.writeFileSync(path.resolve(outDir, build.name + ".css"), build.css);
+                        fs.writeFileSync(path.resolve(outDir, build.name + ".js"), build.js);
+                        includeReset && fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset_1.cssReset);
+                    });
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.Slam = {
+    styles: SlamStyles,
+    page: SlamPage,
+    pageBuilder: SlamPageBuilder,
+    component: SlamComponent,
+    styledComponent: SlamStyledComponent,
+    startServer: StartSlamServer,
+    writeFiles: writeFiles,
+};

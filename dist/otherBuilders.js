@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -47,122 +36,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildWebserver = exports.buildReloadScript = exports.buildFiles = exports.buildPage = exports.buildSlamElementObject = void 0;
+exports.buildWebserver = exports.buildReloadScript = exports.buildPage = exports.buildSlamElementObject = void 0;
 var cssReset_1 = require("./cssReset");
 var utils_1 = require("./utils");
-var fs = require("fs");
-var path = require("path");
-var tagNames_1 = require("./tagNames");
 var express = require("express");
-function buildPropertiesString(styles) {
-    return Object.keys(styles).reduce(function (a, b) { return "" + a + utils_1.toKebabCase(b) + ":" + styles[b] + ";"; }, "");
-}
-function buildSelectorString(className, selector, properties) {
-    return "" + className + selector + "{" + properties + "}";
-}
-function buildKeyframeString(keyframe, selectors) {
-    return keyframe + "{" + selectors + "}";
-}
-function buildMediaQueryString(className, query, styleObject) {
-    return query + "{" + buildCssFromObject(className, styleObject) + "}";
-}
-function buildCssFromObject(className, styles, isKeyframe) {
-    var rootCss = {};
-    var finalString = "";
-    var imports = "";
-    Object.keys(styles).forEach(function (key) {
-        if (/@keyframes/.test(key)) {
-            finalString += buildKeyframeString(key, buildCssFromObject(className, styles[key], true));
-        }
-        else if (/@media/.test(key)) {
-            finalString += buildMediaQueryString(className, key, styles[key]);
-        }
-        else if (/@import/.test(key)) {
-            imports += "@import url(" + styles[key] + ");";
-        }
-        else if (typeof styles[key] === "object") {
-            var finalKey = "";
-            if (className) {
-                finalKey += (tagNames_1.tagNames.includes(key) ? ">" : "") + key;
-            }
-            else {
-                finalKey = key;
-            }
-            finalString += buildCssFromObject("" + className + finalKey, styles[key]);
-        }
-        else {
-            //@ts-ignore Following line threw "Expression produces a union type that is too complex to represent.""
-            rootCss[key] = styles[key];
-        }
-    });
-    return isKeyframe
-        ? finalString
-        : imports + buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
-}
-function buildAttsString(atts) {
-    var attsText = "";
-    Object.keys(atts).forEach(function (att) {
-        if (utils_1.isPresentAtt(att.toString())) {
-            attsText += " " + att;
-        }
-        else if (att !== "js" && att !== "css") {
-            attsText += " " + att + '="' + atts[att] + '"';
-        }
-    });
-    return attsText;
-}
-function buildElementAndChildrenStrings(tree, components, className) {
-    if (typeof tree === "string") {
-        return tree;
-    }
-    var build = "<" + tree["tag"];
-    if (tree["atts"] || className) {
-        var atts = tree["atts"] || {};
-        var attsClass = atts["class"] || "";
-        var fullClass = className ? (attsClass ? attsClass + " " + className : className) : attsClass;
-        var classObject = fullClass ? { class: fullClass } : {};
-        build += buildAttsString(__assign(__assign({}, atts), classObject));
-    }
-    build += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
-    tree["children"] && tree["children"].forEach(function (child) { return (build += buildHtml(child, components)); });
-    build += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
-    return build;
-}
-function buildHtml(tree, components) {
-    if (typeof tree === "string") {
-        return tree;
-    }
-    else {
-        var className_1 = "";
-        Object.keys(components).forEach(function (key) {
-            components[parseInt(key)].forEach(function (component) {
-                if (component === tree) {
-                    className_1 = "c" + key;
-                }
-            });
-        });
-        return buildElementAndChildrenStrings(tree, components, className_1);
-    }
-}
-function buildCss(components, reset, globalStyles) {
-    var build = "";
-    build += globalStyles ? buildCssFromObject("", globalStyles) : "";
-    Object.keys(components).forEach(function (key) {
-        var _a;
-        var css = (_a = components[parseInt(key)][0].atts) === null || _a === void 0 ? void 0 : _a.css;
-        build += css ? buildCssFromObject(".c" + key, css) : "";
-    });
-    return build;
-}
-function buildJs(components) {
-    var build = "";
-    Object.keys(components).forEach(function (key) {
-        var js = components[parseInt(key)][0].atts.js;
-        build += js ? "(" + js + ")();\n" : "";
-    });
-    return build;
-}
-function buildSlamElementObject(arg1, arg2, atts, tag) {
+var cssBuilders_1 = require("./cssBuilders");
+var htmlBuilders_1 = require("./htmlBuilders");
+var jsBuilders_1 = require("./jsBuilders");
+function buildSlamElementObject(tag, arg1, arg2) {
+    var atts = {};
     var children = [];
     if (arg1) {
         if (typeof arg1 === "string") {
@@ -175,12 +57,12 @@ function buildSlamElementObject(arg1, arg2, atts, tag) {
             atts = arg1;
         }
     }
-    children.push.apply(children, arg2);
+    arg2 && children.push.apply(children, arg2);
     return {
         type: "element",
         tag: tag,
         atts: atts,
-        children: children.length > 0 ? children : undefined,
+        children: children,
     };
 }
 exports.buildSlamElementObject = buildSlamElementObject;
@@ -188,9 +70,9 @@ function buildPage(page, content) {
     var finalPage = typeof page.html === "function" ? page.html(content) : page.html;
     var components = utils_1.determineSimilarElementsByCss(utils_1.collectElementsWithCss(finalPage));
     var build = {
-        html: buildHtml(finalPage, components),
-        css: buildCss(components, page.cssReset, page.globalStyles),
-        js: buildJs(components),
+        html: htmlBuilders_1.buildPageHtmlString(finalPage, components),
+        css: cssBuilders_1.buildPageCssString(components, page.cssReset, page.globalStyles),
+        js: jsBuilders_1.buildPageJsString(components),
     };
     build.html = page.cssReset
         ? build.html.replace("</head>", "<link rel=stylesheet href=\"./reset.css\"/></head>\n")
@@ -200,49 +82,6 @@ function buildPage(page, content) {
     return build;
 }
 exports.buildPage = buildPage;
-function buildFiles(indexFile, outDir) {
-    return __awaiter(this, void 0, void 0, function () {
-        var pages, includeReset, builds;
-        var _this = this;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, require(indexFile)["default"]()];
-                case 1:
-                    pages = _a.sent();
-                    includeReset = pages.some(function (page) { return page.cssReset; });
-                    return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
-                            var content, _a;
-                            return __generator(this, function (_b) {
-                                switch (_b.label) {
-                                    case 0:
-                                        if (!page.content) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, page.content()];
-                                    case 1:
-                                        _a = _b.sent();
-                                        return [3 /*break*/, 3];
-                                    case 2:
-                                        _a = undefined;
-                                        _b.label = 3;
-                                    case 3:
-                                        content = _a;
-                                        return [2 /*return*/, __assign({ name: page.name }, buildPage(page, content))];
-                                }
-                            });
-                        }); }))];
-                case 2:
-                    builds = _a.sent();
-                    builds.forEach(function (build) {
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".html"), build.html);
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".css"), build.css);
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".js"), build.js);
-                        includeReset && fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset_1.cssReset);
-                    });
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-exports.buildFiles = buildFiles;
 function buildReloadScript(port) {
     return "\n<script>\nlet lastUpdate = undefined;\nwindow.setInterval(() => {\n  fetch(\"http://localhost:" + port + "/slamserver\")\n  .then(response => response.json())\n  .then(json => {\n    if (lastUpdate) {\n      if (lastUpdate < new Date(parseInt(json))) {\n        console.log(\"Changes detected. Refreshing page...\")\n        setTimeout(() => window.location.reload(), 600)\n      }\n    } else {\n      lastUpdate = new Date(parseInt(json))\n    }\n  })\n  .catch(err => {\n    console.clear()\n    console.log(\"Disconnected. Connection will resume when server restarts.\")\n    }\n  )\n}, 500)\n</script>\n";
 }

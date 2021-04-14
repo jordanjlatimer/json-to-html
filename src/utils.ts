@@ -1,11 +1,11 @@
-import { Child, SlamElement, Identification } from "./slamInterfaces";
+import { Child, SlamElement, Identification, TagName } from "./slamInterfaces";
 
 export function toKebabCase(value: string): string {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
 }
 
 export function isPresentAtt(attName: string): boolean {
-  const atts = [
+  return [
     "allowfullscreen",
     "allowpaymentrequest",
     "async",
@@ -29,12 +29,11 @@ export function isPresentAtt(attName: string): boolean {
     "reversed",
     "selected",
     "typemustmatch",
-  ];
-  return atts.includes(attName);
+  ].includes(attName);
 }
 
-export function isChildless(tag: string): boolean {
-  const isChildless = [
+export function isChildless(tag: TagName): boolean {
+  return [
     "area",
     "base",
     "br",
@@ -58,8 +57,7 @@ export function isChildless(tag: string): boolean {
     "rect",
     "stop",
     "use",
-  ];
-  return isChildless.includes(tag);
+  ].includes(tag);
 }
 
 interface GenericObject {
@@ -93,8 +91,8 @@ export function areEqualObjects(object1: GenericObject, object2: GenericObject):
   return true;
 }
 
-export function collectElementsWithCss(tree: Child): SlamElement[] {
-  let finalArray: SlamElement[] = [];
+export function collectElementsWithCss(tree: Child): SlamElement<TagName>[] {
+  let finalArray: SlamElement<TagName>[] = [];
   if (typeof tree === "object") {
     tree.atts?.css && finalArray.push(tree);
     tree["children"]?.forEach(child => finalArray.push(...collectElementsWithCss(child)));
@@ -102,7 +100,7 @@ export function collectElementsWithCss(tree: Child): SlamElement[] {
   return finalArray;
 }
 
-export function determineSimilarElementsByCss(array: SlamElement[]): Identification {
+export function determineSimilarElementsByCss(array: SlamElement<TagName>[]): Identification {
   let identities: Identification = {};
   let identitiesIndex = 0;
   array.forEach(element => {
