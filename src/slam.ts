@@ -36,11 +36,11 @@ function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => 
 }
 
 function SlamStyledElement<U extends ChildlessElements, T extends SlamElement<U>>(
-  tag: T,
+  element: T,
   styles: CSSObject
 ): (arg1?: TagAttributes<T>) => SlamElement<U>;
 function SlamStyledElement<U extends ParentalElements, T extends SlamElement<U>>(
-  tag: T,
+  element: T,
   styles: CSSObject
 ): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<U>;
 function SlamStyledElement<U extends TagName, T extends SlamElement<U>>(element: T, styles: CSSObject) {
