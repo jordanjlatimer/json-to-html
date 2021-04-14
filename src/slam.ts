@@ -29,6 +29,8 @@ function SlamPageBuilder(
   return builderFunction;
 }
 
+function SlamComponent(arg: () => SlamElement<TagName>): () => SlamElement<TagName>;
+function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => SlamElement<TagName>;
 function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => SlamElement<TagName> {
   return arg;
 }

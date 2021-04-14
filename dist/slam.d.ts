@@ -2,6 +2,7 @@ import { CSSObject, Page, SlamElement, TagAttributes, TagName, Child, ChildlessE
 declare function SlamStyles<T extends Record<string, CSSObject>>(arg: T): T;
 declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html">;
 declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
+declare function SlamComponent(arg: () => SlamElement<TagName>): () => SlamElement<TagName>;
 declare function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => SlamElement<TagName>;
 declare function SlamStyledComponent<T extends ChildlessElements>(tag: T, styles: CSSObject): (arg1?: TagAttributes<T>) => SlamElement<T>;
 declare function SlamStyledComponent<T extends ParentalElements>(tag: T, styles: CSSObject): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<T>;
