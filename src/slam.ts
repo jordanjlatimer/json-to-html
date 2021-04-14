@@ -15,12 +15,14 @@ import * as fs from "fs";
 import * as path from "path";
 import { cssReset } from "./cssReset";
 
-function SlamStyleApplier(element: SlamElement<TagName>, styles: CSSObject) {
-  if (isChildless(element.tag)) {
-    return (element: SlamElement<ChildlessElements>) => SlamStyledElement(element, styles);
-  } else {
-    return (element: SlamElement<ParentalElements>) => SlamStyledElement(element, styles);
-  }
+function SlamStyleApplier(styles: CSSObject) {
+  return (element: SlamElement<TagName>) => {
+    if (isChildless(element.tag)) {
+      return SlamStyledElement(element as SlamElement<ChildlessElements>, styles);
+    } else {
+      return SlamStyledElement(element as SlamElement<ParentalElements>, styles);
+    }
+  };
 }
 
 function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html"> {

@@ -1,5 +1,5 @@
 import { CSSObject, Page, SlamElement, TagAttributes, TagName, Child, ChildlessElements, ParentalElements } from "./slamInterfaces";
-declare function SlamStyleApplier(element: SlamElement<TagName>, styles: CSSObject): ((element: SlamElement<ChildlessElements>) => (arg1?: undefined) => SlamElement<ChildlessElements>) | ((element: SlamElement<ParentalElements>) => (arg1?: Child | undefined, ...arg2: Child[]) => SlamElement<ParentalElements>);
+declare function SlamStyleApplier(styles: CSSObject): (element: SlamElement<TagName>) => ((arg1?: undefined) => SlamElement<ChildlessElements>) | ((arg1?: Child | undefined, ...arg2: Child[]) => SlamElement<ParentalElements>);
 declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html">;
 declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
 declare function SlamComponent(arg: () => SlamElement<TagName>): () => SlamElement<TagName>;
