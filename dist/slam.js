@@ -62,7 +62,8 @@ function SlamPageBuilder(builderFunction) {
 function SlamComponent(arg) {
     return arg;
 }
-function SlamStyledElement(element, styles) {
+function SlamStyledElement(elem, styles) {
+    var element = elem();
     if (utils_1.isChildless(element.tag)) {
         return function (arg1) {
             var obj = otherBuilders_1.buildSlamElementObject(element.tag, arg1);

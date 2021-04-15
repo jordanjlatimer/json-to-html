@@ -22,9 +22,10 @@ function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => 
   return arg;
 }
 
-function SlamStyledElement<U extends TagName>(element: SlamElement<U>, styles: CSSObject) {
+function SlamStyledElement<T extends TagName>(elem: () => SlamElement<T>, styles: CSSObject) {
+  const element = elem();
   if (isChildless(element.tag)) {
-    return (arg1?: TagAttributes<U>) => {
+    return (arg1?: TagAttributes<T>) => {
       const obj = buildSlamElementObject(element.tag, arg1);
       const css = {
         ...element.atts.css,
@@ -35,7 +36,7 @@ function SlamStyledElement<U extends TagName>(element: SlamElement<U>, styles: C
       return obj;
     };
   } else {
-    return (arg1?: TagAttributes<U> | Child, ...arg2: Child[]) => {
+    return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
       const obj = buildSlamElementObject(element.tag, arg1, arg2);
       const css = {
         ...element.atts.css,
