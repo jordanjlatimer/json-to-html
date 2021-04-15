@@ -1,29 +1,10 @@
-import {
-  CSSObject,
-  Page,
-  SlamElement,
-  TagAttributes,
-  TagName,
-  Child,
-  ChildlessElements,
-  ParentalElements,
-} from "./slamInterfaces";
+import { CSSObject, Page, SlamElement, TagAttributes, TagName, Child } from "./slamInterfaces";
 import { isChildless } from "./utils";
 import { buildPage, buildSlamElementObject, buildWebserver } from "./otherBuilders";
 import { Socket } from "node:net";
 import * as fs from "fs";
 import * as path from "path";
 import { cssReset } from "./cssReset";
-
-function SlamStyleApplier(styles: CSSObject) {
-  return (element: SlamElement<TagName>) => {
-    if (isChildless(element.tag)) {
-      return SlamStyledElement(element as SlamElement<ChildlessElements>, styles);
-    } else {
-      return SlamStyledElement(element as SlamElement<ParentalElements>, styles);
-    }
-  };
-}
 
 function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html"> {
   return arg;
@@ -41,15 +22,7 @@ function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => 
   return arg;
 }
 
-function SlamStyledElement<U extends ChildlessElements, T extends SlamElement<U>>(
-  element: T,
-  styles: CSSObject
-): (arg1?: TagAttributes<T>) => SlamElement<U>;
-function SlamStyledElement<U extends ParentalElements, T extends SlamElement<U>>(
-  element: T,
-  styles: CSSObject
-): (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<U>;
-function SlamStyledElement<U extends TagName, T extends SlamElement<U>>(element: T, styles: CSSObject) {
+function SlamStyledElement<U extends TagName>(element: SlamElement<U>, styles: CSSObject) {
   if (isChildless(element.tag)) {
     return (arg1?: TagAttributes<U>) => {
       const obj = buildSlamElementObject(element.tag, arg1);
@@ -121,7 +94,6 @@ async function writeFiles(indexFile: string, outDir: string): Promise<void> {
 }
 
 export const Slam = {
-  styleApplier: SlamStyleApplier,
   page: SlamPage,
   pageBuilder: SlamPageBuilder,
   component: SlamComponent,

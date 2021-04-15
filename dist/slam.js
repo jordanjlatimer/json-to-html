@@ -53,16 +53,6 @@ var otherBuilders_1 = require("./otherBuilders");
 var fs = require("fs");
 var path = require("path");
 var cssReset_1 = require("./cssReset");
-function SlamStyleApplier(styles) {
-    return function (element) {
-        if (utils_1.isChildless(element.tag)) {
-            return SlamStyledElement(element, styles);
-        }
-        else {
-            return SlamStyledElement(element, styles);
-        }
-    };
-}
 function SlamPage(arg) {
     return arg;
 }
@@ -179,7 +169,6 @@ function writeFiles(indexFile, outDir) {
     });
 }
 exports.Slam = {
-    styleApplier: SlamStyleApplier,
     page: SlamPage,
     pageBuilder: SlamPageBuilder,
     component: SlamComponent,
