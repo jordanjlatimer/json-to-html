@@ -15,7 +15,7 @@ export declare const Slam: {
     pageBuilder: typeof SlamPageBuilder;
     component: typeof SlamComponent;
     styleApplier: typeof CreateStyleApplier;
-    styledElement: typeof StyledElement;
+    styled: typeof StyledElement;
     startServer: typeof StartSlamServer;
     writeFiles: typeof writeFiles;
 };

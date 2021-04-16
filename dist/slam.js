@@ -199,7 +199,7 @@ exports.Slam = {
     pageBuilder: SlamPageBuilder,
     component: SlamComponent,
     styleApplier: CreateStyleApplier,
-    styledElement: StyledElement,
+    styled: StyledElement,
     startServer: StartSlamServer,
     writeFiles: writeFiles,
 };
