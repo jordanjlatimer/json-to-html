@@ -8,7 +8,7 @@ declare function StyledElement<T extends ChildlessElements>(element: ChildlessEl
 declare function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: CSSObject[]): SlamElement<T>;
 declare function CreateStyleApplier(styles: CSSObject): <T extends ParentalElements>(element: SlamElement<T>) => SlamElement<T>;
 declare function CreateStyleApplier(styles: CSSObject, childless: true): <T extends ChildlessElements>(element: SlamElement<T>) => SlamElement<T>;
-declare function StartSlamServer(indexFile: string, port: number, watchList: string[]): Promise<void>;
+declare function StartSlamServer(indexFile: string, port: number, watchList: string[], contentOut?: string): Promise<void>;
 declare function writeFiles(indexFile: string, outDir: string): Promise<void>;
 export declare const Slam: {
     page: typeof SlamPage;

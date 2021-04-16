@@ -110,7 +110,7 @@ function CreateStyleApplier(styles, childless) {
         return function (element) { return StyledElement(element, styles); };
     }
 }
-function StartSlamServer(indexFile, port, watchList) {
+function StartSlamServer(indexFile, port, watchList, contentOut) {
     return __awaiter(this, void 0, void 0, function () {
         var sockets, cache, webServer;
         var _this = this;
@@ -123,6 +123,7 @@ function StartSlamServer(indexFile, port, watchList) {
                     return [4 /*yield*/, otherBuilders_1.buildWebserver(indexFile, cache, port)];
                 case 1:
                     webServer = _a.sent();
+                    contentOut && fs.writeFileSync(contentOut, JSON.stringify(cache));
                     webServer.on("connection", function (socket) { return sockets.push(socket); });
                     watchList.forEach(function (item) {
                         var itemChanged = false;

@@ -95,12 +95,18 @@ function CreateStyleApplier(styles: CSSObject, childless = false) {
   }
 }
 
-async function StartSlamServer(indexFile: string, port: number, watchList: string[]): Promise<void> {
+async function StartSlamServer(
+  indexFile: string,
+  port: number,
+  watchList: string[],
+  contentOut?: string
+): Promise<void> {
   let sockets: Socket[] = [];
   let cache: Record<string, any> = {};
 
   console.log("Starting server...\n");
   let webServer = await buildWebserver(indexFile, cache, port);
+  contentOut && fs.writeFileSync(contentOut, JSON.stringify(cache));
   webServer.on("connection", socket => sockets.push(socket));
   watchList.forEach(item => {
     let itemChanged = false;
