@@ -36,64 +36,49 @@ function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): 
 
 function StyledElement<T extends ParentalElements>(
   element: ParentalElementFunction<T>,
-  styles: CSSObject
+  ...styles: CSSObject[]
 ): ParentalElementFunction<T>;
 function StyledElement<T extends ChildlessElements>(
   element: ChildlessElementFunction<T>,
-  styles: CSSObject
+  ...styles: CSSObject[]
 ): ChildlessElementFunction<T>;
-function StyledElement<T extends TagName>(element: SlamElement<T>, styles: CSSObject): SlamElement<T>;
+function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: CSSObject[]): SlamElement<T>;
 function StyledElement<T extends TagName>(
   element: ElementFunction<T> | SlamElement<T>,
-  styles: CSSObject
+  ...styles: CSSObject[]
 ): ElementFunction<T> | SlamElement<T> {
   if (typeof element === "function") {
     const elem = element();
     if (isChildless(elem.tag)) {
       return (arg1?: TagAttributes<T>) => {
         const obj = buildSlamElementObject(elem.tag, arg1);
-        const css = {
+        let css = {
           ...elem.atts.css,
-          ...styles,
-          ...obj.atts.css,
         };
+        styles.forEach(styleObj => (css = { ...css, ...styleObj }));
+        css = { ...css, ...obj.atts.css };
         obj.atts.css = css;
         return obj;
       };
     } else {
       return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
         const obj = buildSlamElementObject(elem.tag, arg1, arg2);
-        const css = {
+        let css = {
           ...elem.atts.css,
-          ...styles,
-          ...obj.atts.css,
         };
+        styles.forEach(styleObj => (css = { ...css, ...styleObj }));
+        css = { ...css, ...obj.atts.css };
         obj.atts.css = css;
         return obj;
       };
     }
   } else {
-    const css = {
+    let css = {
       ...element.atts.css,
-      ...styles,
     };
+    styles.forEach(styleObj => (css = { ...css, ...styleObj }));
     element.atts.css = css;
     return element;
-  }
-}
-
-function CreateStyleExtender(
-  styles: CSSObject
-): <T extends ParentalElements>(element: ParentalElementFunction<T>) => ParentalElementFunction<T>;
-function CreateStyleExtender(
-  styles: CSSObject,
-  childless: true
-): <T extends ChildlessElements>(element: ChildlessElementFunction<T>) => ChildlessElementFunction<T>;
-function CreateStyleExtender(styles: CSSObject, childless = false) {
-  if (childless) {
-    return <T extends ChildlessElements>(element: ChildlessElementFunction<T>) => StyledElement(element, styles);
-  } else {
-    return <T extends ParentalElements>(element: ParentalElementFunction<T>) => StyledElement(element, styles);
   }
 }
 
@@ -161,7 +146,6 @@ export const Slam = {
   component: SlamComponent,
   styleApplier: CreateStyleApplier,
   styledElement: StyledElement,
-  styleExtender: CreateStyleExtender,
   startServer: StartSlamServer,
   writeFiles: writeFiles,
 };

@@ -1,9 +1,9 @@
 import { body, Slam, head, html, title, div } from "../../dist";
 import { Box } from "./components/Box";
-import { ApplyColorRed, FlexColumn } from "./components/UtilityElements";
+import { ApplyColorRed, BlueBorder, FlexColumn } from "./components/UtilityElements";
 
 export const Home = Slam.page((content: any) => {
-  const ExtendedDiv = Slam.styledElement(FlexColumn(div), {
+  const ExtendedDiv = Slam.styledElement(div, FlexColumn, BlueBorder, {
     backgroundColor: "tan"
   })
   const js = () => console.log("Hello");

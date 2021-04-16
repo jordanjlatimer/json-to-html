@@ -3,11 +3,9 @@ declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) =
 declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
 declare function SlamComponent<T extends TagName>(arg: () => SlamElement<T>): () => SlamElement<T>;
 declare function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): (args: T) => SlamElement<U>;
-declare function StyledElement<T extends ParentalElements>(element: ParentalElementFunction<T>, styles: CSSObject): ParentalElementFunction<T>;
-declare function StyledElement<T extends ChildlessElements>(element: ChildlessElementFunction<T>, styles: CSSObject): ChildlessElementFunction<T>;
-declare function StyledElement<T extends TagName>(element: SlamElement<T>, styles: CSSObject): SlamElement<T>;
-declare function CreateStyleExtender(styles: CSSObject): <T extends ParentalElements>(element: ParentalElementFunction<T>) => ParentalElementFunction<T>;
-declare function CreateStyleExtender(styles: CSSObject, childless: true): <T extends ChildlessElements>(element: ChildlessElementFunction<T>) => ChildlessElementFunction<T>;
+declare function StyledElement<T extends ParentalElements>(element: ParentalElementFunction<T>, ...styles: CSSObject[]): ParentalElementFunction<T>;
+declare function StyledElement<T extends ChildlessElements>(element: ChildlessElementFunction<T>, ...styles: CSSObject[]): ChildlessElementFunction<T>;
+declare function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: CSSObject[]): SlamElement<T>;
 declare function CreateStyleApplier(styles: CSSObject): <T extends ParentalElements>(element: SlamElement<T>) => SlamElement<T>;
 declare function CreateStyleApplier(styles: CSSObject, childless: true): <T extends ChildlessElements>(element: SlamElement<T>) => SlamElement<T>;
 declare function StartSlamServer(indexFile: string, port: number, watchList: string[]): Promise<void>;
@@ -18,7 +16,6 @@ export declare const Slam: {
     component: typeof SlamComponent;
     styleApplier: typeof CreateStyleApplier;
     styledElement: typeof StyledElement;
-    styleExtender: typeof CreateStyleExtender;
     startServer: typeof StartSlamServer;
     writeFiles: typeof writeFiles;
 };
