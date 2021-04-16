@@ -62,27 +62,52 @@ function SlamPageBuilder(builderFunction) {
 function SlamComponent(arg) {
     return arg;
 }
-function SlamStyledElement(elem, styles) {
-    var element = elem();
-    if (utils_1.isChildless(element.tag)) {
-        return function (arg1) {
-            var obj = otherBuilders_1.buildSlamElementObject(element.tag, arg1);
-            var css = __assign(__assign(__assign({}, element.atts.css), styles), obj.atts.css);
-            obj.atts.css = css;
-            return obj;
-        };
+function StyledElement(element, styles) {
+    if (typeof element === "function") {
+        var elem_1 = element();
+        if (utils_1.isChildless(elem_1.tag)) {
+            return function (arg1) {
+                var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1);
+                var css = __assign(__assign(__assign({}, elem_1.atts.css), styles), obj.atts.css);
+                obj.atts.css = css;
+                return obj;
+            };
+        }
+        else {
+            return function (arg1) {
+                var arg2 = [];
+                for (var _i = 1; _i < arguments.length; _i++) {
+                    arg2[_i - 1] = arguments[_i];
+                }
+                var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1, arg2);
+                var css = __assign(__assign(__assign({}, elem_1.atts.css), styles), obj.atts.css);
+                obj.atts.css = css;
+                return obj;
+            };
+        }
     }
     else {
-        return function (arg1) {
-            var arg2 = [];
-            for (var _i = 1; _i < arguments.length; _i++) {
-                arg2[_i - 1] = arguments[_i];
-            }
-            var obj = otherBuilders_1.buildSlamElementObject(element.tag, arg1, arg2);
-            var css = __assign(__assign(__assign({}, element.atts.css), styles), obj.atts.css);
-            obj.atts.css = css;
-            return obj;
-        };
+        var css = __assign(__assign({}, element.atts.css), styles);
+        element.atts.css = css;
+        return element;
+    }
+}
+function CreateStyleExtender(styles, childless) {
+    if (childless === void 0) { childless = false; }
+    if (childless) {
+        return function (element) { return StyledElement(element, styles); };
+    }
+    else {
+        return function (element) { return StyledElement(element, styles); };
+    }
+}
+function CreateStyleApplier(styles, childless) {
+    if (childless === void 0) { childless = false; }
+    if (childless) {
+        return function (element) { return StyledElement(element, styles); };
+    }
+    else {
+        return function (element) { return StyledElement(element, styles); };
     }
 }
 function StartSlamServer(indexFile, port, watchList) {
@@ -173,7 +198,9 @@ exports.Slam = {
     page: SlamPage,
     pageBuilder: SlamPageBuilder,
     component: SlamComponent,
-    styledElement: SlamStyledElement,
+    styleApplier: CreateStyleApplier,
+    styledElement: StyledElement,
+    styleExtender: CreateStyleExtender,
     startServer: StartSlamServer,
     writeFiles: writeFiles,
 };

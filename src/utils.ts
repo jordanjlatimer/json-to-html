@@ -1,4 +1,4 @@
-import { Child, SlamElement, Identification, TagName } from "./slamInterfaces";
+import { Child, SlamElement, Identification, TagName, ChildlessElements } from "./slamInterfaces";
 
 export function toKebabCase(value: string): string {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
@@ -32,7 +32,7 @@ export function isPresentAtt(attName: string): boolean {
   ].includes(attName);
 }
 
-export function isChildless(tag: TagName): boolean {
+export function isChildless(tag: TagName): tag is ChildlessElements {
   return [
     "area",
     "base",

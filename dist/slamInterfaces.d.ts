@@ -44,4 +44,7 @@ export declare type CSSObject = CSSProperties | Selector | ImportDeclaration;
 export interface Identification {
     [key: number]: SlamElement<TagName>[];
 }
+export declare type ChildlessElementFunction<T extends TagName> = (arg1?: TagAttributes<T>) => SlamElement<T>;
+export declare type ParentalElementFunction<T extends TagName> = (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => SlamElement<T>;
+export declare type ElementFunction<T extends TagName> = ParentalElementFunction<T> | ChildlessElementFunction<T>;
 export {};

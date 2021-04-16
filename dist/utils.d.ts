@@ -1,8 +1,8 @@
 /// <reference types="node" />
-import { Child, SlamElement, Identification, TagName } from "./slamInterfaces";
+import { Child, SlamElement, Identification, TagName, ChildlessElements } from "./slamInterfaces";
 export declare function toKebabCase(value: string): string;
 export declare function isPresentAtt(attName: string): boolean;
-export declare function isChildless(tag: TagName): boolean;
+export declare function isChildless(tag: TagName): tag is ChildlessElements;
 interface GenericObject {
     [key: string]: any;
 }

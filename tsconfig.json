@@ -9,8 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "declaration": true,
-    "noUnusedLocals": true,
-    "noErrorTruncation": true
+    "noUnusedLocals": true
   },
   "files": ["src/index.ts"]
 }

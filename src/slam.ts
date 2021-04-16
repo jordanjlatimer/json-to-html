@@ -1,4 +1,16 @@
-import { CSSObject, Page, SlamElement, TagAttributes, TagName, Child } from "./slamInterfaces";
+import {
+  CSSObject,
+  Page,
+  SlamElement,
+  TagAttributes,
+  TagName,
+  Child,
+  ElementFunction,
+  ChildlessElements,
+  ChildlessElementFunction,
+  ParentalElements,
+  ParentalElementFunction,
+} from "./slamInterfaces";
 import { isChildless } from "./utils";
 import { buildPage, buildSlamElementObject, buildWebserver } from "./otherBuilders";
 import { Socket } from "node:net";
@@ -16,36 +28,85 @@ function SlamPageBuilder(
   return builderFunction;
 }
 
-function SlamComponent(arg: () => SlamElement<TagName>): () => SlamElement<TagName>;
-function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => SlamElement<TagName>;
-function SlamComponent<T>(arg: (args: T) => SlamElement<TagName>): (args: T) => SlamElement<TagName> {
+function SlamComponent<T extends TagName>(arg: () => SlamElement<T>): () => SlamElement<T>;
+function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): (args: T) => SlamElement<U>;
+function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): (args: T) => SlamElement<U> {
   return arg;
 }
 
-function SlamStyledElement<T extends TagName>(elem: () => SlamElement<T>, styles: CSSObject) {
-  const element = elem();
-  if (isChildless(element.tag)) {
-    return (arg1?: TagAttributes<T>) => {
-      const obj = buildSlamElementObject(element.tag, arg1);
-      const css = {
-        ...element.atts.css,
-        ...styles,
-        ...obj.atts.css,
+function StyledElement<T extends ParentalElements>(
+  element: ParentalElementFunction<T>,
+  styles: CSSObject
+): ParentalElementFunction<T>;
+function StyledElement<T extends ChildlessElements>(
+  element: ChildlessElementFunction<T>,
+  styles: CSSObject
+): ChildlessElementFunction<T>;
+function StyledElement<T extends TagName>(element: SlamElement<T>, styles: CSSObject): SlamElement<T>;
+function StyledElement<T extends TagName>(
+  element: ElementFunction<T> | SlamElement<T>,
+  styles: CSSObject
+): ElementFunction<T> | SlamElement<T> {
+  if (typeof element === "function") {
+    const elem = element();
+    if (isChildless(elem.tag)) {
+      return (arg1?: TagAttributes<T>) => {
+        const obj = buildSlamElementObject(elem.tag, arg1);
+        const css = {
+          ...elem.atts.css,
+          ...styles,
+          ...obj.atts.css,
+        };
+        obj.atts.css = css;
+        return obj;
       };
-      obj.atts.css = css;
-      return obj;
-    };
+    } else {
+      return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
+        const obj = buildSlamElementObject(elem.tag, arg1, arg2);
+        const css = {
+          ...elem.atts.css,
+          ...styles,
+          ...obj.atts.css,
+        };
+        obj.atts.css = css;
+        return obj;
+      };
+    }
   } else {
-    return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
-      const obj = buildSlamElementObject(element.tag, arg1, arg2);
-      const css = {
-        ...element.atts.css,
-        ...styles,
-        ...obj.atts.css,
-      };
-      obj.atts.css = css;
-      return obj;
+    const css = {
+      ...element.atts.css,
+      ...styles,
     };
+    element.atts.css = css;
+    return element;
+  }
+}
+
+function CreateStyleExtender(
+  styles: CSSObject
+): <T extends ParentalElements>(element: ParentalElementFunction<T>) => ParentalElementFunction<T>;
+function CreateStyleExtender(
+  styles: CSSObject,
+  childless: true
+): <T extends ChildlessElements>(element: ChildlessElementFunction<T>) => ChildlessElementFunction<T>;
+function CreateStyleExtender(styles: CSSObject, childless = false) {
+  if (childless) {
+    return <T extends ChildlessElements>(element: ChildlessElementFunction<T>) => StyledElement(element, styles);
+  } else {
+    return <T extends ParentalElements>(element: ParentalElementFunction<T>) => StyledElement(element, styles);
+  }
+}
+
+function CreateStyleApplier(styles: CSSObject): <T extends ParentalElements>(element: SlamElement<T>) => SlamElement<T>;
+function CreateStyleApplier(
+  styles: CSSObject,
+  childless: true
+): <T extends ChildlessElements>(element: SlamElement<T>) => SlamElement<T>;
+function CreateStyleApplier(styles: CSSObject, childless = false) {
+  if (childless) {
+    return <T extends ChildlessElements>(element: SlamElement<T>) => StyledElement(element, styles);
+  } else {
+    return <T extends ParentalElements>(element: SlamElement<T>) => StyledElement(element, styles);
   }
 }
 
@@ -98,7 +159,9 @@ export const Slam = {
   page: SlamPage,
   pageBuilder: SlamPageBuilder,
   component: SlamComponent,
-  styledElement: SlamStyledElement,
+  styleApplier: CreateStyleApplier,
+  styledElement: StyledElement,
+  styleExtender: CreateStyleExtender,
   startServer: StartSlamServer,
   writeFiles: writeFiles,
 };
