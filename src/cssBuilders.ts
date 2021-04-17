@@ -42,9 +42,10 @@ function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: b
       rootCss[key] = styles[key];
     }
   });
-  return isKeyframe
+  finalString = isKeyframe
     ? finalString
     : imports + buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
+  return finalString;
 }
 
 export function buildPageCssString(components: Identification, reset?: boolean, globalStyles?: CSSObject): string {

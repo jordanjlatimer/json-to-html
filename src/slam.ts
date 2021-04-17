@@ -11,7 +11,7 @@ import {
   ParentalElements,
   ParentalElementFunction,
 } from "./slamInterfaces";
-import { isChildless } from "./utils";
+import { deepStyleMerge, isChildless } from "./utils";
 import { buildPage, buildSlamElementObject, buildWebserver } from "./otherBuilders";
 import { Socket } from "node:net";
 import * as fs from "fs";
@@ -52,32 +52,18 @@ function StyledElement<T extends TagName>(
     if (isChildless(elem.tag)) {
       return (arg1?: TagAttributes<T>) => {
         const obj = buildSlamElementObject(elem.tag, arg1);
-        let css = {
-          ...elem.atts.css,
-        };
-        styles.forEach(styleObj => (css = { ...css, ...styleObj }));
-        css = { ...css, ...obj.atts.css };
-        obj.atts.css = css;
+        obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css);
         return obj;
       };
     } else {
       return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
         const obj = buildSlamElementObject(elem.tag, arg1, arg2);
-        let css = {
-          ...elem.atts.css,
-        };
-        styles.forEach(styleObj => (css = { ...css, ...styleObj }));
-        css = { ...css, ...obj.atts.css };
-        obj.atts.css = css;
+        obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css);
         return obj;
       };
     }
   } else {
-    let css = {
-      ...element.atts.css,
-    };
-    styles.forEach(styleObj => (css = { ...css, ...styleObj }));
-    element.atts.css = css;
+    element.atts.css = deepStyleMerge(element.atts.css, ...styles);
     return element;
   }
 }

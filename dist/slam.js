@@ -46,6 +46,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Slam = void 0;
 var utils_1 = require("./utils");
@@ -72,10 +77,7 @@ function StyledElement(element) {
         if (utils_1.isChildless(elem_1.tag)) {
             return function (arg1) {
                 var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1);
-                var css = __assign({}, elem_1.atts.css);
-                styles.forEach(function (styleObj) { return (css = __assign(__assign({}, css), styleObj)); });
-                css = __assign(__assign({}, css), obj.atts.css);
-                obj.atts.css = css;
+                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css]));
                 return obj;
             };
         }
@@ -86,18 +88,13 @@ function StyledElement(element) {
                     arg2[_i - 1] = arguments[_i];
                 }
                 var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1, arg2);
-                var css = __assign({}, elem_1.atts.css);
-                styles.forEach(function (styleObj) { return (css = __assign(__assign({}, css), styleObj)); });
-                css = __assign(__assign({}, css), obj.atts.css);
-                obj.atts.css = css;
+                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css]));
                 return obj;
             };
         }
     }
     else {
-        var css_1 = __assign({}, element.atts.css);
-        styles.forEach(function (styleObj) { return (css_1 = __assign(__assign({}, css_1), styleObj)); });
-        element.atts.css = css_1;
+        element.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray([element.atts.css], styles));
         return element;
     }
 }

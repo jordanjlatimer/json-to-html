@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.clearCache = exports.determineSimilarElementsByCss = exports.collectElementsWithCss = exports.areEqualObjects = exports.isChildless = exports.isPresentAtt = exports.toKebabCase = void 0;
+exports.deepStyleMerge = exports.clearCache = exports.determineSimilarElementsByCss = exports.collectElementsWithCss = exports.areEqualObjects = exports.isChildless = exports.isPresentAtt = exports.toKebabCase = void 0;
 function toKebabCase(value) {
     return value.split("").reduce(function (a, b) { return a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b); }, "");
 }
@@ -144,3 +144,39 @@ function clearCache(module) {
     delete require.cache[require.resolve(module.id)];
 }
 exports.clearCache = clearCache;
+function deepStyleMerge() {
+    var objs = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        objs[_i] = arguments[_i];
+    }
+    var mergedObj = {};
+    objs = objs.filter(function (obj) { return (obj === undefined ? false : true); });
+    var allKeys = new Set(objs.reduce(function (a, b) {
+        a = a.concat(Object.keys(b));
+        return a;
+    }, []));
+    allKeys.forEach(function (key) {
+        var mergedValue;
+        var needsDeepMerge = false;
+        objs.forEach(function (obj) {
+            if (typeof obj === "object") {
+                if (obj[key]) {
+                    if (typeof obj[key] === "object") {
+                        needsDeepMerge = true;
+                    }
+                    else {
+                        mergedValue = obj[key];
+                    }
+                }
+            }
+        });
+        if (needsDeepMerge) {
+            var allDeepObjects = objs.map(function (obj) { return obj[key]; }).filter(function (obj) { return (typeof obj === "object" ? true : false); });
+            mergedValue = allDeepObjects;
+            mergedValue = deepStyleMerge.apply(void 0, allDeepObjects);
+        }
+        mergedObj[key] = mergedValue;
+    });
+    return mergedObj;
+}
+exports.deepStyleMerge = deepStyleMerge;

@@ -43,9 +43,10 @@ function buildCssFromObject(className, styles, isKeyframe) {
             rootCss[key] = styles[key];
         }
     });
-    return isKeyframe
+    finalString = isKeyframe
         ? finalString
         : imports + buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
+    return finalString;
 }
 function buildPageCssString(components, reset, globalStyles) {
     var build = "";

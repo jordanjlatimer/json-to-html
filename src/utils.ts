@@ -1,4 +1,4 @@
-import { Child, SlamElement, Identification, TagName, ChildlessElements } from "./slamInterfaces";
+import { Child, SlamElement, Identification, TagName, ChildlessElements, CSSObject } from "./slamInterfaces";
 
 export function toKebabCase(value: string): string {
   return value.split("").reduce((a, b) => a + (/[A-Z]/.test(b) ? "-" + b.toLowerCase() : b), "");
@@ -139,4 +139,37 @@ export function clearCache(module: NodeModule): void {
     }
   });
   delete require.cache[require.resolve(module.id)];
+}
+
+export function deepStyleMerge(...objs: any[]): CSSObject {
+  const mergedObj: any = {};
+  objs = objs.filter(obj => (obj === undefined ? false : true));
+  let allKeys = new Set(
+    objs.reduce((a: string[], b: any) => {
+      a = a.concat(Object.keys(b));
+      return a;
+    }, [])
+  );
+  allKeys.forEach(key => {
+    let mergedValue: any;
+    let needsDeepMerge = false;
+    objs.forEach(obj => {
+      if (typeof obj === "object") {
+        if (obj[key]) {
+          if (typeof obj[key] === "object") {
+            needsDeepMerge = true;
+          } else {
+            mergedValue = obj[key];
+          }
+        }
+      }
+    });
+    if (needsDeepMerge) {
+      let allDeepObjects = objs.map(obj => obj[key]).filter(obj => (typeof obj === "object" ? true : false));
+      mergedValue = allDeepObjects;
+      mergedValue = deepStyleMerge(...allDeepObjects);
+    }
+    mergedObj[key] = mergedValue;
+  });
+  return mergedObj;
 }
