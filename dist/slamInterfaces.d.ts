@@ -37,10 +37,10 @@ export declare type Child = SlamElement<TagName> | string;
 interface Selector {
     [key: string]: CSSProperties | Selector;
 }
-interface ImportDeclaration {
-    "@import": string;
+interface Import {
+    "@import"?: string;
 }
-export declare type CSSObject = CSSProperties | Selector | ImportDeclaration;
+export declare type CSSObject = CSSProperties | Selector | Import;
 export interface Identification {
     [key: number]: SlamElement<TagName>[];
 }

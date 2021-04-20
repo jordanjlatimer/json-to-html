@@ -75,11 +75,11 @@ interface Selector {
   [key: string]: CSSProperties | Selector;
 }
 
-interface ImportDeclaration {
-  "@import": string;
+interface Import {
+  "@import"?: string;
 }
 
-export type CSSObject = CSSProperties | Selector | ImportDeclaration;
+export type CSSObject = CSSProperties | Selector | Import;
 
 export interface Identification {
   [key: number]: SlamElement<TagName>[];

@@ -191,8 +191,10 @@ function deepStyleMerge() {
                 });
                 mergedValue = deepStyleMerge.apply(void 0, allDeepObjects);
             }
-            if (Object.keys(mergedValue).length > 0) {
-                mergedObj[key] = mergedValue;
+            if (mergedValue) {
+                if (Object.keys(mergedValue).length > 0) {
+                    mergedObj[key] = mergedValue;
+                }
             }
         });
     }

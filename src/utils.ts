@@ -141,13 +141,13 @@ export function clearCache(module: NodeModule): void {
   delete require.cache[require.resolve(module.id)];
 }
 
-export function deepStyleMerge(...objs: (GenericObject | undefined)[]): CSSObject {
-  const mergedObj: any = {};
+export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | undefined)[]): CSSObject {
+  const mergedObj: CSSObject = {};
   if (objs[objs.length - 1]) {
     let allKeys = new Set(
-      objs.reduce((a: string[], b) => {
+      objs.reduce((a: T[], b) => {
         if (b) {
-          a = a.concat(Object.keys(b));
+          a = a.concat(Object.keys(b) as T[]);
         }
         return a;
       }, [])
@@ -182,8 +182,10 @@ export function deepStyleMerge(...objs: (GenericObject | undefined)[]): CSSObjec
         });
         mergedValue = deepStyleMerge(...allDeepObjects);
       }
-      if (Object.keys(mergedValue).length > 0) {
-        mergedObj[key] = mergedValue;
+      if (mergedValue) {
+        if (Object.keys(mergedValue).length > 0) {
+          mergedObj[key as T] = mergedValue;
+        }
       }
     });
   }

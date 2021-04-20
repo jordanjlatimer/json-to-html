@@ -10,5 +10,5 @@ export declare function areEqualObjects(object1: GenericObject, object2: Generic
 export declare function collectElementsWithCss(tree: Child): SlamElement<TagName>[];
 export declare function determineSimilarElementsByCss(array: SlamElement<TagName>[]): Identification;
 export declare function clearCache(module: NodeModule): void;
-export declare function deepStyleMerge(...objs: (GenericObject | undefined)[]): CSSObject;
+export declare function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | undefined)[]): CSSObject;
 export {};
