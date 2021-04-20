@@ -52,13 +52,13 @@ function StyledElement<T extends TagName>(
     if (isChildless(elem.tag)) {
       return (arg1?: TagAttributes<T>) => {
         const obj = buildSlamElementObject(elem.tag, arg1);
-        obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css);
+        obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css || {});
         return obj;
       };
     } else {
       return (arg1?: TagAttributes<T> | Child | Child[], ...arg2: (Child | Child[])[]) => {
         const obj = buildSlamElementObject(elem.tag, arg1, arg2);
-        obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css);
+        obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css || {});
         return obj;
       };
     }

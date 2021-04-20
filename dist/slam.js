@@ -77,7 +77,7 @@ function StyledElement(element) {
         if (utils_1.isChildless(elem_1.tag)) {
             return function (arg1) {
                 var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1);
-                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css]));
+                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css || {}]));
                 return obj;
             };
         }
@@ -88,7 +88,7 @@ function StyledElement(element) {
                     arg2[_i - 1] = arguments[_i];
                 }
                 var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1, arg2);
-                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css]));
+                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css || {}]));
                 return obj;
             };
         }
