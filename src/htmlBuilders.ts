@@ -1,19 +1,24 @@
 import { Identification, Child, SlamElement, TagName } from "./slamInterfaces";
-import { isChildless, isPresentAtt } from "./utils";
+import { isChildless, isPresentAtt, toKebabCase } from "./utils";
+import { kebabCaseSvgAtts } from "./svgKebabCaseAtts";
 
-function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T): string {
+export function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T): string {
   let attsText = "";
   Object.keys(atts!).forEach(att => {
+    let stringAtt = att;
+    if (kebabCaseSvgAtts.includes(att)) {
+      stringAtt = toKebabCase(att);
+    }
     if (isPresentAtt(att.toString())) {
-      attsText += " " + att;
+      attsText += " " + stringAtt;
     } else if (att !== "js" && att !== "css") {
-      attsText += " " + att + '="' + atts![att as keyof T] + '"';
+      attsText += " " + stringAtt + '="' + atts![att as keyof T] + '"';
     }
   });
   return attsText;
 }
 
-function buildElementAndChildrenStrings(
+export function buildElementAndChildrenStrings(
   tree: SlamElement<TagName> | string,
   components: Identification,
   className?: string

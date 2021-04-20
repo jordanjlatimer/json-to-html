@@ -3,29 +3,25 @@ import { toKebabCase } from "./utils";
 import { Properties as CSSProperties } from "csstype";
 import { tagNames } from "./tagNames";
 
-function buildPropertiesString(styles: CSSProperties): string {
+export function buildPropertiesString(styles: CSSProperties): string {
   return (Object.keys(styles) as Array<keyof CSSObject>).reduce((a, b) => `${a}${toKebabCase(b)}:${styles[b]};`, "");
 }
 
-function buildSelectorString(className: string, selector: string, properties: string): string {
-  return `${className}${selector}{${properties}}`;
+export function buildSelectorString(className: string, properties: string): string {
+  return `${className}{${properties}}`;
 }
 
-function buildKeyframeString(keyframe: string, selectors: string): string {
-  return `${keyframe}{${selectors}}`;
-}
-
-function buildMediaQueryString(className: string, query: string, styleObject: CSSObject): string {
+export function buildMediaQueryString(className: string, query: string, styleObject: CSSObject): string {
   return `${query}{${buildCssFromObject(className, styleObject)}}`;
 }
 
-function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: boolean): string {
+export function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: boolean): string {
   let rootCss: CSSProperties = {};
   let finalString = "";
   let imports = "";
   (Object.keys(styles) as Array<keyof CSSObject>).forEach(key => {
     if (/@keyframes/.test(key)) {
-      finalString += buildKeyframeString(key, buildCssFromObject(className, styles[key] as CSSObject, true));
+      finalString += buildSelectorString(key, buildCssFromObject("", styles[key] as CSSObject, true));
     } else if (/@media/.test(key)) {
       finalString += buildMediaQueryString(className, key, styles[key] as CSSObject);
     } else if (/@import/.test(key)) {
@@ -42,13 +38,18 @@ function buildCssFromObject(className: string, styles: CSSObject, isKeyframe?: b
       rootCss[key] = styles[key];
     }
   });
-  finalString = isKeyframe
-    ? finalString
-    : imports + buildSelectorString(className, "", buildPropertiesString(rootCss)) + finalString;
+  const rootCssBuild = buildPropertiesString(rootCss);
+  if (!isKeyframe) {
+    if (rootCssBuild) {
+      finalString = imports + buildSelectorString(className, buildPropertiesString(rootCss)) + finalString;
+    } else {
+      finalString = imports + finalString;
+    }
+  }
   return finalString;
 }
 
-export function buildPageCssString(components: Identification, reset?: boolean, globalStyles?: CSSObject): string {
+export function buildPageCssString(components: Identification, globalStyles?: CSSObject): string {
   let build = "";
   build += globalStyles ? buildCssFromObject("", globalStyles) : "";
   Object.keys(components).forEach(key => {

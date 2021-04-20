@@ -53,11 +53,23 @@ function buildSlamElementObject(tag, arg1, arg2) {
         else if ("type" in arg1) {
             children.push(arg1);
         }
+        else if (Array.isArray(arg1)) {
+            children = children.concat(arg1);
+        }
         else {
             atts = arg1;
         }
     }
-    arg2 && children.push.apply(children, arg2);
+    if (arg2) {
+        arg2.forEach(function (child) {
+            if (Array.isArray(child)) {
+                children = children.concat(child);
+            }
+            else {
+                children.push(child);
+            }
+        });
+    }
     return {
         type: "element",
         tag: tag,
@@ -71,7 +83,7 @@ function buildPage(page, content) {
     var components = utils_1.determineSimilarElementsByCss(utils_1.collectElementsWithCss(finalPage));
     var build = {
         html: htmlBuilders_1.buildPageHtmlString(finalPage, components),
-        css: cssBuilders_1.buildPageCssString(components, page.cssReset, page.globalStyles),
+        css: cssBuilders_1.buildPageCssString(components, page.globalStyles),
         js: jsBuilders_1.buildPageJsString(components),
     };
     build.html = page.cssReset

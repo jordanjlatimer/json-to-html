@@ -11,20 +11,26 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildPageHtmlString = void 0;
+exports.buildPageHtmlString = exports.buildElementAndChildrenStrings = exports.buildAttsString = void 0;
 var utils_1 = require("./utils");
+var svgKebabCaseAtts_1 = require("./svgKebabCaseAtts");
 function buildAttsString(atts) {
     var attsText = "";
     Object.keys(atts).forEach(function (att) {
+        var stringAtt = att;
+        if (svgKebabCaseAtts_1.kebabCaseSvgAtts.includes(att)) {
+            stringAtt = utils_1.toKebabCase(att);
+        }
         if (utils_1.isPresentAtt(att.toString())) {
-            attsText += " " + att;
+            attsText += " " + stringAtt;
         }
         else if (att !== "js" && att !== "css") {
-            attsText += " " + att + '="' + atts[att] + '"';
+            attsText += " " + stringAtt + '="' + atts[att] + '"';
         }
     });
     return attsText;
 }
+exports.buildAttsString = buildAttsString;
 function buildElementAndChildrenStrings(tree, components, className) {
     if (typeof tree === "string") {
         return tree;
@@ -42,6 +48,7 @@ function buildElementAndChildrenStrings(tree, components, className) {
     build += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
     return build;
 }
+exports.buildElementAndChildrenStrings = buildElementAndChildrenStrings;
 function buildPageHtmlString(tree, components) {
     if (typeof tree === "string") {
         return tree;

@@ -13,7 +13,7 @@ elements.forEach(key => {
     functionsString += `  return buildSlamElementObject("${key}", arg1)\n`;
     functionsString += `};\n\n`;
   } else {
-    functionsString += `export function ${key}(arg1?: TagAttributes<"${key}"> | Child, ...arg2: Child[]): SlamElement<"${key}"> {\n`;
+    functionsString += `export function ${key}(arg1?: TagAttributes<"${key}"> | Child | Child[], ...arg2: (Child | Child[])[]): SlamElement<"${key}"> {\n`;
     functionsString += `  return buildSlamElementObject("${key}", arg1, arg2)\n`;
     functionsString += `};\n\n`;
   }

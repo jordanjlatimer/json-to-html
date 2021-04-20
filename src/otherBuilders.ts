@@ -9,8 +9,8 @@ import { buildPageJsString } from "./jsBuilders";
 
 export function buildSlamElementObject<T extends TagName>(
   tag: T,
-  arg1?: Child | TagAttributes<T>,
-  arg2?: Child[]
+  arg1?: Child | TagAttributes<T> | Child[],
+  arg2?: (Child | Child[])[]
 ): SlamElement<T> {
   let atts: SlamElement<T>["atts"] = {} as TagAttributes<T>;
   let children: Child[] = [];
@@ -19,11 +19,21 @@ export function buildSlamElementObject<T extends TagName>(
       children.push(arg1);
     } else if ("type" in arg1) {
       children.push(arg1);
+    } else if (Array.isArray(arg1)) {
+      children = children.concat(arg1);
     } else {
       atts = arg1;
     }
   }
-  arg2 && children.push(...arg2);
+  if (arg2) {
+    arg2.forEach(child => {
+      if (Array.isArray(child)) {
+        children = children.concat(child);
+      } else {
+        children.push(child);
+      }
+    });
+  }
   return <SlamElement<T>>{
     type: "element",
     tag: tag,
@@ -37,7 +47,7 @@ export function buildPage(page: Page, content: any) {
   let components = determineSimilarElementsByCss(collectElementsWithCss(finalPage));
   let build = {
     html: buildPageHtmlString(finalPage, components),
-    css: buildPageCssString(components, page.cssReset, page.globalStyles),
+    css: buildPageCssString(components, page.globalStyles),
     js: buildPageJsString(components),
   };
   build.html = page.cssReset
