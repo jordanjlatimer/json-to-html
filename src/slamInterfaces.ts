@@ -88,8 +88,8 @@ export interface Identification {
 export type ChildlessElementFunction<T extends TagName> = (arg1?: TagAttributes<T>) => SlamElement<T>;
 
 export type ParentalElementFunction<T extends TagName> = (
-  arg1?: TagAttributes<T> | Child,
-  ...arg2: Child[]
+  arg1?: TagAttributes<T> | Child | Child[],
+  ...arg2: (Child | Child[])[]
 ) => SlamElement<T>;
 
 export type ElementFunction<T extends TagName> = ParentalElementFunction<T> | ChildlessElementFunction<T>;

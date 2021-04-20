@@ -56,7 +56,7 @@ function StyledElement<T extends TagName>(
         return obj;
       };
     } else {
-      return (arg1?: TagAttributes<T> | Child, ...arg2: Child[]) => {
+      return (arg1?: TagAttributes<T> | Child | Child[], ...arg2: (Child | Child[])[]) => {
         const obj = buildSlamElementObject(elem.tag, arg1, arg2);
         obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css);
         return obj;
