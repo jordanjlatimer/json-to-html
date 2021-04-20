@@ -141,35 +141,51 @@ export function clearCache(module: NodeModule): void {
   delete require.cache[require.resolve(module.id)];
 }
 
-export function deepStyleMerge(...objs: any[]): CSSObject {
+export function deepStyleMerge(...objs: (GenericObject | undefined)[]): CSSObject {
   const mergedObj: any = {};
-  objs = objs.filter(obj => (obj === undefined ? false : true));
-  let allKeys = new Set(
-    objs.reduce((a: string[], b: any) => {
-      a = a.concat(Object.keys(b));
-      return a;
-    }, [])
-  );
-  allKeys.forEach(key => {
-    let mergedValue: any;
-    let needsDeepMerge = false;
-    objs.forEach(obj => {
-      if (typeof obj === "object") {
-        if (obj[key]) {
-          if (typeof obj[key] === "object") {
-            needsDeepMerge = true;
-          } else {
-            mergedValue = obj[key];
-          }
+  if (objs[objs.length - 1]) {
+    let allKeys = new Set(
+      objs.reduce((a: string[], b) => {
+        if (b) {
+          a = a.concat(Object.keys(b));
         }
+        return a;
+      }, [])
+    );
+    allKeys.forEach(key => {
+      let mergedValue: any;
+      let needsDeepMerge = false;
+      objs.forEach(obj => {
+        if (obj) {
+          if (obj[key]) {
+            if (typeof obj[key] === "object") {
+              needsDeepMerge = true;
+            } else {
+              mergedValue = obj[key];
+            }
+          }
+        } else {
+          mergedValue = undefined;
+        }
+      });
+      if (needsDeepMerge) {
+        let allDeepObjects = objs.map(obj => {
+          if (obj) {
+            if (obj.hasOwnProperty(key)) {
+              return obj[key];
+            } else {
+              return {};
+            }
+          } else {
+            return undefined;
+          }
+        });
+        mergedValue = deepStyleMerge(...allDeepObjects);
+      }
+      if (Object.keys(mergedValue).length > 0) {
+        mergedObj[key] = mergedValue;
       }
     });
-    if (needsDeepMerge) {
-      let allDeepObjects = objs.map(obj => obj[key]).filter(obj => (typeof obj === "object" ? true : false));
-      mergedValue = allDeepObjects;
-      mergedValue = deepStyleMerge(...allDeepObjects);
-    }
-    mergedObj[key] = mergedValue;
-  });
+  }
   return mergedObj;
 }

@@ -164,6 +164,9 @@ const styles1 = {
       opacity: "0",
     },
   },
+  "::after": {
+    backgroundColor: "blue",
+  },
 };
 
 const styles2 = {
@@ -181,6 +184,7 @@ const styles2 = {
       backgroundColor: "red",
     },
   },
+  "::after": undefined,
 };
 
 const merged = {

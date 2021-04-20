@@ -150,33 +150,52 @@ function deepStyleMerge() {
         objs[_i] = arguments[_i];
     }
     var mergedObj = {};
-    objs = objs.filter(function (obj) { return (obj === undefined ? false : true); });
-    var allKeys = new Set(objs.reduce(function (a, b) {
-        a = a.concat(Object.keys(b));
-        return a;
-    }, []));
-    allKeys.forEach(function (key) {
-        var mergedValue;
-        var needsDeepMerge = false;
-        objs.forEach(function (obj) {
-            if (typeof obj === "object") {
-                if (obj[key]) {
-                    if (typeof obj[key] === "object") {
-                        needsDeepMerge = true;
-                    }
-                    else {
-                        mergedValue = obj[key];
+    if (objs[objs.length - 1]) {
+        var allKeys = new Set(objs.reduce(function (a, b) {
+            if (b) {
+                a = a.concat(Object.keys(b));
+            }
+            return a;
+        }, []));
+        allKeys.forEach(function (key) {
+            var mergedValue;
+            var needsDeepMerge = false;
+            objs.forEach(function (obj) {
+                if (obj) {
+                    if (obj[key]) {
+                        if (typeof obj[key] === "object") {
+                            needsDeepMerge = true;
+                        }
+                        else {
+                            mergedValue = obj[key];
+                        }
                     }
                 }
+                else {
+                    mergedValue = undefined;
+                }
+            });
+            if (needsDeepMerge) {
+                var allDeepObjects = objs.map(function (obj) {
+                    if (obj) {
+                        if (obj.hasOwnProperty(key)) {
+                            return obj[key];
+                        }
+                        else {
+                            return {};
+                        }
+                    }
+                    else {
+                        return undefined;
+                    }
+                });
+                mergedValue = deepStyleMerge.apply(void 0, allDeepObjects);
+            }
+            if (Object.keys(mergedValue).length > 0) {
+                mergedObj[key] = mergedValue;
             }
         });
-        if (needsDeepMerge) {
-            var allDeepObjects = objs.map(function (obj) { return obj[key]; }).filter(function (obj) { return (typeof obj === "object" ? true : false); });
-            mergedValue = allDeepObjects;
-            mergedValue = deepStyleMerge.apply(void 0, allDeepObjects);
-        }
-        mergedObj[key] = mergedValue;
-    });
+    }
     return mergedObj;
 }
 exports.deepStyleMerge = deepStyleMerge;
