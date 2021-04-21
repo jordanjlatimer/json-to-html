@@ -64,9 +64,6 @@ function SlamPage(arg) {
 function SlamPageBuilder(builderFunction) {
     return builderFunction;
 }
-function SlamComponent(arg) {
-    return arg;
-}
 function StyledElement(element) {
     var styles = [];
     for (var _i = 1; _i < arguments.length; _i++) {
@@ -202,7 +199,6 @@ function mergeStyles() {
 exports.Slam = {
     page: SlamPage,
     pageBuilder: SlamPageBuilder,
-    component: SlamComponent,
     styleApplier: CreateStyleApplier,
     styled: StyledElement,
     startServer: StartSlamServer,

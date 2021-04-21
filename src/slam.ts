@@ -28,12 +28,6 @@ function SlamPageBuilder(
   return builderFunction;
 }
 
-function SlamComponent<T extends TagName>(arg: () => SlamElement<T>): () => SlamElement<T>;
-function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): (args: T) => SlamElement<U>;
-function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): (args: T) => SlamElement<U> {
-  return arg;
-}
-
 function StyledElement<T extends ParentalElements>(
   element: ParentalElementFunction<T>,
   ...styles: CSSObject[]
@@ -139,7 +133,6 @@ function mergeStyles(...styles: CSSObject[]) {
 export const Slam = {
   page: SlamPage,
   pageBuilder: SlamPageBuilder,
-  component: SlamComponent,
   styleApplier: CreateStyleApplier,
   styled: StyledElement,
   startServer: StartSlamServer,

@@ -1,7 +1,7 @@
-import { Slam } from "../../../dist";
+import { Child, Slam } from "../../../dist";
 import { StyledDiv } from "./StyledDiv";
 
-export const Component = Slam.component((inner: string) => {
+export const Component = (...children: Child[]) => {
   const Root = Slam.styled(StyledDiv, {
     height: "200px",
     width: "200px",
@@ -9,5 +9,5 @@ export const Component = Slam.component((inner: string) => {
 
   const js = () => console.log("Component");
 
-  return Root({ js: js }, inner);
-});
+  return Root({ js: js }, children);
+}

@@ -8,7 +8,8 @@ export const Index = Slam.page((content: string) => {
       title("Test")
     ),
     body(
-      Component("Component"), 
+      Component("Component"),
+      Component("Child1", "Child2"),
       StyleApplier(
         Component("Component With Red Text")
       ), 

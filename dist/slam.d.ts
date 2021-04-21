@@ -1,8 +1,6 @@
 import { CSSObject, Page, SlamElement, TagName, ChildlessElements, ChildlessElementFunction, ParentalElements, ParentalElementFunction } from "./slamInterfaces";
 declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html">;
 declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
-declare function SlamComponent<T extends TagName>(arg: () => SlamElement<T>): () => SlamElement<T>;
-declare function SlamComponent<T, U extends TagName>(arg: (args: T) => SlamElement<U>): (args: T) => SlamElement<U>;
 declare function StyledElement<T extends ParentalElements>(element: ParentalElementFunction<T>, ...styles: CSSObject[]): ParentalElementFunction<T>;
 declare function StyledElement<T extends ChildlessElements>(element: ChildlessElementFunction<T>, ...styles: CSSObject[]): ChildlessElementFunction<T>;
 declare function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: CSSObject[]): SlamElement<T>;
@@ -14,7 +12,6 @@ declare function mergeStyles(...styles: CSSObject[]): CSSObject;
 export declare const Slam: {
     page: typeof SlamPage;
     pageBuilder: typeof SlamPageBuilder;
-    component: typeof SlamComponent;
     styleApplier: typeof CreateStyleApplier;
     styled: typeof StyledElement;
     startServer: typeof StartSlamServer;
