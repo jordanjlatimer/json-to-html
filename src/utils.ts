@@ -65,12 +65,6 @@ interface GenericObject {
 }
 
 export function areEqualObjects(object1: GenericObject, object2: GenericObject): boolean {
-  if (typeof object1 !== "object") {
-    throw "Parameter 1 is not an object.";
-  }
-  if (typeof object2 !== "object") {
-    throw "Parameter 2 is not an object.";
-  }
   if (object1 === object2) {
     return true;
   }
@@ -81,7 +75,11 @@ export function areEqualObjects(object1: GenericObject, object2: GenericObject):
   }
   for (let key of object1Keys) {
     if (typeof object1[key] === "object") {
-      if (!areEqualObjects(object1[key], object2[key])) {
+      if (typeof object2[key] === "object") {
+        if (!areEqualObjects(object1[key], object2[key])) {
+          return false;
+        }
+      } else {
         return false;
       }
     } else if (object1[key] !== object2[key]) {

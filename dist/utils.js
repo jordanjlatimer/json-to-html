@@ -62,12 +62,6 @@ function isChildless(tag) {
 }
 exports.isChildless = isChildless;
 function areEqualObjects(object1, object2) {
-    if (typeof object1 !== "object") {
-        throw "Parameter 1 is not an object.";
-    }
-    if (typeof object2 !== "object") {
-        throw "Parameter 2 is not an object.";
-    }
     if (object1 === object2) {
         return true;
     }
@@ -79,7 +73,12 @@ function areEqualObjects(object1, object2) {
     for (var _i = 0, object1Keys_1 = object1Keys; _i < object1Keys_1.length; _i++) {
         var key = object1Keys_1[_i];
         if (typeof object1[key] === "object") {
-            if (!areEqualObjects(object1[key], object2[key])) {
+            if (typeof object2[key] === "object") {
+                if (!areEqualObjects(object1[key], object2[key])) {
+                    return false;
+                }
+            }
+            else {
                 return false;
             }
         }
