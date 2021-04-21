@@ -142,9 +142,11 @@ export function clearCache(module: NodeModule): void {
 export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | undefined)[]): CSSObject {
   const mergedObj: CSSObject = {};
   if (objs[objs.length - 1]) {
-    let allKeys = new Set(
+    //If the last element of the array is not undefined.
+    let allKeys = new Set( //Get a set of all unique keys within the objects.
       objs.reduce((a: T[], b) => {
         if (b) {
+          //Make sure b is not undefined
           a = a.concat(Object.keys(b) as T[]);
         }
         return a;
@@ -155,24 +157,30 @@ export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | 
       let needsDeepMerge = false;
       objs.forEach(obj => {
         if (obj) {
+          //Make sure the object is not undefined.
           if (obj[key]) {
+            //Check if the property exists on the object.
             if (typeof obj[key] === "object") {
-              needsDeepMerge = true;
+              needsDeepMerge = true; //If the property is itself an object, we need to perform a deep merge before assigning it to mergedValue.
             } else {
-              mergedValue = obj[key];
+              mergedValue = obj[key]; //Otherwise, we can assign it to the merged value
             }
           }
         } else {
-          mergedValue = undefined;
+          mergedValue = undefined; //If the object is undefined, then the merged value should be "zeroed out", so to speak.
         }
       });
       if (needsDeepMerge) {
         let allDeepObjects = objs.map(obj => {
+          //Get a list of objects to perform a deep merge on.
           if (obj) {
-            if (obj.hasOwnProperty(key)) {
-              return obj[key];
-            } else {
-              return {};
+            if (typeof obj === "object") {
+              if (obj.hasOwnProperty(key)) {
+                //Check if the property actually exists, and is not actually assigned "undefined"
+                return obj[key];
+              } else {
+                return {};
+              }
             }
           } else {
             return undefined;
@@ -181,8 +189,14 @@ export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | 
         mergedValue = deepStyleMerge(...allDeepObjects);
       }
       if (mergedValue) {
-        if (Object.keys(mergedValue).length > 0) {
-          mergedObj[key as T] = mergedValue;
+        //Has the merged value been assigned a value other than undefined?
+        if (typeof mergedValue === "object") {
+          if (Object.keys(mergedValue).length > 0) {
+            //Is the merged value an object and has keys?
+            mergedObj[key as T] = mergedValue; //Then assign it to the final mergedObj
+          }
+        } else {
+          mergedObj[key as T] = mergedValue; //If the value is not an object or undefined, assign it to the final mergedObj.
         }
       }
     });

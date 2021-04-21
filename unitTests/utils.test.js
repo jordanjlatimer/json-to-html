@@ -145,6 +145,7 @@ test("determineSimilarElementsByCss - test functionality", () => {
 
 const styles1 = {
   height: "200px",
+  flexGrow: 1,
   ":hover": {
     backgroundColor: "red",
   },
@@ -189,6 +190,7 @@ const styles2 = {
 
 const merged = {
   height: "200px",
+  flexGrow: 1,
   ":hover": {
     backgroundColor: "blue",
   },
