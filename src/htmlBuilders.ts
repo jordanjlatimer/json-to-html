@@ -18,26 +18,25 @@ export function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T)
   return attsText;
 }
 
-export function buildElementAndChildrenStrings(
-  tree: SlamElement<TagName> | string,
-  components: Identification,
-  className?: string
-): string {
+export function buildElementAndChildrenStrings(tree: Child, components: Identification, className?: string): string {
   if (typeof tree === "string") {
     return tree;
+  } else if (tree) {
+    let build = `<${tree["tag"]}`;
+    if (tree["atts"] || className) {
+      const atts = tree["atts"] || {};
+      const attsClass = atts["class"] || "";
+      const fullClass = className ? (attsClass ? `${attsClass} ${className}` : className) : attsClass;
+      const classObject = fullClass ? { class: fullClass } : {};
+      build += buildAttsString({ ...atts, ...classObject });
+    }
+    build += isChildless(tree["tag"]) ? "/>" : ">";
+    tree["children"] && tree["children"].forEach(child => (build += buildPageHtmlString(child, components)));
+    build += !isChildless(tree["tag"]) ? `</${tree["tag"]}>` : "";
+    return build;
+  } else {
+    return "";
   }
-  let build = `<${tree["tag"]}`;
-  if (tree["atts"] || className) {
-    const atts = tree["atts"] || {};
-    const attsClass = atts["class"] || "";
-    const fullClass = className ? (attsClass ? `${attsClass} ${className}` : className) : attsClass;
-    const classObject = fullClass ? { class: fullClass } : {};
-    build += buildAttsString({ ...atts, ...classObject });
-  }
-  build += isChildless(tree["tag"]) ? "/>" : ">";
-  tree["children"] && tree["children"].forEach(child => (build += buildPageHtmlString(child, components)));
-  build += !isChildless(tree["tag"]) ? `</${tree["tag"]}>` : "";
-  return build;
 }
 
 export function buildPageHtmlString(tree: Child, components: Identification): string {

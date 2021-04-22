@@ -35,18 +35,23 @@ function buildElementAndChildrenStrings(tree, components, className) {
     if (typeof tree === "string") {
         return tree;
     }
-    var build = "<" + tree["tag"];
-    if (tree["atts"] || className) {
-        var atts = tree["atts"] || {};
-        var attsClass = atts["class"] || "";
-        var fullClass = className ? (attsClass ? attsClass + " " + className : className) : attsClass;
-        var classObject = fullClass ? { class: fullClass } : {};
-        build += buildAttsString(__assign(__assign({}, atts), classObject));
+    else if (tree) {
+        var build_1 = "<" + tree["tag"];
+        if (tree["atts"] || className) {
+            var atts = tree["atts"] || {};
+            var attsClass = atts["class"] || "";
+            var fullClass = className ? (attsClass ? attsClass + " " + className : className) : attsClass;
+            var classObject = fullClass ? { class: fullClass } : {};
+            build_1 += buildAttsString(__assign(__assign({}, atts), classObject));
+        }
+        build_1 += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
+        tree["children"] && tree["children"].forEach(function (child) { return (build_1 += buildPageHtmlString(child, components)); });
+        build_1 += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
+        return build_1;
     }
-    build += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
-    tree["children"] && tree["children"].forEach(function (child) { return (build += buildPageHtmlString(child, components)); });
-    build += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
-    return build;
+    else {
+        return "";
+    }
 }
 exports.buildElementAndChildrenStrings = buildElementAndChildrenStrings;
 function buildPageHtmlString(tree, components) {

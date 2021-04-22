@@ -33,7 +33,7 @@ export interface BuildObject {
     css: string;
     js: string;
 }
-export declare type Child = SlamElement<TagName> | string;
+export declare type Child = SlamElement<TagName> | string | undefined;
 interface Selector {
     [key: string]: CSSProperties | Selector;
 }

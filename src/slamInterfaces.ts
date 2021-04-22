@@ -69,7 +69,7 @@ export interface BuildObject {
   js: string;
 }
 
-export type Child = SlamElement<TagName> | string;
+export type Child = SlamElement<TagName> | string | undefined;
 
 interface Selector {
   [key: string]: CSSProperties | Selector;
