@@ -35,7 +35,7 @@ export interface BuildObject {
 }
 export declare type Child = SlamElement<TagName> | string | undefined;
 interface Selector {
-    [key: string]: CSSProperties | Selector;
+    [key: string]: CSSObject;
 }
 interface Import {
     "@import"?: string;
