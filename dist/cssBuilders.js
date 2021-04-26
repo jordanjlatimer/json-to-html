@@ -57,7 +57,8 @@ function buildCssFromObject(className, styles, isKeyframe) {
 exports.buildCssFromObject = buildCssFromObject;
 function buildPageCssString(components, globalStyles) {
     var build = "";
-    build += globalStyles ? buildCssFromObject("", globalStyles) : "";
+    var mergedCss = Array.isArray(globalStyles) ? utils_1.deepStyleMerge.apply(void 0, globalStyles) : globalStyles;
+    build += globalStyles ? buildCssFromObject("", mergedCss || {}) : "";
     Object.keys(components).forEach(function (key) {
         var _a;
         var css = (_a = components[parseInt(key)][0].atts) === null || _a === void 0 ? void 0 : _a.css;

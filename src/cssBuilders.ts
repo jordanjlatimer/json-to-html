@@ -1,5 +1,5 @@
 import { CSSObject, Identification } from "./slamInterfaces";
-import { toKebabCase } from "./utils";
+import { deepStyleMerge, toKebabCase } from "./utils";
 import { Properties as CSSProperties } from "csstype";
 import { tagNames } from "./tagNames";
 
@@ -49,9 +49,10 @@ export function buildCssFromObject(className: string, styles: CSSObject, isKeyfr
   return finalString;
 }
 
-export function buildPageCssString(components: Identification, globalStyles?: CSSObject): string {
+export function buildPageCssString(components: Identification, globalStyles?: CSSObject | CSSObject[]): string {
   let build = "";
-  build += globalStyles ? buildCssFromObject("", globalStyles) : "";
+  let mergedCss = Array.isArray(globalStyles) ? deepStyleMerge(...globalStyles) : globalStyles;
+  build += globalStyles ? buildCssFromObject("", mergedCss || {}) : "";
   Object.keys(components).forEach(key => {
     let css = components[parseInt(key)][0].atts?.css;
     build += css ? buildCssFromObject(`.c${key}`, css) : "";

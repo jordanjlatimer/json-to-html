@@ -25,7 +25,7 @@ export interface Page {
     name: string;
     html: SlamElement<"html"> | ((args: any) => SlamElement<"html">);
     cssReset?: boolean;
-    globalStyles?: CSSObject;
+    globalStyles?: CSSObject | CSSObject[];
     content?: () => any | Promise<any>;
 }
 export interface BuildObject {
@@ -35,7 +35,7 @@ export interface BuildObject {
 }
 export declare type Child = SlamElement<TagName> | string | undefined;
 interface Selector {
-    [key: string]: CSSObject;
+    [key: string]: CSSObject | CSSObject[];
 }
 interface Import {
     "@import"?: string;

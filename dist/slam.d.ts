@@ -8,14 +8,12 @@ declare function CreateStyleApplier(styles: CSSObject): <T extends ParentalEleme
 declare function CreateStyleApplier(styles: CSSObject, childless: true): <T extends ChildlessElements>(element: SlamElement<T>) => SlamElement<T>;
 declare function StartSlamServer(indexFile: string, port: number, watchList: string[], contentOut?: string): Promise<void>;
 declare function writeFiles(indexFile: string, outDir: string): Promise<void>;
-declare function mergeStyles(...styles: CSSObject[]): CSSObject;
 export declare const Slam: {
     page: typeof SlamPage;
     pageBuilder: typeof SlamPageBuilder;
     styleApplier: typeof CreateStyleApplier;
     styled: typeof StyledElement;
     startServer: typeof StartSlamServer;
-    mergeStyles: typeof mergeStyles;
     writeFiles: typeof writeFiles;
 };
 export {};

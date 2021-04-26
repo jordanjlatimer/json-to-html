@@ -189,19 +189,11 @@ function writeFiles(indexFile, outDir) {
         });
     });
 }
-function mergeStyles() {
-    var styles = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        styles[_i] = arguments[_i];
-    }
-    return utils_1.deepStyleMerge.apply(void 0, styles);
-}
 exports.Slam = {
     page: SlamPage,
     pageBuilder: SlamPageBuilder,
     styleApplier: CreateStyleApplier,
     styled: StyledElement,
     startServer: StartSlamServer,
-    mergeStyles: mergeStyles,
     writeFiles: writeFiles,
 };

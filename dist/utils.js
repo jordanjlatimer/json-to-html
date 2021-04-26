@@ -149,6 +149,7 @@ function deepStyleMerge() {
         objs[_i] = arguments[_i];
     }
     var mergedObj = {};
+    objs.forEach(function (obj, i) { return (Array.isArray(obj) ? (objs[i] = deepStyleMerge.apply(void 0, obj)) : (objs[i] = obj)); });
     if (objs[objs.length - 1]) {
         //If the last element of the array is not undefined.
         var allKeys = new Set(//Get a set of all unique keys within the objects.

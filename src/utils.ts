@@ -141,6 +141,7 @@ export function clearCache(module: NodeModule): void {
 
 export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | undefined)[]): CSSObject {
   const mergedObj: CSSObject = {};
+  objs.forEach((obj, i) => (Array.isArray(obj) ? (objs[i] = deepStyleMerge(...obj)) : (objs[i] = obj)));
   if (objs[objs.length - 1]) {
     //If the last element of the array is not undefined.
     let allKeys = new Set( //Get a set of all unique keys within the objects.

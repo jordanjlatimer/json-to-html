@@ -168,6 +168,7 @@ const styles1 = {
   "::after": {
     backgroundColor: "blue",
   },
+  div: [{ borderRadius: "2px" }, { display: "flex" }],
 };
 
 const styles2 = {
@@ -200,6 +201,8 @@ const merged = {
   },
   div: {
     margin: "20px",
+    borderRadius: "2px",
+    display: "flex",
   },
   "@media screen and (min-width: 600px)": {
     ":hover": {
