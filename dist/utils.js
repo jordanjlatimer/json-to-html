@@ -149,69 +149,28 @@ function deepStyleMerge() {
         objs[_i] = arguments[_i];
     }
     var mergedObj = {};
-    objs.forEach(function (obj, i) { return (Array.isArray(obj) ? (objs[i] = deepStyleMerge.apply(void 0, obj)) : (objs[i] = obj)); });
+    objs.forEach(function (obj, i) { return (Array.isArray(obj) ? (objs[i] = deepStyleMerge.apply(void 0, obj)) : (objs[i] = obj)); }); //Flatten arrays of styles
     if (objs[objs.length - 1]) {
-        //If the last element of the array is not undefined.
-        var allKeys = new Set(//Get a set of all unique keys within the objects.
-        objs.reduce(function (a, b) {
-            if (b) {
-                //Make sure b is not undefined
-                a = a.concat(Object.keys(b));
-            }
-            return a;
-        }, []));
-        allKeys.forEach(function (key) {
-            var mergedValue;
-            var needsDeepMerge = false;
-            objs.forEach(function (obj) {
-                if (obj) {
-                    //Make sure the object is not undefined.
-                    if (obj[key]) {
-                        //Check if the property exists on the object.
+        var deepMergeKeys_1 = new Set();
+        objs.forEach(function (obj) {
+            if (obj) {
+                Object.keys(obj).forEach(function (key) {
+                    if (obj[key] || obj[key] === 0) {
                         if (typeof obj[key] === "object") {
-                            needsDeepMerge = true; //If the property is itself an object, we need to perform a deep merge before assigning it to mergedValue.
+                            deepMergeKeys_1.add(key);
                         }
                         else {
-                            mergedValue = obj[key]; //Otherwise, we can assign it to the merged value
+                            mergedObj[key] = obj[key];
                         }
-                    }
-                }
-                else {
-                    mergedValue = undefined; //If the object is undefined, then the merged value should be "zeroed out", so to speak.
-                }
-            });
-            if (needsDeepMerge) {
-                var allDeepObjects = objs.map(function (obj) {
-                    //Get a list of objects to perform a deep merge on.
-                    if (obj) {
-                        if (typeof obj === "object") {
-                            if (obj.hasOwnProperty(key)) {
-                                //Check if the property actually exists, and is not actually assigned "undefined"
-                                return obj[key];
-                            }
-                            else {
-                                return {};
-                            }
-                        }
-                    }
-                    else {
-                        return undefined;
                     }
                 });
-                mergedValue = deepStyleMerge.apply(void 0, allDeepObjects);
             }
-            if (mergedValue) {
-                //Has the merged value been assigned a value other than undefined?
-                if (typeof mergedValue === "object") {
-                    if (Object.keys(mergedValue).length > 0) {
-                        //Is the merged value an object and has keys?
-                        mergedObj[key] = mergedValue; //Then assign it to the final mergedObj
-                    }
-                }
-                else {
-                    mergedObj[key] = mergedValue; //If the value is not an object or undefined, assign it to the final mergedObj.
-                }
-            }
+        });
+        deepMergeKeys_1.forEach(function (key) {
+            var objectsToMerge = [];
+            objs.forEach(function (obj) { return (obj ? (obj[key] ? objectsToMerge.push(obj[key]) : undefined) : undefined); });
+            //@ts-ignore
+            mergedObj[key] = deepStyleMerge.apply(void 0, objectsToMerge);
         });
     }
     return mergedObj;

@@ -165,10 +165,8 @@ const styles1 = {
       opacity: "0",
     },
   },
-  "::after": {
-    backgroundColor: "blue",
-  },
   div: [{ borderRadius: "2px" }, { display: "flex" }],
+  fillOpacity: 0,
 };
 
 const styles2 = {
@@ -186,7 +184,6 @@ const styles2 = {
       backgroundColor: "red",
     },
   },
-  "::after": undefined,
 };
 
 const merged = {
@@ -217,6 +214,7 @@ const merged = {
       opacity: "0",
     },
   },
+  fillOpacity: 0,
 };
 
 test("deepStyleMerge - test functionality", () => {
