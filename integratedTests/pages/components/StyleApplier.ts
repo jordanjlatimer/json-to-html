@@ -1,3 +1,3 @@
 import { Slam } from "../../../dist";
 
-export const StyleApplier = Slam.styleApplier({ color: "red" });
+export const StyleApplier = Slam.applier({ color: "red" });

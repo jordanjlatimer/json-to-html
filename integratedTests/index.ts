@@ -1,7 +1,7 @@
 import { Slam } from "../dist";
 import { Index } from "./pages";
 
-export default Slam.pageBuilder(async () => {
+export default Slam.build(async () => {
   return [
     {
       name: "index",

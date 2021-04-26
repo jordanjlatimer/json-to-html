@@ -129,11 +129,16 @@ async function writeFiles(indexFile: string, outDir: string): Promise<void> {
   });
 }
 
+function mergeStyles(...styles: CSSObject[]) {
+  return deepStyleMerge(...styles);
+}
+
 export const Slam = {
   page: SlamPage,
-  pageBuilder: SlamPageBuilder,
+  build: SlamPageBuilder,
   applier: CreateStyleApplier,
+  merge: mergeStyles,
   styled: StyledElement,
-  startServer: StartSlamServer,
-  writeFiles: writeFiles,
+  serve: StartSlamServer,
+  write: writeFiles,
 };

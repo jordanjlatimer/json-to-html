@@ -7,4 +7,4 @@ const indexFile = path.resolve(__dirname, "./index.ts");
 
 const contentOut = path.resolve(__dirname, "./content.json");
 
-Slam.startServer(indexFile, 3000, watchList, contentOut);
+Slam.serve(indexFile, 3000, watchList, contentOut);
