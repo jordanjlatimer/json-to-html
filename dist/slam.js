@@ -192,7 +192,7 @@ function writeFiles(indexFile, outDir) {
 exports.Slam = {
     page: SlamPage,
     pageBuilder: SlamPageBuilder,
-    styleApplier: CreateStyleApplier,
+    applier: CreateStyleApplier,
     styled: StyledElement,
     startServer: StartSlamServer,
     writeFiles: writeFiles,

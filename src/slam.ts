@@ -30,16 +30,19 @@ function SlamPageBuilder(
 
 function StyledElement<T extends ParentalElements>(
   element: ParentalElementFunction<T>,
-  ...styles: CSSObject[]
+  ...styles: (CSSObject | CSSObject[])[]
 ): ParentalElementFunction<T>;
 function StyledElement<T extends ChildlessElements>(
   element: ChildlessElementFunction<T>,
-  ...styles: CSSObject[]
+  ...styles: (CSSObject | CSSObject[])[]
 ): ChildlessElementFunction<T>;
-function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: CSSObject[]): SlamElement<T>;
+function StyledElement<T extends TagName>(
+  element: SlamElement<T>,
+  ...styles: (CSSObject | CSSObject[])[]
+): SlamElement<T>;
 function StyledElement<T extends TagName>(
   element: ElementFunction<T> | SlamElement<T>,
-  ...styles: CSSObject[]
+  ...styles: (CSSObject | CSSObject[])[]
 ): ElementFunction<T> | SlamElement<T> {
   if (typeof element === "function") {
     const elem = element();
@@ -129,7 +132,7 @@ async function writeFiles(indexFile: string, outDir: string): Promise<void> {
 export const Slam = {
   page: SlamPage,
   pageBuilder: SlamPageBuilder,
-  styleApplier: CreateStyleApplier,
+  applier: CreateStyleApplier,
   styled: StyledElement,
   startServer: StartSlamServer,
   writeFiles: writeFiles,

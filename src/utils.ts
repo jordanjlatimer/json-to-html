@@ -139,7 +139,7 @@ export function clearCache(module: NodeModule): void {
   delete require.cache[require.resolve(module.id)];
 }
 
-export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | undefined)[]): CSSObject {
+export function deepStyleMerge<T extends keyof CSSObject>(...objs: (CSSObject | CSSObject[] | undefined)[]): CSSObject {
   const mergedObj: CSSObject = {};
   objs.forEach((obj, i) => (Array.isArray(obj) ? (objs[i] = deepStyleMerge(...obj)) : (objs[i] = obj)));
   if (objs[objs.length - 1]) {
