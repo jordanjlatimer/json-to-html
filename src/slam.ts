@@ -30,19 +30,19 @@ function SlamPageBuilder(
 
 function StyledElement<T extends ParentalElements>(
   element: ParentalElementFunction<T>,
-  ...styles: (CSSObject | CSSObject[])[]
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
 ): ParentalElementFunction<T>;
 function StyledElement<T extends ChildlessElements>(
   element: ChildlessElementFunction<T>,
-  ...styles: (CSSObject | CSSObject[])[]
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
 ): ChildlessElementFunction<T>;
 function StyledElement<T extends TagName>(
   element: SlamElement<T>,
-  ...styles: (CSSObject | CSSObject[])[]
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
 ): SlamElement<T>;
 function StyledElement<T extends TagName>(
   element: ElementFunction<T> | SlamElement<T>,
-  ...styles: (CSSObject | CSSObject[])[]
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
 ): ElementFunction<T> | SlamElement<T> {
   if (typeof element === "function") {
     const elem = element();
