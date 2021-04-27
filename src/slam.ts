@@ -28,6 +28,25 @@ function SlamPageBuilder(
   return builderFunction;
 }
 
+export function StyledComponent<T extends TagName>(
+  func: () => SlamElement<T>,
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
+): () => SlamElement<T>;
+export function StyledComponent<T extends TagName, U>(
+  func: (params: U) => SlamElement<T>,
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
+): (params: U) => SlamElement<T>;
+export function StyledComponent<T extends TagName, U>(
+  func: (params: U) => SlamElement<T>,
+  ...styles: (CSSObject | CSSObject[] | undefined)[]
+): (params: U) => SlamElement<T> {
+  return (params: U) => {
+    const element = func(params);
+    element.atts.css = deepStyleMerge(element.atts.css, ...styles);
+    return element;
+  };
+}
+
 function StyledElement<T extends ParentalElements>(
   element: ParentalElementFunction<T>,
   ...styles: (CSSObject | CSSObject[] | undefined)[]
@@ -138,7 +157,10 @@ export const Slam = {
   build: SlamPageBuilder,
   applier: CreateStyleApplier,
   merge: mergeStyles,
-  styled: StyledElement,
+  styled: {
+    element: StyledElement,
+    component: StyledComponent,
+  },
   serve: StartSlamServer,
   write: writeFiles,
 };

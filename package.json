@@ -1,6 +1,6 @@
 {
   "name": "slam-js",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "A pure js library for component-based web devlopment",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
