@@ -19,6 +19,18 @@ test("buildAttsString - camel atts", () => {
   );
 });
 
+test("buildAttsString - ignore js, css, and object atts", () => {
+  expect(
+    buildAttsString({
+      alignmentBaseline: "middle",
+      baselineShift: "100%",
+      js: () => console.log("js"),
+      css: { height: "200px" },
+      child: { class: "class" },
+    })
+  ).toBe(' alignment-baseline="middle" baseline-shift="100%"');
+});
+
 test("buildElementAndChildrenStrings - string", () => {
   expect(buildElementAndChildrenStrings("Hello World", {})).toBe("Hello World");
 });

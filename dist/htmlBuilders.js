@@ -24,7 +24,7 @@ function buildAttsString(atts) {
         if (utils_1.isPresentAtt(att.toString())) {
             attsText += " " + stringAtt;
         }
-        else if (att !== "js" && att !== "css") {
+        else if (att !== "js" && att !== "css" && typeof atts[att] !== "object") {
             attsText += " " + stringAtt + '="' + atts[att] + '"';
         }
     });

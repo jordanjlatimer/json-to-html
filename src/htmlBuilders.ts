@@ -11,7 +11,7 @@ export function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T)
     }
     if (isPresentAtt(att.toString())) {
       attsText += " " + stringAtt;
-    } else if (att !== "js" && att !== "css") {
+    } else if (att !== "js" && att !== "css" && typeof atts[att as keyof T] !== "object") {
       attsText += " " + stringAtt + '="' + atts![att as keyof T] + '"';
     }
   });
