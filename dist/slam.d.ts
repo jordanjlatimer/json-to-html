@@ -1,8 +1,8 @@
-import { CSSObject, Page, SlamElement, TagName, ChildlessElements, ChildlessElementFunction, ParentalElements, ParentalElementFunction } from "./slamInterfaces";
+import { ChildlessElementFunction, ChildlessElements, CSSObject, Page, ParentalElementFunction, ParentalElements, SlamElement, TagName } from "./slamInterfaces";
 declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html">;
 declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
 export declare function StyledComponent<T extends TagName>(func: () => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): () => SlamElement<T>;
-export declare function StyledComponent<T extends TagName, U>(func: (params: U) => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): (params: U) => SlamElement<T>;
+export declare function StyledComponent<T extends TagName, U extends any[]>(func: (...args: U) => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): (...args: U) => SlamElement<T>;
 declare function StyledElement<T extends ParentalElements>(element: ParentalElementFunction<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): ParentalElementFunction<T>;
 declare function StyledElement<T extends ChildlessElements>(element: ChildlessElementFunction<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): ChildlessElementFunction<T>;
 declare function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): SlamElement<T>;

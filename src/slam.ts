@@ -1,22 +1,22 @@
+import * as fs from "fs";
+import { Socket } from "node:net";
+import * as path from "path";
+import { cssReset } from "./cssReset";
+import { buildPage, buildSlamElementObject, buildWebserver } from "./otherBuilders";
 import {
+  Child,
+  ChildlessElementFunction,
+  ChildlessElements,
   CSSObject,
+  ElementFunction,
   Page,
+  ParentalElementFunction,
+  ParentalElements,
   SlamElement,
   TagAttributes,
   TagName,
-  Child,
-  ElementFunction,
-  ChildlessElements,
-  ChildlessElementFunction,
-  ParentalElements,
-  ParentalElementFunction,
 } from "./slamInterfaces";
 import { deepStyleMerge, isChildless } from "./utils";
-import { buildPage, buildSlamElementObject, buildWebserver } from "./otherBuilders";
-import { Socket } from "node:net";
-import * as fs from "fs";
-import * as path from "path";
-import { cssReset } from "./cssReset";
 
 function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html"> {
   return arg;
@@ -32,16 +32,16 @@ export function StyledComponent<T extends TagName>(
   func: () => SlamElement<T>,
   ...styles: (CSSObject | CSSObject[] | undefined)[]
 ): () => SlamElement<T>;
-export function StyledComponent<T extends TagName, U>(
-  func: (params: U) => SlamElement<T>,
+export function StyledComponent<T extends TagName, U extends any[]>(
+  func: (...args: U) => SlamElement<T>,
   ...styles: (CSSObject | CSSObject[] | undefined)[]
-): (params: U) => SlamElement<T>;
-export function StyledComponent<T extends TagName, U>(
-  func: (params: U) => SlamElement<T>,
+): (...args: U) => SlamElement<T>;
+export function StyledComponent<T extends TagName, U extends any[]>(
+  func: (...args: U) => SlamElement<T>,
   ...styles: (CSSObject | CSSObject[] | undefined)[]
-): (params: U) => SlamElement<T> {
-  return (params: U) => {
-    const element = func(params);
+): (...args: U) => SlamElement<T> {
+  return (...args: U) => {
+    const element = func(...args);
     element.atts.css = deepStyleMerge(element.atts.css, ...styles);
     return element;
   };

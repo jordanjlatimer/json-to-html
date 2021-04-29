@@ -53,11 +53,11 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Slam = exports.StyledComponent = void 0;
-var utils_1 = require("./utils");
-var otherBuilders_1 = require("./otherBuilders");
 var fs = require("fs");
 var path = require("path");
 var cssReset_1 = require("./cssReset");
+var otherBuilders_1 = require("./otherBuilders");
+var utils_1 = require("./utils");
 function SlamPage(arg) {
     return arg;
 }
@@ -69,8 +69,12 @@ function StyledComponent(func) {
     for (var _i = 1; _i < arguments.length; _i++) {
         styles[_i - 1] = arguments[_i];
     }
-    return function (params) {
-        var element = func(params);
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var element = func.apply(void 0, args);
         element.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray([element.atts.css], styles));
         return element;
     };
