@@ -46,6 +46,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 var __spreadArray = (this && this.__spreadArray) || function (to, from) {
     for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
         to[j] = from[i];
@@ -57,6 +73,7 @@ var fs = require("fs");
 var path = require("path");
 var cssReset_1 = require("./cssReset");
 var otherBuilders_1 = require("./otherBuilders");
+var server_1 = require("./server");
 var utils_1 = require("./utils");
 function SlamPage(arg) {
     return arg;
@@ -74,8 +91,8 @@ function StyledComponent(func) {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        var element = func.apply(void 0, args);
-        element.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray([element.atts.css], styles));
+        var element = func.apply(void 0, __spreadArray([], __read(args)));
+        element.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray([element.atts.css], __read(styles)));
         return element;
     };
 }
@@ -89,8 +106,8 @@ function StyledElement(element) {
         var elem_1 = element();
         if (utils_1.isChildless(elem_1.tag)) {
             return function (arg1) {
-                var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1);
-                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css || {}]));
+                var obj = otherBuilders_1.buildSlamElement(elem_1.tag, arg1);
+                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], __read(styles)), [obj.atts.css || {}]));
                 return obj;
             };
         }
@@ -100,14 +117,14 @@ function StyledElement(element) {
                 for (var _i = 1; _i < arguments.length; _i++) {
                     arg2[_i - 1] = arguments[_i];
                 }
-                var obj = otherBuilders_1.buildSlamElementObject(elem_1.tag, arg1, arg2);
-                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], styles), [obj.atts.css || {}]));
+                var obj = otherBuilders_1.buildSlamElement(elem_1.tag, arg1, arg2);
+                obj.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray(__spreadArray([elem_1.atts.css], __read(styles)), [obj.atts.css || {}]));
                 return obj;
             };
         }
     }
     else {
-        element.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray([element.atts.css], styles));
+        element.atts.css = utils_1.deepStyleMerge.apply(void 0, __spreadArray([element.atts.css], __read(styles)));
         return element;
     }
 }
@@ -120,66 +137,24 @@ function CreateStyleApplier(styles, childless) {
         return function (element) { return StyledElement(element, styles); };
     }
 }
-function StartSlamServer(indexFile, port, watchList, contentOut) {
-    return __awaiter(this, void 0, void 0, function () {
-        var sockets, cache, webServer;
-        var _this = this;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    sockets = [];
-                    cache = {};
-                    console.log("Starting server...\n");
-                    return [4 /*yield*/, otherBuilders_1.buildWebserver(indexFile, cache, port)];
-                case 1:
-                    webServer = _a.sent();
-                    contentOut && fs.writeFileSync(contentOut, JSON.stringify(cache));
-                    webServer.on("connection", function (socket) { return sockets.push(socket); });
-                    watchList.forEach(function (item) {
-                        var itemChanged = false;
-                        fs.watch(item, { recursive: true }).on("change", function () {
-                            if (itemChanged) {
-                                return;
-                            }
-                            itemChanged = true;
-                            console.log("Change detected. Restarting server...\n");
-                            webServer.close(function () { return __awaiter(_this, void 0, void 0, function () {
-                                return __generator(this, function (_a) {
-                                    switch (_a.label) {
-                                        case 0: return [4 /*yield*/, otherBuilders_1.buildWebserver(indexFile, cache, port)];
-                                        case 1:
-                                            webServer = _a.sent();
-                                            webServer.on("connection", function (socket) { return sockets.push(socket); });
-                                            itemChanged = false;
-                                            return [2 /*return*/];
-                                    }
-                                });
-                            }); });
-                            sockets.forEach(function (socket) { return socket.destroy(); });
-                        });
-                    });
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
 function writeFiles(indexFile, outDir) {
     return __awaiter(this, void 0, void 0, function () {
-        var pages, includeReset, builds;
+        var pageTree, routes, builds;
         var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, require(indexFile)["default"]()];
                 case 1:
-                    pages = _a.sent();
-                    includeReset = pages.some(function (page) { return page.cssReset; });
-                    return [4 /*yield*/, Promise.all(pages.map(function (page) { return __awaiter(_this, void 0, void 0, function () {
-                            var content, _a;
+                    pageTree = _a.sent();
+                    routes = otherBuilders_1.buildPageRoutes(pageTree, "/", "");
+                    return [4 /*yield*/, Promise.all(routes.map(function (route) { return __awaiter(_this, void 0, void 0, function () {
+                            var page, content, _a;
                             return __generator(this, function (_b) {
                                 switch (_b.label) {
                                     case 0:
-                                        if (!page.content) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, page.content()];
+                                        page = route.page;
+                                        if (!page.content.getter) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, page.content.getter()];
                                     case 1:
                                         _a = _b.sent();
                                         return [3 /*break*/, 3];
@@ -188,17 +163,17 @@ function writeFiles(indexFile, outDir) {
                                         _b.label = 3;
                                     case 3:
                                         content = _a;
-                                        return [2 /*return*/, __assign({ name: page.name }, otherBuilders_1.buildPage(page, content))];
+                                        return [2 /*return*/, __assign({ route: route.serverPaths.html[1] }, otherBuilders_1.buildPage(route, content))];
                                 }
                             });
                         }); }))];
                 case 2:
                     builds = _a.sent();
                     builds.forEach(function (build) {
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".html"), build.html);
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".css"), build.css);
-                        fs.writeFileSync(path.resolve(outDir, build.name + ".js"), build.js);
-                        includeReset && fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset_1.cssReset);
+                        fs.writeFileSync(path.resolve(outDir, build.route), build.html);
+                        fs.writeFileSync(path.resolve(outDir, build.route), build.css);
+                        fs.writeFileSync(path.resolve(outDir, build.route), build.js);
+                        fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset_1.cssReset);
                     });
                     return [2 /*return*/];
             }
@@ -210,7 +185,7 @@ function mergeStyles() {
     for (var _i = 0; _i < arguments.length; _i++) {
         styles[_i] = arguments[_i];
     }
-    return utils_1.deepStyleMerge.apply(void 0, styles);
+    return utils_1.deepStyleMerge.apply(void 0, __spreadArray([], __read(styles)));
 }
 exports.Slam = {
     page: SlamPage,
@@ -221,6 +196,6 @@ exports.Slam = {
         element: StyledElement,
         component: StyledComponent,
     },
-    serve: StartSlamServer,
+    serve: server_1.startServer,
     write: writeFiles,
 };

@@ -1,27 +1,27 @@
-const { buildAttsString, buildElementAndChildrenStrings, buildPageHtmlString } = require("../dist/htmlBuilders.js");
+const { buildAtts, buildHtml } = require("../dist/htmlBuilders.js");
 const { expect, test } = require("@jest/globals");
 
-test("buildAttsString - empty object", () => {
-  expect(buildAttsString({})).toBe("");
+test("buildAtts - empty object", () => {
+  expect(buildAtts({})).toBe("");
 });
 
-test("buildAttsString - normal atts", () => {
-  expect(buildAttsString({ class: "card", id: "card1" })).toBe(' class="card" id="card1"');
+test("buildAtts - normal atts", () => {
+  expect(buildAtts({ class: "card", id: "card1" })).toBe(' class="card" id="card1"');
 });
 
-test("buildAttsString - present atts", () => {
-  expect(buildAttsString({ hidden: true, disabled: true })).toBe(" hidden disabled");
+test("buildAtts - present atts", () => {
+  expect(buildAtts({ hidden: true, disabled: true })).toBe(" hidden disabled");
 });
 
-test("buildAttsString - camel atts", () => {
-  expect(buildAttsString({ alignmentBaseline: "middle", baselineShift: "100%" })).toBe(
+test("buildAtts - camel atts", () => {
+  expect(buildAtts({ alignmentBaseline: "middle", baselineShift: "100%" })).toBe(
     ' alignment-baseline="middle" baseline-shift="100%"'
   );
 });
 
-test("buildAttsString - ignore js, css, and object atts", () => {
+test("buildAtts - ignore js, css, and object atts", () => {
   expect(
-    buildAttsString({
+    buildAtts({
       alignmentBaseline: "middle",
       baselineShift: "100%",
       js: () => console.log("js"),
@@ -31,13 +31,13 @@ test("buildAttsString - ignore js, css, and object atts", () => {
   ).toBe(' alignment-baseline="middle" baseline-shift="100%"');
 });
 
-test("buildElementAndChildrenStrings - string", () => {
-  expect(buildElementAndChildrenStrings("Hello World", {})).toBe("Hello World");
+test("buildHtml - string", () => {
+  expect(buildHtml("Hello World", {})).toBe("Hello World");
 });
 
-test("buildElementAndChildrenStrings - parental, no children or atts", () => {
+test("buildHtml - parental, no children or atts", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -49,9 +49,9 @@ test("buildElementAndChildrenStrings - parental, no children or atts", () => {
   ).toBe("<div></div>");
 });
 
-test("buildElementAndChildrenStrings - childless, no atts", () => {
+test("buildHtml - childless, no atts", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "hr",
@@ -63,9 +63,9 @@ test("buildElementAndChildrenStrings - childless, no atts", () => {
   ).toBe("<hr/>");
 });
 
-test("buildElementAndChildrenStrings - parental, atts but no children", () => {
+test("buildHtml - parental, atts but no children", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -77,9 +77,9 @@ test("buildElementAndChildrenStrings - parental, atts but no children", () => {
   ).toBe('<div class="card" hidden></div>');
 });
 
-test("buildElementAndChildrenStrings - childless, atts", () => {
+test("buildHtml - childless, atts", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "hr",
@@ -91,9 +91,9 @@ test("buildElementAndChildrenStrings - childless, atts", () => {
   ).toBe('<hr class="line" hidden/>');
 });
 
-test("buildElementAndChildrenStrings - parental, atts and string child", () => {
+test("buildHtml - parental, atts and string child", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -105,9 +105,9 @@ test("buildElementAndChildrenStrings - parental, atts and string child", () => {
   ).toBe('<div class="card" hidden>Hello World</div>');
 });
 
-test("buildElementAndChildrenStrings - parental, atts and tag child", () => {
+test("buildHtml - parental, atts and tag child", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -126,9 +126,9 @@ test("buildElementAndChildrenStrings - parental, atts and tag child", () => {
   ).toBe('<div class="card" hidden><p></p></div>');
 });
 
-test("buildElementAndChildrenStrings - parental, atts and multiple children", () => {
+test("buildHtml - parental, atts and multiple children", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -148,9 +148,9 @@ test("buildElementAndChildrenStrings - parental, atts and multiple children", ()
   ).toBe('<div class="card" hidden><p></p>Hello World</div>');
 });
 
-test("buildElementAndChildrenStrings - parental, atts and nested children", () => {
+test("buildHtml - parental, atts and nested children", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -175,9 +175,9 @@ test("buildElementAndChildrenStrings - parental, atts and nested children", () =
   ).toBe('<div class="card" hidden><p>Hello World</p><div>Hello Again</div></div>');
 });
 
-test("buildElementAndChildrenStrings - parental, no atts and nested children", () => {
+test("buildHtml - parental, no atts and nested children", () => {
   expect(
-    buildElementAndChildrenStrings(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -202,13 +202,13 @@ test("buildElementAndChildrenStrings - parental, no atts and nested children", (
   ).toBe("<div><p>Hello World</p><div>Hello Again</div></div>");
 });
 
-test("buildPageHtmlString - string, no components", () => {
-  expect(buildPageHtmlString("<svg><g></g></svg>", {})).toBe("<svg><g></g></svg>");
+test("buildHtml - string, no components", () => {
+  expect(buildHtml("<svg><g></g></svg>", {})).toBe("<svg><g></g></svg>");
 });
 
-test("buildPageHtmlString - tree, no components", () => {
+test("buildHtml - tree, no components", () => {
   expect(
-    buildPageHtmlString(
+    buildHtml(
       {
         type: "element",
         tag: "div",
@@ -220,7 +220,7 @@ test("buildPageHtmlString - tree, no components", () => {
   ).toBe('<div class="card" hidden>Hello World</div>');
 });
 
-test("buildPageHtmlString - tree, components", () => {
+test("buildHtml - tree, components", () => {
   const component = {
     type: "element",
     tag: "div",
@@ -228,5 +228,5 @@ test("buildPageHtmlString - tree, components", () => {
     children: ["Hello World"],
   };
 
-  expect(buildPageHtmlString(component, { 1: [component] })).toBe('<div class="card c1" hidden>Hello World</div>');
+  expect(buildHtml(component, { 1: [component] })).toBe('<div class="card c1" hidden>Hello World</div>');
 });

@@ -1,8 +1,8 @@
 import * as fs from "fs";
-import { Socket } from "node:net";
 import * as path from "path";
 import { cssReset } from "./cssReset";
-import { buildPage, buildSlamElementObject, buildWebserver } from "./otherBuilders";
+import { buildPage, buildPageRoutes, buildSlamElement } from "./otherBuilders";
+import { startServer } from "./server";
 import {
   Child,
   ChildlessElementFunction,
@@ -12,19 +12,18 @@ import {
   Page,
   ParentalElementFunction,
   ParentalElements,
+  SiteMap,
   SlamElement,
   TagAttributes,
   TagName,
 } from "./slamInterfaces";
 import { deepStyleMerge, isChildless } from "./utils";
 
-function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html"> {
+function SlamPage(arg: Page) {
   return arg;
 }
 
-function SlamPageBuilder(
-  builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>
-): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>> {
+function SlamPageBuilder(builderFunction: () => SiteMap | Promise<SiteMap>): () => SiteMap | Promise<SiteMap> {
   return builderFunction;
 }
 
@@ -67,13 +66,13 @@ function StyledElement<T extends TagName>(
     const elem = element();
     if (isChildless(elem.tag)) {
       return (arg1?: TagAttributes<T>) => {
-        const obj = buildSlamElementObject(elem.tag, arg1);
+        const obj = buildSlamElement(elem.tag, arg1);
         obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css || {});
         return obj;
       };
     } else {
       return (arg1?: TagAttributes<T> | Child | Child[], ...arg2: (Child | Child[])[]) => {
-        const obj = buildSlamElementObject(elem.tag, arg1, arg2);
+        const obj = buildSlamElement(elem.tag, arg1, arg2);
         obj.atts.css = deepStyleMerge(elem.atts.css, ...styles, obj.atts.css || {});
         return obj;
       };
@@ -97,54 +96,24 @@ function CreateStyleApplier(styles: CSSObject, childless = false) {
   }
 }
 
-async function StartSlamServer(
-  indexFile: string,
-  port: number,
-  watchList: string[],
-  contentOut?: string
-): Promise<void> {
-  let sockets: Socket[] = [];
-  let cache: Record<string, any> = {};
-
-  console.log("Starting server...\n");
-  let webServer = await buildWebserver(indexFile, cache, port);
-  contentOut && fs.writeFileSync(contentOut, JSON.stringify(cache));
-  webServer.on("connection", socket => sockets.push(socket));
-  watchList.forEach(item => {
-    let itemChanged = false;
-    fs.watch(item, { recursive: true }).on("change", () => {
-      if (itemChanged) {
-        return;
-      }
-      itemChanged = true;
-      console.log("Change detected. Restarting server...\n");
-      webServer.close(async () => {
-        webServer = await buildWebserver(indexFile, cache, port);
-        webServer.on("connection", socket => sockets.push(socket));
-        itemChanged = false;
-      });
-      sockets.forEach(socket => socket.destroy());
-    });
-  });
-}
-
 async function writeFiles(indexFile: string, outDir: string): Promise<void> {
-  const pages: Page[] = await require(indexFile)["default"]();
-  const includeReset = pages.some(page => page.cssReset);
+  const pageTree: SiteMap = await require(indexFile)["default"]();
+  const routes = buildPageRoutes(pageTree, "/", "");
   let builds = await Promise.all(
-    pages.map(async page => {
-      let content = page.content ? await page.content() : undefined;
+    routes.map(async route => {
+      const page = route.page;
+      let content = page.content.getter ? await page.content.getter() : undefined;
       return {
-        name: page.name,
-        ...buildPage(page, content),
+        route: route.serverPaths.html[1],
+        ...buildPage(route, content),
       };
     })
   );
   builds.forEach(build => {
-    fs.writeFileSync(path.resolve(outDir, `${build.name}.html`), build.html);
-    fs.writeFileSync(path.resolve(outDir, `${build.name}.css`), build.css);
-    fs.writeFileSync(path.resolve(outDir, `${build.name}.js`), build.js);
-    includeReset && fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset);
+    fs.writeFileSync(path.resolve(outDir, build.route), build.html);
+    fs.writeFileSync(path.resolve(outDir, build.route), build.css);
+    fs.writeFileSync(path.resolve(outDir, build.route), build.js);
+    fs.writeFileSync(path.resolve(outDir, "reset.css"), cssReset);
   });
 }
 
@@ -161,6 +130,6 @@ export const Slam = {
     element: StyledElement,
     component: StyledComponent,
   },
-  serve: StartSlamServer,
+  serve: startServer,
   write: writeFiles,
 };

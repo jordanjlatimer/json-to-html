@@ -1,4 +1,3 @@
-import { Identification, Child, SlamElement, TagName } from "./slamInterfaces";
-export declare function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T): string;
-export declare function buildElementAndChildrenStrings(tree: Child, components: Identification, className?: string): string;
-export declare function buildPageHtmlString(tree: Child, components: Identification): string;
+import { Child, Identification, SlamElement, TagName } from "./slamInterfaces";
+export declare function buildAtts<T extends SlamElement<TagName>["atts"]>(atts: T): string;
+export declare function buildHtml(tree: Child, components: Identification): string;

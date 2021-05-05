@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildPageJsString = void 0;
-function buildPageJsString(components) {
+exports.buildJs = void 0;
+function buildJs(components) {
     var build = "";
     Object.keys(components).forEach(function (key) {
         var _a;
@@ -10,4 +10,4 @@ function buildPageJsString(components) {
     });
     return build;
 }
-exports.buildPageJsString = buildPageJsString;
+exports.buildJs = buildJs;

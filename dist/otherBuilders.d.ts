@@ -1,11 +1,9 @@
-/// <reference types="node" />
-import { Child, SlamElement, Page, TagName, TagAttributes } from "./slamInterfaces";
-import { Server } from "node:http";
-export declare function buildSlamElementObject<T extends TagName>(tag: T, arg1?: Child | TagAttributes<T> | Child[], arg2?: (Child | Child[])[]): SlamElement<T>;
-export declare function buildPage(page: Page, content: any): {
+import { Child, PageRoute, SiteMap, SlamElement, TagAttributes, TagName } from "./slamInterfaces";
+export declare function buildSlamElement<T extends TagName>(tag: T, arg1?: Child | TagAttributes<T> | Child[], arg2?: (Child | Child[])[]): SlamElement<T>;
+export declare function buildPageRoutes(tree: SiteMap, path: string, parentKey: string): PageRoute[];
+export declare function buildPage(route: PageRoute, content: any): {
     html: string;
     css: string;
     js: string;
 };
 export declare function buildReloadScript(port: number): string;
-export declare function buildWebserver(indexFile: string, cache: Record<string, any>, port: number): Promise<Server>;

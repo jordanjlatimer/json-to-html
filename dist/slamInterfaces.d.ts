@@ -22,12 +22,33 @@ export interface SlamElement<T extends TagName> {
     children?: T extends ChildlessElements ? undefined : Child[];
 }
 export interface Page {
-    name: string;
-    html: SlamElement<"html"> | ((args: any) => SlamElement<"html">);
+    content: {
+        getter?: () => any | Promise<any>;
+        consumer: (content: any) => SlamElement<"html">;
+    };
     cssReset?: boolean;
     globalStyles?: CSSObject | CSSObject[];
-    content?: () => any | Promise<any>;
 }
+export interface PageRoute {
+    key: string;
+    serverPaths: {
+        html: string[];
+        css: string;
+        js: string;
+    };
+    clientPaths: {
+        css: string;
+        js: string;
+        reset: string;
+    };
+    page: Page;
+}
+declare type NeverPage = {
+    [Property in keyof Page]?: never;
+};
+export declare type SiteMap = {
+    [key: string]: Page | SiteMap;
+} & NeverPage;
 export interface BuildObject {
     html: string;
     css: string;

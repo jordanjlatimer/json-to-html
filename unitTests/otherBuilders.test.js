@@ -1,8 +1,8 @@
-const { buildSlamElementObject } = require("../dist/otherBuilders.js");
+const { buildSlamElement } = require("../dist/otherBuilders.js");
 const { expect, test } = require("@jest/globals");
 
-test("buildSlamElementObject - only tag", () => {
-  expect(buildSlamElementObject("div")).toStrictEqual({
+test("buildSlamElement - only tag", () => {
+  expect(buildSlamElement("div")).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},
@@ -10,8 +10,8 @@ test("buildSlamElementObject - only tag", () => {
   });
 });
 
-test("buildSlamElementObject - tag and atts", () => {
-  expect(buildSlamElementObject("div", { class: "card" })).toStrictEqual({
+test("buildSlamElement - tag and atts", () => {
+  expect(buildSlamElement("div", { class: "card" })).toStrictEqual({
     type: "element",
     tag: "div",
     atts: { class: "card" },
@@ -19,8 +19,8 @@ test("buildSlamElementObject - tag and atts", () => {
   });
 });
 
-test("buildSlamElementObject - tag and child", () => {
-  expect(buildSlamElementObject("div", "Hello World")).toStrictEqual({
+test("buildSlamElement - tag and child", () => {
+  expect(buildSlamElement("div", "Hello World")).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},
@@ -28,8 +28,8 @@ test("buildSlamElementObject - tag and child", () => {
   });
 });
 
-test("buildSlamElementObject - tag and child array", () => {
-  expect(buildSlamElementObject("div", ["Hello World"])).toStrictEqual({
+test("buildSlamElement - tag and child array", () => {
+  expect(buildSlamElement("div", ["Hello World"])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},
@@ -37,8 +37,8 @@ test("buildSlamElementObject - tag and child array", () => {
   });
 });
 
-test("buildSlamElementObject - tag, atts, and child array", () => {
-  expect(buildSlamElementObject("div", { class: "card" }, ["Hello World"])).toStrictEqual({
+test("buildSlamElement - tag, atts, and child array", () => {
+  expect(buildSlamElement("div", { class: "card" }, ["Hello World"])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: { class: "card" },
@@ -46,8 +46,8 @@ test("buildSlamElementObject - tag, atts, and child array", () => {
   });
 });
 
-test("buildSlamElementObject - tag, child, and child array", () => {
-  expect(buildSlamElementObject("div", "Hello World", ["Hello Again"])).toStrictEqual({
+test("buildSlamElement - tag, child, and child array", () => {
+  expect(buildSlamElement("div", "Hello World", ["Hello Again"])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},
@@ -55,8 +55,8 @@ test("buildSlamElementObject - tag, child, and child array", () => {
   });
 });
 
-test("buildSlamElementObject - tag, child array, and child array", () => {
-  expect(buildSlamElementObject("div", ["Hello World"], ["Hello Again"])).toStrictEqual({
+test("buildSlamElement - tag, child array, and child array", () => {
+  expect(buildSlamElement("div", ["Hello World"], ["Hello Again"])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},
@@ -64,8 +64,8 @@ test("buildSlamElementObject - tag, child array, and child array", () => {
   });
 });
 
-test("buildSlamElementObject - tag, atts, and nested child array", () => {
-  expect(buildSlamElementObject("div", { class: "card" }, [["Hello World"]])).toStrictEqual({
+test("buildSlamElement - tag, atts, and nested child array", () => {
+  expect(buildSlamElement("div", { class: "card" }, [["Hello World"]])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: { class: "card" },
@@ -73,8 +73,8 @@ test("buildSlamElementObject - tag, atts, and nested child array", () => {
   });
 });
 
-test("buildSlamElementObject - tag, child, and nested child array", () => {
-  expect(buildSlamElementObject("div", "Hello World", [["Hello Again"]])).toStrictEqual({
+test("buildSlamElement - tag, child, and nested child array", () => {
+  expect(buildSlamElement("div", "Hello World", [["Hello Again"]])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},
@@ -82,8 +82,8 @@ test("buildSlamElementObject - tag, child, and nested child array", () => {
   });
 });
 
-test("buildSlamElementObject - tag, child array, and nested child array", () => {
-  expect(buildSlamElementObject("div", ["Hello World"], [["Hello Again"]])).toStrictEqual({
+test("buildSlamElement - tag, child array, and nested child array", () => {
+  expect(buildSlamElement("div", ["Hello World"], [["Hello Again"]])).toStrictEqual({
     type: "element",
     tag: "div",
     atts: {},

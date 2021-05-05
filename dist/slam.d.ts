@@ -1,6 +1,7 @@
-import { ChildlessElementFunction, ChildlessElements, CSSObject, Page, ParentalElementFunction, ParentalElements, SlamElement, TagName } from "./slamInterfaces";
-declare function SlamPage<T>(arg: (args: T) => SlamElement<"html">): (args: T) => SlamElement<"html">;
-declare function SlamPageBuilder(builderFunction: () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>): () => Array<Page | Promise<Page>> | Promise<Array<Page | Promise<Page>>>;
+import { startServer } from "./server";
+import { ChildlessElementFunction, ChildlessElements, CSSObject, Page, ParentalElementFunction, ParentalElements, SiteMap, SlamElement, TagName } from "./slamInterfaces";
+declare function SlamPage(arg: Page): Page;
+declare function SlamPageBuilder(builderFunction: () => SiteMap | Promise<SiteMap>): () => SiteMap | Promise<SiteMap>;
 export declare function StyledComponent<T extends TagName>(func: () => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): () => SlamElement<T>;
 export declare function StyledComponent<T extends TagName, U extends any[]>(func: (...args: U) => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): (...args: U) => SlamElement<T>;
 declare function StyledElement<T extends ParentalElements>(element: ParentalElementFunction<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): ParentalElementFunction<T>;
@@ -8,7 +9,6 @@ declare function StyledElement<T extends ChildlessElements>(element: ChildlessEl
 declare function StyledElement<T extends TagName>(element: SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): SlamElement<T>;
 declare function CreateStyleApplier(styles: CSSObject): <T extends ParentalElements>(element: SlamElement<T>) => SlamElement<T>;
 declare function CreateStyleApplier(styles: CSSObject, childless: true): <T extends ChildlessElements>(element: SlamElement<T>) => SlamElement<T>;
-declare function StartSlamServer(indexFile: string, port: number, watchList: string[], contentOut?: string): Promise<void>;
 declare function writeFiles(indexFile: string, outDir: string): Promise<void>;
 declare function mergeStyles(...styles: CSSObject[]): CSSObject;
 export declare const Slam: {
@@ -20,7 +20,7 @@ export declare const Slam: {
         element: typeof StyledElement;
         component: typeof StyledComponent;
     };
-    serve: typeof StartSlamServer;
+    serve: typeof startServer;
     write: typeof writeFiles;
 };
 export {};

@@ -1,15 +1,15 @@
-const { buildPageJsString } = require("../dist/jsBuilders.js");
+const { buildJs } = require("../dist/jsBuilders.js");
 const { expect, test } = require("@jest/globals");
 
-test("buildPageJsString - emptyObject", () => {
-  expect(buildPageJsString({})).toBe("");
+test("buildJs - emptyObject", () => {
+  expect(buildJs({})).toBe("");
 });
 
-test("buildPageJsString - 1 component", () => {
+test("buildJs - 1 component", () => {
   const logToConsole = () => console.log("Hello World");
 
   expect(
-    buildPageJsString({
+    buildJs({
       1: [
         {
           type: "element",
@@ -23,12 +23,12 @@ test("buildPageJsString - 1 component", () => {
   ).toBe('(() => console.log("Hello World"))();\n');
 });
 
-test("buildPageJsString - multiple components", () => {
+test("buildJs - multiple components", () => {
   const logToConsole1 = () => console.log("Hello World");
   const logToConsole2 = () => console.log("Hello Again");
 
   expect(
-    buildPageJsString({
+    buildJs({
       1: [
         {
           type: "element",

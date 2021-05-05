@@ -1,42 +1,42 @@
 const css = require("../dist/cssBuilders.js");
 const { expect, test } = require("@jest/globals");
 
-test("buildPropertiesString - check property string building", () => {
-  expect(css.buildPropertiesString({ height: "200px" })).toBe("height:200px;");
+test("buildProperties - check property string building", () => {
+  expect(css.buildProperties({ height: "200px" })).toBe("height:200px;");
 });
 
-test("buildPropertiesString - check that camelCase is changed to kebab-case", () => {
-  expect(css.buildPropertiesString({ backgroundColor: "green" })).toBe("background-color:green;");
+test("buildProperties - check that camelCase is changed to kebab-case", () => {
+  expect(css.buildProperties({ backgroundColor: "green" })).toBe("background-color:green;");
 });
 
-test("buildPropertiesString - check with empty object", () => {
-  expect(css.buildPropertiesString({})).toBe("");
+test("buildProperties - check with empty object", () => {
+  expect(css.buildProperties({})).toBe("");
 });
 
-test("buildSelectorString - check functionality", () => {
-  expect(css.buildSelectorString(".card p", "height:200px;")).toBe(".card p{height:200px;}");
+test("buildSelector - check functionality", () => {
+  expect(css.buildSelector(".card p", "height:200px;")).toBe(".card p{height:200px;}");
 });
 
-test("buildMediaQueryString - check functionality", () => {
+test("buildMediaQuery - check functionality", () => {
   expect(
-    css.buildMediaQueryString(".card p", "@media screen and (max-width: 525px)", {
+    css.buildMediaQuery(".card p", "@media screen and (max-width: 525px)", {
       ":hover": { backgroundColor: "green" },
       width: "100%",
     })
   ).toBe("@media screen and (max-width: 525px){.card p{width:100%;}.card p:hover{background-color:green;}}");
 });
 
-test("buildCssFromObject - check basic", () => {
+test("buildCss - check basic", () => {
   expect(
-    css.buildCssFromObject(".card", {
+    css.buildCss(".card", {
       height: "200px",
     })
   ).toBe(".card{height:200px;}");
 });
 
-test("buildCssFromObject - check pseudo selector", () => {
+test("buildCss - check pseudo selector", () => {
   expect(
-    css.buildCssFromObject(".card", {
+    css.buildCss(".card", {
       ":hover": {
         backgroundColor: "green",
       },
@@ -44,9 +44,9 @@ test("buildCssFromObject - check pseudo selector", () => {
   ).toBe(".card:hover{background-color:green;}");
 });
 
-test("buildCssFromObject - check child selector", () => {
+test("buildCss - check child selector", () => {
   expect(
-    css.buildCssFromObject(".card", {
+    css.buildCss(".card", {
       p: {
         width: "200px",
       },
@@ -54,9 +54,9 @@ test("buildCssFromObject - check child selector", () => {
   ).toBe(".card>p{width:200px;}");
 });
 
-test("buildCssFromObject - check media query", () => {
+test("buildCss - check media query", () => {
   expect(
-    css.buildCssFromObject(".card", {
+    css.buildCss(".card", {
       "@media screen and (max-width: 525px)": {
         width: "100%",
         ":hover": {
@@ -72,9 +72,9 @@ test("buildCssFromObject - check media query", () => {
   );
 });
 
-test("buildCssFromObject - check keyframes", () => {
+test("buildCss - check keyframes", () => {
   expect(
-    css.buildCssFromObject(".card", {
+    css.buildCss(".card", {
       "@keyframes fade": {
         from: {
           opacity: "1",
@@ -87,9 +87,9 @@ test("buildCssFromObject - check keyframes", () => {
   ).toBe("@keyframes fade{from{opacity:1;}to{opacity:0;}}");
 });
 
-test("buildPageCssString", () => {
+test("buildPageCss", () => {
   expect(
-    css.buildPageCssString({
+    css.buildPageCss({
       1: [
         {
           atts: {

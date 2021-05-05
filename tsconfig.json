@@ -2,14 +2,15 @@
   "compilerOptions": {
     "module": "CommonJS",
     "moduleResolution": "node",
-    "lib": ["ES6"],
+    "lib": ["ESNext"],
     "strict": true,
     "target": "ES5",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "declaration": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "downlevelIteration": true
   },
   "files": ["src/index.ts"]
 }

@@ -1,4 +1,36 @@
 "use strict";
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deepStyleMerge = exports.clearCache = exports.determineSimilarElementsByCss = exports.collectElementsWithCss = exports.areEqualObjects = exports.isChildless = exports.isPresentAtt = exports.toKebabCase = void 0;
 function toKebabCase(value) {
@@ -62,6 +94,7 @@ function isChildless(tag) {
 }
 exports.isChildless = isChildless;
 function areEqualObjects(object1, object2) {
+    var e_1, _a;
     if (object1 === object2) {
         return true;
     }
@@ -70,21 +103,30 @@ function areEqualObjects(object1, object2) {
     if (object1Keys.length !== object2Keys.length) {
         return false;
     }
-    for (var _i = 0, object1Keys_1 = object1Keys; _i < object1Keys_1.length; _i++) {
-        var key = object1Keys_1[_i];
-        if (typeof object1[key] === "object") {
-            if (typeof object2[key] === "object") {
-                if (!areEqualObjects(object1[key], object2[key])) {
+    try {
+        for (var object1Keys_1 = __values(object1Keys), object1Keys_1_1 = object1Keys_1.next(); !object1Keys_1_1.done; object1Keys_1_1 = object1Keys_1.next()) {
+            var key = object1Keys_1_1.value;
+            if (typeof object1[key] === "object") {
+                if (typeof object2[key] === "object") {
+                    if (!areEqualObjects(object1[key], object2[key])) {
+                        return false;
+                    }
+                }
+                else {
                     return false;
                 }
             }
-            else {
+            else if (object1[key] !== object2[key]) {
                 return false;
             }
         }
-        else if (object1[key] !== object2[key]) {
-            return false;
+    }
+    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+    finally {
+        try {
+            if (object1Keys_1_1 && !object1Keys_1_1.done && (_a = object1Keys_1.return)) _a.call(object1Keys_1);
         }
+        finally { if (e_1) throw e_1.error; }
     }
     return true;
 }
@@ -94,7 +136,7 @@ function collectElementsWithCss(tree) {
     var finalArray = [];
     if (typeof tree === "object") {
         ((_a = tree.atts) === null || _a === void 0 ? void 0 : _a.css) && finalArray.push(tree);
-        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) { return finalArray.push.apply(finalArray, collectElementsWithCss(child)); });
+        (_b = tree["children"]) === null || _b === void 0 ? void 0 : _b.forEach(function (child) { return finalArray.push.apply(finalArray, __spreadArray([], __read(collectElementsWithCss(child)))); });
     }
     return finalArray;
 }
@@ -149,7 +191,7 @@ function deepStyleMerge() {
         objs[_i] = arguments[_i];
     }
     var mergedObj = {};
-    objs.forEach(function (obj, i) { return (Array.isArray(obj) ? (objs[i] = deepStyleMerge.apply(void 0, obj)) : (objs[i] = obj)); }); //Flatten arrays of styles
+    objs.forEach(function (obj, i) { return (Array.isArray(obj) ? (objs[i] = deepStyleMerge.apply(void 0, __spreadArray([], __read(obj)))) : (objs[i] = obj)); }); //Flatten arrays of styles
     if (objs[objs.length - 1]) {
         var deepMergeKeys_1 = new Set();
         objs.forEach(function (obj) {
@@ -170,7 +212,7 @@ function deepStyleMerge() {
             var objectsToMerge = [];
             objs.forEach(function (obj) { return (obj ? (obj[key] ? objectsToMerge.push(obj[key]) : undefined) : undefined); });
             //@ts-ignore
-            mergedObj[key] = deepStyleMerge.apply(void 0, objectsToMerge);
+            mergedObj[key] = deepStyleMerge.apply(void 0, __spreadArray([], __read(objectsToMerge)));
         });
     }
     return mergedObj;

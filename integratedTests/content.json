@@ -1,1 +1,9 @@
-{"index":"Content"}
+{
+  "index": "Content",
+  "about": "Content",
+  "events.index": "Content",
+  "events.otherEvent": "Content",
+  "events.deeper.index": "Content",
+  "events.deeper.evenDeeper": "Content",
+  "events.deeper.deepest.superDeep": "Content"
+}

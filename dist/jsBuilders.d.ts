@@ -1,2 +1,2 @@
 import { Identification } from "./slamInterfaces";
-export declare function buildPageJsString(components: Identification): string;
+export declare function buildJs(components: Identification): string;

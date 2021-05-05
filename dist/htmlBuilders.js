@@ -11,10 +11,10 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildPageHtmlString = exports.buildElementAndChildrenStrings = exports.buildAttsString = void 0;
-var utils_1 = require("./utils");
+exports.buildHtml = exports.buildAtts = void 0;
 var svgKebabCaseAtts_1 = require("./svgKebabCaseAtts");
-function buildAttsString(atts) {
+var utils_1 = require("./utils");
+function buildAtts(atts) {
     var attsText = "";
     Object.keys(atts).forEach(function (att) {
         var stringAtt = att;
@@ -30,35 +30,12 @@ function buildAttsString(atts) {
     });
     return attsText;
 }
-exports.buildAttsString = buildAttsString;
-function buildElementAndChildrenStrings(tree, components, className) {
+exports.buildAtts = buildAtts;
+function buildHtml(tree, components) {
     if (typeof tree === "string") {
         return tree;
     }
     else if (tree) {
-        var build_1 = "<" + tree["tag"];
-        if (tree["atts"] || className) {
-            var atts = tree["atts"] || {};
-            var attsClass = atts["class"] || "";
-            var fullClass = className ? (attsClass ? attsClass + " " + className : className) : attsClass;
-            var classObject = fullClass ? { class: fullClass } : {};
-            build_1 += buildAttsString(__assign(__assign({}, atts), classObject));
-        }
-        build_1 += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
-        tree["children"] && tree["children"].forEach(function (child) { return (build_1 += buildPageHtmlString(child, components)); });
-        build_1 += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
-        return build_1;
-    }
-    else {
-        return "";
-    }
-}
-exports.buildElementAndChildrenStrings = buildElementAndChildrenStrings;
-function buildPageHtmlString(tree, components) {
-    if (typeof tree === "string") {
-        return tree;
-    }
-    else {
         var className_1 = "";
         Object.keys(components).forEach(function (key) {
             components[parseInt(key)].forEach(function (component) {
@@ -67,7 +44,21 @@ function buildPageHtmlString(tree, components) {
                 }
             });
         });
-        return buildElementAndChildrenStrings(tree, components, className_1);
+        var build_1 = "<" + tree["tag"];
+        if (tree["atts"] || className_1) {
+            var atts = tree["atts"] || {};
+            var attsClass = atts["class"] || "";
+            var fullClass = className_1 ? (attsClass ? attsClass + " " + className_1 : className_1) : attsClass;
+            var classObject = fullClass ? { class: fullClass } : {};
+            build_1 += buildAtts(__assign(__assign({}, atts), classObject));
+        }
+        build_1 += utils_1.isChildless(tree["tag"]) ? "/>" : ">";
+        tree["children"] && tree["children"].forEach(function (child) { return (build_1 += buildHtml(child, components)); });
+        build_1 += !utils_1.isChildless(tree["tag"]) ? "</" + tree["tag"] + ">" : "";
+        return build_1;
+    }
+    else {
+        return "";
     }
 }
-exports.buildPageHtmlString = buildPageHtmlString;
+exports.buildHtml = buildHtml;

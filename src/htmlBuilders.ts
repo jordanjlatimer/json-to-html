@@ -1,8 +1,8 @@
-import { Identification, Child, SlamElement, TagName } from "./slamInterfaces";
-import { isChildless, isPresentAtt, toKebabCase } from "./utils";
+import { Child, Identification, SlamElement, TagName } from "./slamInterfaces";
 import { kebabCaseSvgAtts } from "./svgKebabCaseAtts";
+import { isChildless, isPresentAtt, toKebabCase } from "./utils";
 
-export function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T): string {
+export function buildAtts<T extends SlamElement<TagName>["atts"]>(atts: T): string {
   let attsText = "";
   Object.keys(atts!).forEach(att => {
     let stringAtt = att;
@@ -18,31 +18,10 @@ export function buildAttsString<T extends SlamElement<TagName>["atts"]>(atts: T)
   return attsText;
 }
 
-export function buildElementAndChildrenStrings(tree: Child, components: Identification, className?: string): string {
+export function buildHtml(tree: Child, components: Identification): string {
   if (typeof tree === "string") {
     return tree;
   } else if (tree) {
-    let build = `<${tree["tag"]}`;
-    if (tree["atts"] || className) {
-      const atts = tree["atts"] || {};
-      const attsClass = atts["class"] || "";
-      const fullClass = className ? (attsClass ? `${attsClass} ${className}` : className) : attsClass;
-      const classObject = fullClass ? { class: fullClass } : {};
-      build += buildAttsString({ ...atts, ...classObject });
-    }
-    build += isChildless(tree["tag"]) ? "/>" : ">";
-    tree["children"] && tree["children"].forEach(child => (build += buildPageHtmlString(child, components)));
-    build += !isChildless(tree["tag"]) ? `</${tree["tag"]}>` : "";
-    return build;
-  } else {
-    return "";
-  }
-}
-
-export function buildPageHtmlString(tree: Child, components: Identification): string {
-  if (typeof tree === "string") {
-    return tree;
-  } else {
     let className = "";
     Object.keys(components).forEach(key => {
       components[parseInt(key)].forEach(component => {
@@ -51,6 +30,19 @@ export function buildPageHtmlString(tree: Child, components: Identification): st
         }
       });
     });
-    return buildElementAndChildrenStrings(tree, components, className);
+    let build = `<${tree["tag"]}`;
+    if (tree["atts"] || className) {
+      const atts = tree["atts"] || {};
+      const attsClass = atts["class"] || "";
+      const fullClass = className ? (attsClass ? `${attsClass} ${className}` : className) : attsClass;
+      const classObject = fullClass ? { class: fullClass } : {};
+      build += buildAtts({ ...atts, ...classObject });
+    }
+    build += isChildless(tree["tag"]) ? "/>" : ">";
+    tree["children"] && tree["children"].forEach(child => (build += buildHtml(child, components)));
+    build += !isChildless(tree["tag"]) ? `</${tree["tag"]}>` : "";
+    return build;
+  } else {
+    return "";
   }
 }
