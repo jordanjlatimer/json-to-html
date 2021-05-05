@@ -47,7 +47,6 @@ export function buildPageRoutes(tree: SiteMap, path: string, parentKey: string) 
     key === "index" && htmlPaths.push(path);
     let resetPath = "reset.css";
     const slashes = [...path.matchAll(/\//g)];
-    console.log(slashes);
     slashes?.forEach((occurance, i) => {
       if (i === 0) {
         resetPath = "./" + resetPath;
@@ -58,7 +57,6 @@ export function buildPageRoutes(tree: SiteMap, path: string, parentKey: string) 
       }
     });
     const passKey = parentKey === "" ? key : parentKey + "." + key;
-    console.log(passKey);
     if (child["content"]) {
       routes.push({
         key: passKey,

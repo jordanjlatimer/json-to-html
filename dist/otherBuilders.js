@@ -69,7 +69,6 @@ function buildPageRoutes(tree, path, parentKey) {
         key === "index" && htmlPaths.push(path);
         var resetPath = "reset.css";
         var slashes = __spreadArray([], __read(path.matchAll(/\//g)));
-        console.log(slashes);
         slashes === null || slashes === void 0 ? void 0 : slashes.forEach(function (occurance, i) {
             if (i === 0) {
                 resetPath = "./" + resetPath;
@@ -82,7 +81,6 @@ function buildPageRoutes(tree, path, parentKey) {
             }
         });
         var passKey = parentKey === "" ? key : parentKey + "." + key;
-        console.log(passKey);
         if (child["content"]) {
             routes.push({
                 key: passKey,

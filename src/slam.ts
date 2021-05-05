@@ -23,7 +23,7 @@ function SlamPage(arg: Page) {
   return arg;
 }
 
-function SlamPageBuilder(builder: () => Page[] | Promise<Page[]>): () => Page[] | Promise<Page[]> {
+function SlamPageBuilder(builder: () => Record<string, Page> | Promise<Record<string, Page>>) {
   return builder;
 }
 

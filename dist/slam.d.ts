@@ -1,7 +1,7 @@
 import { startServer } from "./server";
 import { ChildlessElementFunction, ChildlessElements, CSSObject, Page, ParentalElementFunction, ParentalElements, SiteMap, SlamElement, TagName } from "./slamInterfaces";
 declare function SlamPage(arg: Page): Page;
-declare function SlamPageBuilder(builder: () => Page[] | Promise<Page[]>): () => Page[] | Promise<Page[]>;
+declare function SlamPageBuilder(builder: () => Record<string, Page> | Promise<Record<string, Page>>): () => Record<string, Page> | Promise<Record<string, Page>>;
 declare function SlamSite(siteGenerator: () => SiteMap | Promise<SiteMap>): () => SiteMap | Promise<SiteMap>;
 export declare function StyledComponent<T extends TagName>(func: () => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): () => SlamElement<T>;
 export declare function StyledComponent<T extends TagName, U extends any[]>(func: (...args: U) => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): (...args: U) => SlamElement<T>;
