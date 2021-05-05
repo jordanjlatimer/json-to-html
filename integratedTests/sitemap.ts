@@ -1,15 +1,17 @@
 import { Slam } from "../dist";
 import { Index } from "./pages";
+import { FastBuild } from "./pages/fastBuild";
+import { SlowBuild } from "./pages/slowBuild";
 
-export default Slam.build(async () => ({
+export default Slam.site(async () => ({
   index: Index,
-  about: Index,
+  about: SlowBuild,
   events: {
-    index: Index,
+    index: FastBuild,
     otherEvent: Index,
     deeper: {
-      index: Index,
-      evenDeeper: Index,
+      index: SlowBuild,
+      evenDeeper: FastBuild,
       deepest: {
         superDeep: Index
       }

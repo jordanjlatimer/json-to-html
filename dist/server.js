@@ -36,53 +36,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.startServer = exports.buildWebserver = exports.startListening = exports.addPageRoutes = exports.addCssResetRoute = exports.cacheContent = exports.clearCache = void 0;
+exports.startServer = exports.buildWebserver = exports.startListening = exports.addPageRoute = exports.addLastUpdateRoute = exports.addSitemapRoute = exports.addCssResetRoute = exports.cacheRouteContent = exports.clearNodeCache = void 0;
 var express = require("express");
 var fs = require("fs");
 var cssReset_1 = require("./cssReset");
 var otherBuilders_1 = require("./otherBuilders");
-function clearCache(module) {
+function clearNodeCache(module) {
     module === null || module === void 0 ? void 0 : module.children.forEach(function (child) {
         if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
             return;
         }
         else {
-            clearCache(child);
+            clearNodeCache(child);
         }
     });
     module && delete require.cache[require.resolve(module.id)];
 }
-exports.clearCache = clearCache;
-function cacheContent(routes, cache) {
+exports.clearNodeCache = clearNodeCache;
+function cacheRouteContent(route, cache) {
     return __awaiter(this, void 0, void 0, function () {
-        var _this = this;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, Promise.all(routes.map(function (route) { return __awaiter(_this, void 0, void 0, function () {
-                        var _a, _b;
-                        return __generator(this, function (_c) {
-                            switch (_c.label) {
-                                case 0:
-                                    if (!!cache[route.key]) return [3 /*break*/, 2];
-                                    if (!route.page.content.getter) return [3 /*break*/, 2];
-                                    _a = cache;
-                                    _b = route.key;
-                                    return [4 /*yield*/, route.page.content.getter()];
-                                case 1:
-                                    _a[_b] = _c.sent();
-                                    _c.label = 2;
-                                case 2: return [2 /*return*/];
-                            }
-                        });
-                    }); }))];
+        var _a, _b;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0:
+                    if (!(!cache[route.key] && route.page.content.getter)) return [3 /*break*/, 2];
+                    _a = cache;
+                    _b = route.key;
+                    return [4 /*yield*/, route.page.content.getter()];
                 case 1:
-                    _a.sent();
-                    return [2 /*return*/];
+                    _a[_b] = _c.sent();
+                    _c.label = 2;
+                case 2: return [2 /*return*/];
             }
         });
     });
 }
-exports.cacheContent = cacheContent;
+exports.cacheRouteContent = cacheRouteContent;
 function addCssResetRoute(server) {
     server.get("/reset.css", function (req, res) {
         res.setHeader("content-type", "text/css");
@@ -91,55 +80,76 @@ function addCssResetRoute(server) {
     });
 }
 exports.addCssResetRoute = addCssResetRoute;
-function addPageRoutes(routes, cache, server, port, lastUpdate) {
+function addSitemapRoute(server, routes) {
     server.get("/slamserver/sitemap", function (req, res) { return res.send("<pre>" + JSON.stringify(routes, null, 2) + "</pre>"); });
+}
+exports.addSitemapRoute = addSitemapRoute;
+function addLastUpdateRoute(server, lastUpdate) {
     server.get("/slamserver/last-update", function (req, res) { return res.send(lastUpdate.toString()); });
-    routes.forEach(function (route) {
-        var build = otherBuilders_1.buildPage(route, cache[route.key]);
-        build.html = build.html.replace("</body>", otherBuilders_1.buildReloadScript(port));
-        ["html", "css", "js"].forEach(function (item) {
-            server.get(route.serverPaths[item], function (req, res) {
-                res.setHeader("content-type", "text/" + item);
-                res.send(build[item]);
-                res.end();
-            });
+}
+exports.addLastUpdateRoute = addLastUpdateRoute;
+function addPageRoute(route, cache, server, port) {
+    var build = otherBuilders_1.buildPage(route, cache[route.key]);
+    build.html = build.html.replace("</body>", otherBuilders_1.buildReloadScript(port));
+    ["html", "css", "js"].forEach(function (item) {
+        server.get(route.serverPaths[item], function (req, res) {
+            res.setHeader("content-type", "text/" + item);
+            res.send(build[item]);
+            res.end();
         });
     });
 }
-exports.addPageRoutes = addPageRoutes;
-function startListening(routes, server, port, clearConsole) {
-    return server.listen(port, function () {
+exports.addPageRoute = addPageRoute;
+function preparePage(route, cache, server, port) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, cacheRouteContent(route, cache)];
+                case 1:
+                    _a.sent();
+                    addPageRoute(route, cache, server, port);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function startListening(routes, server, port, sockets, lastUpdate, cache, clearConsole, contentOut) {
+    addCssResetRoute(server);
+    addLastUpdateRoute(server, lastUpdate);
+    addSitemapRoute(server, routes);
+    var runningServer = server.listen(port, function () {
         clearConsole && console.clear();
         console.log("Server listening at http://localhost:" + port);
         console.log("Pages:");
         routes.forEach(function (route) { return console.log("\t" + route.key + ": http://localhost:" + port + route.serverPaths.html[0]); });
         console.log("\nLast Updated:", "\x1b[36m", new Date().toLocaleString(), "\x1b[0m");
     });
+    runningServer.on("connection", function (socket) { return sockets.push(socket); });
+    contentOut && fs.writeFileSync(contentOut, JSON.stringify(cache, null, 2));
+    return runningServer;
 }
 exports.startListening = startListening;
 function buildWebserver(indexFile, port, cache, sockets, contentOut, clearConsole) {
     return __awaiter(this, void 0, void 0, function () {
-        var lastUpdate, newServer, module, siteMap, routes, runningServer;
+        var lastUpdate, newServer, module, siteMap, routes;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     lastUpdate = Date.now();
                     newServer = express();
                     module = require.cache[require.resolve(indexFile)];
-                    clearCache(module);
+                    clearNodeCache(module);
                     return [4 /*yield*/, require(indexFile)["default"]()];
                 case 1:
                     siteMap = _a.sent();
                     routes = otherBuilders_1.buildPageRoutes(siteMap, "/", "");
-                    return [4 /*yield*/, cacheContent(routes, cache)];
+                    return [4 /*yield*/, Promise.all(routes.map(function (route) { return preparePage(route, cache, newServer, port); }))];
                 case 2:
                     _a.sent();
-                    addPageRoutes(routes, cache, newServer, port, lastUpdate);
                     addCssResetRoute(newServer);
-                    runningServer = startListening(routes, newServer, port, clearConsole);
-                    runningServer.on("connection", function (socket) { return sockets.push(socket); });
-                    contentOut && fs.writeFileSync(contentOut, JSON.stringify(cache, null, 2));
-                    return [2 /*return*/, runningServer];
+                    addLastUpdateRoute(newServer, lastUpdate);
+                    addSitemapRoute(newServer, routes);
+                    return [2 /*return*/, startListening(routes, newServer, port, sockets, lastUpdate, cache, clearConsole, contentOut)];
             }
         });
     });

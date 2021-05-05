@@ -1,9 +1,9 @@
 {
   "index": "Content",
-  "about": "Content",
-  "events.index": "Content",
   "events.otherEvent": "Content",
-  "events.deeper.index": "Content",
-  "events.deeper.evenDeeper": "Content",
-  "events.deeper.deepest.superDeep": "Content"
+  "events.deeper.deepest.superDeep": "Content",
+  "events.index": "content",
+  "events.deeper.evenDeeper": "content",
+  "about": "content",
+  "events.deeper.index": "content"
 }
