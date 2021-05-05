@@ -23,8 +23,12 @@ function SlamPage(arg: Page) {
   return arg;
 }
 
-function SlamPageBuilder(builderFunction: () => SiteMap | Promise<SiteMap>): () => SiteMap | Promise<SiteMap> {
-  return builderFunction;
+function SlamPageBuilder(builder: () => Page[] | Promise<Page[]>): () => Page[] | Promise<Page[]> {
+  return builder;
+}
+
+function SlamSite(siteGenerator: () => SiteMap | Promise<SiteMap>) {
+  return siteGenerator;
 }
 
 export function StyledComponent<T extends TagName>(
@@ -123,7 +127,8 @@ function mergeStyles(...styles: CSSObject[]) {
 
 export const Slam = {
   page: SlamPage,
-  build: SlamPageBuilder,
+  builder: SlamPageBuilder,
+  site: SlamSite,
   applier: CreateStyleApplier,
   merge: mergeStyles,
   styled: {

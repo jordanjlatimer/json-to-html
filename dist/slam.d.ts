@@ -1,7 +1,8 @@
 import { startServer } from "./server";
 import { ChildlessElementFunction, ChildlessElements, CSSObject, Page, ParentalElementFunction, ParentalElements, SiteMap, SlamElement, TagName } from "./slamInterfaces";
 declare function SlamPage(arg: Page): Page;
-declare function SlamPageBuilder(builderFunction: () => SiteMap | Promise<SiteMap>): () => SiteMap | Promise<SiteMap>;
+declare function SlamPageBuilder(builder: () => Page[] | Promise<Page[]>): () => Page[] | Promise<Page[]>;
+declare function SlamSite(siteGenerator: () => SiteMap | Promise<SiteMap>): () => SiteMap | Promise<SiteMap>;
 export declare function StyledComponent<T extends TagName>(func: () => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): () => SlamElement<T>;
 export declare function StyledComponent<T extends TagName, U extends any[]>(func: (...args: U) => SlamElement<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): (...args: U) => SlamElement<T>;
 declare function StyledElement<T extends ParentalElements>(element: ParentalElementFunction<T>, ...styles: (CSSObject | CSSObject[] | undefined)[]): ParentalElementFunction<T>;
@@ -13,7 +14,8 @@ declare function writeFiles(indexFile: string, outDir: string): Promise<void>;
 declare function mergeStyles(...styles: CSSObject[]): CSSObject;
 export declare const Slam: {
     page: typeof SlamPage;
-    build: typeof SlamPageBuilder;
+    builder: typeof SlamPageBuilder;
+    site: typeof SlamSite;
     applier: typeof CreateStyleApplier;
     merge: typeof mergeStyles;
     styled: {

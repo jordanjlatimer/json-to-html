@@ -78,8 +78,11 @@ var utils_1 = require("./utils");
 function SlamPage(arg) {
     return arg;
 }
-function SlamPageBuilder(builderFunction) {
-    return builderFunction;
+function SlamPageBuilder(builder) {
+    return builder;
+}
+function SlamSite(siteGenerator) {
+    return siteGenerator;
 }
 function StyledComponent(func) {
     var styles = [];
@@ -189,7 +192,8 @@ function mergeStyles() {
 }
 exports.Slam = {
     page: SlamPage,
-    build: SlamPageBuilder,
+    builder: SlamPageBuilder,
+    site: SlamSite,
     applier: CreateStyleApplier,
     merge: mergeStyles,
     styled: {
