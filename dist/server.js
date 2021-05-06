@@ -36,42 +36,44 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.startServer = exports.buildWebserver = exports.startListening = exports.addPageRoute = exports.addLastUpdateRoute = exports.addSitemapRoute = exports.addCssResetRoute = exports.cacheRouteContent = exports.clearNodeCache = void 0;
+exports.startServer = exports.buildWebserver = exports.startListening = exports.addPageRoute = exports.addLastUpdateRoute = exports.addSitemapRoute = exports.addCssResetRoute = exports.cacheRouteBuild = exports.cacheRouteContent = exports.clearNodeCache = void 0;
+var chokidar_1 = require("chokidar");
 var express = require("express");
 var fs = require("fs");
 var cssReset_1 = require("./cssReset");
 var otherBuilders_1 = require("./otherBuilders");
 function clearNodeCache(module) {
-    module === null || module === void 0 ? void 0 : module.children.forEach(function (child) {
-        if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
-            return;
-        }
-        else {
-            clearNodeCache(child);
-        }
-    });
-    module && delete require.cache[require.resolve(module.id)];
+    delete require.cache[require.resolve(module.id)];
 }
 exports.clearNodeCache = clearNodeCache;
+//Add ability to cache built pages.
 function cacheRouteContent(route, cache) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
-                    if (!(!cache[route.key] && route.page.content.getter)) return [3 /*break*/, 2];
-                    _a = cache;
-                    _b = route.key;
+                    if (!(!cache[route.key].content && route.page.content.getter)) return [3 /*break*/, 2];
+                    _a = cache[route.key];
                     return [4 /*yield*/, route.page.content.getter()];
                 case 1:
-                    _a[_b] = _c.sent();
-                    _c.label = 2;
+                    _a.content = _b.sent();
+                    _b.label = 2;
                 case 2: return [2 /*return*/];
             }
         });
     });
 }
 exports.cacheRouteContent = cacheRouteContent;
+function cacheRouteBuild(route, build, cache) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            cache[route.key].build = build;
+            return [2 /*return*/];
+        });
+    });
+}
+exports.cacheRouteBuild = cacheRouteBuild;
 function addCssResetRoute(server) {
     server.get("/reset.css", function (req, res) {
         res.setHeader("content-type", "text/css");
@@ -89,7 +91,8 @@ function addLastUpdateRoute(server, lastUpdate) {
 }
 exports.addLastUpdateRoute = addLastUpdateRoute;
 function addPageRoute(route, cache, server, port) {
-    var build = otherBuilders_1.buildPage(route, cache[route.key]);
+    var build = otherBuilders_1.buildPage(route, cache[route.key].content);
+    cacheRouteBuild(route, build, cache);
     build.html = build.html.replace("</body>", otherBuilders_1.buildReloadScript(port));
     ["html", "css", "js"].forEach(function (item) {
         server.get(route.serverPaths[item], function (req, res) {
@@ -131,14 +134,12 @@ function startListening(routes, server, port, sockets, lastUpdate, cache, clearC
 exports.startListening = startListening;
 function buildWebserver(indexFile, port, cache, sockets, contentOut, clearConsole) {
     return __awaiter(this, void 0, void 0, function () {
-        var lastUpdate, newServer, module, siteMap, routes;
+        var lastUpdate, newServer, siteMap, routes;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     lastUpdate = Date.now();
                     newServer = express();
-                    module = require.cache[require.resolve(indexFile)];
-                    clearNodeCache(module);
                     return [4 /*yield*/, require(indexFile)["default"]()];
                 case 1:
                     siteMap = _a.sent();
@@ -158,7 +159,7 @@ exports.buildWebserver = buildWebserver;
 function startServer(indexFile, port, watchList, contentOut, clearConsole) {
     if (clearConsole === void 0) { clearConsole = true; }
     return __awaiter(this, void 0, void 0, function () {
-        var cache, sockets, server;
+        var cache, sockets, server, itemChanged, watcher;
         var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -169,13 +170,15 @@ function startServer(indexFile, port, watchList, contentOut, clearConsole) {
                     return [4 /*yield*/, buildWebserver(indexFile, port, cache, sockets, contentOut, clearConsole)];
                 case 1:
                     server = _a.sent();
-                    watchList.forEach(function (item) {
-                        var itemChanged = false;
-                        fs.watch(item, { recursive: true }).on("change", function () {
-                            if (itemChanged) {
-                                return;
-                            }
-                            itemChanged = true;
+                    itemChanged = false;
+                    watcher = chokidar_1.default.watch(watchList);
+                    watcher.on("change", function (path) {
+                        if (itemChanged) {
+                            return;
+                        }
+                        else {
+                            var nodeCache = require.cache[require.resolve(path)];
+                            nodeCache && clearNodeCache(nodeCache);
                             console.log("Change detected. Restarting server...\n");
                             server.close(function () { return __awaiter(_this, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
@@ -189,7 +192,7 @@ function startServer(indexFile, port, watchList, contentOut, clearConsole) {
                                 });
                             }); });
                             sockets.forEach(function (socket) { return socket.destroy(); });
-                        });
+                        }
                     });
                     return [2 /*return*/];
             }

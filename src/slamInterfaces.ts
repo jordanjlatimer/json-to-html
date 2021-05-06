@@ -117,3 +117,10 @@ export type ParentalElementFunction<T extends TagName> = (
 ) => SlamElement<T>;
 
 export type ElementFunction<T extends TagName> = ParentalElementFunction<T> | ChildlessElementFunction<T>;
+
+export interface Cache {
+  [key: string]: {
+    content: any;
+    build: BuildObject;
+  };
+}

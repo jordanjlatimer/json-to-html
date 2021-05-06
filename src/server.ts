@@ -1,25 +1,24 @@
+import chokidar from "chokidar";
 import * as express from "express";
 import * as fs from "fs";
 import { Socket } from "node:net";
 import { cssReset } from "./cssReset";
 import { buildPage, buildPageRoutes, buildReloadScript } from "./otherBuilders";
-import { PageRoute, SiteMap } from "./slamInterfaces";
+import { BuildObject, Cache, PageRoute, SiteMap } from "./slamInterfaces";
 
-export function clearNodeCache(module?: NodeModule): void {
-  module?.children.forEach(child => {
-    if (/node_modules/.test(child.id) || /dist/.test(child.id)) {
-      return;
-    } else {
-      clearNodeCache(child);
-    }
-  });
-  module && delete require.cache[require.resolve(module.id)];
+export function clearNodeCache(module: NodeModule): void {
+  delete require.cache[require.resolve(module.id)];
 }
 
-export async function cacheRouteContent(route: PageRoute, cache: Record<string, any>) {
-  if (!cache[route.key] && route.page.content.getter) {
-    cache[route.key] = await route.page.content.getter();
+//Add ability to cache built pages.
+export async function cacheRouteContent(route: PageRoute, cache: Cache) {
+  if (!cache[route.key].content && route.page.content.getter) {
+    cache[route.key].content = await route.page.content.getter();
   }
+}
+
+export async function cacheRouteBuild(route: PageRoute, build: BuildObject, cache: Cache) {
+  cache[route.key].build = build;
 }
 
 export function addCssResetRoute(server: express.Application) {
@@ -38,8 +37,9 @@ export function addLastUpdateRoute(server: express.Application, lastUpdate: numb
   server.get("/slamserver/last-update", (req, res) => res.send(lastUpdate.toString()));
 }
 
-export function addPageRoute(route: PageRoute, cache: Record<string, any>, server: express.Application, port: number) {
-  const build = buildPage(route, cache[route.key]);
+export function addPageRoute(route: PageRoute, cache: Cache, server: express.Application, port: number) {
+  const build = buildPage(route, cache[route.key].content);
+  cacheRouteBuild(route, build, cache);
   build.html = build.html.replace("</body>", buildReloadScript(port));
   ["html", "css", "js"].forEach(item => {
     server.get(route.serverPaths[item as "html" | "css" | "js"], (req, res) => {
@@ -50,7 +50,7 @@ export function addPageRoute(route: PageRoute, cache: Record<string, any>, serve
   });
 }
 
-async function preparePage(route: PageRoute, cache: Record<string, any>, server: express.Application, port: number) {
+async function preparePage(route: PageRoute, cache: Cache, server: express.Application, port: number) {
   await cacheRouteContent(route, cache);
   addPageRoute(route, cache, server, port);
 }
@@ -61,7 +61,7 @@ export function startListening(
   port: number,
   sockets: Socket[],
   lastUpdate: number,
-  cache: Record<string, any>,
+  cache: Cache,
   clearConsole?: boolean,
   contentOut?: string
 ) {
@@ -83,15 +83,13 @@ export function startListening(
 export async function buildWebserver(
   indexFile: string,
   port: number,
-  cache: Record<string, any>,
+  cache: Cache,
   sockets: Socket[],
   contentOut?: string,
   clearConsole?: boolean
 ) {
   const lastUpdate = Date.now();
   const newServer = express();
-  let module = require.cache[require.resolve(indexFile)];
-  clearNodeCache(module);
   const siteMap: SiteMap = await require(indexFile)["default"]();
   const routes: PageRoute[] = buildPageRoutes(siteMap, "/", "");
   await Promise.all(routes.map(route => preparePage(route, cache, newServer, port)));
@@ -108,23 +106,24 @@ export async function startServer(
   contentOut?: string,
   clearConsole = true
 ): Promise<void> {
-  const cache: Record<string, any> = {};
+  const cache: Cache = {};
   let sockets: Socket[] = [];
   console.log("Starting server...\n");
   let server = await buildWebserver(indexFile, port, cache, sockets, contentOut, clearConsole);
-  watchList.forEach(item => {
-    let itemChanged = false;
-    fs.watch(item, { recursive: true }).on("change", () => {
-      if (itemChanged) {
-        return;
-      }
-      itemChanged = true;
+  let itemChanged = false;
+  const watcher = chokidar.watch(watchList);
+  watcher.on("change", path => {
+    if (itemChanged) {
+      return;
+    } else {
+      let nodeCache = require.cache[require.resolve(path)];
+      nodeCache && clearNodeCache(nodeCache);
       console.log("Change detected. Restarting server...\n");
       server.close(async () => {
         server = await buildWebserver(indexFile, port, cache, sockets);
         itemChanged = false;
       });
       sockets.forEach(socket => socket.destroy());
-    });
+    }
   });
 }
